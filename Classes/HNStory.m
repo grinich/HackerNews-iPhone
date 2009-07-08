@@ -11,7 +11,23 @@
 
 @implementation HNStory
 
+@synthesize title;
+@synthesize points;
+@synthesize user;
+@synthesize url;
+@synthesize time_ago;
+@synthesize comments_count;
+@synthesize nocomments;
+@synthesize story_id;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        nocomments = NO; // default
+    }
+    return self;
+}
 
 - (void) dealloc {
 	[title	release];

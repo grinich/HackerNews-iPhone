@@ -6,7 +6,7 @@
 //  Copyright Michael Grinich 2009. All rights reserved.
 //
 
-@class RootViewController;
+@class HNStoryTableViewController;
 
 @interface HackerNewsAppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -17,7 +17,7 @@
     UIWindow *window;
 	
 	UINavigationController *navigationController;
-	RootViewController *rootViewController;
+	HNStoryTableViewController *aHNStoryTableViewController;
 }
 
 - (IBAction)saveAction:sender;
@@ -31,7 +31,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
+@property (nonatomic, retain) IBOutlet HNStoryTableViewController *aHNStoryTableViewController;
 
 @end
 

@@ -7,26 +7,32 @@
 //
 
 #import "HackerNewsAppDelegate.h"
-
+#import "HNStoryTableViewController.h"
 #import "HNParser.h"
 
 @implementation HackerNewsAppDelegate
 
 @synthesize window;
-@synthesize navigationController;
-@synthesize rootViewController;
+@synthesize aHNStoryTableViewController, navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
+
+	self.navigationController = [[UINavigationController alloc] 
+													initWithRootViewController:aHNStoryTableViewController];
+
+	// TODO : Set with user preference if they're logged in.
+	// TODO : Also, choose whether we use the light or dark masthead
+	
+	//	[navigationController.navigationBar setTintColor:[UIColor blackColor]];
+	[navigationController.navigationBar setTintColor:[[[UIColor alloc] 
+													   initWithRed:1.0 green:0.3945 blue:0.0 alpha:1] autorelease]];	
 	
 	[window addSubview:navigationController.view];
 	[window makeKeyAndVisible];
-	
-	
-	HNParser* parser = [[HNParser alloc] initHNParser];
-	[parser parse];
+
 }
 
 /**

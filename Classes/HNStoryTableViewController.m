@@ -1,15 +1,17 @@
 //
-//  RootViewController.m
+//  HNStoryTableViewController.m
 //  HackerNews
 //
 //  Created by Michael Grinich on 7/7/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "HNStoryTableViewController.h"
+#import "HNParser.h"
 
+@implementation HNStoryTableViewController
 
-@implementation RootViewController
+@synthesize storyArray;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -20,14 +22,27 @@
 }
 */
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
+//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
+	
+	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
+	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
+	[titleImage release];
+	
+	
+	
+	HNParser* sharedParser =  [HNParser sharedHNParser];
+	
+	storyArray = [sharedParser getHomeStories];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,9 +93,10 @@
 }
 
 
+
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [storyArray count];
 }
 
 
@@ -94,10 +110,31 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Set up the cell...
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row + 1, [(HNStory *)[storyArray objectAtIndex:indexPath.row] title]];
 	
+	cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:18.0];
+//	cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
+	cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+	cell.textLabel.numberOfLines = 0;
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	CGSize aSize; 
+	NSString *titleString = [(HNStory *)[storyArray objectAtIndex:indexPath.row] title];
+	aSize = [titleString sizeWithFont:[UIFont fontWithName:@"Helvetica" size:18.0]  
+				constrainedToSize:CGSizeMake(270.0, 1000.0)  
+					lineBreakMode:UILineBreakModeWordWrap];  
+	
+	if  ( aSize.height + 10 > 43) {
+		return aSize.height + 10;
+	} else {
+		return 43;
+	}
+
+} 
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

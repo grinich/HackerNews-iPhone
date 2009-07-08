@@ -20,7 +20,9 @@
 	
 }
 
-- (HNParser *) initHNParser;
++ (HNParser *)sharedHNParser;
+
+-(NSArray *) getHomeStories;
 
 
 @end

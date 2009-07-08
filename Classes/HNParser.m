@@ -7,22 +7,21 @@
 //
 
 #import "HNParser.h"
+#import "SynthesizeSingleton.h"
 
 #import "ElementParser.h"
+#import "HNStory.h"
+#import "CSSSelector.h"
+
+
 
 @implementation HNParser
-
-- (HNParser *) initHNParser {
-	[super init];
-	appDelegate = (HackerNewsAppDelegate *)[[UIApplication sharedApplication] delegate];
-	return self;
-}
+SYNTHESIZE_SINGLETON_FOR_CLASS(HNParser);
 
 
-- (void) parse {
-	NSURL *url = [NSURL URLWithString:@"http://news.ycombinator.com/"];
-	
-	
+- (NSString *) parseWithURLString:(NSString *)urlString {
+	NSURL *url = [NSURL URLWithString:urlString];
+
 	NSHTTPURLResponse * response;
 	NSError * error;
 	NSMutableURLRequest *request;
@@ -39,46 +38,102 @@
 	
 	NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:url];
 	
-	NSLog(@"%d", all.count);
+	NSLog(@"Number of Cookies: %d", all.count);
 	
 	for (NSHTTPCookie *cookie in all) 
 	{
 		NSLog(@"Name: %@ : Value: %@", cookie.name, cookie.value); 
 	}
 	
-	Element *document = [Element parseHTML: dataString];
+	return dataString;
+}
+
+
+
+-(NSArray *) getHomeStories {
 	
-	//Element *next;
-	//next = [document selectElement:@"td.title"];
+	NSString *data = [self parseWithURLString:@"http://news.ycombinator.com/"];
+	
+	Element *document = [Element parseHTML: data];
 		
-	NSArray *titles =  [document elementsWithCSSSelector:[[CSSSelector alloc] initWithString:@"tr > td.title > a"]];
+	NSArray *titles =  [document elementsWithCSSSelector:[[CSSSelector alloc] 
+														  initWithString:@"tr > td.title > a"]];
 	
-	// Enumerate through the title elements.
-	NSEnumerator *e = [titles objectEnumerator];
-	id titleElement;
-	while ( (titleElement = [e nextObject]) ) {
-		NSLog(@"%@", (Element *)[titleElement contentsText] );
-	}
+	NSArray *subtexts = [document elementsWithCSSSelector:[[CSSSelector alloc]
+														  initWithString:@"tr > td.subtext"]];
 	
+	NSMutableArray *stories = [NSMutableArray new];
 	
-	/*
-	int i;
-	for (i=0; i<50; i++) {
-		NSLog(@"%@", [next contentsText]);
+	NSEnumerator* titlesEnumerator = [titles objectEnumerator];
+	NSEnumerator* subtextsEnumerator = [subtexts objectEnumerator];
+	
+	Element* titleElement;
+	Element *subtextElement;
+	
+	// Saves from having to create/destory every time
+	NSNumberFormatter* nFormatter = [NSNumberFormatter new];
+	NSString *tempString;
 
-//		NSLog(@"%@  ---  %@", [next tagName], [next attributes]);
-		next = [next nextElement];
-	}
-	*/
+	while(	(titleElement = [titlesEnumerator nextObject]) && 
+			(subtextElement = [subtextsEnumerator nextObject]))
+	{
+		HNStory* story  = [HNStory new];
+		
+		story.title = [titleElement contentsText];
+		story.url = [NSURL URLWithString:[[titleElement selectElement:@"a"] attribute:@"href"]];
+		story.user = [[subtextElement selectElement:@"a"] contentsText] ;
+			
+		
+		// Either "points" or "point"
+		tempString = [[subtextElement selectElement:@"span"] contentsText];
+		if ([tempString hasSuffix:@"points"]) {
+			story.points = [nFormatter numberFromString:[tempString substringToIndex:[tempString length] - 7]];
+		
+		} else if ([tempString hasSuffix:@"point"]) {
+			story.points = [nFormatter numberFromString:[tempString substringToIndex:[tempString length] - 6]];
+		
+		} else {
+			// No points. WTF?
+			story.points = [NSNumber numberWithInt:0];
+			NSLog(@"Error parsing points for story.");
+		}
+		
+		
+		// Either "xx Comments" or "1 comment" or "discuss"		
+		tempString = [[[subtextElement selectElement:@"a"] nextElement] contentsText];
+		if ([tempString hasSuffix:@"comments"]){
+			// get rid of "comments"
+			story.comments_count = [nFormatter numberFromString:[tempString substringToIndex:[tempString length] - 9]];
+			
+		} else if ([tempString hasSuffix:@"comment"]) {
+			story.comments_count = [nFormatter numberFromString:[tempString substringToIndex:[tempString length] - 8]];
+			
+		} else if ([tempString hasSuffix:@"discuss"]) {
+			story.comments_count = [NSNumber numberWithInt:0];
+			
+		} else {
+			// The likely case here is that comments have been disabled for the post.
+			// It's probably a job posting or something.
+			story.nocomments = TRUE;
+			NSLog(@"Error parsing comment for story.");
+		}
+		
 
+
+		
+//		story.time_ago = 
+		
+		NSString *idString = [[[subtextElement selectElement:@"span"] attribute:@"id"] substringFromIndex:6];
+		
+		story.story_id = [nFormatter numberFromString:idString];
+		
+		
+		[stories addObject:story];
+		[story release]; 
+	}
+	[nFormatter release];
 	
-//	ElementParser* parser = [[ElementParser alloc] initWithCallbacksDelegate: self];
-//	
-//	[parser performSelector:@selector(gotFeedElement:) forElementsMatching: @"feed"];
-//	
-//	documentRoot = [parser parseXML: source];
-//	
-//	document = [Element parseHTML: source];
+	return stories;
 }
 
 

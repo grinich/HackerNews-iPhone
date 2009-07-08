@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  HNStoryTableViewController.h
 //  HackerNews
 //
 //  Created by Michael Grinich on 7/7/09.
@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
-@interface RootViewController : UITableViewController {
+@interface HNStoryTableViewController : UITableViewController {
 
-	NSMutableArray *storyArray;
+	NSArray *storyArray;
 	
     // loadSwirlie will display a loading overlay while the data is downloaded from the RSS feed.
     UIActivityIndicatorView *activityIndicator;
 	
 }
+
+@property (nonatomic, retain) NSArray* storyArray;
 
 @end

@@ -14,9 +14,23 @@
 	NSString*	title;
 	NSNumber*	points;
 	NSString*	user;
+	NSURL*		url;
 	NSString*	time_ago;
 	NSNumber*	comments_count;
+	BOOL		nocomments;
+	
+	NSNumber*	story_id;
 
 }
+
+@property (nonatomic, retain) 	NSString*	title;
+@property (nonatomic, retain) 	NSNumber*	points;
+@property (nonatomic, retain) 	NSString*	user;
+@property (nonatomic, retain) 	NSURL*		url;
+@property (nonatomic, retain) 	NSString*	time_ago;
+@property (nonatomic, retain) 	NSNumber*	comments_count;
+@property (nonatomic, retain) 	NSNumber*	story_id;
+@property						BOOL		nocomments;
+
 
 @end
