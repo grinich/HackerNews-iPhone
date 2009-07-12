@@ -50,6 +50,7 @@
 
 
 + (CGFloat) heightForCellWithComment:(HNComment *)comment;
+
 + (CGFloat) getBodyHeightForComment:(HNComment *)comment;
 
 

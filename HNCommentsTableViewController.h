@@ -12,7 +12,9 @@
 
 @class HNStory, HNComment;
 
-@interface HNCommentsTableViewController :  TTViewController {
+@interface HNCommentsTableViewController :  TTTableViewController {
+	
+	
 	HNStory		*story;
 	NSArray		*commentsArray;
 }
@@ -20,6 +22,5 @@
 @property (nonatomic, retain) 	HNStory		*story;
 @property (nonatomic, retain)	NSArray		*commentsArray;
 
-- (void) loadComments:(id)sender;
 
 @end

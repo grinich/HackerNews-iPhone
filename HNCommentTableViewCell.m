@@ -82,7 +82,7 @@
 		self.bodyLabel.contentInset = UIEdgeInsetsMake(5, 0, 5, 0);
 
 		
-		CGFloat leftInset = boundsX + 10.0 + [[cellComment indentationLevel] floatValue] * 10;
+		CGFloat leftInset = boundsX + 10.0 + (double)[cellComment indentationLevel] * 10.0;
 
 		self.bodyLabel.frame = CGRectMake(leftInset, 
 										   0, 

@@ -7,49 +7,107 @@
 //
 
 #import "HNCommentsTableViewController.h"
-#import "HNParser.h"
-#import "HNCommentTableViewCell.h"
 
+#import "HNCommentTableViewCell.h"
+#import "HNCommentsViewDataSource.h"
 
 @implementation HNCommentsTableViewController
 
+
 @synthesize story, commentsArray;
 	
+/*
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// UIViewController
+
+- (void)loadView {
+	[super loadView];
+	
+	self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds
+												   style:UITableViewStyleGrouped] autorelease];
+	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
+	| UIViewAutoresizingFlexibleHeight;
+	self.variableHeightRows = YES;  
+
+	[self.view addSubview:self.tableView];
+}
+
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// NSObject
+
+- (id)init {
+	if (self = [super init]) {
+		self.tableViewStyle = UITableViewStyleGrouped;
+		self.autoresizesForKeyboard = YES;
+		self.variableHeightRows = YES;
+	}
+	return self;
+}
+
+- (void)dealloc {
+	[super dealloc];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewController
+
+- (void)loadView {
+	[super loadView];
+	self.tableView.allowsSelection = NO;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewController
+/*
+- (id<TTTableViewDataSource>)createDataSource {
+	return [HNCommentsViewDataSource commentsViewDataSource:[story story_id]];
+}
+*/
+
+
+- (id<TTTableViewDataSource>)createDataSource {
+	NSArray* strings = [NSArray arrayWithObjects:
+						[TTStyledText textFromXHTML:@"This is a whole bunch of text made from \
+						 characters and followed by this URL http://bit.ly/1234"],
+						[TTStyledText textFromXHTML:@"Here we have a URL http://www.h0tlinkz.com \
+						 followed by another http://www.internets.com"],
+						[TTStyledText textFromXHTML:@"http://www.cnn.com is a URL and the words you \
+						 are now reading are the text that follows"],
+						[TTStyledText textFromXHTML:@"Here is text that has absolutely no styles. \
+						 Move along now. Nothing to see here. Goodbye now."],
+						//    @"Let's test out some line breaks.\n\nOh yeah.",
+						//    @"This is a message with a long URL in it http://www.foo.com/abra/cadabra/abrabra/dabarababa",
+						nil];
+	NSString* URL = @"tt://styledTextTableTest";
+	
+	TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
+	for (int i = 0; i < 50; ++i) {
+		TTStyledText* text = [strings objectAtIndex:i % strings.count];
+		
+		[dataSource.items addObject:[TTTableStyledTextItem itemWithText:text URL:URL]];
+	}
+	return dataSource;
+}
+ 
+ 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	[self performSelectorInBackground:@selector(loadComments:) withObject:nil];
-	
+		
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
-- (void) loadComments:(id)sender {
-	HNParser* sharedParser =  [HNParser sharedHNParser];
-	
-	self.commentsArray = [sharedParser parseCommentsForStoryID:[story story_id]];
-	
-	NSLog(@"Done parsing. Comment Objects: %@", commentsArray);
-	
-	//[self.tableView reloadData];
-}
-
-
-
-
 - (void)viewWillAppear:(BOOL)animated {
-
-	
-	
     [super viewWillAppear:animated];
 	
 	UIColor *HNOrangeColor = [[UIColor alloc] initWithRed:1.0 green:0.3945 blue:0.0 alpha:1];
 	[self.navigationController.navigationBar setTintColor:HNOrangeColor];
 	[HNOrangeColor release];
-	
-	
 	
 	// Add the "Comment" button
 	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Comment" 
@@ -65,29 +123,10 @@
 	// push to add comment view
 }
 
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+
+
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -96,111 +135,7 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
 
-
-#pragma mark Table view methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return commentsArray.count;
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    /*
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-	 */
-    
-	HNCommentTableViewCell *cell = (HNCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-	if (cell == nil) {
-		//  cell = [[[HNStoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell = [[HNCommentTableViewCell alloc] initWithStyle:(UITableViewCellStyle)UITableViewCellStyleDefault
-											 reuseIdentifier:(NSString *)CellIdentifier
-												 withComment:[commentsArray objectAtIndex:indexPath.row]
-												   withIndex:indexPath.row];
-	} else {
-		cell.cellComment = [commentsArray objectAtIndex:indexPath.row];
-		cell.cellIndex = indexPath.row;
-		[cell setupData];
-		
-	}
-	
-	[cell setNeedsLayout];
-    return cell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [HNCommentTableViewCell heightForCellWithComment:[commentsArray objectAtIndex:indexPath.row]];
-;
-} 
-
-#pragma mark -
-#pragma mark TableView interaction methods
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 
