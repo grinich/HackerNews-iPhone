@@ -17,7 +17,9 @@
 	NSURL*		url;
 	NSString*	time_ago;
 	NSNumber*	comments_count;
+	
 	BOOL		nocomments;
+	BOOL		internal_story;
 	
 	NSNumber*	story_id;
 
@@ -31,6 +33,6 @@
 @property (nonatomic, retain) 	NSNumber*	comments_count;
 @property (nonatomic, retain) 	NSNumber*	story_id;
 @property						BOOL		nocomments;
-
+@property						BOOL		internal_story;
 
 @end

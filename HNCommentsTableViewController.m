@@ -1,81 +1,47 @@
 //
-//  HNStoryTableViewController.m
+//  HNCommentsTableViewController.m
 //  HackerNews
 //
-//  Created by Michael Grinich on 7/7/09.
+//  Created by Michael Grinich on 7/10/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "HNStoryTableViewController.h"
-#import "HNParser.h"
-#import "HNStoryTableViewCell.h"
 #import "HNCommentsTableViewController.h"
+#import "HNParser.h"
+#import "HNCommentTableViewCell.h"
 
-#import "Three20/Three20.h"
 
-@implementation HNStoryTableViewController
+@implementation HNCommentsTableViewController
 
-@synthesize storyArray;
-@synthesize searchButton;
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
-
+@synthesize story, commentsArray;
+	
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[self performSelectorInBackground:@selector(loadStories) withObject:nil];
+	[self performSelectorInBackground:@selector(loadComments:) withObject:nil];
 	
-	searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
-																 target:self 
-																 action:@selector(activateSearchBar)];
-	
-	[self.navigationItem setRightBarButtonItem:searchButton];
-	
-	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
-	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
-	
-	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
-	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
-	[titleImage release];
-
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
-- (void) activateSearchBar {
-	NSLog(@"Search bar touched!");
-	// Do some searching!
-}
-
-
-- (void) loadStories {
-
+- (void) loadComments:(id)sender {
 	HNParser* sharedParser =  [HNParser sharedHNParser];
-	storyArray = [sharedParser getHomeStories];
-		
-	[self.tableView reloadData];
+	
+	self.commentsArray = [sharedParser parseCommentsForStoryID:[story story_id]];
+	
+	NSLog(@"Done parsing. Comment Objects: %@", commentsArray);
+	
+	//[self.tableView reloadData];
 }
 
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
+
 	
-	// Unselect the selected row if any
-	NSIndexPath*	selection = [self.tableView indexPathForSelectedRow];
-	if (selection){
-		[self.tableView deselectRowAtIndexPath:selection animated:YES];
-	}
-		
 	
     [super viewWillAppear:animated];
 	
@@ -84,11 +50,20 @@
 	[HNOrangeColor release];
 	
 	
-	// TODO : Set with user preference if they're logged in.
-	// TODO : Also, choose whether we use the light or dark masthead
 	
-	//	[navigationController.navigationBar setTintColor:[UIColor blackColor]];
-}	
+	// Add the "Comment" button
+	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Comment" 
+																	style:UIBarButtonItemStyleBordered 
+																   target:self 
+																	 action:@selector(addComment)];
+	
+	[self.navigationItem setRightBarButtonItem:commentButton];
+	[commentButton release];
+}
+
+-(void) addComment {
+	// push to add comment view
+}
 
 /*
 - (void)viewDidAppear:(BOOL)animated {
@@ -126,18 +101,17 @@
 	// e.g. self.myOutlet = nil;
 }
 
-#pragma mark -
-#pragma mark Table view setup
+
+#pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 
-
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return storyArray.count;
+    return commentsArray.count;
 }
 
 
@@ -145,71 +119,48 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
-	/*
+    /*
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-	*/
-	
-	
-	HNStoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	 */
+    
+	HNCommentTableViewCell *cell = (HNCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	if (cell == nil) {
 		//  cell = [[[HNStoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell = [[HNStoryTableViewCell alloc] initWithStyle:(UITableViewCellStyle)UITableViewCellStyleDefault
-										   reuseIdentifier:(NSString *)CellIdentifier
-												 withStory:[storyArray objectAtIndex:indexPath.row]
-											 withIndex:indexPath.row];
+		cell = [[HNCommentTableViewCell alloc] initWithStyle:(UITableViewCellStyle)UITableViewCellStyleDefault
+											 reuseIdentifier:(NSString *)CellIdentifier
+												 withComment:[commentsArray objectAtIndex:indexPath.row]
+												   withIndex:indexPath.row];
 	} else {
-		cell.cellStory = [storyArray objectAtIndex:indexPath.row];
+		cell.cellComment = [commentsArray objectAtIndex:indexPath.row];
 		cell.cellIndex = indexPath.row;
 		[cell setupData];
-	}
 		
+	}
+	
+	[cell setNeedsLayout];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [HNStoryTableViewCell heightForCellWithStory:(HNStory *)[storyArray objectAtIndex:indexPath.row]];
-} 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [HNCommentTableViewCell heightForCellWithComment:[commentsArray objectAtIndex:indexPath.row]];
+;
+} 
 
 #pragma mark -
 #pragma mark TableView interaction methods
 
-// Go to story URL in browser
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	TTWebController* webController =  [[TTWebController alloc] initWithURL:[(HNStory *)[storyArray objectAtIndex:indexPath.row] url]];
-	
-	// TODO  - set to be global
-	webController.navigationBarTintColor = [[UIColor alloc] initWithRed:1.0 green:0.3945 blue:0.0 alpha:1];
-
-	
-	
-	//	webController.navigationBarTintColor = [[[UIColor alloc] initWithRed:1.0 green:0.3945 blue:0.0 alpha:1] autorelease];
-	
-	//webController.navigationBarStyle = UIBarStyleBlackTranslucent;
-	
-	[self.navigationController pushViewController:webController animated:YES];
-	[webController release];
-	
+    // Navigation logic may go here. Create and push another view controller.
+	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+	// [self.navigationController pushViewController:anotherViewController];
+	// [anotherViewController release];
 }
-
-
-// Go to comments
-- (void)commentsButtonTapped:(id)sender {
-	HNCommentsTableViewController *commentViewController = [HNCommentsTableViewController new];
-	
-	commentViewController.story = [storyArray objectAtIndex:[sender tag]];
-	[self.navigationController pushViewController:commentViewController animated:YES];
-	[commentViewController release];
-		
-}
-
-
 
 
 /*
@@ -252,10 +203,9 @@
 */
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end
+
+
 

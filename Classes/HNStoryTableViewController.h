@@ -13,11 +13,18 @@
 
 	NSArray *storyArray;
 	
+	UIBarButtonItem *searchButton;
+
+	
     // loadSwirlie will display a loading overlay while the data is downloaded from the RSS feed.
     UIActivityIndicatorView *activityIndicator;
 	
 }
 
-@property (nonatomic, retain) NSArray* storyArray;
+@property (nonatomic, retain)	NSArray* storyArray;
+@property (nonatomic ,retain) 	UIBarButtonItem *searchButton;
+
+- (void)commentsButtonTapped:(id)sender;
+
 
 @end

@@ -13,26 +13,48 @@
 @implementation HackerNewsAppDelegate
 
 @synthesize window;
-@synthesize aHNStoryTableViewController, navigationController;
+@synthesize aHNStoryTableViewController; 
+@synthesize navigationController;
+@synthesize splashView;
+
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
+	
 	self.navigationController = [[UINavigationController alloc] 
 													initWithRootViewController:aHNStoryTableViewController];
 
-	// TODO : Set with user preference if they're logged in.
-	// TODO : Also, choose whether we use the light or dark masthead
-	
-	//	[navigationController.navigationBar setTintColor:[UIColor blackColor]];
-	[navigationController.navigationBar setTintColor:[[[UIColor alloc] 
-													   initWithRed:1.0 green:0.3945 blue:0.0 alpha:1] autorelease]];	
 	
 	[window addSubview:navigationController.view];
+	
+	
 	[window makeKeyAndVisible];
+	
+	
+	
+	
+	splashView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 320, 480)];
+	splashView.image = [UIImage imageNamed:@"Default.png"];
+	[window addSubview:splashView];
+	[window bringSubviewToFront:splashView];
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:window cache:YES];
+	[UIView setAnimationDelegate:self]; 
+	[UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+	splashView.alpha = 0.0;
+	splashView.frame = CGRectMake(-60, -60, 440, 600);
+	[UIView commitAnimations];
 
+}
+
+
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	[splashView removeFromSuperview];
+	[splashView release];
 }
 
 /**

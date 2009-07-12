@@ -1,0 +1,66 @@
+
+:::::::::::::   TODO   ::::::::::::::::
+
+
+
+- Comments parser
+- Comments view controller
+
+- Search parser
+- Search view controller
+
+- Login support
+
+- Voting system using pings.
+- How to tell if "already voted"
+
+- Integration with InstaPaper
+
+Home view stuff:
+http://news.ycombinator.com/noobs
+http://news.ycombinator.com/newest
+http://news.ycombinator.com/newcomments
+
+Posting to HN???
+
+
+:::::::::::::   FORMATTING   ::::::::::::::::
+
+
+Blank lines separate paragraphs.
+Text after a blank line that is indented by two or more spaces is reproduced verbatim. (This is intended for code.)
+
+Text surrounded by asterisks is italicized, if the character after the first asterisk isn't whitespace.
+
+Urls become links, except in the text field of a submission.
+
+
+
+
+
+:::::::::::::   BUGS   ::::::::::::::::
+
+Error when parsing out characters that *should* have been escaped in good HTML.
+
+INFO [index: 17816]: Unable to parse '& kit</a' as entity
+
+Some of this stuff parses incorrectly. "Jay Leno's ..." --> "Jay Lenoâs ..."
+
+
+
+
+
+:::::::::::::   CODE TAKE FROM   ::::::::::::::::
+
+---
+"Splash" loading view with fading stuff.
+http://michael.burford.net/2008/11/fading-defaultpng-when-iphone-app.html
+---
+Singletons 
+http://cocoawithlove.com/2008/11/singletons-appdelegates-and-top-level.html
+---
+Joe Hewitt's 320project for a lot of stuff
+---
+Element Parser
+--- 
+PingTool?

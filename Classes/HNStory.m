@@ -18,6 +18,7 @@
 @synthesize time_ago;
 @synthesize comments_count;
 @synthesize nocomments;
+@synthesize internal_story;
 @synthesize story_id;
 
 - (id)init
@@ -25,14 +26,17 @@
     self = [super init];
     if (self) {
         nocomments = NO; // default
+		internal_story = NO;
     }
     return self;
 }
 
 - (void) dealloc {
+	[super dealloc];
 	[title	release];
 	[points release];
 	[user release];
+	[url release];
 	[time_ago release];
 	[comments_count release];
 }

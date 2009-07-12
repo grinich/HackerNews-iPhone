@@ -18,6 +18,7 @@
 	HackerNewsAppDelegate *appDelegate;
 	HNStory *aStory;
 	
+	
 }
 
 + (HNParser *)sharedHNParser;
