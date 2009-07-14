@@ -10,17 +10,17 @@
 #import "Three20/Three20.h"
 
 
-@class HNStory, HNComment;
+@class HNComment;
 
 @interface HNCommentsTableViewController :  TTTableViewController {
 	
-	
-	HNStory		*story;
-	NSArray		*commentsArray;
+	NSString		*_storyID;
 }
 
-@property (nonatomic, retain) 	HNStory		*story;
-@property (nonatomic, retain)	NSArray		*commentsArray;
+@property (nonatomic, retain)	NSString	*storyID;
+
+
+- (id)initWithStory:(NSString *)storyIN;
 
 
 @end

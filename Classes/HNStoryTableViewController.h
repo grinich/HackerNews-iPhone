@@ -6,25 +6,14 @@
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Three20/Three20.h"
 
 
-@interface HNStoryTableViewController : UITableViewController {
+@interface HNStoryTableViewController : TTTableViewController {
 
-	NSArray *storyArray;
-	
-	UIBarButtonItem *searchButton;
 
-	
-    // loadSwirlie will display a loading overlay while the data is downloaded from the RSS feed.
-    UIActivityIndicatorView *activityIndicator;
 	
 }
-
-@property (nonatomic, retain)	NSArray* storyArray;
-@property (nonatomic ,retain) 	UIBarButtonItem *searchButton;
-
-- (void)commentsButtonTapped:(id)sender;
 
 
 @end

@@ -6,25 +6,33 @@
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Three20/Three20.h"
 
 @class HNComment;
 
-@interface HNCommentTableItem : TTTableItem {
-
-	TTTableViewItem* _item;
-
-	HNComment *_comment;
-	NSString *_subtext;
+@interface HNCommentTableItem : TTTableLinkedItem {
+	
+	HNComment *comment;
+	
+	TTStyledText* _text;
+	UIEdgeInsets _margin;
+	UIEdgeInsets _padding;
 }
 
-+ (HNCommentTableItem *)itemWithComment:(HNComment*)aComment;
 
-@property(nonatomic,copy) HNComment *comment;
-@property(nonatomic,copy) NSString *subtext;
+@property (nonatomic,retain)	HNComment *comment;
 
 
-@property(nonatomic,readonly) TTTableViewItem* item;
+@property(nonatomic,retain) TTStyledText* text;
+@property(nonatomic) UIEdgeInsets margin;
+@property(nonatomic) UIEdgeInsets padding;
+
+
++ (HNCommentTableItem *)itemWithComment:(HNComment *)aComment;
+
+
+
+
+
 
 @end

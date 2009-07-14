@@ -20,8 +20,8 @@
 	
 	BOOL		nocomments;
 	BOOL		internal_story;
-	
 	NSNumber*	story_id;
+	NSString*	subtext;
 
 }
 
@@ -34,5 +34,7 @@
 @property (nonatomic, retain) 	NSNumber*	story_id;
 @property						BOOL		nocomments;
 @property						BOOL		internal_story;
+
+@property(nonatomic,readonly) NSString *subtext;
 
 @end

@@ -41,4 +41,14 @@
 	[comments_count release];
 }
 
+-(NSString *)subtext {
+	
+	 NSString *sub = [NSString stringWithFormat:@"%@ points | posted by %@ %@", 
+								 [self.points stringValue], 
+								 self.user, 
+								 self.time_ago];
+	
+	return sub;
+}
+
 @end

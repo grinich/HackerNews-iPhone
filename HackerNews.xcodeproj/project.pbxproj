@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,21 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* HackerNews.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
+		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
+		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
+		4C5EB2B0100797B0001C9BDC /* comment-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EB2AF100797B0001C9BDC /* comment-button.png */; };
+		4C5EB5201007C2DB001C9BDC /* HNCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */; };
+		4C5EB5A41007D26A001C9BDC /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EB5A31007D26A001C9BDC /* HNComment.m */; };
+		4CA2EF441007515400E8D387 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF431007515400E8D387 /* Default.png */; };
+		4CA2EF8C1007558B00E8D387 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EF7E1007549300E8D387 /* libThree20.a */; };
+		4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF9F100755E700E8D387 /* Three20.bundle */; };
+		4CA2EFB51007560200E8D387 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EFB41007560200E8D387 /* QuartzCore.framework */; };
+		4CB5022A1009598200476948 /* HNStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB502291009598200476948 /* HNStyle.m */; };
+		4CB5049A1009A80600476948 /* HNCommentTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB504991009A80600476948 /* HNCommentTableItemCell.m */; };
+		4CB509391009F7E600476948 /* HNCommentTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB509381009F7E600476948 /* HNCommentTableItem.m */; };
+		4CB50B8A100A249300476948 /* HNStoryTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50B89100A249300476948 /* HNStoryTableItem.m */; };
+		4CB50BA3100A257C00476948 /* HNStoryTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */; };
 		4CDDC4BC1004FEC600E300E4 /* CDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48B1004FEC600E300E4 /* CDataChunk.m */; };
 		4CDDC4BD1004FEC600E300E4 /* Chunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48D1004FEC600E300E4 /* Chunk.m */; };
 		4CDDC4BE1004FEC600E300E4 /* CommentChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48F1004FEC600E300E4 /* CommentChunk.m */; };
@@ -25,21 +40,35 @@
 		4CDDC4C51004FEC600E300E4 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC49D1004FEC600E300E4 /* Element.m */; };
 		4CDDC4C61004FEC600E300E4 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC49F1004FEC600E300E4 /* ElementParser.m */; };
 		4CDDC4C71004FEC600E300E4 /* EntityChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A11004FEC600E300E4 /* EntityChunk.m */; };
-		4CDDC4C81004FEC600E300E4 /* HackerNewsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A31004FEC600E300E4 /* HackerNewsAppDelegate.m */; };
+		4CDDC4C81004FEC600E300E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A31004FEC600E300E4 /* AppDelegate.m */; };
 		4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */; };
 		4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A51004FEC600E300E4 /* HN-masthead.png */; };
-		4CDDC4CB1004FEC600E300E4 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A71004FEC600E300E4 /* HNParser.m */; };
 		4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A91004FEC600E300E4 /* HNStory.m */; };
-		4CDDC4CD1004FEC600E300E4 /* HNStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AB1004FEC600E300E4 /* HNStoryTableViewCell.m */; };
 		4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */; };
 		4CDDC4CF1004FEC600E300E4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AE1004FEC600E300E4 /* Icon.png */; };
-		4CDDC4D11004FEC600E300E4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B01004FEC600E300E4 /* MainWindow.xib */; };
 		4CDDC4D21004FEC600E300E4 /* NSString_HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */; };
 		4CDDC4D31004FEC600E300E4 /* ProcessingInstructionChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */; };
 		4CDDC4D41004FEC600E300E4 /* TagChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B71004FEC600E300E4 /* TagChunk.m */; };
 		4CDDC4D51004FEC600E300E4 /* TxtChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B91004FEC600E300E4 /* TxtChunk.m */; };
 		4CDDC4D61004FEC600E300E4 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4BB1004FEC600E300E4 /* URLParser.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CA2EF7D1007549300E8D387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		4CA2EF9C100755A700E8D387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,56 +79,77 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* HackerNews_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackerNews_Prefix.pch; sourceTree = "<group>"; };
-		4CDDC48A1004FEC600E300E4 /* CDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataChunk.h; sourceTree = "<group>"; };
-		4CDDC48B1004FEC600E300E4 /* CDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataChunk.m; sourceTree = "<group>"; };
-		4CDDC48C1004FEC600E300E4 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chunk.h; sourceTree = "<group>"; };
-		4CDDC48D1004FEC600E300E4 /* Chunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chunk.m; sourceTree = "<group>"; };
-		4CDDC48E1004FEC600E300E4 /* CommentChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentChunk.h; sourceTree = "<group>"; };
-		4CDDC48F1004FEC600E300E4 /* CommentChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentChunk.m; sourceTree = "<group>"; };
-		4CDDC4901004FEC600E300E4 /* CSSPartMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSPartMatcher.h; sourceTree = "<group>"; };
-		4CDDC4911004FEC600E300E4 /* CSSPartMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSPartMatcher.m; sourceTree = "<group>"; };
-		4CDDC4921004FEC600E300E4 /* CSSSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSSelector.h; sourceTree = "<group>"; };
-		4CDDC4931004FEC600E300E4 /* CSSSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSSelector.m; sourceTree = "<group>"; };
-		4CDDC4941004FEC600E300E4 /* CSSSelectorMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSSelectorMatcher.h; sourceTree = "<group>"; };
-		4CDDC4951004FEC600E300E4 /* CSSSelectorMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSSelectorMatcher.m; sourceTree = "<group>"; };
-		4CDDC4961004FEC600E300E4 /* CSSSelectorPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSSelectorPart.h; sourceTree = "<group>"; };
-		4CDDC4971004FEC600E300E4 /* CSSSelectorPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSSelectorPart.m; sourceTree = "<group>"; };
-		4CDDC4981004FEC600E300E4 /* DoctypeChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctypeChunk.h; sourceTree = "<group>"; };
-		4CDDC4991004FEC600E300E4 /* DoctypeChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctypeChunk.m; sourceTree = "<group>"; };
-		4CDDC49A1004FEC600E300E4 /* DocumentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentRoot.h; sourceTree = "<group>"; };
-		4CDDC49B1004FEC600E300E4 /* DocumentRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentRoot.m; sourceTree = "<group>"; };
-		4CDDC49C1004FEC600E300E4 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
-		4CDDC49D1004FEC600E300E4 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Element.m; sourceTree = "<group>"; };
-		4CDDC49E1004FEC600E300E4 /* ElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementParser.h; sourceTree = "<group>"; };
-		4CDDC49F1004FEC600E300E4 /* ElementParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementParser.m; sourceTree = "<group>"; };
-		4CDDC4A01004FEC600E300E4 /* EntityChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityChunk.h; sourceTree = "<group>"; };
-		4CDDC4A11004FEC600E300E4 /* EntityChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityChunk.m; sourceTree = "<group>"; };
-		4CDDC4A21004FEC600E300E4 /* HackerNewsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackerNewsAppDelegate.h; sourceTree = "<group>"; };
-		4CDDC4A31004FEC600E300E4 /* HackerNewsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HackerNewsAppDelegate.m; sourceTree = "<group>"; };
-		4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HN-masthead-light.png"; sourceTree = "<group>"; };
-		4CDDC4A51004FEC600E300E4 /* HN-masthead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HN-masthead.png"; sourceTree = "<group>"; };
-		4CDDC4A61004FEC600E300E4 /* HNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNParser.h; sourceTree = "<group>"; };
-		4CDDC4A71004FEC600E300E4 /* HNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNParser.m; sourceTree = "<group>"; };
-		4CDDC4A81004FEC600E300E4 /* HNStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStory.h; sourceTree = "<group>"; };
-		4CDDC4A91004FEC600E300E4 /* HNStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStory.m; sourceTree = "<group>"; };
-		4CDDC4AA1004FEC600E300E4 /* HNStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableViewCell.h; sourceTree = "<group>"; };
-		4CDDC4AB1004FEC600E300E4 /* HNStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableViewCell.m; sourceTree = "<group>"; };
-		4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableViewController.h; sourceTree = "<group>"; };
-		4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableViewController.m; sourceTree = "<group>"; };
-		4CDDC4AE1004FEC600E300E4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		4CDDC4B01004FEC600E300E4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		4CDDC4B11004FEC600E300E4 /* NSString_HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_HTML.h; sourceTree = "<group>"; };
-		4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_HTML.m; sourceTree = "<group>"; };
-		4CDDC4B31004FEC600E300E4 /* ProcessingInstructionChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessingInstructionChunk.h; sourceTree = "<group>"; };
-		4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessingInstructionChunk.m; sourceTree = "<group>"; };
-		4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
-		4CDDC4B61004FEC600E300E4 /* TagChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagChunk.h; sourceTree = "<group>"; };
-		4CDDC4B71004FEC600E300E4 /* TagChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagChunk.m; sourceTree = "<group>"; };
-		4CDDC4B81004FEC600E300E4 /* TxtChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TxtChunk.h; sourceTree = "<group>"; };
-		4CDDC4B91004FEC600E300E4 /* TxtChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TxtChunk.m; sourceTree = "<group>"; };
-		4CDDC4BA1004FEC600E300E4 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
-		4CDDC4BB1004FEC600E300E4 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* HackerNews-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HackerNews-Info.plist"; sourceTree = "<group>"; };
+		4C241854100A67860010D315 /* HNTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableViewDataSource.h; path = ../HNTableViewDataSource.h; sourceTree = "<group>"; };
+		4C241855100A67860010D315 /* HNTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNTableViewDataSource.m; path = ../HNTableViewDataSource.m; sourceTree = "<group>"; };
+		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
+		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
+		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
+		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
+		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
+		4C5EB2AF100797B0001C9BDC /* comment-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-button.png"; sourceTree = "<group>"; };
+		4C5EB51E1007C2DB001C9BDC /* HNCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsTableViewController.h; sourceTree = "<group>"; };
+		4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsTableViewController.m; sourceTree = "<group>"; };
+		4C5EB5A21007D26A001C9BDC /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNComment.h; path = Classes/HNComment.h; sourceTree = "<group>"; };
+		4C5EB5A31007D26A001C9BDC /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNComment.m; path = Classes/HNComment.m; sourceTree = "<group>"; };
+		4CA2EF431007515400E8D387 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4CA2EF791007549300E8D387 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4CA2EF9F100755E700E8D387 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		4CA2EFB41007560200E8D387 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		4CB502281009598200476948 /* HNStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStyle.h; path = ../HNStyle.h; sourceTree = "<group>"; };
+		4CB502291009598200476948 /* HNStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStyle.m; path = ../HNStyle.m; sourceTree = "<group>"; };
+		4CB504981009A80600476948 /* HNCommentTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTableItemCell.h; sourceTree = "<group>"; };
+		4CB504991009A80600476948 /* HNCommentTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTableItemCell.m; sourceTree = "<group>"; };
+		4CB509371009F7E600476948 /* HNCommentTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTableItem.h; sourceTree = "<group>"; };
+		4CB509381009F7E600476948 /* HNCommentTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTableItem.m; sourceTree = "<group>"; };
+		4CB50B88100A249300476948 /* HNStoryTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableItem.h; sourceTree = "<group>"; };
+		4CB50B89100A249300476948 /* HNStoryTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItem.m; sourceTree = "<group>"; };
+		4CB50BA1100A257C00476948 /* HNStoryTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableItemCell.h; sourceTree = "<group>"; };
+		4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItemCell.m; sourceTree = "<group>"; };
+		4CDDC48A1004FEC600E300E4 /* CDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDataChunk.h; path = Classes/CDataChunk.h; sourceTree = "<group>"; };
+		4CDDC48B1004FEC600E300E4 /* CDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDataChunk.m; path = Classes/CDataChunk.m; sourceTree = "<group>"; };
+		4CDDC48C1004FEC600E300E4 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chunk.h; path = Classes/Chunk.h; sourceTree = "<group>"; };
+		4CDDC48D1004FEC600E300E4 /* Chunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chunk.m; path = Classes/Chunk.m; sourceTree = "<group>"; };
+		4CDDC48E1004FEC600E300E4 /* CommentChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentChunk.h; path = Classes/CommentChunk.h; sourceTree = "<group>"; };
+		4CDDC48F1004FEC600E300E4 /* CommentChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentChunk.m; path = Classes/CommentChunk.m; sourceTree = "<group>"; };
+		4CDDC4901004FEC600E300E4 /* CSSPartMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSPartMatcher.h; path = Classes/CSSPartMatcher.h; sourceTree = "<group>"; };
+		4CDDC4911004FEC600E300E4 /* CSSPartMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSPartMatcher.m; path = Classes/CSSPartMatcher.m; sourceTree = "<group>"; };
+		4CDDC4921004FEC600E300E4 /* CSSSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelector.h; path = Classes/CSSSelector.h; sourceTree = "<group>"; };
+		4CDDC4931004FEC600E300E4 /* CSSSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelector.m; path = Classes/CSSSelector.m; sourceTree = "<group>"; };
+		4CDDC4941004FEC600E300E4 /* CSSSelectorMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorMatcher.h; path = Classes/CSSSelectorMatcher.h; sourceTree = "<group>"; };
+		4CDDC4951004FEC600E300E4 /* CSSSelectorMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorMatcher.m; path = Classes/CSSSelectorMatcher.m; sourceTree = "<group>"; };
+		4CDDC4961004FEC600E300E4 /* CSSSelectorPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorPart.h; path = Classes/CSSSelectorPart.h; sourceTree = "<group>"; };
+		4CDDC4971004FEC600E300E4 /* CSSSelectorPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorPart.m; path = Classes/CSSSelectorPart.m; sourceTree = "<group>"; };
+		4CDDC4981004FEC600E300E4 /* DoctypeChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoctypeChunk.h; path = Classes/DoctypeChunk.h; sourceTree = "<group>"; };
+		4CDDC4991004FEC600E300E4 /* DoctypeChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoctypeChunk.m; path = Classes/DoctypeChunk.m; sourceTree = "<group>"; };
+		4CDDC49A1004FEC600E300E4 /* DocumentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentRoot.h; path = Classes/DocumentRoot.h; sourceTree = "<group>"; };
+		4CDDC49B1004FEC600E300E4 /* DocumentRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentRoot.m; path = Classes/DocumentRoot.m; sourceTree = "<group>"; };
+		4CDDC49C1004FEC600E300E4 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Classes/Element.h; sourceTree = "<group>"; };
+		4CDDC49D1004FEC600E300E4 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Classes/Element.m; sourceTree = "<group>"; };
+		4CDDC49E1004FEC600E300E4 /* ElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementParser.h; path = Classes/ElementParser.h; sourceTree = "<group>"; };
+		4CDDC49F1004FEC600E300E4 /* ElementParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementParser.m; path = Classes/ElementParser.m; sourceTree = "<group>"; };
+		4CDDC4A01004FEC600E300E4 /* EntityChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityChunk.h; path = Classes/EntityChunk.h; sourceTree = "<group>"; };
+		4CDDC4A11004FEC600E300E4 /* EntityChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntityChunk.m; path = Classes/EntityChunk.m; sourceTree = "<group>"; };
+		4CDDC4A21004FEC600E300E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CDDC4A31004FEC600E300E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HN-masthead-light.png"; path = "Classes/HN-masthead-light.png"; sourceTree = "<group>"; };
+		4CDDC4A51004FEC600E300E4 /* HN-masthead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HN-masthead.png"; path = "Classes/HN-masthead.png"; sourceTree = "<group>"; };
+		4CDDC4A81004FEC600E300E4 /* HNStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStory.h; path = Classes/HNStory.h; sourceTree = "<group>"; };
+		4CDDC4A91004FEC600E300E4 /* HNStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStory.m; path = Classes/HNStory.m; sourceTree = "<group>"; };
+		4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStoryTableViewController.h; path = Classes/HNStoryTableViewController.h; sourceTree = "<group>"; };
+		4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStoryTableViewController.m; path = Classes/HNStoryTableViewController.m; sourceTree = "<group>"; };
+		4CDDC4AE1004FEC600E300E4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Classes/Icon.png; sourceTree = "<group>"; };
+		4CDDC4B11004FEC600E300E4 /* NSString_HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_HTML.h; path = Classes/NSString_HTML.h; sourceTree = "<group>"; };
+		4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_HTML.m; path = Classes/NSString_HTML.m; sourceTree = "<group>"; };
+		4CDDC4B31004FEC600E300E4 /* ProcessingInstructionChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProcessingInstructionChunk.h; path = Classes/ProcessingInstructionChunk.h; sourceTree = "<group>"; };
+		4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProcessingInstructionChunk.m; path = Classes/ProcessingInstructionChunk.m; sourceTree = "<group>"; };
+		4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		4CDDC4B61004FEC600E300E4 /* TagChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagChunk.h; path = Classes/TagChunk.h; sourceTree = "<group>"; };
+		4CDDC4B71004FEC600E300E4 /* TagChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagChunk.m; path = Classes/TagChunk.m; sourceTree = "<group>"; };
+		4CDDC4B81004FEC600E300E4 /* TxtChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TxtChunk.h; path = Classes/TxtChunk.h; sourceTree = "<group>"; };
+		4CDDC4B91004FEC600E300E4 /* TxtChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxtChunk.m; path = Classes/TxtChunk.m; sourceTree = "<group>"; };
+		4CDDC4BA1004FEC600E300E4 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLParser.h; path = Classes/URLParser.h; sourceTree = "<group>"; };
+		4CDDC4BB1004FEC600E300E4 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLParser.m; path = Classes/URLParser.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +161,87 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				4CA2EF8C1007558B00E8D387 /* libThree20.a in Frameworks */,
+				4CA2EFB51007560200E8D387 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Main Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4CDDC4A21004FEC600E300E4 /* AppDelegate.h */,
+				4CDDC4A31004FEC600E300E4 /* AppDelegate.m */,
+				4CB502281009598200476948 /* HNStyle.h */,
+				4CB502291009598200476948 /* HNStyle.m */,
+				4C241854100A67860010D315 /* HNTableViewDataSource.h */,
+				4C241855100A67860010D315 /* HNTableViewDataSource.m */,
+			);
+			name = "Main Objects";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* HackerNews.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4C2C81011006EC6500D59E60 /* bugs&notes.txt */,
+				080E96DDFE201D6D7F000001 /* Main Objects */,
+				4CB509271009F7C300476948 /* Stories */,
+				4CB50B6B100A232B00476948 /* Comments */,
+				4CA53F9E100D4F5F008F70EC /* Images */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				4CA2EFB41007560200E8D387 /* QuartzCore.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* HackerNews_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */,
+				4C41899610050665009BB9EA /* Element Parser */,
+				28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CA2EF9F100755E700E8D387 /* Three20.bundle */,
+				4CA2EF791007549300E8D387 /* Three20.xcodeproj */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				28D801B30F44B63D00FB423F /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C41899610050665009BB9EA /* Element Parser */ = {
 			isa = PBXGroup;
 			children = (
 				4CDDC48A1004FEC600E300E4 /* CDataChunk.h */,
@@ -144,25 +268,10 @@
 				4CDDC49F1004FEC600E300E4 /* ElementParser.m */,
 				4CDDC4A01004FEC600E300E4 /* EntityChunk.h */,
 				4CDDC4A11004FEC600E300E4 /* EntityChunk.m */,
-				4CDDC4A21004FEC600E300E4 /* HackerNewsAppDelegate.h */,
-				4CDDC4A31004FEC600E300E4 /* HackerNewsAppDelegate.m */,
-				4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */,
-				4CDDC4A51004FEC600E300E4 /* HN-masthead.png */,
-				4CDDC4A61004FEC600E300E4 /* HNParser.h */,
-				4CDDC4A71004FEC600E300E4 /* HNParser.m */,
-				4CDDC4A81004FEC600E300E4 /* HNStory.h */,
-				4CDDC4A91004FEC600E300E4 /* HNStory.m */,
-				4CDDC4AA1004FEC600E300E4 /* HNStoryTableViewCell.h */,
-				4CDDC4AB1004FEC600E300E4 /* HNStoryTableViewCell.m */,
-				4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */,
-				4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */,
-				4CDDC4AE1004FEC600E300E4 /* Icon.png */,
-				4CDDC4B01004FEC600E300E4 /* MainWindow.xib */,
 				4CDDC4B11004FEC600E300E4 /* NSString_HTML.h */,
 				4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */,
 				4CDDC4B31004FEC600E300E4 /* ProcessingInstructionChunk.h */,
 				4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */,
-				4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */,
 				4CDDC4B61004FEC600E300E4 /* TagChunk.h */,
 				4CDDC4B71004FEC600E300E4 /* TagChunk.m */,
 				4CDDC4B81004FEC600E300E4 /* TxtChunk.h */,
@@ -170,56 +279,61 @@
 				4CDDC4BA1004FEC600E300E4 /* URLParser.h */,
 				4CDDC4BB1004FEC600E300E4 /* URLParser.m */,
 			);
-			path = Classes;
+			name = "Element Parser";
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
+		4CA2EF7A1007549300E8D387 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* HackerNews.app */,
+				4CA2EF7E1007549300E8D387 /* libThree20.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		4CA53F9E100D4F5F008F70EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
+				4C5EB2AF100797B0001C9BDC /* comment-button.png */,
+				4CA2EF431007515400E8D387 /* Default.png */,
+				4CDDC4AE1004FEC600E300E4 /* Icon.png */,
+				4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */,
+				4CDDC4A51004FEC600E300E4 /* HN-masthead.png */,
 			);
-			name = CustomTemplate;
+			name = Images;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+		4CB509271009F7C300476948 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* HackerNews_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
+				4CDDC4A81004FEC600E300E4 /* HNStory.h */,
+				4CDDC4A91004FEC600E300E4 /* HNStory.m */,
+				4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */,
+				4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */,
+				4CB50B88100A249300476948 /* HNStoryTableItem.h */,
+				4CB50B89100A249300476948 /* HNStoryTableItem.m */,
+				4CB50BA1100A257C00476948 /* HNStoryTableItemCell.h */,
+				4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */,
+				4C241912100A6F990010D315 /* HNStoryDataSource.h */,
+				4C241913100A6F990010D315 /* HNStoryDataSource.m */,
 			);
-			name = "Other Sources";
+			name = Stories;
 			sourceTree = "<group>";
 		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
+		4CB50B6B100A232B00476948 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */,
-				8D1107310486CEB800E47090 /* HackerNews-Info.plist */,
+				4C5EB5A21007D26A001C9BDC /* HNComment.h */,
+				4C5EB5A31007D26A001C9BDC /* HNComment.m */,
+				4C5EB51E1007C2DB001C9BDC /* HNCommentsTableViewController.h */,
+				4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */,
+				4CB509371009F7E600476948 /* HNCommentTableItem.h */,
+				4CB509381009F7E600476948 /* HNCommentTableItem.m */,
+				4CB504981009A80600476948 /* HNCommentTableItemCell.h */,
+				4CB504991009A80600476948 /* HNCommentTableItemCell.m */,
+				4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */,
+				4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				28D801B30F44B63D00FB423F /* CoreData.framework */,
-			);
-			name = Frameworks;
+			name = Comments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +350,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4CA2EF9D100755A700E8D387 /* PBXTargetDependency */,
 			);
 			name = HackerNews;
 			productName = HackerNews;
@@ -248,16 +363,32 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HackerNews" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4CA2EF7A1007549300E8D387 /* Products */;
+					ProjectRef = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* HackerNews */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4CA2EF7E1007549300E8D387 /* libThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20.a;
+			remoteRef = 4CA2EF7D1007549300E8D387 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -267,7 +398,10 @@
 				4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */,
 				4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */,
 				4CDDC4CF1004FEC600E300E4 /* Icon.png in Resources */,
-				4CDDC4D11004FEC600E300E4 /* MainWindow.xib in Resources */,
+				4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */,
+				4CA2EF441007515400E8D387 /* Default.png in Resources */,
+				4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */,
+				4C5EB2B0100797B0001C9BDC /* comment-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,20 +426,35 @@
 				4CDDC4C51004FEC600E300E4 /* Element.m in Sources */,
 				4CDDC4C61004FEC600E300E4 /* ElementParser.m in Sources */,
 				4CDDC4C71004FEC600E300E4 /* EntityChunk.m in Sources */,
-				4CDDC4C81004FEC600E300E4 /* HackerNewsAppDelegate.m in Sources */,
-				4CDDC4CB1004FEC600E300E4 /* HNParser.m in Sources */,
+				4CDDC4C81004FEC600E300E4 /* AppDelegate.m in Sources */,
 				4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */,
-				4CDDC4CD1004FEC600E300E4 /* HNStoryTableViewCell.m in Sources */,
 				4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */,
 				4CDDC4D21004FEC600E300E4 /* NSString_HTML.m in Sources */,
 				4CDDC4D31004FEC600E300E4 /* ProcessingInstructionChunk.m in Sources */,
 				4CDDC4D41004FEC600E300E4 /* TagChunk.m in Sources */,
 				4CDDC4D51004FEC600E300E4 /* TxtChunk.m in Sources */,
 				4CDDC4D61004FEC600E300E4 /* URLParser.m in Sources */,
+				4C5EB5201007C2DB001C9BDC /* HNCommentsTableViewController.m in Sources */,
+				4C5EB5A41007D26A001C9BDC /* HNComment.m in Sources */,
+				4CB5022A1009598200476948 /* HNStyle.m in Sources */,
+				4CB5049A1009A80600476948 /* HNCommentTableItemCell.m in Sources */,
+				4CB509391009F7E600476948 /* HNCommentTableItem.m in Sources */,
+				4CB50B8A100A249300476948 /* HNStoryTableItem.m in Sources */,
+				4CB50BA3100A257C00476948 /* HNStoryTableItemCell.m in Sources */,
+				4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */,
+				4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CA2EF9D100755A700E8D387 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = 4CA2EF9C100755A700E8D387 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -321,7 +470,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HackerNews_Prefix.pch;
-				INFOPLIST_FILE = "HackerNews-Info.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = HackerNews;
 			};
 			name = Debug;
@@ -337,7 +487,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HackerNews_Prefix.pch;
-				INFOPLIST_FILE = "HackerNews-Info.plist";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = HackerNews;
 			};
 			name = Release;
@@ -351,6 +502,11 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../three20/src;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C242592-1CF0-48EE-8641-F3723EA4C9BE";
 				SDKROOT = iphoneos3.0;
@@ -366,6 +522,11 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../three20/src;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C242592-1CF0-48EE-8641-F3723EA4C9BE";
 				SDKROOT = iphoneos3.0;

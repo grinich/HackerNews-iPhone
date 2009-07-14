@@ -7,27 +7,68 @@
 //
 
 #import "HNCommentTableItem.h"
+#import "HNComment.h"
 
 
 @implementation HNCommentTableItem
 
-@synthesize comment = _comment, subtext = _subtext, item = _item;
+@synthesize text = _text, margin = _margin, padding = _padding;
+@synthesize comment;
 
-+ (HNCommentTableItem *)itemWithComment:(HNComment*)aComment {
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// class public
 
-	HNCommentTableItem* item = [[[self alloc] init] autorelease];
+
++ (HNCommentTableItem *)itemWithComment:(HNComment *)aComment {
+	HNCommentTableItem *item = [[HNCommentTableItem new] autorelease];
+	item.comment = aComment;
+	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
+		
+	// item.URL =			
+	item.URL = @"tt://home/comments";
+	// accessoryURL:@"http://google.com"]];	// TODO make this have action. Reply? 
 	
-	/*
-	
-	// This is the comment data for the views
-	item.text = aComment.text;
-	item.subtext = [NSString stringWithFormat:@"%@ points | posted by %@ %@", 
-					 [[aComment points] stringValue], [aComment user], [aComment time_ago]];
-
-	 */
-	 
 	return item;
 }
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// NSObject
+
+- (id)init {
+	if (self = [super init]) {
+		comment = nil;
+		_text = nil;
+		_margin = UIEdgeInsetsZero;
+		_padding = UIEdgeInsetsMake(10, 10, 10, 10);    
+	}
+	return self;
+}
+
+- (void)dealloc {
+	TT_RELEASE_MEMBER(_text);
+	TT_RELEASE_MEMBER(comment);
+	[super dealloc];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// NSCoding
+
+- (id)initWithCoder:(NSCoder*)decoder {
+	if (self = [super initWithCoder:decoder]) {
+		self.text = [decoder decodeObjectForKey:@"text"];
+		self.comment = [decoder decodeObjectForKey:@"comment"];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder*)encoder {
+	[super encodeWithCoder:encoder];
+	if (self.text) {
+		[encoder encodeObject:self.text forKey:@"text"];		
+		[encoder encodeObject:self.comment forKey:@"comment"];
+
+	}
+}
 @end

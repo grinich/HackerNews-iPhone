@@ -6,10 +6,10 @@
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #import "HNCommentTableItemCell.h"
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
 static CGFloat kHPadding = 10;
 static CGFloat kVPadding = 10;
@@ -18,32 +18,30 @@ static CGFloat kSpacing = 8;
 static CGFloat kControlPadding = 8;
 static CGFloat kGroupMargin = 10;
 static CGFloat kDefaultTextViewLines = 5;
-
 static CGFloat kKeySpacing = 12;
 static CGFloat kKeyWidth = 75;
 static CGFloat kMaxLabelHeight = 2000;
 static CGFloat kDisclosureIndicatorWidth = 23;
-
 static CGFloat kDefaultIconSize = 50;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+@class HNCommentTableItem;
 
 @implementation HNCommentTableItemCell
 
-// @implementation TTStyledTextTableItemCell
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
+	
 	TTTableStyledTextItem* textItem = item;
 	textItem.text.font = TTSTYLEVAR(font);
 	
 	CGFloat padding = tableView.style == UITableViewStyleGrouped ? kGroupMargin*2 : 0;
 	padding += textItem.padding.left + textItem.padding.right;
+	
 	if (textItem.URL) {
 		padding += kDisclosureIndicatorWidth;
 	}
@@ -97,6 +95,7 @@ static CGFloat kDefaultIconSize = 50;
 		
 		TTTableStyledTextItem* item = object;
 		_label.text = item.text;
+				
 		_label.contentInset = item.padding;
 	}  
 }

@@ -8,13 +8,16 @@
 
 #import "HNCommentsTableViewController.h"
 
-#import "HNCommentTableViewCell.h"
-#import "HNCommentsViewDataSource.h"
+#import "HNCommentTableItem.h"
+#import "HNCommentTableItemCell.h"
+#import "HNCommentsDataSource.h"
+
+@class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
 @implementation HNCommentsTableViewController
 
+@synthesize storyID = _storyID;
 
-@synthesize story, commentsArray;
 	
 /*
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,8 +40,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
 
-- (id)init {
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// NSObject
+
+
+
+- (id)initWithStory:(NSString *)storyIN {
 	if (self = [super init]) {
+		self.storyID = storyIN;
+		NSLog(@"Getting called with story id %@", self.storyID);
 		self.tableViewStyle = UITableViewStyleGrouped;
 		self.autoresizesForKeyboard = YES;
 		self.variableHeightRows = YES;
@@ -56,42 +68,58 @@
 - (void)loadView {
 	[super loadView];
 	self.tableView.allowsSelection = NO;
+	
+	// TODO : Doesn't work!
+	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
+																 target:self 
+																 action:@selector(activateSearchBar)];
+	
+	[self.navigationItem setRightBarButtonItem:searchButton];
+	
+	
+	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
+	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
+	
+	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
+	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
+	[titleImage release];
+	
 }
 
+-(void) activateSearchBar {
+	// Search at http://www.searchyc.com
+	
+	
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
-/*
-- (id<TTTableViewDataSource>)createDataSource {
-	return [HNCommentsViewDataSource commentsViewDataSource:[story story_id]];
-}
-*/
 
 
 - (id<TTTableViewDataSource>)createDataSource {
-	NSArray* strings = [NSArray arrayWithObjects:
-						[TTStyledText textFromXHTML:@"This is a whole bunch of text made from \
-						 characters and followed by this URL http://bit.ly/1234"],
-						[TTStyledText textFromXHTML:@"Here we have a URL http://www.h0tlinkz.com \
-						 followed by another http://www.internets.com"],
-						[TTStyledText textFromXHTML:@"http://www.cnn.com is a URL and the words you \
-						 are now reading are the text that follows"],
-						[TTStyledText textFromXHTML:@"Here is text that has absolutely no styles. \
-						 Move along now. Nothing to see here. Goodbye now."],
-						//    @"Let's test out some line breaks.\n\nOh yeah.",
-						//    @"This is a message with a long URL in it http://www.foo.com/abra/cadabra/abrabra/dabarababa",
-						nil];
-	NSString* URL = @"tt://styledTextTableTest";
+	HNCommentsDataSource *dataSource = [[[HNCommentsDataSource alloc] init] autorelease];
+	dataSource.story_id = self.storyID;
 	
-	TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
-	for (int i = 0; i < 50; ++i) {
-		TTStyledText* text = [strings objectAtIndex:i % strings.count];
-		
-		[dataSource.items addObject:[TTTableStyledTextItem itemWithText:text URL:URL]];
-	}
+	[dataSource.delegates addObject:self];
+	
+	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
+	
 	return dataSource;
 }
- 
+									 
+									 
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
+	if ([object isKindOfClass:[HNCommentTableItem class]]) {
+		return [HNCommentTableItemCell class];
+	} else {
+		return [super tableView:tableView cellClassForObject:object];
+	}
+	
+}
+
+									 
+
+									
  
 
 - (void)viewDidLoad {

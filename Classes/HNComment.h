@@ -17,7 +17,7 @@
 	NSURL*		url;
 	NSURL*		reply_url;
 	NSString*	time_ago;
-	NSInteger*	indentationLevel;
+	NSNumber*	indentationLevel;
 	NSString*	contentsSource;
 	
 }
@@ -28,6 +28,7 @@
 @property (nonatomic, retain)	NSURL*		url;
 @property (nonatomic, retain)	NSURL*		reply_url;
 @property (nonatomic, retain)	NSString*	time_ago;
-@property (nonatomic, assign)	NSInteger*	indentationLevel;
+@property (nonatomic, retain)			NSNumber*	indentationLevel;
+
 
 @end
