@@ -8,16 +8,17 @@
 
 #import "Three20/Three20.h"
 
-
+@class HNComment;
 
 @interface HNCommentTableItemCell : TTTableLinkedItemCell {
-	TTStyledTextLabel* _label;
-
 	
+	HNComment	*cellComment;
+
+	TTStyledTextLabel* _label;	
 	
 }
 
-
+@property (nonatomic, retain) HNComment *cellComment;
 
 
 @end

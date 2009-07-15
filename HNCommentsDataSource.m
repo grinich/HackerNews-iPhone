@@ -65,9 +65,9 @@
 
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
+	
 	TTURLDataResponse *response = request.response;
 	NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
-    
 	
 	//////////////////////////////////////////////////////////
 	//			HTML Processing for comments				//
@@ -75,19 +75,27 @@
 	
 	Element *document = [Element parseHTML: responseBody];
 	
-	NSArray *comments = [document selectElements:@"td.default"];
-	
+	NSArray *comments = [document selectElements:@"tr > td.default"];
+
 	NSEnumerator* commentsEnumerator = [comments objectEnumerator];
+	
+	
 	// We skip the first object
+	// [commentsEnumerator nextObject];
 	
 	
-	NSMutableArray *commentsArray = [NSMutableArray new];
+	Element *c;
+	for (c in comments) {
+		NSLog(@"src %@", c.contentsText);
+	}
 	
+
 	
 	Element *element;
 	NSNumberFormatter* nFormatter = [NSNumberFormatter new];
 	
 	while(element = [commentsEnumerator nextObject] ) {
+		
 		HNComment* comment = [HNComment new];
 		Element *secondTier = [element selectElement:@"div span.comhead"];
 		
@@ -153,7 +161,6 @@
 			NSLog(@"Error parsing points for story.");
 		}
 		
-		
 		[self.items addObject:[HNCommentTableItem itemWithComment:comment]];
 				
 	}
@@ -197,10 +204,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewDataSource
 
-- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
-//	if ([object isKindOfClass:[HNCommentTableItem class]]) {
-//		return [HNCommentTableItemCell class];
-	
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {	
 	if ([object isKindOfClass:[HNCommentTableItem class]]) {
 		return [HNCommentTableItemCell class];
 	}
@@ -208,10 +212,6 @@
 	else {
 		return [super tableView:tableView cellClassForObject:object];
 	}
-	
-	
-
-	
 }		
 
 

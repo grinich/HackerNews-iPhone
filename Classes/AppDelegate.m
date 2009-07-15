@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "HNStoryTableViewController.h"
 #import "HNCommentsTableViewController.h"
-#import "HNParser.h"
 #import "HNStyle.h"
 
 @implementation AppDelegate

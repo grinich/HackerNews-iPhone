@@ -67,9 +67,7 @@
 	HNStoryDataSource *dataSource = [[[HNStoryDataSource alloc] init] autorelease];
 	[dataSource.delegates addObject:self];
 	
-	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
-	
-	//	return [HNStoryDataSource hnStoryDataSource];
+	//[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
 	return dataSource;
 }		
 

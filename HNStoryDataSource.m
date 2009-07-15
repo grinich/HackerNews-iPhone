@@ -74,8 +74,8 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 
 	Element *document = [Element parseHTML: responseBody];
 	
-	NSArray *titles = [document elementsWithCSSSelector:[[CSSSelector alloc] 
-														 initWithString:@"tr > td > table > tr"]];
+	NSArray *titles = [document selectElements:@"tr > td > table > tr"];
+
 	
 	NSNumberFormatter* nFormatter = [NSNumberFormatter new];
 		

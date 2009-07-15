@@ -224,16 +224,14 @@ static CGFloat kVPadding = 10;
 - (void)setObject:(id)object {
 	if (_item != object) {
 		[super setObject:object];
-		HNStoryTableItem* item = (HNStoryTableItem*)object;
 		
+
 		self.cellStory = [(HNStoryTableItem*)object story];
 		
-		HNStory *s = [item story];
-
-		self.storyTitleLabel.text = [s title];
-		self.hostURLLabel.text =[[s url] host];
-		self.subtextLabel.text = [s subtext];
-		self.commentsLabel.text = [[s comments_count] stringValue];
+		self.storyTitleLabel.text = [self.cellStory title];
+		self.hostURLLabel.text =[[self.cellStory url] host];
+		self.subtextLabel.text = [self.cellStory subtext];
+		self.commentsLabel.text = [[self.cellStory comments_count] stringValue];
 		self.accessoryType = UITableViewCellAccessoryNone;
 
 	}  

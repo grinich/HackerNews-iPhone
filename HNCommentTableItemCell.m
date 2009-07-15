@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #import "HNCommentTableItemCell.h"
-
+#import "HNCommentTableItem.h"
 
 static CGFloat kHPadding = 10;
 static CGFloat kVPadding = 10;
@@ -30,6 +30,7 @@ static CGFloat kDefaultIconSize = 50;
 
 @implementation HNCommentTableItemCell
 
+@synthesize cellComment;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
@@ -75,7 +76,24 @@ static CGFloat kDefaultIconSize = 50;
 	[super layoutSubviews];
 	
 	TTTableStyledTextItem* item = self.object;
+	
+	CGFloat indent_by = kHPadding * [[self.cellComment indentationLevel] floatValue];
+			
+	
+	CGRect indented = CGRectMake(indent_by, 
+								 0.0, 
+								 self.contentView.bounds.size.width - indent_by,
+								 self.contentView.bounds.size.height);
+	
+	
 	_label.frame = CGRectOffset(self.contentView.bounds, item.margin.left, item.margin.top);
+//	_label.frame = CGRectOffset(indented, item.margin.left, item.margin.top);
+	
+	
+	_label.backgroundColor = self.superview.backgroundColor;	// This makes it transparent.
+	
+	
+	
 	[_label setNeedsLayout];
 }
 
@@ -92,11 +110,33 @@ static CGFloat kDefaultIconSize = 50;
 - (void)setObject:(id)object {
 	if (_item != object) {
 		[super setObject:object];
-		
-		TTTableStyledTextItem* item = object;
-		_label.text = item.text;
 				
+		HNCommentTableItem *item = object;
+		self.cellComment = item.comment;
+		_label.text = item.text;
 		_label.contentInset = item.padding;
+		
+		
+		
+
+		/*
+		self.backgroundColor = [UIColor clearColor];
+		self.contentView.backgroundColor = [UIColor clearColor];
+		self.backgroundView.backgroundColor = [UIColor clearColor];
+		self.selectionStyle = UITableViewCellSelectionStyleNone;		
+		self.backgroundView.opaque = NO;
+		self.contentView.opaque = NO;
+		
+		NSLog(@"%@", [super description]);
+		
+		super.backgroundColor = [UIColor clearColor];
+		super.contentView.backgroundColor = [UIColor clearColor];
+		super.backgroundView.backgroundColor = [UIColor clearColor];
+		super.backgroundView.opaque = NO;
+		super.contentView.opaque = NO;
+		 */
+		
+		self.accessoryType = UITableViewCellAccessoryNone;
 	}  
 }
 

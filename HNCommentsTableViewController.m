@@ -50,8 +50,8 @@
 - (id)initWithStory:(NSString *)storyIN {
 	if (self = [super init]) {
 		self.storyID = storyIN;
-		NSLog(@"Getting called with story id %@", self.storyID);
 		self.tableViewStyle = UITableViewStyleGrouped;
+//		self.tableViewStyle = UITableViewStylePlain;
 		self.autoresizesForKeyboard = YES;
 		self.variableHeightRows = YES;
 	}
@@ -76,13 +76,15 @@
 	
 	[self.navigationItem setRightBarButtonItem:searchButton];
 	
-	
+	/*
 	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
 	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
 	
 	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
 	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
 	[titleImage release];
+	*/
+	self.navigationItem.title = @"Comments";
 	
 }
 
@@ -99,10 +101,9 @@
 - (id<TTTableViewDataSource>)createDataSource {
 	HNCommentsDataSource *dataSource = [[[HNCommentsDataSource alloc] init] autorelease];
 	dataSource.story_id = self.storyID;
-	
-	[dataSource.delegates addObject:self];
-	
-	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
+
+	[dataSource.delegates addObject:self];	
+//	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
 	
 	return dataSource;
 }

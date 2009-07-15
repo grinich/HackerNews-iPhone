@@ -48,7 +48,6 @@
 
 - (void)dealloc {
 	TT_RELEASE_MEMBER(_text);
-	TT_RELEASE_MEMBER(comment);
 	[super dealloc];
 }
 
