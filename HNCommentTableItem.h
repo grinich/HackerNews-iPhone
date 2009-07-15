@@ -14,6 +14,9 @@
 	
 	HNComment *comment;
 	
+	TTStyledText* subtext;
+	NSNumber	* indentationLevel; 
+	
 	TTStyledText* _text;
 	UIEdgeInsets _margin;
 	UIEdgeInsets _padding;
@@ -26,6 +29,9 @@
 @property(nonatomic,retain) TTStyledText* text;
 @property(nonatomic) UIEdgeInsets margin;
 @property(nonatomic) UIEdgeInsets padding;
+
+@property(nonatomic, retain) 	TTStyledText* subtext;
+@property(nonatomic, retain) 	NSNumber	* indentationLevel; 
 
 
 + (HNCommentTableItem *)itemWithComment:(HNComment *)aComment;

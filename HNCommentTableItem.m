@@ -13,20 +13,34 @@
 @implementation HNCommentTableItem
 
 @synthesize text = _text, margin = _margin, padding = _padding;
-@synthesize comment;
+@synthesize comment, subtext, indentationLevel;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
 
 + (HNCommentTableItem *)itemWithComment:(HNComment *)aComment {
-	HNCommentTableItem *item = [[HNCommentTableItem new] autorelease];
+	HNCommentTableItem *item = [HNCommentTableItem new];
 	item.comment = aComment;
 	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
+	
+	if ([aComment.points intValue] > 1) {
+		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ points</b> by %@ %@", 
+													[aComment.points stringValue], 
+													aComment.user, 
+													aComment.time_ago]];
+	} else{
 		
-	// item.URL =			
-	item.URL = @"tt://home/comments";
-	// accessoryURL:@"http://google.com"]];	// TODO make this have action. Reply? 
+		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
+													[aComment.points stringValue], 
+													aComment.user, 
+													aComment.time_ago]];
+		
+	}
+	
+	
+	item.indentationLevel = aComment.indentationLevel;
+	//item.URL = @"http://www.google.com";	// TODO: Specify this for adding a comment!
 	
 	return item;
 }
@@ -41,13 +55,14 @@
 		comment = nil;
 		_text = nil;
 		_margin = UIEdgeInsetsZero;
-		_padding = UIEdgeInsetsMake(10, 10, 10, 10);    
+		_padding = UIEdgeInsetsMake(5, 10, 10, 10);    
 	}
 	return self;
 }
 
 - (void)dealloc {
 	TT_RELEASE_MEMBER(_text);
+	TT_RELEASE_MEMBER(comment);
 	[super dealloc];
 }
 

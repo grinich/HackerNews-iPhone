@@ -1,25 +1,24 @@
 //
-//  HNStoryTableItemCell.m
+//  HNCommentHeaderItemCell.m
 //  HackerNews
 //
-//  Created by Michael Grinich on 7/12/09.
+//  Created by Michael Grinich on 7/15/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "HNStoryTableItemCell.h"
-#import "HNStoryTableItem.h"
+#import "HNCommentHeaderItemCell.h"
+
 #import "HNStyle.h"
 #import "HNStory.h"
-
-
-#import "TempItems.h"
+#import "HNCommentHeaderItem.h"
+#import "HNCommentHeaderItemCell.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 static CGFloat kInnterSpacer = 2;
 
-static CGFloat kHPadding = 10;
-static CGFloat kVPadding = 10;
+static CGFloat kHPadding = 15;
+static CGFloat kVPadding = 15;
 
 //static CGFloat kMargin = 10;
 //static CGFloat kSpacing = 8;
@@ -36,51 +35,80 @@ static CGFloat kVPadding = 10;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-@implementation HNStoryTableItemCell
+@implementation HNCommentHeaderItemCell
 
-@synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, accessoryButton, commentsLabel;
+@synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, accessoryButton;
+@synthesize speechBubbleView;
+
 
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
-	HNStoryTableItem* tableItem = item;
-	if ([item isKindOfClass:[HNStoryTableItem class]]) {
+	HNCommentHeaderItem* tableItem = item;
+	if ([item isKindOfClass:[HNCommentHeaderItem class]]) {
+		
 		HNStory *story = [tableItem story];
-				
+		
 		
 		// If you change these values, make sure to also change in the below method initWithStyle:
 		CGFloat accessoryViewWidth = kHPadding + 36.0; 
 		CGFloat maxWidth = tableView.width - kHPadding*2 - accessoryViewWidth;
 		
 		CGSize titleSize = [[story title] sizeWithFont:TTSTYLEVAR(storyTitleFont)
-									   constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX) 
-										   lineBreakMode:UILineBreakModeWordWrap];
+									 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX) 
+										 lineBreakMode:UILineBreakModeWordWrap];
 		
 		CGSize hostURLSize = [[[story url] host] sizeWithFont:TTSTYLEVAR(storyURLFont)
-										   constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
-											   lineBreakMode:UILineBreakModeWordWrap];
+											constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
+												lineBreakMode:UILineBreakModeWordWrap];
 		
 		CGSize subtextSize = [[story subtext] sizeWithFont:TTSTYLEVAR(storySubtextFont)
 										 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
 											 lineBreakMode:UILineBreakModeWordWrap];
 		
-		return kVPadding*2 + kInnterSpacer + titleSize.height + hostURLSize.height + subtextSize.height;
+		return kVPadding*2 + kInnterSpacer + titleSize.height + hostURLSize.height + subtextSize.height + 10;
 		
 	} else {
 		return 44; // Default. Shouldn't get here.
 	}
-
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
-	
-	
 	if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
 		_item = nil;
-		[TTStyleSheet setGlobalStyleSheet:[[HNStyle alloc] init]];
+		[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
+		
+		
+		self.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
+		
+		
+		
+		
+		 // SpeechBubble
+		 
+		 UIColor* black = RGBCOLOR(158, 163, 172);
+
+		 
+		 TTStyle* style = [TTShapeStyle styleWithShape:[TTSpeechBubbleShape shapeWithRadius:10 pointLocation:300
+																				 pointAngle:270
+																				  pointSize:CGSizeMake(20,10)] next:		// pointSize:CGSizeMake(20,10)] next:
+						   [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+							[TTSolidBorderStyle styleWithColor:black width:1 next:nil]]];
+		 
+		 
+				
+		speechBubbleView = [[TTView alloc] initWithFrame:CGRectZero];
+		speechBubbleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+		speechBubbleView.style = style;
+		[self.contentView addSubview:speechBubbleView];
+		
+		
+		
+		
 		// STORY TITLE
 		self.storyTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.storyTitleLabel.font = TTSTYLEVAR(storyTitleFont);
@@ -101,7 +129,7 @@ static CGFloat kVPadding = 10;
 		self.hostURLLabel.opaque = YES;
 		self.hostURLLabel.numberOfLines = 0;
 		[self.contentView addSubview:self.hostURLLabel];
-
+		
 		// XXX points | posted by XXX 
 		self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.subtextLabel.font = TTSTYLEVAR(storySubtextFont);
@@ -116,38 +144,24 @@ static CGFloat kVPadding = 10;
 		// COMMENTS BUTTON
 		
 		UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"comment-button" ofType:@"png"]];
+								   [[NSBundle mainBundle] pathForResource:@"upvote-big" ofType:@"png"]];
 		
 		self.accessoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.accessoryButton setImage:accessoryImage forState:UIControlStateNormal];
 		
 		[self.accessoryButton addTarget:self
-							action:@selector(commentsButtonTapped)
-				  forControlEvents:UIControlEventTouchUpInside];
-				
+								 action:@selector(upVoteButtonTapped)
+					   forControlEvents:UIControlEventTouchUpInside];
 		
-		self.commentsLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, -1.0, 26.0, 33.0)];
-		self.commentsLabel.font = TTSTYLEVAR(commentBlipFont);
-		
-		self.commentsLabel.textColor = [UIColor whiteColor];
-		self.commentsLabel.textAlignment = UITextAlignmentCenter;
-		self.commentsLabel.backgroundColor = [UIColor clearColor];
-		
-		[self.accessoryButton addSubview:commentsLabel];
-		[self.contentView addSubview:self.accessoryButton];
 
-		 		
+		[self.contentView addSubview:self.accessoryButton];
+		
+		
 	}
 	return self;
 }
 
--(void)commentsButtonTapped {
-	
-	TempItems *t = [TempItems sharedTempItems];
-
-	HNStory *storyCopy = [self.cellStory retain];
-	
-	[t setTempHNStory:storyCopy];
+-(void)upVoteButtonTapped {
 	
 	TTOpenURL([NSString stringWithFormat:@"tt://home/comments/%@", self.cellStory.story_id]);
 }
@@ -166,27 +180,14 @@ static CGFloat kVPadding = 10;
 	[super layoutSubviews];
 	
 	// If you change these values, make sure to also change above the below method rowHeightForItem:
-	CGFloat accessoryViewWidth = kHPadding + 36.0; 
+	CGFloat accessoryViewWidth = self.accessoryButton.frame.size.height; 
 	CGFloat maxWidth = self.contentView.width - kHPadding*2 - accessoryViewWidth;
 
 	
-	/* 
-	 // Maybe use an inset sometime?
-	 CGRect CGRectInset (
-	 CGRect rect,
-	 CGFloat dx,
-	 CGFloat dy
-	 );
-	 
-	 self.textLabel.frame = CGRectInset(self.contentView.bounds, kHPadding, kVPadding);
-
-	 */
-		
-	
 	
 	CGSize titleSize = [[cellStory title] sizeWithFont:TTSTYLEVAR(storyTitleFont)
-								 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX) 
-									 lineBreakMode:UILineBreakModeWordWrap];
+									 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX) 
+										 lineBreakMode:UILineBreakModeWordWrap];
 	
 	
 	self.storyTitleLabel.frame = CGRectMake(kHPadding, 
@@ -196,8 +197,8 @@ static CGFloat kVPadding = 10;
 	
 	
 	CGSize hostURLSize = [[[cellStory url] host] sizeWithFont:TTSTYLEVAR(storyURLFont)
-								   constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
-									   lineBreakMode:UILineBreakModeWordWrap];
+											constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
+												lineBreakMode:UILineBreakModeWordWrap];
 	
 	self.hostURLLabel.frame = CGRectMake(kHPadding,
 										 self.storyTitleLabel.frame.origin.y + self.storyTitleLabel.frame.size.height + kInnterSpacer,
@@ -206,21 +207,27 @@ static CGFloat kVPadding = 10;
 	
 	
 	CGSize subtextSize = [[cellStory subtext] sizeWithFont:TTSTYLEVAR(storySubtextFont)
-									   constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
-										   lineBreakMode:UILineBreakModeWordWrap];
+										 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
+											 lineBreakMode:UILineBreakModeWordWrap];
 	
 	self.subtextLabel.frame = CGRectMake(	kHPadding, 
-											self.hostURLLabel.frame.origin.y + self.hostURLLabel.frame.size.height,
-											subtextSize.width, 
-											subtextSize.height);
-
+										 self.hostURLLabel.frame.origin.y + self.hostURLLabel.frame.size.height,
+										 subtextSize.width, 
+										 subtextSize.height);
+	
 	
 	self.accessoryButton.frame = CGRectMake(	self.contentView.frame.size.width - kHPadding - self.accessoryButton.frame.size.width ,
-												( self.contentView.frame.size.height - self.accessoryButton.frame.size.height ) / 2,
-												36.0, 
-												40.0);
+											( self.contentView.frame.size.height - self.accessoryButton.frame.size.height ) / 2,
+											36.0, 
+											40.0);
 	
-
+	
+	self.speechBubbleView.frame = CGRectMake(5, 
+											 5,
+											 self.contentView.width - 10, 
+											 self.contentView.height - 10);
+	
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,20 +241,18 @@ static CGFloat kVPadding = 10;
 	if (_item != object) {
 		[super setObject:object];
 		
-
-		self.cellStory = [(HNStoryTableItem*)object story];
+		
+		self.cellStory = [object story];
 		
 		self.storyTitleLabel.text = [self.cellStory title];
 		self.hostURLLabel.text =[[self.cellStory url] host];
 		self.subtextLabel.text = [self.cellStory subtext];
-		self.commentsLabel.text = [[self.cellStory comments_count] stringValue];
 		self.accessoryType = UITableViewCellAccessoryNone;
-
+		
 	}  
 }
 
 @end
-
 
 
 

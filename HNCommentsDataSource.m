@@ -11,9 +11,14 @@
 #import "HNComment.h"
 #import "HNCommentTableItem.h"
 #import "HNCommentTableItemCell.h"
+#import "HNCommentHeaderItem.h"
+#import "HNCommentHeaderItemCell.h"
 
 #import "ElementParser.h"
 
+#import "TempItems.h"
+#import "HNStoryTableItem.h"
+#import "HNStoryTableItemCell.h"
 
 @implementation HNCommentsDataSource
 
@@ -35,7 +40,9 @@
 		
 	TTURLRequest *request = [TTURLRequest requestWithURL:story_url delegate:self];
 	
-	request.cachePolicy = cachePolicy;
+//	request.cachePolicy = cachePolicy;
+	request.cachePolicy = TTURLRequestCachePolicyMemory;
+
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	
@@ -69,11 +76,42 @@
 	TTURLDataResponse *response = request.response;
 	NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 	
+	
+	Element *document = [Element parseHTML: responseBody];
+	
+	
+	// Add the story header
+	// Gotta rebuild the story item from here using our magic parser! Fuck. 
+	
+	//[self.items addObject:[HNCommentHeaderItem itemWithStory:self.story];
+	
+	//////////////////////////////////////////////////////////
+	//			HTML Processing for title box				//
+	//////////////////////////////////////////////////////////
+	
+//	NSArray *titles = [document selectElements:@"tr > td > table > tr"];
+//
+//	Element *t;
+//	for (t in titles) {
+//		NSLog(@"TITLES: %@", t.contentsText);
+//		NSLog(@"//////////////////////////////////////////////////////////");	
+//
+//	}
+	
+	
+	[self.items addObject:[HNCommentHeaderItem itemWithStory:[[TempItems sharedTempItems] tempHNStory]]];
+	 	
+	
+
+	
+	
+	
+	
 	//////////////////////////////////////////////////////////
 	//			HTML Processing for comments				//
 	//////////////////////////////////////////////////////////
 	
-	Element *document = [Element parseHTML: responseBody];
+	
 	
 	NSArray *comments = [document selectElements:@"tr > td.default"];
 
@@ -83,13 +121,6 @@
 	// We skip the first object
 	// [commentsEnumerator nextObject];
 	
-	
-	Element *c;
-	for (c in comments) {
-		NSLog(@"src %@", c.contentsText);
-	}
-	
-
 	
 	Element *element;
 	NSNumberFormatter* nFormatter = [NSNumberFormatter new];
@@ -109,7 +140,7 @@
 		NSString *preCut = [[element selectElement:@"span.comment"] contentsSource];
 		
 		
-		comment.contentsSource =  [[[[preCut
+		comment.contentsSource =  [[[[[[[preCut
 									  stringByReplacingOccurrencesOfString:@"</font>" withString:@""]
 									 
 									 // Regular
@@ -117,6 +148,13 @@
 									
 									// Downvote. TODO: check for this and set text color accordingly?
 									stringByReplacingOccurrencesOfString:@"<font color=#dddddd>" withString:@""]
+									
+									// Another downvote color
+									stringByReplacingOccurrencesOfString:@"<font color=#737373>" withString:@""]
+								   
+								   stringByReplacingOccurrencesOfString:@"<font color=#bebebe>" withString:@""]
+									
+									stringByReplacingOccurrencesOfString:@"<font color=#aeaeae>" withString:@""]
 								   
 								   // Extra <p> tags without closes. Just make double newline.
 								   stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n\n"];
@@ -174,6 +212,16 @@
 }
 
 
+- (NSString*)titleForLoading:(BOOL)refreshing {
+	if (refreshing) {
+		return TTLocalizedString(@"Updating Comments...", @"");
+	} else {
+		return TTLocalizedString(@"Loading Comments...", @"");
+	}
+}
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -207,6 +255,8 @@
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {	
 	if ([object isKindOfClass:[HNCommentTableItem class]]) {
 		return [HNCommentTableItemCell class];
+	} else if ([object isKindOfClass:[HNCommentHeaderItem class]]) {
+		return [HNCommentHeaderItemCell class];
 	}
 	
 	else {

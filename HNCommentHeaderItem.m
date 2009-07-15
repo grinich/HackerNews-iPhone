@@ -1,35 +1,38 @@
 //
-//  HNStoryTableItem.m
+//  HNCommentHeaderItem.m
 //  HackerNews
 //
-//  Created by Michael Grinich on 7/12/09.
+//  Created by Michael Grinich on 7/15/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "HNStoryTableItem.h"
+#import "HNCommentHeaderItem.h"
 
 #import "HNStory.h"
 
-@implementation HNStoryTableItem
+
+@implementation HNCommentHeaderItem
 
 @synthesize story;
 @synthesize text = _text;
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
 
-+ (HNStoryTableItem *)itemWithStory:(HNStory *)aStory {
++ (HNCommentHeaderItem *)itemWithStory:(HNStory *)aStory {
 	
-	HNStoryTableItem* item = [[HNStoryTableItem alloc] init];
+	//	TTTableTextItem* item = [[[self alloc] init] autorelease];
+	HNCommentHeaderItem* item = [[HNCommentHeaderItem alloc] init];
 	item.story = aStory;
-
+	
 	//item.URL = [[story url] absoluteURL];
 	
 	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
 	
 	item.text = @"";	// Fails without this!?
-
+	
 	return item;
 }
 
@@ -67,5 +70,6 @@
 		[encoder encodeObject:self.story forKey:@"story"];
 	}
 }
+
 
 @end

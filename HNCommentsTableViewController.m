@@ -50,8 +50,8 @@
 - (id)initWithStory:(NSString *)storyIN {
 	if (self = [super init]) {
 		self.storyID = storyIN;
-		self.tableViewStyle = UITableViewStyleGrouped;
-//		self.tableViewStyle = UITableViewStylePlain;
+		//		self.tableViewStyle = UITableViewStyleGrouped;
+		self.tableViewStyle = UITableViewStylePlain;
 		self.autoresizesForKeyboard = YES;
 		self.variableHeightRows = YES;
 	}
@@ -67,8 +67,12 @@
 
 - (void)loadView {
 	[super loadView];
-	self.tableView.allowsSelection = NO;
+//	self.tableView.allowsSelection = NO;
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	self.tableView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
 	
+	//	self.tableView.separatorColor = [UIColor clearColor];
+
 	// TODO : Doesn't work!
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																 target:self 

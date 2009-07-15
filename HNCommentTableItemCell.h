@@ -14,11 +14,27 @@
 	
 	HNComment	*cellComment;
 
-	TTStyledTextLabel* _label;	
+	NSNumber	*ind_level;
 	
+	TTStyledTextLabel	* commentTextLabel;	
+	
+	TTStyledTextLabel		*byLineLabel;
+	
+	UIButton	*upVoteButton;
+	UIButton	*downVoteButton;
+	UIButton	*replyButton;
+
 }
 
-@property (nonatomic, retain) HNComment *cellComment;
+@property (nonatomic, retain) HNComment		*cellComment;
+
+@property (nonatomic, retain) TTStyledTextLabel *commentTextLabel;
+@property (nonatomic, retain) TTStyledTextLabel	*byLineLabel;
+@property (nonatomic, retain) UIButton	*upVoteButton;
+@property (nonatomic, retain) UIButton	*downVoteButton;
+@property (nonatomic, retain) UIButton	*replyButton;
+@property (nonatomic, retain) NSNumber	*ind_level;
+
 
 
 @end

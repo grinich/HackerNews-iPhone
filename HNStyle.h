@@ -14,6 +14,8 @@
 @property(nonatomic,readonly) UIFont *storyURLFont ;
 @property(nonatomic,readonly) UIFont *storySubtextFont;
 @property(nonatomic,readonly) UIFont *commentBlipFont;
+@property(nonatomic,readonly) UIFont* commentBylineFont;
+@property(nonatomic,readonly) TTStyle* HNOrangeText;
 
-
+@property(nonatomic,readonly) UIColor *hackerNewsColor;
 @end

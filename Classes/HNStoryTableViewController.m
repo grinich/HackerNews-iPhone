@@ -56,6 +56,22 @@
 - (void) activateSearchBar {
 	// Do something!
 	
+	
+	NSArray *deleteIndexPaths = [NSArray arrayWithObjects:
+								 [NSIndexPath indexPathForRow:2 inSection:0],
+								 [NSIndexPath indexPathForRow:4 inSection:0],
+								 nil];
+    NSArray *insertIndexPaths = [NSArray arrayWithObjects:
+								 [NSIndexPath indexPathForRow:0 inSection:0],
+								 [NSIndexPath indexPathForRow:3 inSection:0],
+								 nil];
+    UITableView *tv = (UITableView *)self.tableView;
+	
+    [tv beginUpdates];
+    [tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
+    [tv deleteRowsAtIndexPaths:deleteIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [tv endUpdates];
+	
 }
 
 

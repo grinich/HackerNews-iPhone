@@ -35,7 +35,8 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:yc_url delegate:self];
 	
-	request.cachePolicy = cachePolicy;
+//	request.cachePolicy = cachePolicy;
+	request.cachePolicy = TTURLRequestCachePolicyMemory;
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	

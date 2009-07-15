@@ -11,6 +11,14 @@
 #import "HNCommentTableItemCell.h"
 #import "HNCommentTableItem.h"
 
+#import "HNComment.h"
+#import "HNStyle.h"
+
+static CGFloat kIndentationPadding = 10;
+
+static CGFloat kBylineHeight = 40;
+static CGFloat kBottomButtonsBuffer = 10;
+
 static CGFloat kHPadding = 10;
 static CGFloat kVPadding = 10;
 static CGFloat kMargin = 10;
@@ -26,16 +34,21 @@ static CGFloat kDefaultIconSize = 50;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-@class HNCommentTableItem;
 
 @implementation HNCommentTableItemCell
 
-@synthesize cellComment;
+@synthesize cellComment, commentTextLabel, byLineLabel, ind_level;
+@synthesize upVoteButton, downVoteButton, replyButton;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
+		
+	
+	HNCommentTableItem *cItem = item;
+	CGFloat indent_by = kIndentationPadding * [[cItem.comment indentationLevel] floatValue];
+	
 	
 	TTTableStyledTextItem* textItem = item;
 	textItem.text.font = TTSTYLEVAR(font);
@@ -43,13 +56,10 @@ static CGFloat kDefaultIconSize = 50;
 	CGFloat padding = tableView.style == UITableViewStyleGrouped ? kGroupMargin*2 : 0;
 	padding += textItem.padding.left + textItem.padding.right;
 	
-	if (textItem.URL) {
-		padding += kDisclosureIndicatorWidth;
-	}
 	
-	textItem.text.width = tableView.width - padding;
+	textItem.text.width = tableView.width - padding - indent_by - kHPadding*2;
 	
-	return textItem.text.height + textItem.padding.top + textItem.padding.bottom;
+	return textItem.text.height + textItem.padding.top + textItem.padding.bottom + kVPadding + kBylineHeight + kBottomButtonsBuffer;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,15 +67,68 @@ static CGFloat kDefaultIconSize = 50;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
 	if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
-		_label = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
-		_label.contentMode = UIViewContentModeLeft;
-		[self.contentView addSubview:_label];
+		[TTStyleSheet setGlobalStyleSheet:[[HNStyle alloc] init]];
+
+		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+
+		self.byLineLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
+		self.byLineLabel.contentMode = UIViewContentModeLeft;
+		
+		self.byLineLabel.font = TTSTYLEVAR(commentBylineFont);
+
+		[self.contentView addSubview:byLineLabel];
+		
+		self.commentTextLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
+		self.commentTextLabel.contentMode = UIViewContentModeLeft;
+		self.commentTextLabel.backgroundColor = [UIColor whiteColor];
+		[self.contentView addSubview:self.commentTextLabel];
+		
+		
+		
+		
+		UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
+								   [[NSBundle mainBundle] pathForResource:@"upvote" ofType:@"png"]];
+		
+		self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.upVoteButton setImage:accessoryImage forState:UIControlStateNormal];
+		
+		[self.upVoteButton addTarget:self
+								 action:@selector(upVoteButtonTapped)
+					   forControlEvents:UIControlEventTouchUpInside];
+		[self.contentView addSubview:self.upVoteButton];
+		
+		
+		UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
+								   [[NSBundle mainBundle] pathForResource:@"downvote" ofType:@"png"]];
+		
+		self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
+		
+		[self.downVoteButton addTarget:self
+							  action:@selector(downVoteButtonTapped)
+					forControlEvents:UIControlEventTouchUpInside];
+		[self.contentView addSubview:self.downVoteButton];
+		
+
+		
+		UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
+								  [[NSBundle mainBundle] pathForResource:@"reply_grey" ofType:@"png"]];
+		
+		self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.replyButton setImage:replyImage forState:UIControlStateNormal];
+		
+		[self.replyButton addTarget:self
+								action:@selector(replyButtonTapped)
+					  forControlEvents:UIControlEventTouchUpInside];
+		[self.contentView addSubview:self.replyButton];
+				
 	}
 	return self;
 }
 
 - (void)dealloc {
-	TT_RELEASE_MEMBER(_label);
+	TT_RELEASE_MEMBER(commentTextLabel);
 	[super dealloc];
 }
 
@@ -75,34 +138,69 @@ static CGFloat kDefaultIconSize = 50;
 - (void)layoutSubviews {
 	[super layoutSubviews];
 	
-	TTTableStyledTextItem* item = self.object;
 	
-	CGFloat indent_by = kHPadding * [[self.cellComment indentationLevel] floatValue];
-			
-	
-	CGRect indented = CGRectMake(indent_by, 
-								 0.0, 
-								 self.contentView.bounds.size.width - indent_by,
-								 self.contentView.bounds.size.height);
-	
-	
-	_label.frame = CGRectOffset(self.contentView.bounds, item.margin.left, item.margin.top);
-//	_label.frame = CGRectOffset(indented, item.margin.left, item.margin.top);
-	
-	
-	_label.backgroundColor = self.superview.backgroundColor;	// This makes it transparent.
+	CGFloat maxWidth = self.contentView.width - kHPadding*2 ;
+	CGFloat maxHeight = self.contentView.height - kVPadding*2;
 	
 	
 	
-	[_label setNeedsLayout];
+//	HNCommentTableItem* item = self.object;
+	
+	CGFloat indent_by = kIndentationPadding * [self.ind_level floatValue];
+	
+
+
+	
+	
+	
+	//commentTextLabel.frame = CGRectOffset(self.contentView.bounds, item.margin.left, item.margin.top);
+	
+	self.upVoteButton.frame = CGRectMake(indent_by + kHPadding + 7, 
+										 2,
+										 50, 
+										 50);
+	self.upVoteButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 3, 23);
+	
+	self.downVoteButton.frame = CGRectMake(self.contentView.frame.size.width - kHPadding*2 - 28, 
+										   2,
+										   50, 
+										   50);
+	self.downVoteButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 3, 23);
+
+	
+	self.replyButton.frame = CGRectMake( self.contentView.frame.size.width - kHPadding*2 - 24, 
+										self.commentTextLabel.frame.size.height,
+										30, 
+										50);
+	
+	
+	self.byLineLabel.frame  = CGRectMake(kHPadding + indent_by, 
+									kVPadding,
+									maxWidth - indent_by, 
+									kBylineHeight);
+	
+
+	
+	self.commentTextLabel.frame = CGRectMake(kHPadding + indent_by, 
+										self.byLineLabel.frame.size.height - 3,
+										maxWidth - indent_by, 
+										self.contentView.height - kVPadding - self.byLineLabel.height);
+	
+
+
+	// REDRAW!! 
+	
+	[self.upVoteButton setNeedsLayout];
+	[self.downVoteButton setNeedsLayout];
+	[self.replyButton setNeedsLayout];
+	
+	[self.commentTextLabel setNeedsLayout];
+	[self.byLineLabel setNeedsLayout];
+	
+
+	
 }
 
--(void)didMoveToSuperview {
-	[super didMoveToSuperview];
-	if (self.superview && [(UITableView*)self.superview style] == UITableViewStylePlain) {
-		_label.backgroundColor = self.superview.backgroundColor;
-	}
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewCell
@@ -112,29 +210,12 @@ static CGFloat kDefaultIconSize = 50;
 		[super setObject:object];
 				
 		HNCommentTableItem *item = object;
-		self.cellComment = item.comment;
-		_label.text = item.text;
-		_label.contentInset = item.padding;
+		self.ind_level = item.indentationLevel;
+		commentTextLabel.text = item.text;
 		
-		
-		
-
-		/*
-		self.backgroundColor = [UIColor clearColor];
-		self.contentView.backgroundColor = [UIColor clearColor];
-		self.backgroundView.backgroundColor = [UIColor clearColor];
-		self.selectionStyle = UITableViewCellSelectionStyleNone;		
-		self.backgroundView.opaque = NO;
-		self.contentView.opaque = NO;
-		
-		NSLog(@"%@", [super description]);
-		
-		super.backgroundColor = [UIColor clearColor];
-		super.contentView.backgroundColor = [UIColor clearColor];
-		super.backgroundView.backgroundColor = [UIColor clearColor];
-		super.backgroundView.opaque = NO;
-		super.contentView.opaque = NO;
-		 */
+		self.byLineLabel.text = item.subtext;		
+		self.commentTextLabel.contentInset = item.padding;
+		self.byLineLabel.contentInset = UIEdgeInsetsMake(10, 40, 0, 10); 
 		
 		self.accessoryType = UITableViewCellAccessoryNone;
 	}  
@@ -142,5 +223,18 @@ static CGFloat kDefaultIconSize = 50;
 
 
 
+-(void) upVoteButtonTapped {
+	// Up vote!
+	
+}
+
+-(void) downVoteButtonTapped {
+	// Down Vote!
+
+}
+
+-(void) replyButtonTapped {
+	// Open reply to comment view!
+}
 
 @end

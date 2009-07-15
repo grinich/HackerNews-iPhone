@@ -15,32 +15,46 @@
 
 - (UIColor*)navigationBarTintColor {
 	//	return RGBCOLOR(119, 140, 168);
-	return RGBCOLOR(225, 101, 0);
+	return TTSTYLEVAR(hackerNewsColor);
 }
 
 - (UIColor*)toolbarTintColor {
 	//	return RGBCOLOR(109, 132, 162);
-	return RGBCOLOR(225, 101, 0);
+	return TTSTYLEVAR(hackerNewsColor);
 }
 
 - (UIColor*)searchBarTintColor {
-	return RGBCOLOR(200, 200, 200);
-	return RGBCOLOR(200, 200, 200);
+	return TTSTYLEVAR(hackerNewsColor);
 }
+
+- (UIColor*)hackerNewsColor {
+	return RGBCOLOR(225, 101, 0);
+}
+
 
 
 - (UIFont*) storyTitleFont {
-	return [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
+	return [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
 }
 
 - (UIFont*) storyURLFont {
-	return [UIFont fontWithName:@"Helvetica" size:10.0];
+	return [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
 }
 - (UIFont*) storySubtextFont {
-	return [UIFont fontWithName:@"Helvetica-Bold" size:10.0];
+	return [UIFont fontWithName:@"Helvetica" size:11.0];
 }
 - (UIFont*) commentBlipFont {
 	return [UIFont fontWithName:@"Marker Felt" size:14.0];
+}
+
+- (UIFont*) commentBylineFont {
+	return [UIFont fontWithName:@"Helvetica" size:11.0];
+}
+
+
+
+- (TTStyle* ) HNOrangeText {
+	return [TTTextStyle styleWithColor:TTSTYLEVAR(hackerNewsColor) next:nil];
 }
 
 @end
