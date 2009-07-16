@@ -140,13 +140,21 @@
 		NSString *preCut = [[element selectElement:@"span.comment"] contentsSource];
 		
 		
-		comment.contentsSource =  [[[[[[[preCut
+		comment.contentsSource =  [[[[[[[[[[[preCut
+										  
+										  // Extra <p> tags without closes. Just make double newline.
+										  stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n\n"]
+										 
 									  stringByReplacingOccurrencesOfString:@"</font>" withString:@""]
 									 
-									 // Regular
+									 // Regular color.
 									 stringByReplacingOccurrencesOfString:@"<font color=#000000>" withString:@""]
 									
-									// Downvote. TODO: check for this and set text color accordingly?
+										/////////////////////////////////////////////
+										// DOWNVOTES. 
+										/////////////////////////////////////////////
+
+										//TODO: check for this and set text color accordingly?
 									stringByReplacingOccurrencesOfString:@"<font color=#dddddd>" withString:@""]
 									
 									// Another downvote color
@@ -156,9 +164,22 @@
 									
 									stringByReplacingOccurrencesOfString:@"<font color=#aeaeae>" withString:@""]
 								   
-								   // Extra <p> tags without closes. Just make double newline.
-								   stringByReplacingOccurrencesOfString:@"<p>" withString:@"\n\n"];
+									// Down to zero points
+								   stringByReplacingOccurrencesOfString:@"<font color=#5a5a5a>" withString:@""]
+								   
+								   // -1 points
+								   stringByReplacingOccurrencesOfString:@"<font color=#737373>" withString:@""]
 		
+								   // -2 points
+									stringByReplacingOccurrencesOfString:@"<font color=#888888>" withString:@""]
+		
+									// -3 points
+								stringByReplacingOccurrencesOfString:@"<font color=#9c9c9c>" withString:@""];;
+
+		
+		
+		
+										
 		
 		comment.user = [[[secondTier firstChild] nextElement] contentsText];	// Works
 		

@@ -113,7 +113,7 @@ static CGFloat kDefaultIconSize = 50;
 
 		
 		UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
-								  [[NSBundle mainBundle] pathForResource:@"reply_grey" ofType:@"png"]];
+								  [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
 		
 		self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.replyButton setImage:replyImage forState:UIControlStateNormal];
@@ -121,6 +121,7 @@ static CGFloat kDefaultIconSize = 50;
 		[self.replyButton addTarget:self
 								action:@selector(replyButtonTapped)
 					  forControlEvents:UIControlEventTouchUpInside];
+		
 		[self.contentView addSubview:self.replyButton];
 				
 	}
@@ -149,11 +150,15 @@ static CGFloat kDefaultIconSize = 50;
 	CGFloat indent_by = kIndentationPadding * [self.ind_level floatValue];
 	
 
-
+	self.commentTextLabel.frame = CGRectMake(kHPadding + indent_by, 
+											 self.byLineLabel.frame.size.height - 3,
+											 maxWidth - indent_by, 
+											 self.contentView.height - kVPadding - self.byLineLabel.height);
 	
 	
 	
-	//commentTextLabel.frame = CGRectOffset(self.contentView.bounds, item.margin.left, item.margin.top);
+	
+	
 	
 	self.upVoteButton.frame = CGRectMake(indent_by + kHPadding + 7, 
 										 2,
@@ -181,12 +186,7 @@ static CGFloat kDefaultIconSize = 50;
 	
 
 	
-	self.commentTextLabel.frame = CGRectMake(kHPadding + indent_by, 
-										self.byLineLabel.frame.size.height - 3,
-										maxWidth - indent_by, 
-										self.contentView.height - kVPadding - self.byLineLabel.height);
 	
-
 
 	// REDRAW!! 
 	

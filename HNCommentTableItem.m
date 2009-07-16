@@ -24,12 +24,12 @@
 	item.comment = aComment;
 	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
 	
-	if ([aComment.points intValue] > 1) {
+	if (([aComment.points intValue] != 1) && ([aComment.points intValue] != -1)) {
 		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ points</b> by %@ %@", 
 													[aComment.points stringValue], 
 													aComment.user, 
 													aComment.time_ago]];
-	} else{
+	} else {
 		
 		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
 													[aComment.points stringValue], 

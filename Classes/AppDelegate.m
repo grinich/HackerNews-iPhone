@@ -57,7 +57,9 @@
 	
 	[map from:@"tt://home" toSharedViewController:[HNStoryTableViewController class]];
 	[map from:@"tt://home/comments/(initWithStory:)" toViewController:[HNCommentsTableViewController class]];
-
+	[map from:@"http://news.ycombinator.com/item?id=(initWithStory:)" toViewController:[HNCommentsTableViewController class]];
+	
+	
 	/*
 	best	Highest voted recent links.
 	active	Most active current discussions.
@@ -71,6 +73,7 @@
 
 	
 	if (![navigator restoreViewControllers]) {
+		//[navigator openURL:@"http://news.ycombinator.com/item?id=706343" animated:NO];
 		[navigator openURL:@"tt://home" animated:NO];
 	}
 	

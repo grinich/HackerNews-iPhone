@@ -106,7 +106,7 @@
 	HNCommentsDataSource *dataSource = [[[HNCommentsDataSource alloc] init] autorelease];
 	dataSource.story_id = self.storyID;
 
-	[dataSource.delegates addObject:self];	
+	[dataSource.delegates addObject:self];
 //	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
 	
 	return dataSource;
