@@ -20,6 +20,12 @@
 	NSNumber*	indentationLevel;
 	NSString*	contentsSource;
 	
+	NSString*	upvotelink;
+	NSString*	downvotelink;
+	
+	BOOL	voted;
+	BOOL	downvoted;
+	
 }
 @property (nonatomic, retain)	NSString*	contentsSource;
 @property (nonatomic, retain)	NSString*	text;
@@ -30,5 +36,10 @@
 @property (nonatomic, retain)	NSString*	time_ago;
 @property (nonatomic, retain)			NSNumber*	indentationLevel;
 
+@property (nonatomic, retain)	NSString*	upvotelink;
+@property (nonatomic, retain)	NSString*	downvotelink;
+
+@property (nonatomic)			BOOL	voted;
+@property (nonatomic)			BOOL	downvoted;
 
 @end

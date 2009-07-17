@@ -4,6 +4,9 @@
 Hack in indentation support for tableViewCells
 
 
+VERY long story http://news.ycombinator.com/item?id=692338
+
+
 - Search parser
 - Search view controller
 

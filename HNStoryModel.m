@@ -7,7 +7,7 @@
 //
 
 #import "HNStoryModel.h"
-#import "LoginLogic.h"
+#import "HNLogin.h"
 #import "HNStory.h"
 #import "ElementParser.h"
 #import "HNStoryTableItem.h"
@@ -118,12 +118,14 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 	
 	Element *document = [Element parseHTML: responseBody];
 	
-	NSLog(@"%@", [document contentsSource]);
 	
 	// Main links
 	//NSLog(@"URL %@", [[document selectElement:@"span.pagetop"] contentsSource]);
 	
-	LoginLogic *login = [LoginLogic sharedLoginLogic];
+	HNLogin *login = [HNLogin sharedHNLogin];
+	
+	login.loggedin = YES;
+	
 	login.loginURL = [[[[document selectElements:@"span.pagetop"] objectAtIndex:1] selectElement:@"a"] attribute:@"href"];
 	
 	[login getLoginFNID];

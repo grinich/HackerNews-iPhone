@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 
-#import "LoginLogic.h"
+#import "HNLogin.h"
 #import "HNStyle.h"
 
 #define kTextFieldWidth		260.0
@@ -166,7 +166,7 @@ static NSString *kViewKey = @"viewKey";
 - (void)login {
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 
-	LoginLogic *aLoginLogic = [LoginLogic new];
+	HNLogin *aLoginLogic = [HNLogin new];
 	
 	if ([aLoginLogic logThemInWithUsername:usernameTextField.text
 							  withPassword:passwordTextField.text] )

@@ -19,6 +19,8 @@
 #import "HNStoryTableItem.h"
 #import "HNStoryTableItemCell.h"
 
+#import "HNLogin.h"
+
 @implementation HNCommentModel
 
 
@@ -117,7 +119,6 @@
 	
 	
 	// Add the story header
-	// Gotta rebuild the story item from here using our magic parser! Fuck. 
 	
 	//[self.items addObject:[HNCommentHeaderItem itemWithStory:self.story];
 	
@@ -158,7 +159,42 @@
 	
 	while(element = [commentsEnumerator nextObject] ) {
 		
-		HNComment* comment = [HNComment new];
+		HNComment* comment = [[HNComment alloc] init];
+		
+		
+		
+		// Upvote & downvotes for comments.
+		NSArray *voteElements = [[[[element parent] firstChild] nextSybling] selectElements:@"a"];
+		
+		Element	*commentTop = [element parent];
+		
+
+		
+		Element* vote = [[element parent] selectElement:@"td[valign]"];
+		
+		
+//		[[titleElement firstChild] nextSybling]
+		
+		Element* up = [commentTop selectElement:@"td > center > a"];
+		
+//		NSLog(@"Down: %@", [[[[commentTop selectElement:@"td > center > a"] nextSybling] nextSybling] attribute:@"href"]);
+
+		
+		if (up) {
+			comment.upvotelink = [up attribute:@"href"];
+			if ([[HNLogin sharedHNLogin] loggedin]) {
+				comment.downvotelink = [[[[commentTop selectElement:@"td > center > a"] nextSybling] nextSybling] attribute:@"href"];
+				
+			}
+			comment.voted = NO;
+		} else {
+			comment.voted = YES;
+		}
+		
+//		NSLog(@"vote: %@ -- %@", comment.upvotelink,  comment.downvotelink);
+
+				 
+		
 		Element *secondTier = [element selectElement:@"div span.comhead"];
 		
 		// TODO : allocating this every time is really slow		
@@ -224,19 +260,16 @@
 		comment.indentationLevel = [NSNumber numberWithInt:([fromSrc intValue] / 40)];
 		
 		
-		NSString *pointsTempString = [[secondTier firstChild] contentsText];	
 		
-		
-		// TODO : do this
-		//NSInteger location = [pointsTempString length] + 4 + [comment.user length] + 1;
-		//NSInteger length = [[subtextElement contentsText] length] - location - [commentsTempString length] - 3;
-		//comment.time_ago = [[subtextElement contentsText] substringWithRange:NSMakeRange(location, length) ];
+		NSInteger location = [[[secondTier firstChild] contentsText] length] + 5 + [[[[secondTier firstChild] nextElement] contentsText] length];
+		NSInteger length = [[secondTier contentsText] length] - location - 7;
+		comment.time_ago =  [[secondTier contentsText] substringWithRange:NSMakeRange(location, length) ];
 		
 		//comment.url =					//  persistent URL here
+
 		
-		//comment.time_ago;
-		
-		
+		NSString *pointsTempString = [[secondTier firstChild] contentsText];	
+
 		
 		// POINTS						--- > Works
 		// Either "points" or "point"

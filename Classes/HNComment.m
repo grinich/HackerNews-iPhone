@@ -19,5 +19,9 @@
 @synthesize time_ago;
 @synthesize indentationLevel;
 @synthesize contentsSource;
+@synthesize upvotelink;
+@synthesize downvotelink;
+@synthesize voted;
+
 
 @end

@@ -1,21 +1,21 @@
 //
-//  LoginLogic.m
+//  HNLogin.m
 //  HackerNews
 //
 //  Created by Michael Grinich on 7/17/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "LoginLogic.h"
+#import "HNLogin.h"
 #import "SynthesizeSingleton.h"
 #import "ElementParser.h"
 
 
-@implementation LoginLogic
-SYNTHESIZE_SINGLETON_FOR_CLASS(LoginLogic);
+@implementation HNLogin
+SYNTHESIZE_SINGLETON_FOR_CLASS(HNLogin);
 
 
-@synthesize loginURL, loginFNID;
+@synthesize loggedin, loginURL, loginFNID;
 
 
 -(void) getLoginFNID {
@@ -37,6 +37,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginLogic);
 	TTURLDataResponse *response = request.response;
 	NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 	
+	
 	Element *document = [Element parseHTML: responseBody];
 	self.loginFNID = [[[document selectElements:@"form > input"] objectAtIndex:0] attribute:@"value"];
 	
@@ -55,7 +56,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginLogic);
 	
 	NSString *URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/y?fnid=%@&u=%@&p=%@", self.loginFNID, username, password];
 	
-	NSLog(@"%@", URLstring);
 	
 	NSURL *URL = [NSURL URLWithString:URLstring];
 	
@@ -81,7 +81,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginLogic);
 	
 	NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:[NSURL URLWithString:@"http://temp/gomh/authenticate.py"]];
 	
-	NSLog(@"%d", all.count);
 	
 	for (NSHTTPCookie *cookie in all) 
 	{
@@ -89,74 +88,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(LoginLogic);
 	}
 	
 	
+	// TODO : check if a success
+	// If not, set loggedin to no.
 	
-//	[URLRequest setHTTPMethod:<#(NSString *)method#>
-	
-	 /*
-	  - (NSData*)generatePostBody {
-	  NSMutableData *body = [NSMutableData data];
-	  NSString *endLine = [NSString stringWithFormat:@"\r\n--%@\r\n", kStringBoundary];
-	  
-	  [body appendData:[[NSString stringWithFormat:@"--%@\r\n", kStringBoundary]
-	  dataUsingEncoding:NSUTF8StringEncoding]];
-	  
-	  for (id key in [_parameters keyEnumerator]) {
-	  NSString* value = [_parameters valueForKey:key];
-	  if (![value isKindOfClass:[UIImage class]]) {
-      [body appendData:[[NSString
-	  stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key]
-	  dataUsingEncoding:NSUTF8StringEncoding]];
-      [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-      [body appendData:[endLine dataUsingEncoding:NSUTF8StringEncoding]];        
-	  }
-	  }
-	  
-	  
-	  
-	  
-	  
-	[URLRequest setValue:contentType forHTTPHeaderField:@"Content-Type"]
-	 
-	 } else if ([_httpMethod isEqualToString:@"POST"]) {
-		 return [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
-	 
-	 
-	 NSData* body = request.httpBody;
-	 if (body) {
-		 [URLRequest setHTTPBody:body];
-		 
-		 
-		if (request) {
-			;
-			
-			NSString* method = request.httpMethod;
-			if (method) {
-				[URLRequest setHTTPMethod:method];
-			}
-			
-			NSString* contentType = request.contentType;
-			if (contentType) {
-				;
-			}
-			
-
-			}
-		}
-
-								
-								
-	
-	TTURLRequest *request = [TTURLRequest requestWithURL:story_url delegate:self];
-	
-	//	request.cachePolicy = cachePolicy;
-	request.cachePolicy = TTURLRequestCachePolicyMemory;
-	
-	request.response = [[[TTURLDataResponse alloc] init] autorelease];
-	request.httpMethod = @"GET";
-	
-	BOOL cacheHit = [request send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), story_url);
-	*/
+	//self.loggedin = YES;
 	
 	
 }

@@ -21,7 +21,7 @@
 	
 		
 	Boolean success;
-	const char *host_name = [@"stackoverflow.com" cStringUsingEncoding:NSASCIIStringEncoding];
+	const char *host_name = [host cStringUsingEncoding:NSASCIIStringEncoding];
 	
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL,
 																				host_name);

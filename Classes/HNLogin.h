@@ -1,5 +1,5 @@
 //
-//  LoginLogic.h
+//  HNLogin.h
 //  HackerNews
 //
 //  Created by Michael Grinich on 7/17/09.
@@ -10,19 +10,23 @@
 #import "Three20/Three20.h"
 
 
-@interface LoginLogic : NSObject <TTURLRequestDelegate> {
+@interface HNLogin : NSObject <TTURLRequestDelegate> {
 
 	// Relative to news.ycombinator.com
 	NSString* loginURL;
 	
 	NSString* loginFNID;
 	
+	BOOL loggedin;
+	
 }
 
 
-+ (LoginLogic *)sharedLoginLogic;
++ (HNLogin *)sharedHNLogin;
 
 @property (nonatomic,retain) NSString* loginURL;
 @property (nonatomic,retain) NSString* loginFNID;
+
+@property(nonatomic) BOOL loggedin;
 
 @end

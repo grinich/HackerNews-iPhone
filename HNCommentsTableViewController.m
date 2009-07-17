@@ -12,6 +12,8 @@
 #import "HNCommentTableItemCell.h"
 #import "HNCommentsDataSource.h"
 #import "HNCommentModel.h"
+#import "HNStyle.h"
+
 
 @class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
@@ -54,6 +56,9 @@
 		self.tableViewStyle = UITableViewStylePlain;
 		self.autoresizesForKeyboard = YES;
 		self.variableHeightRows = YES;
+		
+		[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
+
 	}
 	return self;
 }
@@ -74,11 +79,12 @@
 	
 	
 	// TODO : Doesn't work! --yet
-	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
-																 target:self 
-																 action:@selector(activateSearchBar)];
+	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Reorder?" 
+																	 style:UIBarButtonItemStyleBordered 
+																	target:self 
+																	action:@selector(commentButtonTouched)];
 	
-	[self.navigationItem setRightBarButtonItem:searchButton];
+	[self.navigationItem setRightBarButtonItem:commentButton];
 	
 	/*
 	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
@@ -92,9 +98,25 @@
 	
 }
 
--(void) activateSearchBar {
+-(void) commentButtonTouched {
 	// Search at http://www.searchyc.com
 	
+	
+	
+	NSArray *deleteIndexPaths = [NSArray arrayWithObjects:
+								 [NSIndexPath indexPathForRow:0 inSection:0],
+								 [NSIndexPath indexPathForRow:1 inSection:0],
+								 nil];
+    NSArray *insertIndexPaths = [NSArray arrayWithObjects:
+								 [NSIndexPath indexPathForRow:2 inSection:0],
+								 [NSIndexPath indexPathForRow:3 inSection:0],
+								 nil];
+    UITableView *tv = (UITableView *)self.tableView;
+	
+    [tv beginUpdates];
+    [tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
+    [tv deleteRowsAtIndexPaths:deleteIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [tv endUpdates];
 	
 }
 
@@ -123,25 +145,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
-	UIColor *HNOrangeColor = [[UIColor alloc] initWithRed:1.0 green:0.3945 blue:0.0 alpha:1];
-	[self.navigationController.navigationBar setTintColor:HNOrangeColor];
-	[HNOrangeColor release];
-	
-	// Add the "Comment" button
-	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Comment" 
-																	style:UIBarButtonItemStyleBordered 
-																   target:self 
-																	 action:@selector(addComment)];
-	
-	[self.navigationItem setRightBarButtonItem:commentButton];
-	[commentButton release];
 }
-
--(void) addComment {
-	// push to add comment view
-}
-
-
 
 
 

@@ -19,7 +19,7 @@
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
 		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
-		4C41E69110105A6F000A7253 /* LoginLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* LoginLogic.m */; };
+		4C41E69110105A6F000A7253 /* HNLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* HNLogin.m */; };
 		4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */; };
 		4C4CA58D100E30460090D24D /* downvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA58B100E30460090D24D /* downvote.png */; };
 		4C4CA59D100E30E00090D24D /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA59C100E30E00090D24D /* upvote.png */; };
@@ -103,8 +103,8 @@
 		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
-		4C41E68F10105A6F000A7253 /* LoginLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLogic.h; sourceTree = "<group>"; };
-		4C41E69010105A6F000A7253 /* LoginLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLogic.m; sourceTree = "<group>"; };
+		4C41E68F10105A6F000A7253 /* HNLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLogin.h; sourceTree = "<group>"; };
+		4C41E69010105A6F000A7253 /* HNLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLogin.m; sourceTree = "<group>"; };
 		4C41E79B10106F5F000A7253 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4C41E79C10106F5F000A7253 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4C4CA58B100E30460090D24D /* downvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downvote.png; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 				4CB502291009598200476948 /* HNStyle.m */,
 				4C8E7395100E7A4F0071A8BE /* HNPing.h */,
 				4C8E7396100E7A4F0071A8BE /* HNPing.m */,
-				4C41E68F10105A6F000A7253 /* LoginLogic.h */,
-				4C41E69010105A6F000A7253 /* LoginLogic.m */,
+				4C41E68F10105A6F000A7253 /* HNLogin.h */,
+				4C41E69010105A6F000A7253 /* HNLogin.m */,
 				4C41E79B10106F5F000A7253 /* LoginViewController.h */,
 				4C41E79C10106F5F000A7253 /* LoginViewController.m */,
 			);
@@ -505,7 +505,7 @@
 				4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */,
 				4C61388010100BFF00914337 /* HNStoryModel.m in Sources */,
 				4C613B26101040C900914337 /* HNCommentModel.m in Sources */,
-				4C41E69110105A6F000A7253 /* LoginLogic.m in Sources */,
+				4C41E69110105A6F000A7253 /* HNLogin.m in Sources */,
 				4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
