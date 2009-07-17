@@ -10,15 +10,12 @@
 #import "Three20/Three20.h"
 
 
-@interface HNCommentsDataSource : TTListDataSource <TTURLRequestDelegate> {
+@interface HNCommentsDataSource : TTListDataSource  {
 
-	NSString *story_id;
 
-@private
-	BOOL _isLoading;
-	BOOL _isLoaded;
 }
 
-@property (nonatomic, retain) NSString *story_id;
+- (id)initWithID:(NSString*)storyID;
+
 
 @end

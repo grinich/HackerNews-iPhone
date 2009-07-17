@@ -19,6 +19,8 @@
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
 		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
+		4C41E69110105A6F000A7253 /* LoginLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* LoginLogic.m */; };
+		4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */; };
 		4C4CA58D100E30460090D24D /* downvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA58B100E30460090D24D /* downvote.png */; };
 		4C4CA59D100E30E00090D24D /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA59C100E30E00090D24D /* upvote.png */; };
 		4C4CA5B4100E31DE0090D24D /* upvote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA5B3100E31DE0090D24D /* upvote-big.png */; };
@@ -26,6 +28,8 @@
 		4C5EB2B0100797B0001C9BDC /* comment-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EB2AF100797B0001C9BDC /* comment-button.png */; };
 		4C5EB5201007C2DB001C9BDC /* HNCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */; };
 		4C5EB5A41007D26A001C9BDC /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EB5A31007D26A001C9BDC /* HNComment.m */; };
+		4C61388010100BFF00914337 /* HNStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61387F10100BFF00914337 /* HNStoryModel.m */; };
+		4C613B26101040C900914337 /* HNCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C613B25101040C900914337 /* HNCommentModel.m */; };
 		4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8E7396100E7A4F0071A8BE /* HNPing.m */; };
 		4C8E73A5100E7A7B0071A8BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */; };
 		4CA2EF441007515400E8D387 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF431007515400E8D387 /* Default.png */; };
@@ -94,13 +98,15 @@
 		4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentHeaderItemCell.m; sourceTree = "<group>"; };
 		4C0A1D0D100DCA4D009E7A11 /* TempItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempItems.h; sourceTree = "<group>"; };
 		4C0A1D0E100DCA4D009E7A11 /* TempItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempItems.m; sourceTree = "<group>"; };
-		4C241854100A67860010D315 /* HNTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableViewDataSource.h; path = ../HNTableViewDataSource.h; sourceTree = "<group>"; };
-		4C241855100A67860010D315 /* HNTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNTableViewDataSource.m; path = ../HNTableViewDataSource.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
 		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
 		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
+		4C41E68F10105A6F000A7253 /* LoginLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginLogic.h; sourceTree = "<group>"; };
+		4C41E69010105A6F000A7253 /* LoginLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginLogic.m; sourceTree = "<group>"; };
+		4C41E79B10106F5F000A7253 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4C41E79C10106F5F000A7253 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4C4CA58B100E30460090D24D /* downvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downvote.png; sourceTree = "<group>"; };
 		4C4CA59C100E30E00090D24D /* upvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upvote.png; sourceTree = "<group>"; };
 		4C4CA5B3100E31DE0090D24D /* upvote-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-big.png"; sourceTree = "<group>"; };
@@ -110,6 +116,10 @@
 		4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsTableViewController.m; sourceTree = "<group>"; };
 		4C5EB5A21007D26A001C9BDC /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNComment.h; path = Classes/HNComment.h; sourceTree = "<group>"; };
 		4C5EB5A31007D26A001C9BDC /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNComment.m; path = Classes/HNComment.m; sourceTree = "<group>"; };
+		4C61387E10100BFF00914337 /* HNStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryModel.h; sourceTree = "<group>"; };
+		4C61387F10100BFF00914337 /* HNStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryModel.m; sourceTree = "<group>"; };
+		4C613B24101040C900914337 /* HNCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentModel.h; sourceTree = "<group>"; };
+		4C613B25101040C900914337 /* HNCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentModel.m; sourceTree = "<group>"; };
 		4C8E7395100E7A4F0071A8BE /* HNPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPing.h; sourceTree = "<group>"; };
 		4C8E7396100E7A4F0071A8BE /* HNPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPing.m; sourceTree = "<group>"; };
 		4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
@@ -199,10 +209,12 @@
 				4CDDC4A31004FEC600E300E4 /* AppDelegate.m */,
 				4CB502281009598200476948 /* HNStyle.h */,
 				4CB502291009598200476948 /* HNStyle.m */,
-				4C241854100A67860010D315 /* HNTableViewDataSource.h */,
-				4C241855100A67860010D315 /* HNTableViewDataSource.m */,
 				4C8E7395100E7A4F0071A8BE /* HNPing.h */,
 				4C8E7396100E7A4F0071A8BE /* HNPing.m */,
+				4C41E68F10105A6F000A7253 /* LoginLogic.h */,
+				4C41E69010105A6F000A7253 /* LoginLogic.m */,
+				4C41E79B10106F5F000A7253 /* LoginViewController.h */,
+				4C41E79C10106F5F000A7253 /* LoginViewController.m */,
 			);
 			name = "Main Objects";
 			path = Classes;
@@ -347,6 +359,8 @@
 				4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */,
 				4C241912100A6F990010D315 /* HNStoryDataSource.h */,
 				4C241913100A6F990010D315 /* HNStoryDataSource.m */,
+				4C61387E10100BFF00914337 /* HNStoryModel.h */,
+				4C61387F10100BFF00914337 /* HNStoryModel.m */,
 			);
 			name = "Stories View";
 			sourceTree = "<group>";
@@ -368,6 +382,8 @@
 				4CB504991009A80600476948 /* HNCommentTableItemCell.m */,
 				4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */,
 				4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */,
+				4C613B24101040C900914337 /* HNCommentModel.h */,
+				4C613B25101040C900914337 /* HNCommentModel.m */,
 			);
 			name = "Comments View";
 			sourceTree = "<group>";
@@ -487,6 +503,10 @@
 				4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */,
 				4C0A1D0F100DCA4D009E7A11 /* TempItems.m in Sources */,
 				4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */,
+				4C61388010100BFF00914337 /* HNStoryModel.m in Sources */,
+				4C613B26101040C900914337 /* HNCommentModel.m in Sources */,
+				4C41E69110105A6F000A7253 /* LoginLogic.m in Sources */,
+				4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

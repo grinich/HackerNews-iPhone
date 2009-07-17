@@ -11,6 +11,7 @@
 #import "HNCommentTableItem.h"
 #import "HNCommentTableItemCell.h"
 #import "HNCommentsDataSource.h"
+#import "HNCommentModel.h"
 
 @class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
@@ -50,7 +51,6 @@
 - (id)initWithStory:(NSString *)storyIN {
 	if (self = [super init]) {
 		self.storyID = storyIN;
-		//		self.tableViewStyle = UITableViewStyleGrouped;
 		self.tableViewStyle = UITableViewStylePlain;
 		self.autoresizesForKeyboard = YES;
 		self.variableHeightRows = YES;
@@ -71,9 +71,9 @@
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
 	
-	//	self.tableView.separatorColor = [UIColor clearColor];
-
-	// TODO : Doesn't work!
+	
+	
+	// TODO : Doesn't work! --yet
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																 target:self 
 																 action:@selector(activateSearchBar)];
@@ -101,31 +101,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
 
-
-- (id<TTTableViewDataSource>)createDataSource {
-	HNCommentsDataSource *dataSource = [[[HNCommentsDataSource alloc] init] autorelease];
-	dataSource.story_id = self.storyID;
-
-	[dataSource.delegates addObject:self];
-//	[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
-	
-	return dataSource;
-}
-									 
-									 
-- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
-	if ([object isKindOfClass:[HNCommentTableItem class]]) {
-		return [HNCommentTableItemCell class];
-	} else {
-		return [super tableView:tableView cellClassForObject:object];
-	}
-	
-}
-
-									 
-
-									
+					 
  
+- (void)loadModel {
+	self.dataSource =  [[[HNCommentsDataSource alloc] initWithStory:self.storyID] autorelease];
+}
+
+- (void)modelDidFinishLoad:(id<TTModel>)model {
+	self.modelState = TTModelStateLoaded;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

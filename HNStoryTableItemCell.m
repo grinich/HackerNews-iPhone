@@ -21,6 +21,8 @@ static CGFloat kInnterSpacer = 2;
 static CGFloat kHPadding = 10;
 static CGFloat kVPadding = 10;
 
+static CGFloat kCommentButtonWidth = 50;
+
 //static CGFloat kMargin = 10;
 //static CGFloat kSpacing = 8;
 //static CGFloat kControlPadding = 8;
@@ -48,8 +50,7 @@ static CGFloat kVPadding = 10;
 				
 		
 		// If you change these values, make sure to also change in the below method initWithStyle:
-		CGFloat accessoryViewWidth = kHPadding + 36.0; 
-		CGFloat maxWidth = tableView.width - kHPadding*2 - accessoryViewWidth;
+		CGFloat maxWidth = tableView.width - kHPadding*2 - kCommentButtonWidth;
 		
 		CGSize titleSize = [[story title] sizeWithFont:TTSTYLEVAR(storyTitleFont)
 									   constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX) 
@@ -126,9 +127,8 @@ static CGFloat kVPadding = 10;
 				  forControlEvents:UIControlEventTouchUpInside];
 				
 		
-		self.commentsLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, -1.0, 26.0, 33.0)];
+		self.commentsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		self.commentsLabel.font = TTSTYLEVAR(commentBlipFont);
-		
 		self.commentsLabel.textColor = [UIColor whiteColor];
 		self.commentsLabel.textAlignment = UITextAlignmentCenter;
 		self.commentsLabel.backgroundColor = [UIColor clearColor];
@@ -166,8 +166,7 @@ static CGFloat kVPadding = 10;
 	[super layoutSubviews];
 	
 	// If you change these values, make sure to also change above the below method rowHeightForItem:
-	CGFloat accessoryViewWidth = kHPadding + 36.0; 
-	CGFloat maxWidth = self.contentView.width - kHPadding*2 - accessoryViewWidth;
+	CGFloat maxWidth = self.contentView.width - kHPadding*2 - kCommentButtonWidth;
 
 	
 	/* 
@@ -219,6 +218,16 @@ static CGFloat kVPadding = 10;
 												( self.contentView.frame.size.height - self.accessoryButton.frame.size.height ) / 2,
 												36.0, 
 												40.0);
+	
+	self.accessoryButton.frame = CGRectMake(	self.contentView.frame.size.width - kCommentButtonWidth,
+												0,
+												kCommentButtonWidth, 
+												self.contentView.frame.size.height);
+	
+	self.commentsLabel.frame = CGRectMake((self.accessoryButton.frame.size.width / 2) - 14, 
+										  self.accessoryButton.frame.size.height / 2 - 22, 
+										  26.0, 
+										  34.0);
 	
 
 }

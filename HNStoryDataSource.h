@@ -9,16 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Three20/Three20.h"
 
+@class HNStoryModel;
 
-@interface HNStoryDataSource : TTListDataSource <TTURLRequestDelegate> {
-
-
-	@private
-		BOOL _isLoading;
-		BOOL _isLoaded;
+@interface HNStoryDataSource : TTListDataSource {
+		
 }
-
-
 
 
 @end

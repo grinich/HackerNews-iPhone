@@ -9,6 +9,10 @@
 #import "HNStoryTableViewController.h"
 #import "HNStoryDataSource.h"
 
+
+#import "HNStoryTableItem.h"
+#import "HNStoryTableItemCell.h"
+
 @class HNStory, HNStoryTableItemCell;
 
 @implementation HNStoryTableViewController
@@ -40,6 +44,15 @@
 	
 	[self.navigationItem setRightBarButtonItem:searchButton];	
 	
+	
+	UIBarButtonItem *loginButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" 
+																	style:UIBarButtonItemStylePlain 
+																   target:self
+																   action:@selector(loginButtonTapped)];
+
+	
+	[self.navigationItem setLeftBarButtonItem:loginButton];
+	
 	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
 	| UIViewAutoresizingFlexibleHeight;
 	
@@ -52,10 +65,16 @@
 	
 	
 }
+
+-(void) loginButtonTapped {
+	// Jump to login logic!
+	TTOpenURL(@"tt://login");
+
+	
+}
  
 - (void) activateSearchBar {
 	// Do something!
-	
 	
 	NSArray *deleteIndexPaths = [NSArray arrayWithObjects:
 								 [NSIndexPath indexPathForRow:2 inSection:0],
@@ -75,19 +94,34 @@
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTViewController
+- (void)loadModel {
+	self.dataSource =  [[[HNStoryDataSource alloc] init] autorelease];	
+}
 
-- (id<TTTableViewDataSource>)createDataSource {
-	
-	HNStoryDataSource *dataSource = [[[HNStoryDataSource alloc] init] autorelease];
-	[dataSource.delegates addObject:self];
-	
-	//[dataSource load:TTURLRequestCachePolicyNoCache nextPage:NO];
-	return dataSource;
-}		
 
-		
+- (void)modelDidFinishLoad:(id<TTModel>)model {
+	self.modelState = TTModelStateLoaded;
+}
+
+
+
+
+/*
+ // TODO: Do stuff!?
+- (void)modelDidChangeState {
+	if (self.modelState == TTModelStateLoading) {
+		self.title = @"StateLoading";
+	} else if (self.modelState == TTModelStateEmpty) {
+		self.title = @"StateEmpty";
+	} else if (self.modelState == TTModelStateLoadedError) {
+		self.title = @"StateLoadedError";
+	} else if (self.modelState == TTModelStateLoaded) {
+		self.title = @"StateLoaded";
+	}
+}
+*/
+
+
 		
 
 @end

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HNStoryTableViewController.h"
 #import "HNCommentsTableViewController.h"
+#import "LoginViewController.h"
 #import "HNStyle.h"
 
 @implementation AppDelegate
@@ -23,6 +24,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
+	
+	
 	
 	[window makeKeyAndVisible];
 	
@@ -58,7 +61,7 @@
 	[map from:@"tt://home" toSharedViewController:[HNStoryTableViewController class]];
 	[map from:@"tt://home/comments/(initWithStory:)" toViewController:[HNCommentsTableViewController class]];
 	[map from:@"http://news.ycombinator.com/item?id=(initWithStory:)" toViewController:[HNCommentsTableViewController class]];
-	
+	[map from:@"tt://login" toSharedViewController:[LoginViewController class]];
 	
 	/*
 	best	Highest voted recent links.
