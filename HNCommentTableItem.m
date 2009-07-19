@@ -13,7 +13,7 @@
 @implementation HNCommentTableItem
 
 @synthesize text = _text, margin = _margin, padding = _padding;
-@synthesize comment, subtext, indentationLevel;
+@synthesize comment, indentationLevel;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
@@ -24,19 +24,6 @@
 	item.comment = aComment;
 	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
 	
-	if (([aComment.points intValue] != 1) && ([aComment.points intValue] != -1)) {
-		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ points</b> by %@ %@", 
-													[aComment.points stringValue], 
-													aComment.user, 
-													aComment.time_ago]];
-	} else {
-		
-		item.subtext = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
-													[aComment.points stringValue], 
-													aComment.user, 
-													aComment.time_ago]];
-		
-	}
 	
 	
 	item.indentationLevel = aComment.indentationLevel;

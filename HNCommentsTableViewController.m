@@ -77,7 +77,7 @@
 	self.tableView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
 	
 	
-	
+	/*
 	// TODO : Doesn't work! --yet
 	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Reorder?" 
 																	 style:UIBarButtonItemStyleBordered 
@@ -85,7 +85,8 @@
 																	action:@selector(commentButtonTouched)];
 	
 	[self.navigationItem setRightBarButtonItem:commentButton];
-	
+	*/
+	 
 	/*
 	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
 	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];

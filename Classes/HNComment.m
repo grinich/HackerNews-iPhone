@@ -30,6 +30,9 @@
 -(BOOL) voteUpWithDelegate:(id)commentDelegate {
 	delegate = commentDelegate;
 	
+	int i = [self.points intValue];
+	self.points = [NSNumber numberWithInt:(i + 1)];
+	NSLog(@"Points %@", self.points);
 	
 	
 	NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.upvotelink];

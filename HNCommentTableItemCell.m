@@ -220,8 +220,24 @@ static CGFloat kDefaultIconSize = 50;
 		self.ind_level = item.indentationLevel;
 		commentTextLabel.text = item.text;
 		self.cellComment = item.comment;
+				
+		if (([self.cellComment.points intValue] != 1) && ([self.cellComment.points intValue] != -1)) {
+			self.byLineLabel.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ points</b> by %@ %@", 
+														[self.cellComment.points stringValue], 
+														self.cellComment.user, 
+														self.cellComment.time_ago]];
+		} else {
+			
+			self.byLineLabel.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
+														[self.cellComment.points stringValue], 
+														self.cellComment.user, 
+														self.cellComment.time_ago]];
+			
+		}
 		
-		self.byLineLabel.text = item.subtext;		
+		
+		
+		
 		self.commentTextLabel.contentInset = item.padding;
 		self.byLineLabel.contentInset = UIEdgeInsetsMake(10, 40, 0, 10); 
 		
@@ -253,11 +269,11 @@ static CGFloat kDefaultIconSize = 50;
 	if (sender.tag == 1) {
 		
 		self.cellComment.voted = YES;
-		int i = [self.cellComment.points intValue];
-		self.cellComment.points = [NSNumber numberWithInt:i + 1];
-		[(TTTableView*)self.superview reloadData];	
-		
 		[self.cellComment voteUpWithDelegate:self];
+
+		[(TTTableView*)self.superview reloadData];			
+
+		
 		
 	} else if (sender.tag == 2) {
 		self.cellComment.voted = YES;

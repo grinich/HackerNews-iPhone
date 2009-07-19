@@ -14,7 +14,6 @@
 	
 	HNComment *comment;
 	
-	TTStyledText* subtext;
 	NSNumber	* indentationLevel; 
 	
 	TTStyledText* _text;
