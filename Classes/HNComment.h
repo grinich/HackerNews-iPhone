@@ -22,9 +22,10 @@
 	
 	NSString*	upvotelink;
 	NSString*	downvotelink;
-	
-	BOOL	voted;
-	BOOL	downvoted;
+
+	BOOL  voted;
+	BOOL  downvoted;
+	id *delegate;
 	
 }
 @property (nonatomic, retain)	NSString*	contentsSource;
@@ -41,5 +42,10 @@
 
 @property (nonatomic)			BOOL	voted;
 @property (nonatomic)			BOOL	downvoted;
+
+-(BOOL) voteUpWithDelegate:(id)commentDelegate;
+-(BOOL) voteDownWithDelegate:(id)commentDelegate;
+@property(nonatomic,retain) id *delegate;
+
 
 @end

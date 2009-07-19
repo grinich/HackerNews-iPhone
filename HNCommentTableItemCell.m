@@ -244,78 +244,43 @@ static CGFloat kDefaultIconSize = 50;
 }
 
 
+#pragma mark -
+#pragma mark Voting
+
 -(void) vote:(UIButton*)sender {
 	// TODO : check for login. If no login, push the login controller and make them authenticate first.
 	
 	if (sender.tag == 1) {
-		NSString *URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.cellComment.upvotelink];
-		NSURL *URL = [NSURL URLWithString:URLstring];
-		NSMutableURLRequest* URLRequest = [NSMutableURLRequest requestWithURL:URL
-																  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-															  timeoutInterval:300.0];
-		// TODO : cycle this
-		NSString* safariUserAgent = @"Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_2 like Mac OS X;\
-		en-us) AppleWebKit/525.181 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20";
-		
-		[URLRequest setValue:safariUserAgent forHTTPHeaderField:@"User-Agent"];
-		
-		[URLRequest setHTTPShouldHandleCookies:YES];
-		
-		NSError * error;
-		NSHTTPURLResponse *response;
-		NSData * data = [NSURLConnection sendSynchronousRequest:URLRequest returningResponse:&response error:&error];	
 		
 		self.cellComment.voted = YES;
 		int i = [self.cellComment.points intValue];
 		self.cellComment.points = [NSNumber numberWithInt:i + 1];
-		[self.byLineLabel setText:[TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
-															   [self.cellComment.points stringValue], 
-															   self.cellComment.user, 
-															   self.cellComment.time_ago]]];
-		self.upVoteButton.hidden = YES;
-		self.upVoteButton.enabled = NO;
-		self.downVoteButton.hidden = YES;
-		self.downVoteButton.enabled = NO;
-		[self.byLineLabel setNeedsLayout];
+		[(TTTableView*)self.superview reloadData];	
+		
+		[self.cellComment voteUpWithDelegate:self];
 		
 	} else if (sender.tag == 2) {
-
-		NSString *URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.cellComment.downvotelink];
-		NSURL *URL = [NSURL URLWithString:URLstring];
-		NSMutableURLRequest* URLRequest = [NSMutableURLRequest requestWithURL:URL
-																  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-															  timeoutInterval:300.0];
-		// TODO : cycle this
-		NSString* safariUserAgent = @"Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_2 like Mac OS X;\
-		en-us) AppleWebKit/525.181 (KHTML, like Gecko) Version/3.1.1 Mobile/5H11 Safari/525.20";
-		
-		[URLRequest setValue:safariUserAgent forHTTPHeaderField:@"User-Agent"];
-		
-		[URLRequest setHTTPShouldHandleCookies:YES];
-		
-		NSError * error;
-		NSHTTPURLResponse *response;
-		NSData * data = [NSURLConnection sendSynchronousRequest:URLRequest returningResponse:&response error:&error];	
-		
 		self.cellComment.voted = YES;
-		
 		int i = [self.cellComment.points intValue];
 		self.cellComment.points = [NSNumber numberWithInt:i - 1];
-		[self.byLineLabel setText:[TTStyledText textFromXHTML:[NSString stringWithFormat:@"<b>%@ point</b> by %@ %@", 
-															   [self.cellComment.points stringValue], 
-															   self.cellComment.user, 
-															   self.cellComment.time_ago]]];
-		self.upVoteButton.hidden = YES;
-		self.upVoteButton.enabled = NO;
-		self.downVoteButton.hidden = YES;
-		self.downVoteButton.enabled = NO;
 		
-		[self.byLineLabel setNeedsLayout];
+		[(TTTableView*)self.superview reloadData];	
+		[self.cellComment voteDownWithDelegate:self];
+		
 	} else {
 		//WFT?
 	}
 	
-	
+}
+
+-(void)finishedVoteUp {
+	// Called after the upvote is finished
+	// TODD :  some animation to the label !?
+}
+
+-(void)finishedVoteDown {
+	// Called after the upvote is finished
+	// TODD :  some animation to the label !?
 }
 
 
