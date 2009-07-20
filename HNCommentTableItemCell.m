@@ -153,6 +153,8 @@ static CGFloat kDefaultIconSize = 50;
 	CGFloat maxHeight = self.contentView.height - kVPadding*2;
 	
 	
+	NSLog(@"Max Width %f", maxWidth);
+
 	
 //	HNCommentTableItem* item = self.object;
 	
@@ -304,6 +306,9 @@ static CGFloat kDefaultIconSize = 50;
 -(void) replyButtonTapped {
 	// Open reply to comment view!
 	NSLog(@"reply");
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"replyButtonNotification" object:self ] ;
+
 
 }
 
