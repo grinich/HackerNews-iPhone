@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Three20/Three20.h"
 
+@class HNCommentsTableViewController;
 
-@interface HNComment : NSObject {
+@interface HNComment : NSObject <TTURLRequestDelegate> {
 
 	NSString*	text;
 	NSNumber*	points;
 	NSString*	user;
 	NSURL*		url;
-	NSURL*		reply_url;
+	NSString*		reply_url;
 	NSString*	time_ago;
 	NSNumber*	indentationLevel;
 	NSString*	contentsSource;
@@ -23,9 +25,10 @@
 	NSString*	upvotelink;
 	NSString*	downvotelink;
 
-	BOOL  voted;
-	BOOL  downvoted;
-	id *delegate;
+	BOOL	replyEnabled;
+	BOOL	voted;
+	HNCommentsTableViewController *delegate;
+	BOOL	deletable;
 	
 }
 @property (nonatomic, retain)	NSString*	contentsSource;
@@ -33,7 +36,7 @@
 @property (nonatomic, retain)	NSNumber*	points;
 @property (nonatomic, retain)	NSString*	user;
 @property (nonatomic, retain)	NSURL*		url;
-@property (nonatomic, retain)	NSURL*		reply_url;
+@property (nonatomic, retain)	NSString*		reply_url;
 @property (nonatomic, retain)	NSString*	time_ago;
 @property (nonatomic, retain)			NSNumber*	indentationLevel;
 
@@ -41,11 +44,14 @@
 @property (nonatomic, retain)	NSString*	downvotelink;
 
 @property (nonatomic)			BOOL	voted;
-@property (nonatomic)			BOOL	downvoted;
 
--(BOOL) voteUpWithDelegate:(id)commentDelegate;
--(BOOL) voteDownWithDelegate:(id)commentDelegate;
-@property(nonatomic,retain) id *delegate;
+@property (nonatomic)			BOOL	deletable;
+@property (nonatomic)			BOOL	replyEnabled;
+
+
+-(void) voteUpWithDelegate:(id)commentDelegate;
+-(void) voteDownWithDelegate:(id)commentDelegate;
+@property(nonatomic,retain) HNCommentsTableViewController *delegate;
 
 
 @end

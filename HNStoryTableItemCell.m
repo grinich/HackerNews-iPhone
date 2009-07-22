@@ -43,9 +43,9 @@ static CGFloat kCommentButtonWidth = 50;
 @synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, accessoryButton, commentsLabel;
 
 
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
-	HNStoryTableItem* tableItem = item;
-	if ([item isKindOfClass:[HNStoryTableItem class]]) {
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
+	if ([object isKindOfClass:[HNStoryTableItem class]]) {
+		HNStoryTableItem* tableItem = object;
 		HNStory *story = [tableItem story];
 				
 		
@@ -155,7 +155,6 @@ static CGFloat kCommentButtonWidth = 50;
 
 
 - (void)dealloc {
-	TT_RELEASE_MEMBER(self.subtextLabel);
 	[super dealloc];
 }
 

@@ -16,6 +16,7 @@
 
 #import "HNCommentHeaderItem.h"
 #import "HNCommentHeaderItemCell.h"
+#import "HNCommentReplyItem.h"
 
 #import "TempItems.h"
 
@@ -25,7 +26,7 @@
 - (id)initWithStory:(NSString *)story_id {
 	if (self = [super init]) {
 		self.model = [[HNCommentModel alloc] init];
-		self.model.story_id = story_id;
+		((HNCommentModel*)self.model).story_id = story_id;
 	}
 	return self;
 }
@@ -35,8 +36,7 @@
 }
 
 
-
-- (void)willAppearInTableView:(UITableView*)tableView {
+- (void)tableViewDidLoadModel:(UITableView*)tableView {	
 	
 	[self.items addObject:[HNCommentHeaderItem itemWithStory:[[TempItems sharedTempItems] tempHNStory]]];
 	
@@ -64,6 +64,8 @@
 		return [HNCommentTableItemCell class];
 	} else if ([object isKindOfClass:[HNCommentHeaderItem class]]) {
 		return [HNCommentHeaderItemCell class];
+	} else if ([object isKindOfClass:[HNCommentReplyItem class]]) {
+		return [TTTableControlCell class];
 	}
 	
 	else {

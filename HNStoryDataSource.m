@@ -35,7 +35,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewDataSource
 
-- (void)willAppearInTableView:(UITableView*)tableView {
+- (void)tableViewDidLoadModel:(UITableView*)tableView {
 	for (HNStory* story in ((HNStoryModel *)self.model).stories) {
 		[self.items addObject:[HNStoryTableItem itemWithStory:story]];
 	}
@@ -49,14 +49,6 @@
 	} else {
 		return TTLocalizedString(@"Loading stories...", @"");
 	}
-}
-
-- (NSString*)titleForError:(NSError*)error {
-	return TTLocalizedString(@"Error", @"");
-}
-
-- (NSString*)subtitleForError:(NSError*)error {
-	return TTLocalizedString(@"Sorry, an error has occurred.", @"");
 }
 
 

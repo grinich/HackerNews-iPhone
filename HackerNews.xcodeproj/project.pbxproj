@@ -17,9 +17,10 @@
 		4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */; };
 		4C0A1D0F100DCA4D009E7A11 /* TempItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1D0E100DCA4D009E7A11 /* TempItems.m */; };
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
+		4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2881D51016EA6D00BDEF99 /* LoadingView.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
 		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
-		4C41E69110105A6F000A7253 /* HNLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* HNLogin.m */; };
+		4C41E69110105A6F000A7253 /* HNAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* HNAuth.m */; };
 		4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */; };
 		4C4CA58D100E30460090D24D /* downvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA58B100E30460090D24D /* downvote.png */; };
 		4C4CA59D100E30E00090D24D /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA59C100E30E00090D24D /* upvote.png */; };
@@ -32,10 +33,14 @@
 		4C613B26101040C900914337 /* HNCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C613B25101040C900914337 /* HNCommentModel.m */; };
 		4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8E7396100E7A4F0071A8BE /* HNPing.m */; };
 		4C8E73A5100E7A7B0071A8BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */; };
+		4C9CB67810157824002ECBD3 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */; };
+		4C9CB6F710158CD6002ECBD3 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9CB6F610158CD6002ECBD3 /* trash.png */; };
 		4CA2EF441007515400E8D387 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF431007515400E8D387 /* Default.png */; };
 		4CA2EF8C1007558B00E8D387 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EF7E1007549300E8D387 /* libThree20.a */; };
 		4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF9F100755E700E8D387 /* Three20.bundle */; };
 		4CA2EFB51007560200E8D387 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EFB41007560200E8D387 /* QuartzCore.framework */; };
+		4CACB2A3101510660095F004 /* HNCommentTextEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CACB2A2101510660095F004 /* HNCommentTextEditor.m */; };
+		4CACB3D010152AAB0095F004 /* HNCommentReplyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CACB3CF10152AAB0095F004 /* HNCommentReplyItem.m */; };
 		4CB5022A1009598200476948 /* HNStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB502291009598200476948 /* HNStyle.m */; };
 		4CB5049A1009A80600476948 /* HNCommentTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB504991009A80600476948 /* HNCommentTableItemCell.m */; };
 		4CB509391009F7E600476948 /* HNCommentTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB509381009F7E600476948 /* HNCommentTableItem.m */; };
@@ -100,11 +105,13 @@
 		4C0A1D0E100DCA4D009E7A11 /* TempItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempItems.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
 		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
+		4C2881D41016EA6D00BDEF99 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		4C2881D51016EA6D00BDEF99 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
-		4C41E68F10105A6F000A7253 /* HNLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLogin.h; sourceTree = "<group>"; };
-		4C41E69010105A6F000A7253 /* HNLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLogin.m; sourceTree = "<group>"; };
+		4C41E68F10105A6F000A7253 /* HNAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNAuth.h; sourceTree = "<group>"; };
+		4C41E69010105A6F000A7253 /* HNAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNAuth.m; sourceTree = "<group>"; };
 		4C41E79B10106F5F000A7253 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4C41E79C10106F5F000A7253 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4C4CA58B100E30460090D24D /* downvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downvote.png; sourceTree = "<group>"; };
@@ -123,10 +130,17 @@
 		4C8E7395100E7A4F0071A8BE /* HNPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPing.h; sourceTree = "<group>"; };
 		4C8E7396100E7A4F0071A8BE /* HNPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPing.m; sourceTree = "<group>"; };
 		4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+		4C9CB67610157824002ECBD3 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
+		4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		4C9CB6F610158CD6002ECBD3 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		4CA2EF431007515400E8D387 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4CA2EF791007549300E8D387 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4CA2EF9F100755E700E8D387 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		4CA2EFB41007560200E8D387 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		4CACB2A1101510660095F004 /* HNCommentTextEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTextEditor.h; sourceTree = "<group>"; };
+		4CACB2A2101510660095F004 /* HNCommentTextEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTextEditor.m; sourceTree = "<group>"; };
+		4CACB3CE10152AAB0095F004 /* HNCommentReplyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentReplyItem.h; sourceTree = "<group>"; };
+		4CACB3CF10152AAB0095F004 /* HNCommentReplyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentReplyItem.m; sourceTree = "<group>"; };
 		4CB502281009598200476948 /* HNStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStyle.h; path = ../HNStyle.h; sourceTree = "<group>"; };
 		4CB502291009598200476948 /* HNStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStyle.m; path = ../HNStyle.m; sourceTree = "<group>"; };
 		4CB504981009A80600476948 /* HNCommentTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTableItemCell.h; sourceTree = "<group>"; };
@@ -211,8 +225,8 @@
 				4CB502291009598200476948 /* HNStyle.m */,
 				4C8E7395100E7A4F0071A8BE /* HNPing.h */,
 				4C8E7396100E7A4F0071A8BE /* HNPing.m */,
-				4C41E68F10105A6F000A7253 /* HNLogin.h */,
-				4C41E69010105A6F000A7253 /* HNLogin.m */,
+				4C41E68F10105A6F000A7253 /* HNAuth.h */,
+				4C41E69010105A6F000A7253 /* HNAuth.m */,
 				4C41E79B10106F5F000A7253 /* LoginViewController.h */,
 				4C41E79C10106F5F000A7253 /* LoginViewController.m */,
 			);
@@ -261,6 +275,10 @@
 			isa = PBXGroup;
 			children = (
 				4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */,
+				4C9CB67610157824002ECBD3 /* NSDictionary+UrlEncoding.h */,
+				4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */,
+				4C2881D41016EA6D00BDEF99 /* LoadingView.h */,
+				4C2881D51016EA6D00BDEF99 /* LoadingView.m */,
 				4C41899610050665009BB9EA /* Element Parser */,
 				28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -333,6 +351,7 @@
 		4CA53F9E100D4F5F008F70EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C9CB6F610158CD6002ECBD3 /* trash.png */,
 				4C57D2CA100E7292001B8ADF /* reply.png */,
 				4C4CA5B3100E31DE0090D24D /* upvote-big.png */,
 				4C4CA59C100E30E00090D24D /* upvote.png */,
@@ -374,6 +393,10 @@
 				4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */,
 				4C0A1BA5100DBC6B009E7A11 /* HNCommentHeaderItem.h */,
 				4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */,
+				4CACB2A1101510660095F004 /* HNCommentTextEditor.h */,
+				4CACB2A2101510660095F004 /* HNCommentTextEditor.m */,
+				4CACB3CE10152AAB0095F004 /* HNCommentReplyItem.h */,
+				4CACB3CF10152AAB0095F004 /* HNCommentReplyItem.m */,
 				4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */,
 				4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */,
 				4CB509371009F7E600476948 /* HNCommentTableItem.h */,
@@ -458,6 +481,7 @@
 				4C4CA59D100E30E00090D24D /* upvote.png in Resources */,
 				4C4CA5B4100E31DE0090D24D /* upvote-big.png in Resources */,
 				4C57D2CB100E7292001B8ADF /* reply.png in Resources */,
+				4C9CB6F710158CD6002ECBD3 /* trash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,8 +529,12 @@
 				4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */,
 				4C61388010100BFF00914337 /* HNStoryModel.m in Sources */,
 				4C613B26101040C900914337 /* HNCommentModel.m in Sources */,
-				4C41E69110105A6F000A7253 /* HNLogin.m in Sources */,
+				4C41E69110105A6F000A7253 /* HNAuth.m in Sources */,
 				4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */,
+				4CACB2A3101510660095F004 /* HNCommentTextEditor.m in Sources */,
+				4CACB3D010152AAB0095F004 /* HNCommentReplyItem.m in Sources */,
+				4C9CB67810157824002ECBD3 /* NSDictionary+UrlEncoding.m in Sources */,
+				4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,7 +591,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_VERSION = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../three20/src;
@@ -583,7 +611,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_VERSION = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../three20/src;

@@ -1,55 +1,41 @@
 
 :::::::::::::   TODO   ::::::::::::::::
 
-Hack in indentation support for tableViewCells
+* When reading one of your own stories that can be deleted,
+  need to parse out the "delete | link... text that gets added
 
+* Failed login attemps should be noted and should have a popup.
+
+* Mask user agent?
+
+
+
+
+:::::::::::::   TESTING   ::::::::::::::::
 
 VERY long story http://news.ycombinator.com/item?id=692338
 
 
-- Search parser
-- Search view controller
 
-- Login support
 
-- Voting system using pings.
-- How to tell if "already voted"
+:::::::::::::   NEXT VERSION  ::::::::::::::::
 
+- Searching via searchyc.com
 - Integration with InstaPaper
 
-Home view stuff:
-http://news.ycombinator.com/noobs
-http://news.ycombinator.com/newest
-http://news.ycombinator.com/newcomments
+Links to:
+* http://news.ycombinator.com/noobs
+* http://news.ycombinator.com/newest
+* http://news.ycombinator.com/newcomments
 
-Posting to HN???  Via bookmarlet
+Bookmarlet installation
 
+Formatting helpers for posting comments
 
-:::::::::::::   FORMATTING   ::::::::::::::::
-
-
-Blank lines separate paragraphs.
-Text after a blank line that is indented by two or more spaces is reproduced verbatim. (This is intended for code.)
-
-Text surrounded by asterisks is italicized, if the character after the first asterisk isn't whitespace.
-
-Urls become links, except in the text field of a submission.
-
-
-
-
-
-
-
-
-:::::::::::::   MASK USER AGENT   ::::::::::::::::
-
-NSString *agentString = @"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_6; en-us) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/3.2.1 Safari/525.27.1";
-		
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: 
-[NSURL URLWithString:urlString]];
-[request setValue:agentString forHTTPHeaderField:@"User-Agent"];
-
+* Blank lines separate paragraphs.
+* Text after a blank line that is indented by two or more spaces is reproduced verbatim. (This is intended for code.)
+* Text surrounded by asterisks is italicized, if the character after the first asterisk isn't whitespace.
+* Urls become links, except in the text field of a submission.
 
 
 
@@ -66,4 +52,3 @@ Joe Hewitt's 320project for a lot of stuff
 ---
 Element Parser
 --- 
-PingTool?

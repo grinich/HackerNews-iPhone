@@ -40,12 +40,11 @@ static CGFloat kVPadding = 15;
 @synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, accessoryButton;
 @synthesize speechBubbleView;
 
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
 
+	if ([object isKindOfClass:[HNCommentHeaderItem class]]) {
+		HNCommentHeaderItem* tableItem = object;
 
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
-	HNCommentHeaderItem* tableItem = item;
-	if ([item isKindOfClass:[HNCommentHeaderItem class]]) {
-		
 		HNStory *story = [tableItem story];
 		
 		
@@ -169,7 +168,7 @@ static CGFloat kVPadding = 15;
 
 
 - (void)dealloc {
-	TT_RELEASE_MEMBER(self.subtextLabel);
+	TT_RELEASE_SAFELY(self.subtextLabel);
 	[super dealloc];
 }
 

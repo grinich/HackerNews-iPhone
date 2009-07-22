@@ -18,4 +18,8 @@
 @property(nonatomic,readonly) TTStyle* HNOrangeText;
 
 @property(nonatomic,readonly) UIColor *hackerNewsColor;
+@property(nonatomic,readonly) UIColor *composeReplyColor;
+@property(nonatomic,readonly) UIColor *myCommentBackgroundColor;
+@property(nonatomic,readonly) UIColor *standardCommentBackgroundColor;
+
 @end

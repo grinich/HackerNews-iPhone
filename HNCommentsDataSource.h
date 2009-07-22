@@ -15,7 +15,7 @@
 
 }
 
-- (id)initWithID:(NSString*)storyID;
+- (id)initWithStory:(NSString *)story_id;
 
 
 @end

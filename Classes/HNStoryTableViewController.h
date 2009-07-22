@@ -11,9 +11,10 @@
 
 @interface HNStoryTableViewController : TTTableViewController {
 
-
+	UIBarButtonItem *loginButton;
 	
 }
 
+@property(nonatomic,retain) UIBarButtonItem *loginButton;
 
 @end

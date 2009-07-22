@@ -13,10 +13,9 @@
 
 #import "HNComment.h"
 #import "HNStyle.h"
-
+#import "HNAuth.h"
 #import <CoreFoundation/CoreFoundation.h>
 #import <SystemConfiguration/SCNetworkReachability.h>
-
 
 
 
@@ -27,16 +26,16 @@ static CGFloat kBottomButtonsBuffer = 10;
 
 static CGFloat kHPadding = 10;
 static CGFloat kVPadding = 10;
-static CGFloat kMargin = 10;
-static CGFloat kSpacing = 8;
-static CGFloat kControlPadding = 8;
+//static CGFloat kMargin = 10;
+//static CGFloat kSpacing = 8;
+//static CGFloat kControlPadding = 8;
 static CGFloat kGroupMargin = 10;
-static CGFloat kDefaultTextViewLines = 5;
-static CGFloat kKeySpacing = 12;
-static CGFloat kKeyWidth = 75;
-static CGFloat kMaxLabelHeight = 2000;
-static CGFloat kDisclosureIndicatorWidth = 23;
-static CGFloat kDefaultIconSize = 50;
+//static CGFloat kDefaultTextViewLines = 5;
+//static CGFloat kKeySpacing = 12;
+//static CGFloat kKeyWidth = 75;
+//static CGFloat kMaxLabelHeight = 2000;
+//static CGFloat kDisclosureIndicatorWidth = 23;
+//static CGFloat kDefaultIconSize = 50;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,17 +47,17 @@ static CGFloat kDefaultIconSize = 50;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
-
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item {
 		
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
+
 	
 	// TODO : take into account the spacing for commentTextLabel. Shift the other view down one.
 	
-	HNCommentTableItem *cItem = item;
+	HNCommentTableItem *cItem = object;
 	CGFloat indent_by = kIndentationPadding * [[cItem.comment indentationLevel] floatValue];
 	
 	
-	TTTableStyledTextItem* textItem = item;
+	TTTableStyledTextItem* textItem = object;
 	textItem.text.font = TTSTYLEVAR(font);
 	
 	CGFloat padding = tableView.style == UITableViewStyleGrouped ? kGroupMargin*2 : 0;
@@ -82,63 +81,83 @@ static CGFloat kDefaultIconSize = 50;
 
 		self.byLineLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
 		self.byLineLabel.contentMode = UIViewContentModeLeft;
-		
+		self.byLineLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);
 		self.byLineLabel.font = TTSTYLEVAR(commentBylineFont);
 
 		[self.contentView addSubview:byLineLabel];
 		
 		self.commentTextLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
 		self.commentTextLabel.contentMode = UIViewContentModeLeft;
-		self.commentTextLabel.backgroundColor = [UIColor whiteColor];
+		self.commentTextLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);;
 		[self.contentView addSubview:self.commentTextLabel];
 		
 		
 		
 		
-		UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"upvote" ofType:@"png"]];
-		
-		self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.upVoteButton setImage:accessoryImage forState:UIControlStateNormal];
-		
-		[self.upVoteButton addTarget:self
-							  action:@selector(vote:)
-					   forControlEvents:UIControlEventTouchUpInside];
-		self.upVoteButton.tag = 1;
-		[self.contentView addSubview:self.upVoteButton];
-		
-		
-		UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"downvote" ofType:@"png"]];
-		
-		self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
-		
-		[self.downVoteButton addTarget:self
-								action:@selector(vote:)
-					forControlEvents:UIControlEventTouchUpInside];
-		self.downVoteButton.tag = 2;
-		[self.contentView addSubview:self.downVoteButton];
-		
 
+		/*
 		
-		UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
-								  [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
+		if (YES) {
+			UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
+									  [[NSBundle mainBundle] pathForResource:@"trash" ofType:@"png"]];
+			
+			self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+			[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
+			
+			[self.downVoteButton addTarget:self
+									action:@selector(deleteComment:)
+						  forControlEvents:UIControlEventTouchUpInside];
+			self.downVoteButton.tag = 2;
+			[self.contentView addSubview:self.downVoteButton];
 		
-		self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.replyButton setImage:replyImage forState:UIControlStateNormal];
 		
-		[self.replyButton addTarget:self
-								action:@selector(replyButtonTapped)
-					  forControlEvents:UIControlEventTouchUpInside];
-		[self.contentView addSubview:self.replyButton];
+		
+		} else { */
+			UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
+									  [[NSBundle mainBundle] pathForResource:@"downvote" ofType:@"png"]];
+			
+			self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+			[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
+			
+			[self.downVoteButton addTarget:self
+									action:@selector(vote:)
+						  forControlEvents:UIControlEventTouchUpInside];
+			self.downVoteButton.tag = 2;
+			[self.contentView addSubview:self.downVoteButton];
+			
+			
+			UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
+									   [[NSBundle mainBundle] pathForResource:@"upvote" ofType:@"png"]];
+			
+			self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+			[self.upVoteButton setImage:accessoryImage forState:UIControlStateNormal];
+			
+			[self.upVoteButton addTarget:self
+								  action:@selector(vote:)
+						forControlEvents:UIControlEventTouchUpInside];
+			self.upVoteButton.tag = 1;
+			[self.contentView addSubview:self.upVoteButton];
+		//		}
+		
 				
+			UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
+								   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
+			
+			self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+			[self.replyButton setImage:replyImage forState:UIControlStateNormal];
+			
+			[self.replyButton addTarget:self
+								 action:@selector(replyButtonTapped)
+					   forControlEvents:UIControlEventTouchUpInside];
+			[self.contentView addSubview:self.replyButton];
+			
+		
 	}
 	return self;
 }
 
 - (void)dealloc {
-	TT_RELEASE_MEMBER(commentTextLabel);
+	TT_RELEASE_SAFELY(commentTextLabel);
 	[super dealloc];
 }
 
@@ -150,10 +169,9 @@ static CGFloat kDefaultIconSize = 50;
 	
 	
 	CGFloat maxWidth = self.contentView.width - kHPadding*2 ;
-	CGFloat maxHeight = self.contentView.height - kVPadding*2;
+	//	CGFloat maxHeight = self.contentView.height - kVPadding*2;
 	
 	
-	NSLog(@"Max Width %f", maxWidth);
 
 	
 //	HNCommentTableItem* item = self.object;
@@ -166,9 +184,7 @@ static CGFloat kDefaultIconSize = 50;
 											 maxWidth - indent_by, 
 											 self.contentView.height - kVPadding - self.byLineLabel.height);
 	
-	
-	
-	
+
 	
 	self.upVoteButton.frame = CGRectMake(indent_by + kHPadding + 7, 
 										 2,
@@ -183,11 +199,12 @@ static CGFloat kDefaultIconSize = 50;
 	self.downVoteButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 3, 23);
 
 	
+	
+
 	self.replyButton.frame = CGRectMake( self.contentView.frame.size.width - kHPadding*2 - 24, 
 										self.commentTextLabel.frame.size.height,
 										30, 
 										50);
-	
 	
 	self.byLineLabel.frame  = CGRectMake(kHPadding + indent_by, 
 									kVPadding,
@@ -195,8 +212,6 @@ static CGFloat kDefaultIconSize = 50;
 									kBylineHeight);
 	
 
-	
-	
 
 	// REDRAW!! 
 	
@@ -237,23 +252,52 @@ static CGFloat kDefaultIconSize = 50;
 			
 		}
 		
-		
-		
-		
 		self.commentTextLabel.contentInset = item.padding;
 		self.byLineLabel.contentInset = UIEdgeInsetsMake(10, 40, 0, 10); 
 		
-		if (self.cellComment.voted) {
+		if ([[HNAuth sharedHNAuth] loggedin]) {
+			
+			if (!self.cellComment.voted) {
+				self.upVoteButton.hidden = NO;
+				self.upVoteButton.enabled = YES;
+				self.downVoteButton.hidden = NO;
+				self.downVoteButton.enabled = YES;
+			} else {
+				self.upVoteButton.hidden = YES;
+				self.upVoteButton.enabled = NO;
+				self.downVoteButton.hidden = YES;
+				self.downVoteButton.enabled = NO;
+			}
+
+			
+			if (self.cellComment.replyEnabled) {
+				self.replyButton.hidden = NO;
+				self.replyButton.enabled = YES;
+			} else {
+				self.replyButton.hidden = YES;
+				self.replyButton.enabled = NO;
+			}
+
+			
+		} else {
 			self.upVoteButton.hidden = YES;
 			self.upVoteButton.enabled = NO;
 			self.downVoteButton.hidden = YES;
 			self.downVoteButton.enabled = NO;
+			self.replyButton.hidden = YES;
+			self.replyButton.enabled = NO;
+		}
+
+		
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] 
+			 isEqualToString:self.cellComment.user]) {
+			self.byLineLabel.backgroundColor = TTSTYLEVAR(myCommentBackgroundColor);
+			self.commentTextLabel.backgroundColor = TTSTYLEVAR(myCommentBackgroundColor);
 
 		} else {
-			self.upVoteButton.hidden = NO;
-			self.upVoteButton.enabled = YES;
-			self.downVoteButton.hidden = NO;
-			self.downVoteButton.enabled = YES;
+			self.byLineLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);
+			self.commentTextLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);
+
 		}
 		
 		
@@ -263,53 +307,28 @@ static CGFloat kDefaultIconSize = 50;
 
 
 #pragma mark -
-#pragma mark Voting
+#pragma mark Buttons
 
 -(void) vote:(UIButton*)sender {
 	// TODO : check for login. If no login, push the login controller and make them authenticate first.
 	
 	if (sender.tag == 1) {
-		
-		self.cellComment.voted = YES;
-		[self.cellComment voteUpWithDelegate:self];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"voteUpNotification" object:self ] ;
 
-		[(TTTableView*)self.superview reloadData];			
-
-		
-		
 	} else if (sender.tag == 2) {
-		self.cellComment.voted = YES;
-		int i = [self.cellComment.points intValue];
-		self.cellComment.points = [NSNumber numberWithInt:i - 1];
-		
-		[(TTTableView*)self.superview reloadData];	
-		[self.cellComment voteDownWithDelegate:self];
-		
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"voteDownNotification" object:self ] ;
 	} else {
 		//WFT?
 	}
-	
 }
 
--(void)finishedVoteUp {
-	// Called after the upvote is finished
-	// TODD :  some animation to the label !?
+-(void)deleteComment:(UIButton*)sender {
+	NSLog(@"Delete comment!");
 }
-
--(void)finishedVoteDown {
-	// Called after the upvote is finished
-	// TODD :  some animation to the label !?
-}
-
 
 
 -(void) replyButtonTapped {
-	// Open reply to comment view!
-	NSLog(@"reply");
-	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"replyButtonNotification" object:self ] ;
-
-
 }
 
 @end

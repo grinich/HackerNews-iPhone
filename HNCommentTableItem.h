@@ -29,7 +29,7 @@
 @property(nonatomic) UIEdgeInsets margin;
 @property(nonatomic) UIEdgeInsets padding;
 
-@property(nonatomic, retain) 	TTStyledText* subtext;
+//@property(nonatomic, retain) 	TTStyledText* subtext;		// TODO : put this back in for efficiency.
 @property(nonatomic, retain) 	NSNumber	* indentationLevel; 
 
 

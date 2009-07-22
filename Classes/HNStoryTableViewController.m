@@ -8,16 +8,18 @@
 
 #import "HNStoryTableViewController.h"
 #import "HNStoryDataSource.h"
-
+#import "HNAuth.h"
 
 #import "HNStoryTableItem.h"
 #import "HNStoryTableItemCell.h"
+
+
 
 @class HNStory, HNStoryTableItemCell;
 
 @implementation HNStoryTableViewController
 
-
+@synthesize loginButton;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
@@ -30,6 +32,12 @@
 	return self;
 }
 
+
+- (id<UITableViewDelegate>)createDelegate {
+	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
 
@@ -38,20 +46,23 @@
 - (void)loadView {
 	[super loadView];
 	
+	/*
+	
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																				  target:self 
 																				  action:@selector(activateSearchBar)];
 	
 	[self.navigationItem setRightBarButtonItem:searchButton];	
+	*/
 	
 	
-	UIBarButtonItem *loginButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" 
-																	style:UIBarButtonItemStylePlain 
-																   target:self
-																   action:@selector(loginButtonTapped)];
-
+	loginButton = [[UIBarButtonItem alloc] initWithTitle:@"sometitle" 
+													style:UIBarButtonItemStylePlain 
+												   target:self
+												   action:@selector(buttonTapped)];
 	
-	[self.navigationItem setLeftBarButtonItem:loginButton];
+	[self.navigationItem setLeftBarButtonItem:loginButton];	
+	
 	
 	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
 	| UIViewAutoresizingFlexibleHeight;
@@ -66,61 +77,30 @@
 	
 }
 
--(void) loginButtonTapped {
-	// Jump to login logic!
-	TTOpenURL(@"tt://login");
-
-	
-}
- 
-- (void) activateSearchBar {
-	// Do something!
-	
-	NSArray *deleteIndexPaths = [NSArray arrayWithObjects:
-								 [NSIndexPath indexPathForRow:2 inSection:0],
-								 [NSIndexPath indexPathForRow:4 inSection:0],
-								 nil];
-    NSArray *insertIndexPaths = [NSArray arrayWithObjects:
-								 [NSIndexPath indexPathForRow:0 inSection:0],
-								 [NSIndexPath indexPathForRow:3 inSection:0],
-								 nil];
-    UITableView *tv = (UITableView *)self.tableView;
-	
-    [tv beginUpdates];
-    [tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-    [tv deleteRowsAtIndexPaths:deleteIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [tv endUpdates];
-	
-}
-
-
-- (void)loadModel {
-	self.dataSource =  [[[HNStoryDataSource alloc] init] autorelease];	
-}
-
-
-- (void)modelDidFinishLoad:(id<TTModel>)model {
-	self.modelState = TTModelStateLoaded;
-}
-
-
-
-
-/*
- // TODO: Do stuff!?
-- (void)modelDidChangeState {
-	if (self.modelState == TTModelStateLoading) {
-		self.title = @"StateLoading";
-	} else if (self.modelState == TTModelStateEmpty) {
-		self.title = @"StateEmpty";
-	} else if (self.modelState == TTModelStateLoadedError) {
-		self.title = @"StateLoadedError";
-	} else if (self.modelState == TTModelStateLoaded) {
-		self.title = @"StateLoaded";
+-(void)viewWillAppear:(BOOL)animated {	
+	[super viewWillAppear:animated];
+	if ([[HNAuth sharedHNAuth] loggedin]) {
+		loginButton.title = @"Logout";
+	} else {
+		loginButton.title = @"Login";
 	}
 }
-*/
 
+
+-(void) buttonTapped {
+	if ([[HNAuth sharedHNAuth] loggedin]) {
+		[[HNAuth sharedHNAuth] logout];
+		loginButton.title = @"Login";
+	} else {
+		TTOpenURL(@"tt://login");
+	}
+	
+}
+
+
+- (void)createModel {
+	self.dataSource =  [[[HNStoryDataSource alloc] init] autorelease];	
+}
 
 		
 

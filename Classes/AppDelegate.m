@@ -11,6 +11,7 @@
 #import "HNCommentsTableViewController.h"
 #import "LoginViewController.h"
 #import "HNStyle.h"
+#import "HNAuth.h"
 
 @implementation AppDelegate
 
@@ -23,10 +24,6 @@
 #pragma mark Application lifecycle
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-
-	
-	
-	
 	[window makeKeyAndVisible];
 	
 	
@@ -71,24 +68,32 @@
 	*/
 	
 	
+	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com"];
+	NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:hnURL];
+	if ([cookies count] > 0 ) {
+		// TODO : check date and make sure that it's not expired
+		[[HNAuth sharedHNAuth] setLoggedin:YES];
+		
+	} else {
+		[[HNAuth sharedHNAuth] setLoggedin:NO];
+	}
 	
-	 //[map from:@"tt://home/comments/(initWithStory:)" toViewController:[HNCommentsTableViewController class]];
+	NSLog(@"App delegate cookies %@", cookies);
 
 	
 	if (![navigator restoreViewControllers]) {
-		//[navigator openURL:@"http://news.ycombinator.com/item?id=706343" animated:NO];
 		[navigator openURL:@"tt://home" animated:NO];
 	}
 	
 
 }
 
-/*
+
 - (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	[splashView removeFromSuperview];
 	[splashView release];
 }
-*/
+
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
 	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];

@@ -20,12 +20,11 @@
 
 
 + (HNCommentTableItem *)itemWithComment:(HNComment *)aComment {
-	HNCommentTableItem *item = [HNCommentTableItem new];
+	HNCommentTableItem *item = [[HNCommentTableItem alloc] init];
 	item.comment = aComment;
 	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
 	
-	
-	
+		
 	item.indentationLevel = aComment.indentationLevel;
 	//item.URL = @"http://www.google.com";	// TODO: Specify this for adding a comment!
 	
@@ -48,8 +47,8 @@
 }
 
 - (void)dealloc {
-	TT_RELEASE_MEMBER(_text);
-	TT_RELEASE_MEMBER(comment);
+	TT_RELEASE_SAFELY(_text);
+	TT_RELEASE_SAFELY(comment);
 	[super dealloc];
 }
 
@@ -72,4 +71,5 @@
 
 	}
 }
+
 @end

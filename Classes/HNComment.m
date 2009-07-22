@@ -23,18 +23,28 @@
 @synthesize upvotelink;
 @synthesize downvotelink;
 @synthesize voted;
-
+@synthesize deletable;
+@synthesize replyEnabled;
 
 @synthesize delegate;
 
--(BOOL) voteUpWithDelegate:(id)commentDelegate {
+
+
+-(id)init{
+	self = [super init];
+	self.replyEnabled = YES;
+
+	return self;
+}
+
+
+-(void) voteUpWithDelegate:(id)commentDelegate {
 	delegate = commentDelegate;
 	
-	int i = [self.points intValue];
-	self.points = [NSNumber numberWithInt:(i + 1)];
-	NSLog(@"Points %@", self.points);
-	
-	
+//	int i = [self.points intValue];
+//	self.points = [NSNumber numberWithInt:(i + 1)];
+//	NSLog(@"Points %@", self.points);
+
 	NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.upvotelink];
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:URLstring delegate:self];
@@ -46,12 +56,16 @@
 	BOOL cacheHit = [request send];  
 	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
 	
-	
 }
 
 
--(BOOL) voteDownWithDelegate:(id)commentDelegate {
+-(void) voteDownWithDelegate:(id)commentDelegate {
 	delegate = commentDelegate;
+	
+//	int i = [self.points intValue];
+//	self.points = [NSNumber numberWithInt:(i + 1)];
+//	NSLog(@"Points %@", self.points);
+		
 	NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.downvotelink];
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:URLstring delegate:self];
@@ -71,13 +85,13 @@
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
 	
-	TTURLDataResponse *response = request.response;
-	NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
+	//TTURLDataResponse *response = request.response;
+	//NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 	
 	NSLog(@"finished vote.");
-	// TODO : check body for response!?  
+	// TODO : check body for response and make sure it went through.
 	
-	[delegate finishedVoteUp];
+//	[delegate reloadData];
 	
 }
 

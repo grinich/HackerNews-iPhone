@@ -14,11 +14,8 @@
 #import "HNCommentModel.h"
 #import "HNStyle.h"
 #import "HNComment.h"
-
-
-static CGFloat kIndentationPadding = 10;
-static CGFloat kHPadding = 10;
-
+#import "HNCommentReplyItem.h"
+#import "LoadingView.h"
 
 
 
@@ -27,6 +24,8 @@ static CGFloat kHPadding = 10;
 @implementation HNCommentsTableViewController
 
 @synthesize storyID = _storyID;
+@synthesize composing;
+@synthesize replyCommentItem;
 
 	
 /*
@@ -47,14 +46,6 @@ static CGFloat kHPadding = 10;
 
 */
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// NSObject
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// NSObject
-
 
 
 - (id)initWithStory:(NSString *)storyIN {
@@ -71,7 +62,23 @@ static CGFloat kHPadding = 10;
 												 selector:@selector(replyToComment:) 
 													 name:@"replyButtonNotification" 
 												   object:nil];
-		 
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(voteUp:) 
+													 name:@"voteUpNotification" 
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(voteDown:) 
+													 name:@"voteDownNotification" 
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(finishSubmittingComment:) 
+													 name:@"commentSubmittedNotification" 
+												   object:nil];
+		
+		self.composing = NO;	
 
 	}
 	return self;
@@ -86,50 +93,9 @@ static CGFloat kHPadding = 10;
 
 - (void)loadView {
 	[super loadView];
-//	self.tableView.allowsSelection = NO;
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
-	
-	
-	/*
-	// TODO : Doesn't work! --yet
-	UIBarButtonItem *commentButton = [[UIBarButtonItem alloc] initWithTitle:@"Reorder?" 
-																	 style:UIBarButtonItemStyleBordered 
-																	target:self 
-																	action:@selector(commentButtonTouched)];
-	
-	[self.navigationItem setRightBarButtonItem:commentButton];
-	*/
-	 
-	/*
-	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
-	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
-	
-	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
-	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
-	[titleImage release];
-	*/
 	self.navigationItem.title = @"Comments";
-	
-}
-
--(void) commentButtonTouched {
-	// Search at http://www.searchyc.com
-	
-	NSArray *deleteIndexPaths = [NSArray arrayWithObjects:
-								 [NSIndexPath indexPathForRow:0 inSection:0],
-								 [NSIndexPath indexPathForRow:1 inSection:0],
-								 nil];
-    NSArray *insertIndexPaths = [NSArray arrayWithObjects:
-								 [NSIndexPath indexPathForRow:2 inSection:0],
-								 [NSIndexPath indexPathForRow:3 inSection:0],
-								 nil];
-    UITableView *tv = (UITableView *)self.tableView;
-	
-    [tv beginUpdates];
-    [tv insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-    [tv deleteRowsAtIndexPaths:deleteIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [tv endUpdates];
 	
 }
 
@@ -137,92 +103,212 @@ static CGFloat kHPadding = 10;
 // TTTableViewController
 
 
--(void)replyToComment:(NSNotification *) notification {
-	
-	HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
-	
-	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-	
-	NSUInteger index = [listItems indexOfObject:replyCell];
 
-
-	/*
-	CGFloat maxWidth = 300;
-	CGFloat indent_by = kIndentationPadding * [[replyCell.comment indentationLevel] floatValue];
-
-	
-	CGRect frame =  CGRectMake( kHPadding + indent_by, 
-							   0.0, 
-							   maxWidth - indent_by,
-							   84.0);
-	*/
-	 
-	TTTextEditor* editor = [[[TTTextEditor alloc] init] autorelease];
-	
-	
-	
-    editor.textView.font = TTSTYLEVAR(font);
-    editor.backgroundColor = TTSTYLEVAR(backgroundColor);
-    editor.autoresizesToText = NO;
-    editor.minNumberOfLines = 6;
-
-	[listItems insertObject:editor atIndex:index +1];
+// TODO: Move both of these methods to HNCommentModel
+-(void)voteUp:(NSNotification *)notification {
+	if (!self.composing) {
+		HNCommentTableItemCell *commentCell = (HNCommentTableItemCell*)notification.object;
 		
-	
-	
-	UITableView * tv = self.tableView;
-	
-	
-	
-	 // TODO : Doesn't work! --yet
-	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" 
-																	style:UIBarButtonItemStyleBordered 
-																   target:self 
-																   action:@selector(doneComment:)];
-	 
-	 [self.navigationItem setRightBarButtonItem:doneButton];
-	
-	// Hide the back button
-	self.navigationController.navigationBar.backItem.hidesBackButton = YES;
-	
-	UIBarButtonItem *cancelButon = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
-																   style:UIBarButtonItemStyleBordered 
-																  target:self 
-																   action:@selector(doneComment:)];
-	
-	[self.navigationItem setLeftBarButtonItem:cancelButon];
+		commentCell.cellComment.voted = YES;
+		
+		int i = [commentCell.cellComment.points intValue];
+		commentCell.cellComment.points = [NSNumber numberWithInt:i + 1];
+		[self.tableView reloadData];
+		
+		[commentCell.cellComment voteUpWithDelegate:self];
+	}
+}
 
-	self.navigationItem.title = @"Reply";
+		 
+		 
+-(void)voteDown:(NSNotification *)notification {
+	if (!self.composing) {
+		HNCommentTableItemCell *commentCell = (HNCommentTableItemCell*)notification.object;
+		
+		commentCell.cellComment.voted = YES;
+		
+		int i = [commentCell.cellComment.points intValue];
+		commentCell.cellComment.points = [NSNumber numberWithInt:i - 1];
+		[self.tableView reloadData];
+		
+		[commentCell.cellComment voteUpWithDelegate:self];
+	}
+}
 
-	[tv beginUpdates];
-	[tv insertRowsAtIndexPaths:[NSArray arrayWithObject:
-								[NSIndexPath indexPathForRow:(index +1) inSection:0]]
-			  withRowAnimation:UITableViewRowAnimationBottom];
+
+
+- (void)replyToComment:(NSNotification *)notification {
 	
-	[tv endUpdates];
-	[editor.textView becomeFirstResponder];
+	if (!self.composing) {
+		self.composing = YES;
+		
+		HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
+		
+		NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
+		
+		NSUInteger index = [listItems indexOfObject:replyCell];
+		
+		replyCommentItem = [[HNCommentReplyItem alloc] init];
+		
+		replyCommentItem.textView.font = TTSTYLEVAR(font);
+		replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
+		replyCommentItem.autoresizesToText = YES;
+		replyCommentItem.minNumberOfLines = 3;
+		replyCommentItem.showsExtraLine = YES;
+		replyCommentItem.textDelegate = self;
+		replyCommentItem.aboveComment = replyCell.comment;
+				
+		
+		
+		if (index + 1 == [listItems count]) {
+			[listItems addObject:replyCommentItem];
+		} else {
+			[listItems insertObject:replyCommentItem atIndex:index +1];
+		}
+
+		
+		UITableView * tv = self.tableView;
+		
+		// TODO : Doesn't work! --yet
+		UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" 
+																		 style:UIBarButtonItemStyleBordered 
+																		target:self 
+																		action:@selector(submitComment:)];
+		
+		[self.navigationItem setRightBarButtonItem:submitButton];
+		
+		// Hide the back button
+		self.navigationController.navigationBar.backItem.hidesBackButton = YES;
+		
+		UIBarButtonItem *cancelButon = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
+																		style:UIBarButtonItemStyleBordered 
+																	   target:self 
+																	   action:@selector(cancelComment:)];
+		[self.navigationItem setLeftBarButtonItem:cancelButon];
+		
+		self.navigationItem.title = @"Reply";
+		
+		[tv beginUpdates];
+		[tv insertRowsAtIndexPaths:[NSArray arrayWithObject:
+									[NSIndexPath indexPathForRow:(index +1) inSection:0]]
+				  withRowAnimation:UITableViewRowAnimationFade];
+		
+		[tv endUpdates];
+				
+		
+		// TODO: This is a bug. If we becomeFirstResponder at the last row, it crashes.
+		if (index + 2 < [listItems count]) {
+			[replyCommentItem.textView becomeFirstResponder];
+		} 
+		 
+		
+	}
 }
 		
--(void)doneComment:(UIButton*)sender {
 
-	self.navigationItem.title = @"Comments";
+// Delegate method for resizing the reply comment box.
+// We need to call reload data so when it expands, it doesn't
+// write over the next cell.
+- (BOOL)textEditor:(TTTextEditor*)textEditor shouldResizeBy:(CGFloat)height {
+	textEditor.frame = TTRectContract(textEditor.frame, 0, -height);
+	[self.tableView reloadData];
+	return NO;
+}
+
+
+
+ 
+
+-(void)submitComment:(UIButton*)sender {
+	[replyCommentItem.textView resignFirstResponder];
+		
+	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
 	
+	replyLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	
+	
+	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
+	NSUInteger index = [listItems indexOfObject:replyCommentItem];
+		
+	
+	HNComment* c = [[HNComment alloc] init];
+	c.contentsSource = replyCommentItem.text;
+	c.text = replyCommentItem.text;
+	c.voted = YES;
+	c.deletable = YES;
+	//	c.deleteURL		// TODO
+	c.replyEnabled = NO;
+	c.user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+	c.points = [NSNumber numberWithInt:1];
+	c.time_ago = @"0 minutes ago";
+	c.indentationLevel = [NSNumber numberWithInt:
+						  [replyCommentItem.aboveComment.indentationLevel intValue] + 1 ];
+	
+	
+	[listItems removeObjectAtIndex:index];
+	[listItems insertObject:[HNCommentTableItem itemWithComment:c] atIndex:index];
+	replyCommentItem = nil;
+	
+}
+
+- (void)finishSubmittingComment:(NSNotification *)notification {	
+	[replyLoadingView removeView];
+	
+	self.navigationItem.title = @"Comments";
+	[self.navigationItem setRightBarButtonItem:nil];
+	[self.navigationItem setLeftBarButtonItem:nil];
+	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
+	[self.tableView reloadData];
+	self.composing = NO;
+	
+}
+
+-(void)dismissKeyboard:(NSDictionary *)aDictionary
+{
+	[[aDictionary objectForKey:@"loadingView"] removeView];
+	[[aDictionary objectForKey:@"textField"] resignFirstResponder];
+}
+
+
+-(void)cancelComment:(UIButton*)sender {
+	
+	[replyCommentItem.textView resignFirstResponder];
+
+	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
+	NSUInteger index = [listItems indexOfObject:replyCommentItem];
+	
+	
+	[listItems removeObjectAtIndex:index];
+	
+	UITableView * tv = self.tableView;
+
+	[tv beginUpdates];
+	[tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:
+								[NSIndexPath indexPathForRow:index inSection:0]]
+			  withRowAnimation:UITableViewRowAnimationFade];
+	
+	[tv endUpdates];	
+	
+	self.navigationItem.title = @"Comments";
 	// Todo: hide these instead of just init/release ?
 	[self.navigationItem setRightBarButtonItem:nil];
 	[self.navigationItem setLeftBarButtonItem:nil];
 	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
-
+	
+	self.composing = NO;
 }
+
 
  
-- (void)loadModel {
-	self.dataSource =  [[[HNCommentsDataSource alloc] initWithStory:self.storyID] autorelease];
+- (void)createModel {
+	self.dataSource =  [[HNCommentsDataSource alloc] initWithStory:self.storyID];
 }
 
-- (void)modelDidFinishLoad:(id<TTModel>)model {
-	self.modelState = TTModelStateLoaded;
+- (void)viewWillDisappear:(BOOL)animated {
+	[[TTURLRequestQueue mainQueue] cancelAllRequests];
+	[super viewWillDisappear:animated];
 }
-
+	
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -232,10 +318,10 @@ static CGFloat kHPadding = 10;
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-	
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//	[self refresh];
+//    [super viewWillAppear:animated];
+//}
 
 
 

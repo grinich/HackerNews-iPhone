@@ -8,8 +8,46 @@
 
 #import "LoginViewController.h"
 
-#import "HNLogin.h"
+#import "HNAuth.h"
 #import "HNStyle.h"
+
+
+////////////////////////////////////////// Start Loading View
+
+#import "LoadingView.h"
+
+@interface UIApplication (KeyboardView)
+
+- (UIView *)keyboardView;
+
+@end
+
+@implementation UIApplication (KeyboardView)
+
+- (UIView *)keyboardView
+{
+	NSArray *windows = [self windows];
+	for (UIWindow *window in [windows reverseObjectEnumerator])
+	{
+		for (UIView *view in [window subviews])
+		{
+			if (!strcmp(object_getClassName(view), "UIKeyboard"))
+			{
+				return view;
+			}
+		}
+	}
+	
+	return nil;
+}
+
+@end
+
+////////////////////////////////////////// End Loading View
+
+
+
+
 
 #define kTextFieldWidth		260.0
 #define kLeftMargin			20.0
@@ -19,12 +57,25 @@ static NSString *kSectionTitleKey = @"sectionTitleKey";
 static NSString *kViewKey = @"viewKey";
 
 @implementation LoginViewController
-@synthesize usernameTextField, passwordTextField, dataSourceArray;
+@synthesize usernameTextField, passwordTextField, dataSourceArray, loginLoadingView;
 
 
 
 - (id)initWithStyle:(UITableViewStyle)style {	
 	[super initWithStyle:UITableViewStyleGrouped];
+	
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(successfulLogin:) 
+												 name:@"successfulLoginNotification" 
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(failedLogin:) 
+												 name:@"failedLoginNotification" 
+											   object:nil];
+	
+	return self;
 }
 
 
@@ -152,43 +203,84 @@ static NSString *kViewKey = @"viewKey";
 		[passwordTextField becomeFirstResponder];
 		return NO;
 	} else if (textField == passwordTextField) {
-		[textField resignFirstResponder];
-		[self performSelectorInBackground:@selector(login) withObject:nil];
+		// [textField resignFirstResponder];
+		
+		// LOGIN!!!!
+		
+		
+		NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com"];
+		
+		NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:hnURL];
+		
+		if ([cookies count] > 0 ) {
+			
+			NSLog(@"Name: %@", [[cookies objectAtIndex:0] name]);
+			NSLog(@"Name: %@", [[cookies objectAtIndex:0] value]);
+			
+		} else {
+					
+			self.navigationItem.hidesBackButton = YES;
+			
+			self.usernameTextField.userInteractionEnabled = NO;
+			self.passwordTextField.userInteractionEnabled = NO;
+			
+			//UIView *keyboardView = [[UIApplication sharedApplication] keyboardView];
+			//LoadingView *loginLoadingView = [LoadingView loadingViewInView:keyboardView];
+			loginLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+
+			
+			[[HNAuth sharedHNAuth]	loginWithUsername:usernameTextField.text 
+							password:passwordTextField.text];
+		}
+		
+		//[self.navigationController popViewControllerAnimated:YES];
+		
 		return YES;
 	} else {
 		// Handle the error
 		return YES;
 	}
-
 }
 
-
-- (void)login {
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-
-	HNLogin *aLoginLogic = [HNLogin new];
-	
-	if ([aLoginLogic logThemInWithUsername:usernameTextField.text
-							  withPassword:passwordTextField.text] )
-	{		
-//		NSLog(@"Successful login.");
-	} else {
-		NSLog(@"Login failed.");
-		
-		UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Whoops!" 
-															  message:@"The username and password combination you typed is incorrect. Try again." 
-															 delegate:self 
-													cancelButtonTitle:@"Close" 
-													otherButtonTitles:nil];
-
-		[myAlertView show];
-		[myAlertView release];
-	}
-	[aLoginLogic release];
-	
+-(void)successfulLogin:(NSNotification *)notification {
+	[self.passwordTextField resignFirstResponder];
+	[loginLoadingView removeView];
 	[self.navigationController popViewControllerAnimated:YES];
-	[pool drain];
 }
+
+
+-(void)failedLogin:(NSNotification*)notification {	
+	[self.passwordTextField resignFirstResponder];
+	[loginLoadingView removeView];
+	[self.navigationController popViewControllerAnimated:YES];
+
+	UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error" 
+														  message:@"Couldn't log in with the given username and password." 
+														 delegate:self 
+												cancelButtonTitle:@"Close" 
+												otherButtonTitles:nil];
+	
+	[myAlertView show];
+	[myAlertView release];
+	
+}
+
+
+
+
+
+// Fullscreen commit thingy
+- (IBAction)showCommit:(id)sender
+{
+	LoadingView *loadingView =
+	[LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	
+	[loadingView
+	 performSelector:@selector(removeView)
+	 withObject:nil
+	 afterDelay:5.0];
+}
+
 
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "HNStoryModel.h"
-#import "HNLogin.h"
+#import "HNAuth.h"
 #import "HNStory.h"
 #import "ElementParser.h"
 #import "HNStoryTableItem.h"
@@ -32,9 +32,9 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 
 - (void)dealloc {
 //	TT_RELEASE_TIMER(_fakeLoadTimer);
-//	TT_RELEASE_MEMBER(_delegates);
-//	TT_RELEASE_MEMBER(_allNames);
-//	TT_RELEASE_MEMBER(_names);
+//	TT_RELEASE_SAFELY(_delegates);
+//	TT_RELEASE_SAFELY(_allNames);
+//	TT_RELEASE_SAFELY(_names);
 	[super dealloc];
 }
 
@@ -81,7 +81,6 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
 	
-	
 	TTURLRequest *request = [TTURLRequest requestWithURL:yc_url delegate:self];
 	
 	request.cachePolicy = TTURLRequestCachePolicyMemory;
@@ -122,14 +121,8 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 	// Main links
 	//NSLog(@"URL %@", [[document selectElement:@"span.pagetop"] contentsSource]);
 	
-	HNLogin *login = [HNLogin sharedHNLogin];
-	
-	login.loggedin = YES;
-	
-	login.loginURL = [[[[document selectElements:@"span.pagetop"] objectAtIndex:1] selectElement:@"a"] attribute:@"href"];
-	
-	[login getLoginFNID];
-	
+	[[HNAuth sharedHNAuth] setLoginURL:
+	 [[[[document selectElements:@"span.pagetop"] objectAtIndex:1] selectElement:@"a"] attribute:@"href"]];
 	
 	NSArray *titles = [document selectElements:@"tr > td > table > tr"];
 	
@@ -169,9 +162,6 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 						 stringByReplacingOccurrencesOfString:@"â" withString:@"\""];
 		
 		
-		
-		
-		
 		NSString *tempURLString = [title attribute:@"href"];
 		if ( [tempURLString hasPrefix:@"http://"] || 
 			[tempURLString hasPrefix:@"https://"]) 
@@ -181,7 +171,6 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 		} else {
 			// URL is not full length, which means that it's an internal url
 			// TODO : set our URL schema so that these will automatically just open in another table!
-			story.internal_story = YES;
 			story.url = [[NSURL URLWithString:tempURLString relativeToURL:[NSURL URLWithString:yc_url]] absoluteURL];
 			
 		}

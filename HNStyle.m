@@ -31,6 +31,17 @@
 	return RGBCOLOR(225, 101, 0);
 }
 
+- (UIColor*)composeReplyColor {
+	return RGBCOLOR(242, 240, 189);
+}
+
+- (UIColor*)myCommentBackgroundColor {
+	return [UIColor colorWithRed:0.884 green:1.000 blue:0.820 alpha:1.000];
+}
+
+-(UIColor*)standardCommentBackgroundColor {
+	return [UIColor whiteColor];
+}
 
 
 - (UIFont*) storyTitleFont {

@@ -29,8 +29,6 @@
 @property (nonatomic, retain)	UIButton	*accessoryButton;
 
 
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item;
-
 
 @end
 

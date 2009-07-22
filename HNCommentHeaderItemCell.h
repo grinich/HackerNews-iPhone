@@ -32,7 +32,6 @@
 @property (nonatomic, retain) TTView* speechBubbleView;
 
 
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForItem:(id)item;
 
 
 @end
