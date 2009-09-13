@@ -19,7 +19,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		self.model = [[HNStoryModel alloc] init];
+;
 	}
 	return self;
 }
@@ -30,15 +30,21 @@
 
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewDataSource
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
+	[super tableViewDidLoadModel:tableView]; 
+	
+	NSLog(@"Removing all objects in the table view."); 
+    [self.items removeAllObjects]; 
+
 	for (HNStory* story in ((HNStoryModel *)self.model).stories) {
 		[self.items addObject:[HNStoryTableItem itemWithStory:story]];
 	}
+	
+	NSLog(@"Added %u  objects", (unsigned long) 
+		  [self.items count]); 
 }
 
 

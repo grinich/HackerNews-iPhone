@@ -9,7 +9,7 @@
 #import "HNStoryTableViewController.h"
 #import "HNStoryDataSource.h"
 #import "HNAuth.h"
-
+#import "HNStoryModel.h"
 #import "HNStoryTableItem.h"
 #import "HNStoryTableItemCell.h"
 
@@ -32,6 +32,11 @@
 	return self;
 }
 
+- (void)dealloc {
+	TT_RELEASE_SAFELY(loginButton);
+	[super dealloc];
+}
+
 
 - (id<UITableViewDelegate>)createDelegate {
 	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
@@ -47,7 +52,7 @@
 	[super loadView];
 	
 	/*
-	
+	 // TODO : Add search!
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																				  target:self 
 																				  action:@selector(activateSearchBar)];
@@ -67,40 +72,81 @@
 	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
 	| UIViewAutoresizingFlexibleHeight;
 	
+	
+	/*
 	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
 	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
 	
 	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
 	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
 	[titleImage release];
+	*/
 	
-	
+	self.navigationItem.title = @"Stories";
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated {	
 	[super viewWillAppear:animated];
+	
 	if ([[HNAuth sharedHNAuth] loggedin]) {
 		loginButton.title = @"Logout";
 	} else {
 		loginButton.title = @"Login";
+	}
+
+	
+	if (!self.dataSource) {
+		HNStoryDataSource* ds= [[[HNStoryDataSource alloc] init] autorelease];
+		if (!_model) {
+			ds.model = [[HNStoryModel alloc] initRemoteModel];
+		}
+		self.dataSource =  ds;	
 	}
 }
 
 
 -(void) buttonTapped {
 	if ([[HNAuth sharedHNAuth] loggedin]) {
-		[[HNAuth sharedHNAuth] logout];
-		loginButton.title = @"Login";
+		UIAlertView* logoutAlert = [[[UIAlertView alloc] initWithTitle:@"Are you sure?"
+																   message:@"Are you sure you wish to logout?"
+																  delegate:self
+														 cancelButtonTitle:@"Yes"
+														 otherButtonTitles:@"No", nil] autorelease];
+		[logoutAlert show];
 	} else {
 		TTOpenURL(@"tt://login");
 	}
-	
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[[HNAuth sharedHNAuth] logout];
+		loginButton.title = @"Login";
+	}
 }
 
 
 - (void)createModel {
-	self.dataSource =  [[[HNStoryDataSource alloc] init] autorelease];	
+	HNStoryDataSource* ds= [[[HNStoryDataSource alloc] init] autorelease];
+	ds.model = [[HNStoryModel alloc] initRemoteModel];
+	self.dataSource =  ds;	
 }
+
+
+- (BOOL)shouldReload {
+	if (( [((HNStoryDataSource*)self.dataSource).items count] < 1 )  && (!_flags.isModelFirstTimeInvalid)) {
+		return YES;
+	} else {
+		return [super shouldReload];
+	}
+}
+
+
+
+
+//- (BOOL)shouldLoadMore;
 
 		
 

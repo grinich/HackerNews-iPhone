@@ -6,12 +6,13 @@
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
-#import "HNCommentHeaderItemCell.h"
+#import "HNCommentHeaderItemCell.h"		
 
 #import "HNStyle.h"
 #import "HNStory.h"
 #import "HNCommentHeaderItem.h"
 #import "HNCommentHeaderItemCell.h"
+#import "HNAuth.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,8 +38,23 @@ static CGFloat kVPadding = 15;
 
 @implementation HNCommentHeaderItemCell
 
-@synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, accessoryButton;
-@synthesize speechBubbleView;
+@synthesize storyTitleLabel, subtextLabel, hostURLLabel, cellStory, upvoteButton,
+speechBubbleView, fulltextLabel, replyButton;
+
+- (void)dealloc {
+	TT_RELEASE_SAFELY(storyTitleLabel);
+	TT_RELEASE_SAFELY(subtextLabel);
+	TT_RELEASE_SAFELY(hostURLLabel);
+	TT_RELEASE_SAFELY(cellStory);
+	TT_RELEASE_SAFELY(upvoteButton);
+	TT_RELEASE_SAFELY(speechBubbleView);
+	TT_RELEASE_SAFELY(fulltextLabel);
+	TT_RELEASE_SAFELY(replyButton);
+
+	[super dealloc];
+}
+
+
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
 
@@ -64,7 +80,18 @@ static CGFloat kVPadding = 15;
 										 constrainedToSize:CGSizeMake(maxWidth, CGFLOAT_MAX)  
 											 lineBreakMode:UILineBreakModeWordWrap];
 		
-		return kVPadding*2 + kInnterSpacer + titleSize.height + hostURLSize.height + subtextSize.height + 10;
+
+		CGSize fulltextSize = [[story fulltext] sizeWithFont:TTSTYLEVAR(storyFulltextFont)
+											   constrainedToSize:CGSizeMake(tableView.width - kHPadding*2, CGFLOAT_MAX)  
+												   lineBreakMode:UILineBreakModeWordWrap];
+
+		
+		if (fulltextSize.height > 0) {
+			return kVPadding*2 + kInnterSpacer + titleSize.height + hostURLSize.height + subtextSize.height + fulltextSize.height + kVPadding*3;
+		} else {
+			return kVPadding*2 + kInnterSpacer + titleSize.height + hostURLSize.height + subtextSize.height + fulltextSize.height + kVPadding;
+
+		}
 		
 	} else {
 		return 44; // Default. Shouldn't get here.
@@ -83,8 +110,6 @@ static CGFloat kVPadding = 15;
 		
 		self.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
-		
-		
 		
 		
 		 // SpeechBubble
@@ -140,36 +165,55 @@ static CGFloat kVPadding = 15;
 		[self.contentView addSubview:self.subtextLabel];
 		
 		
+		
 		// COMMENTS BUTTON
 		
 		UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
 								   [[NSBundle mainBundle] pathForResource:@"upvote-big" ofType:@"png"]];
 		
-		self.accessoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.accessoryButton setImage:accessoryImage forState:UIControlStateNormal];
+		self.upvoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.upvoteButton setImage:accessoryImage forState:UIControlStateNormal];
 		
-		[self.accessoryButton addTarget:self
+		[self.upvoteButton addTarget:self
 								 action:@selector(upVoteButtonTapped)
 					   forControlEvents:UIControlEventTouchUpInside];
-		
+		[accessoryImage release];
 
-		[self.contentView addSubview:self.accessoryButton];
+		[self.contentView addSubview:self.upvoteButton];
 		
+		
+		// Bottom fulltext
+		self.fulltextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		self.fulltextLabel.font = TTSTYLEVAR(storyFulltextFont);
+		self.fulltextLabel.textAlignment = UITextAlignmentLeft; 
+		self.fulltextLabel.backgroundColor = [UIColor whiteColor];
+		self.fulltextLabel.lineBreakMode = UILineBreakModeWordWrap;
+		self.fulltextLabel.opaque = YES;
+		self.fulltextLabel.numberOfLines = 0;
+		[self.contentView addSubview:self.fulltextLabel];
+		
+		
+		UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
+							   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
+		
+		self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.replyButton setImage:replyImage forState:UIControlStateNormal];
+		[replyImage release];
+		[self.replyButton addTarget:self
+							 action:@selector(replyButtonTapped)
+				   forControlEvents:UIControlEventTouchUpInside];
+		[self.contentView addSubview:self.replyButton];
 		
 	}
 	return self;
 }
 
 -(void)upVoteButtonTapped {
-	
-	TTOpenURL([NSString stringWithFormat:@"tt://home/comments/%@", self.cellStory.story_id]);
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"voteUpNotification" object:self ] ;
 }
 
-
-
-- (void)dealloc {
-	TT_RELEASE_SAFELY(self.subtextLabel);
-	[super dealloc];
+-(void) replyButtonTapped {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"replyButtonNotification" object:self ] ;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,7 +223,7 @@ static CGFloat kVPadding = 15;
 	[super layoutSubviews];
 	
 	// If you change these values, make sure to also change above the below method rowHeightForItem:
-	CGFloat accessoryViewWidth = self.accessoryButton.frame.size.height; 
+	CGFloat accessoryViewWidth = self.upvoteButton.frame.size.height; 
 	CGFloat maxWidth = self.contentView.width - kHPadding*2 - accessoryViewWidth;
 
 	
@@ -215,16 +259,32 @@ static CGFloat kVPadding = 15;
 										 subtextSize.height);
 	
 	
-	self.accessoryButton.frame = CGRectMake(	self.contentView.frame.size.width - kHPadding - self.accessoryButton.frame.size.width ,
-											( self.contentView.frame.size.height - self.accessoryButton.frame.size.height ) / 2,
+	CGSize fulltextSize = [[cellStory fulltext] sizeWithFont:TTSTYLEVAR(storyFulltextFont)
+										 constrainedToSize:CGSizeMake(self.contentView.width - kHPadding*2, CGFLOAT_MAX)  
+											 lineBreakMode:UILineBreakModeWordWrap];
+	
+	self.fulltextLabel.frame = CGRectMake(	kHPadding, 
+										  self.subtextLabel.frame.origin.y + self.subtextLabel.frame.size.height + kVPadding,
+										  fulltextSize.width, 
+										  fulltextSize.height);
+	
+	
+	self.upvoteButton.frame = CGRectMake(	self.contentView.frame.size.width - kHPadding - self.upvoteButton.frame.size.width ,
+											( self.subtextLabel.frame.origin.y + self.subtextLabel.frame.size.height - self.upvoteButton.frame.size.height ) / 2,
 											36.0, 
 											40.0);
 	
 	
+	self.replyButton.frame = CGRectMake( self.contentView.frame.size.width - kHPadding*2 - 24, 
+										self.contentView.height - kHPadding - 44,
+										30, 
+										50);
+	
+	
 	self.speechBubbleView.frame = CGRectMake(5, 
 											 5,
-											 self.contentView.width - 10, 
-											 self.contentView.height - 10);
+											 self.contentView.width - kVPadding, 
+											 self.contentView.height - kHPadding);
 	
 	
 }
@@ -242,11 +302,31 @@ static CGFloat kVPadding = 15;
 		
 		
 		self.cellStory = [object story];
-		
 		self.storyTitleLabel.text = [self.cellStory title];
 		self.hostURLLabel.text =[[self.cellStory url] host];
 		self.subtextLabel.text = [self.cellStory subtext];
+		self.fulltextLabel.text = [self.cellStory fulltext];
 		self.accessoryType = UITableViewCellAccessoryNone;
+		
+		if ([[HNAuth sharedHNAuth] loggedin]) {
+			if (self.cellStory.voted) {
+				self.upvoteButton.enabled = NO;
+				self.upvoteButton.hidden = YES;
+			} else {
+				self.upvoteButton.enabled = YES;
+				self.upvoteButton.hidden = NO;
+			}
+
+			self.replyButton.enabled = YES;
+			self.replyButton.hidden = NO;
+		
+		} else {
+			self.replyButton.enabled = NO;
+			self.replyButton.hidden = YES;
+			self.upvoteButton.enabled = NO;
+			self.upvoteButton.hidden = YES;
+		}
+
 		
 	}  
 }

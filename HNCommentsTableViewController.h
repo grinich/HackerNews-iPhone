@@ -14,7 +14,7 @@
 
 @interface HNCommentsTableViewController :  TTTableViewController <TTTextEditorDelegate> {
 	
-	NSString		*_storyID;
+	NSString		*storyID;
 	BOOL	composing;
 	HNCommentReplyItem* replyCommentItem;
 	LoadingView *replyLoadingView;

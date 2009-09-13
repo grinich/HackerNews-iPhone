@@ -80,7 +80,7 @@ static CGFloat kCommentButtonWidth = 50;
 	
 	if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
 		_item = nil;
-		[TTStyleSheet setGlobalStyleSheet:[[HNStyle alloc] init]];
+		[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
 
 		// STORY TITLE
 		self.storyTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -121,7 +121,7 @@ static CGFloat kCommentButtonWidth = 50;
 		
 		self.accessoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.accessoryButton setImage:accessoryImage forState:UIControlStateNormal];
-		
+		[accessoryImage release];
 		[self.accessoryButton addTarget:self
 							action:@selector(commentsButtonTapped)
 				  forControlEvents:UIControlEventTouchUpInside];

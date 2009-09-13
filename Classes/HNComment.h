@@ -29,6 +29,7 @@
 	BOOL	voted;
 	HNCommentsTableViewController *delegate;
 	BOOL	deletable;
+	BOOL	isDownvote;
 	
 }
 @property (nonatomic, retain)	NSString*	contentsSource;
@@ -47,6 +48,7 @@
 
 @property (nonatomic)			BOOL	deletable;
 @property (nonatomic)			BOOL	replyEnabled;
+@property (nonatomic)			BOOL	isDownvote;
 
 
 -(void) voteUpWithDelegate:(id)commentDelegate;

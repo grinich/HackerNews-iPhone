@@ -25,7 +25,7 @@
 @synthesize voted;
 @synthesize deletable;
 @synthesize replyEnabled;
-
+@synthesize isDownvote;
 @synthesize delegate;
 
 
@@ -33,8 +33,22 @@
 -(id)init{
 	self = [super init];
 	self.replyEnabled = YES;
-
 	return self;
+}
+
+
+- (void)dealloc {
+	TT_RELEASE_SAFELY(text);
+	TT_RELEASE_SAFELY(points);
+	TT_RELEASE_SAFELY(user);
+	TT_RELEASE_SAFELY(url);
+	TT_RELEASE_SAFELY(reply_url);
+	TT_RELEASE_SAFELY(time_ago);
+	TT_RELEASE_SAFELY(indentationLevel);
+	TT_RELEASE_SAFELY(contentsSource);
+	TT_RELEASE_SAFELY(upvotelink);
+	TT_RELEASE_SAFELY(downvotelink);
+	[super dealloc];
 }
 
 
@@ -49,7 +63,7 @@
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:URLstring delegate:self];
 	
-	request.cachePolicy = TTURLRequestCachePolicyNone;
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	
@@ -70,7 +84,7 @@
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:URLstring delegate:self];
 	
-	request.cachePolicy = TTURLRequestCachePolicyNone;
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	
@@ -88,7 +102,7 @@
 	//TTURLDataResponse *response = request.response;
 	//NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 	
-	NSLog(@"finished vote.");
+//	NSLog(@"finished vote.");
 	// TODO : check body for response and make sure it went through.
 	
 //	[delegate reloadData];

@@ -19,12 +19,18 @@
 @synthesize comments_count;
 @synthesize nocomments;
 @synthesize story_id;
+@synthesize fulltext;
+@synthesize voteup_url;
+@synthesize reply_url;
+@synthesize replyFNID;
+@synthesize voted;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         nocomments = NO; // default
+		voted = NO;
     }
     return self;
 }
@@ -40,13 +46,47 @@
 }
 
 -(NSString *)subtext {
-	
-	 NSString *sub = [NSString stringWithFormat:@"%@ points | posted by %@ %@", 
+	return [NSString stringWithFormat:@"%@ points | posted by %@ %@", 
 								 [self.points stringValue], 
 								 self.user, 
 								 self.time_ago];
 	
-	return sub;
+	
 }
 
+-(void) voteUpWithDelegate:(id)delegate {
+	
+	//	int i = [self.points intValue];
+	//	self.points = [NSNumber numberWithInt:(i + 1)];
+	//	NSLog(@"Points %@", self.points);
+	
+	NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.voteup_url];
+	
+	TTURLRequest *request = [TTURLRequest requestWithURL:URLstring delegate:self];
+	
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
+	request.response = [[[TTURLDataResponse alloc] init] autorelease];
+	request.httpMethod = @"GET";
+	
+	BOOL cacheHit = [request send];  
+	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	
+}
+
+
+#pragma mark -
+#pragma mark TTURLRequestDelegate
+
+
+- (void)requestDidFinishLoad:(TTURLRequest*)request {  
+	
+	//TTURLDataResponse *response = request.response;
+	//NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
+	
+	//	NSLog(@"finished vote.");
+	// TODO : check body for response and make sure it went through.
+	
+	//	[delegate reloadData];
+	
+}
 @end

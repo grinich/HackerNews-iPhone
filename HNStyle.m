@@ -62,7 +62,9 @@
 	return [UIFont fontWithName:@"Helvetica" size:11.0];
 }
 
-
+- (UIFont*) storyFulltextFont {
+	return [UIFont fontWithName:@"Helvetica" size:14.0];
+}
 
 - (TTStyle* ) HNOrangeText {
 	return [TTTextStyle styleWithColor:TTSTYLEVAR(hackerNewsColor) next:nil];

@@ -23,13 +23,7 @@
 @implementation HNCommentsDataSource
 
 
-- (id)initWithStory:(NSString *)story_id {
-	if (self = [super init]) {
-		self.model = [[HNCommentModel alloc] init];
-		((HNCommentModel*)self.model).story_id = story_id;
-	}
-	return self;
-}
+
 
 - (void)dealloc {
 	[super dealloc];
@@ -38,7 +32,10 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {	
 	
-	[self.items addObject:[HNCommentHeaderItem itemWithStory:[[TempItems sharedTempItems] tempHNStory]]];
+//	[self.items addObject:[HNCommentHeaderItem itemWithStory:[[TempItems sharedTempItems] tempHNStory]]];
+	
+	[self.items addObject:[HNCommentHeaderItem itemWithStory:((HNCommentModel*)self.model).headerStory]];
+
 	
 	for (HNComment* comment in ((HNCommentModel*)self.model).comments) {
 		[self.items addObject:[HNCommentTableItem itemWithComment:comment]];

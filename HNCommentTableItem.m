@@ -49,6 +49,7 @@
 - (void)dealloc {
 	TT_RELEASE_SAFELY(_text);
 	TT_RELEASE_SAFELY(comment);
+	TT_RELEASE_SAFELY(indentationLevel);
 	[super dealloc];
 }
 

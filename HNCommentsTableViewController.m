@@ -16,14 +16,16 @@
 #import "HNComment.h"
 #import "HNCommentReplyItem.h"
 #import "LoadingView.h"
-
+#import "HNCommentHeaderItemCell.h"
+#import "HNCommentHeaderItem.h"
+#import "HNStory.h"
 
 
 @class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
 @implementation HNCommentsTableViewController
 
-@synthesize storyID = _storyID;
+@synthesize storyID;
 @synthesize composing;
 @synthesize replyCommentItem;
 
@@ -46,6 +48,11 @@
 
 */
 
+- (void)dealloc {
+	TT_RELEASE_SAFELY(storyID);
+	TT_RELEASE_SAFELY(replyCommentItem);
+	[super dealloc];
+}
 
 
 - (id)initWithStory:(NSString *)storyIN {
@@ -84,9 +91,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[super dealloc];
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
@@ -107,15 +111,33 @@
 // TODO: Move both of these methods to HNCommentModel
 -(void)voteUp:(NSNotification *)notification {
 	if (!self.composing) {
-		HNCommentTableItemCell *commentCell = (HNCommentTableItemCell*)notification.object;
 		
-		commentCell.cellComment.voted = YES;
+		// Header reply. Requires different reply comment.
+		if ( [notification.object isKindOfClass:[HNCommentHeaderItemCell class]] ){
+			HNCommentHeaderItemCell *headerCell = (HNCommentHeaderItemCell*)notification.object;			
+			headerCell.cellStory.voted = YES;
+			
+			// TODO :Deal with this later
+			/*
+			int i = [commentCell.cellComment.points intValue];
+			commentCell.cellComment.points = [NSNumber numberWithInt:i + 1];
+			*/
+			[self.tableView reloadData];
+			[headerCell.cellStory voteUpWithDelegate:self];
+			
+		}
 		
-		int i = [commentCell.cellComment.points intValue];
-		commentCell.cellComment.points = [NSNumber numberWithInt:i + 1];
-		[self.tableView reloadData];
+		// Regular Reply
+		else if ([notification.object isKindOfClass:[HNCommentTableItemCell class]]) {
 		
-		[commentCell.cellComment voteUpWithDelegate:self];
+			HNCommentTableItemCell *commentCell = (HNCommentTableItemCell*)notification.object;			
+			commentCell.cellComment.voted = YES;
+			int i = [commentCell.cellComment.points intValue];
+			commentCell.cellComment.points = [NSNumber numberWithInt:i + 1];
+			[self.tableView reloadData];
+			
+			[commentCell.cellComment voteUpWithDelegate:self];
+		}	
 	}
 }
 
@@ -138,33 +160,55 @@
 
 
 - (void)replyToComment:(NSNotification *)notification {
-	
 	if (!self.composing) {
 		self.composing = YES;
-		
-		HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
-		
 		NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-		
-		NSUInteger index = [listItems indexOfObject:replyCell];
-		
-		replyCommentItem = [[HNCommentReplyItem alloc] init];
-		
-		replyCommentItem.textView.font = TTSTYLEVAR(font);
-		replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
-		replyCommentItem.autoresizesToText = YES;
-		replyCommentItem.minNumberOfLines = 3;
-		replyCommentItem.showsExtraLine = YES;
-		replyCommentItem.textDelegate = self;
-		replyCommentItem.aboveComment = replyCell.comment;
 				
 		
+		NSUInteger index = [listItems indexOfObject:[[notification object] object]];
 		
-		if (index + 1 == [listItems count]) {
-			[listItems addObject:replyCommentItem];
-		} else {
-			[listItems insertObject:replyCommentItem atIndex:index +1];
+		// Header reply. Requires different reply comment.
+		if ( [notification.object isKindOfClass:[HNCommentHeaderItemCell class]] ){
+			
+			HNCommentHeaderItem *headerCell = ((HNCommentHeaderItemCell*)notification.object).object;
+			
+			replyCommentItem = [[HNCommentReplyItem alloc] init];
+			replyCommentItem.textView.font = TTSTYLEVAR(font);
+			replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
+			replyCommentItem.autoresizesToText = YES;
+			replyCommentItem.minNumberOfLines = 3;
+			replyCommentItem.showsExtraLine = YES;
+			replyCommentItem.textDelegate = self;
+			replyCommentItem.indentationLevel = 0;
+			replyCommentItem.replyFNID = headerCell.story.replyFNID;
+						
+			[listItems insertObject:replyCommentItem atIndex:1]; 
+			
+			
+		
+		} 
+		
+		// Regular Reply
+		else if ([notification.object isKindOfClass:[HNCommentTableItemCell class]]) {
+			HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
+						
+			replyCommentItem = [[HNCommentReplyItem alloc] init];
+			replyCommentItem.textView.font = TTSTYLEVAR(font);
+			replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
+			replyCommentItem.autoresizesToText = YES;
+			replyCommentItem.minNumberOfLines = 3;
+			replyCommentItem.showsExtraLine = YES;
+			replyCommentItem.textDelegate = self;
+			replyCommentItem.indentationLevel = [NSNumber numberWithInt:
+												 [replyCell.comment.indentationLevel intValue] + 1 ];
+						
+			if (index + 1 == [listItems count]) {
+				[listItems addObject:replyCommentItem];
+			} else {
+				[listItems insertObject:replyCommentItem atIndex:index +1];
+			}
 		}
+		
 
 		
 		UITableView * tv = self.tableView;
@@ -172,11 +216,11 @@
 		// TODO : Doesn't work! --yet
 		UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" 
 																		 style:UIBarButtonItemStyleBordered 
-																		target:self 
+																			target:self 
 																		action:@selector(submitComment:)];
 		
 		[self.navigationItem setRightBarButtonItem:submitButton];
-		
+		[submitButton release];
 		// Hide the back button
 		self.navigationController.navigationBar.backItem.hidesBackButton = YES;
 		
@@ -185,8 +229,9 @@
 																	   target:self 
 																	   action:@selector(cancelComment:)];
 		[self.navigationItem setLeftBarButtonItem:cancelButon];
-		
+		[cancelButon release];
 		self.navigationItem.title = @"Reply";
+		
 		
 		[tv beginUpdates];
 		[tv insertRowsAtIndexPaths:[NSArray arrayWithObject:
@@ -221,16 +266,17 @@
 
 -(void)submitComment:(UIButton*)sender {
 	[replyCommentItem.textView resignFirstResponder];
-		
+	
 	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
 	
+	// add loading view
 	replyLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	
-	
+	// We're going to remove the replyCommentItem. Find the index.
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
 	NSUInteger index = [listItems indexOfObject:replyCommentItem];
-		
 	
+	// New comment to replace it.
 	HNComment* c = [[HNComment alloc] init];
 	c.contentsSource = replyCommentItem.text;
 	c.text = replyCommentItem.text;
@@ -241,14 +287,13 @@
 	c.user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 	c.points = [NSNumber numberWithInt:1];
 	c.time_ago = @"0 minutes ago";
-	c.indentationLevel = [NSNumber numberWithInt:
-						  [replyCommentItem.aboveComment.indentationLevel intValue] + 1 ];
+	c.indentationLevel = replyCommentItem.indentationLevel;
 	
-	
+	// Swap
 	[listItems removeObjectAtIndex:index];
 	[listItems insertObject:[HNCommentTableItem itemWithComment:c] atIndex:index];
+	[c release];
 	replyCommentItem = nil;
-	
 }
 
 - (void)finishSubmittingComment:(NSNotification *)notification {	
@@ -263,12 +308,6 @@
 	
 }
 
--(void)dismissKeyboard:(NSDictionary *)aDictionary
-{
-	[[aDictionary objectForKey:@"loadingView"] removeView];
-	[[aDictionary objectForKey:@"textField"] resignFirstResponder];
-}
-
 
 -(void)cancelComment:(UIButton*)sender {
 	
@@ -276,7 +315,6 @@
 
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
 	NSUInteger index = [listItems indexOfObject:replyCommentItem];
-	
 	
 	[listItems removeObjectAtIndex:index];
 	
@@ -298,10 +336,26 @@
 	self.composing = NO;
 }
 
-
  
 - (void)createModel {
-	self.dataSource =  [[HNCommentsDataSource alloc] initWithStory:self.storyID];
+	HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
+	ds.model = [[HNCommentModel alloc] initRemoteModel];
+	((HNCommentModel*)ds.model).story_id = self.storyID;
+	
+	self.dataSource =  ds;	
+}
+
+-(void)viewWillAppear:(BOOL)animated {	
+	[super viewWillAppear:animated];
+	
+	if (!self.dataSource) {
+		HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
+		if (!_model) {
+			ds.model = [[HNCommentModel alloc] initRemoteModel];
+			((HNCommentModel*)ds.model).story_id = self.storyID;		
+		}
+		self.dataSource =  ds;	
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

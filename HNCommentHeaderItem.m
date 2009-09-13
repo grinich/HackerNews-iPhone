@@ -28,9 +28,7 @@
 	item.story = aStory;
 	
 	//item.URL = [[story url] absoluteURL];
-	
-	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
-	
+		
 	item.text = @"";	// Fails without this!?
 	
 	return item;

@@ -22,68 +22,10 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 @synthesize stories;
 
 
-//- (id)init {
-//	if (self = [super init]) {
-//		_isLoading = YES;
-//		_isLoaded = NO;
-//	}  
-//	return self;
-//}
-
-- (void)dealloc {
-//	TT_RELEASE_TIMER(_fakeLoadTimer);
-//	TT_RELEASE_SAFELY(_delegates);
-//	TT_RELEASE_SAFELY(_allNames);
-//	TT_RELEASE_SAFELY(_names);
-	[super dealloc];
-}
-
-- (NSMutableArray*)delegates {
-	if (!_delegates) {
-		_delegates = TTCreateNonRetainingArray();
-	}
-	return _delegates;
-}
-
-- (BOOL)isLoadingMore {
-	return NO;
-}
-
-- (BOOL)isOutdated {
-	return NO;
-}
-
-- (BOOL)isLoaded {
-	return !!_isLoaded;
-}
-
-- (BOOL)isLoading {
-	return !!_isLoading;
-}
-
-- (BOOL)isEmpty {
-	return !self.stories.count;
-}
-
-/*
-- (void)invalidate:(BOOL)erase {
-}
- */
-
-
-- (void)cancel {
-	_isLoading = NO;
-	_isLoaded = NO;
-	[_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
-}
-
-
-
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
 	
 	TTURLRequest *request = [TTURLRequest requestWithURL:yc_url delegate:self];
-	
-	request.cachePolicy = TTURLRequestCachePolicyMemory;
+	request.cachePolicy = TTURLRequestCachePolicyNoCache;
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	
@@ -96,27 +38,18 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 #pragma mark TTURLRequestDelegate
 
 
-- (void)requestDidStartLoad:(TTURLRequest*)request {
-	_isLoading = YES;
-	_isLoaded = NO;  
-	[_delegates perform:@selector(modelDidStartLoad:) withObject:self];
-}
-
-
-- (void)requestDidFinishLoad:(TTURLRequest*)request { 
-	
+- (void)requestDidFinishLoad:(TTURLRequest*)request { 		
 	self.stories = [NSMutableArray new];
 	
 	TTURLDataResponse *response = request.response;
 	NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
-    
-	
+    	
 	//////////////////////////////////////////////////////////
 	//			HTML Processing for main stories			//
 	//////////////////////////////////////////////////////////
 	
 	Element *document = [Element parseHTML: responseBody];
-	
+	[responseBody release];
 	
 	// Main links
 	//NSLog(@"URL %@", [[document selectElement:@"span.pagetop"] contentsSource]);
@@ -190,7 +123,7 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 		// TIME SINCE POSTING
 		NSInteger location = [pointsTempString length] + 4 + [story.user length] + 1;
 		NSInteger length = [[subtextElement contentsText] length] - location - [commentsTempString length] - 3;
-		story.time_ago = [[subtextElement contentsText] substringWithRange:NSMakeRange(location, length) ];
+		story.time_ago = [[subtextElement contentsText] substringWithRange:NSMakeRange(location, length) ];	// TODO : Crashing HARD on this 
 		
 		// POINTS
 		// Either "points" or "point"
@@ -236,16 +169,10 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 		[titlesEnumerator nextObject];
 		
 	}	
+	[nFormatter release];
 	
-	
-	
-	_isLoading = NO;
-	_isLoaded = YES;  
-
-	[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+	[super requestDidFinishLoad:request];
 }
-
-
 
 
 @end

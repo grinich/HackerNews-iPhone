@@ -19,7 +19,7 @@
 
 
 
-static CGFloat kIndentationPadding = 10;
+static CGFloat kIndentationPadding = 10.0;
 
 static CGFloat kBylineHeight = 40;
 static CGFloat kBottomButtonsBuffer = 10;
@@ -42,8 +42,21 @@ static CGFloat kGroupMargin = 10;
 
 @implementation HNCommentTableItemCell
 
-@synthesize cellComment, commentTextLabel, byLineLabel, ind_level;
-@synthesize upVoteButton, downVoteButton, replyButton;
+@synthesize cellComment, commentTextLabel, byLineLabel, ind_level,  
+upVoteButton, downVoteButton, replyButton;
+
+
+- (void)dealloc {
+	TT_RELEASE_SAFELY(cellComment);
+	TT_RELEASE_SAFELY(commentTextLabel);
+	TT_RELEASE_SAFELY(byLineLabel);
+	TT_RELEASE_SAFELY(ind_level);
+	TT_RELEASE_SAFELY(upVoteButton);
+	TT_RELEASE_SAFELY(downVoteButton);
+	TT_RELEASE_SAFELY(replyButton);
+	[super dealloc];
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
@@ -74,7 +87,7 @@ static CGFloat kGroupMargin = 10;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
 	if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
-		[TTStyleSheet setGlobalStyleSheet:[[HNStyle alloc] init]];
+		[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
 
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 
@@ -118,7 +131,7 @@ static CGFloat kGroupMargin = 10;
 			
 			self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
 			[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
-			
+		[downVoteImage release];
 			[self.downVoteButton addTarget:self
 									action:@selector(vote:)
 						  forControlEvents:UIControlEventTouchUpInside];
@@ -131,7 +144,7 @@ static CGFloat kGroupMargin = 10;
 			
 			self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
 			[self.upVoteButton setImage:accessoryImage forState:UIControlStateNormal];
-			
+		[accessoryImage release];
 			[self.upVoteButton addTarget:self
 								  action:@selector(vote:)
 						forControlEvents:UIControlEventTouchUpInside];
@@ -145,7 +158,7 @@ static CGFloat kGroupMargin = 10;
 			
 			self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
 			[self.replyButton setImage:replyImage forState:UIControlStateNormal];
-			
+		[replyImage release];
 			[self.replyButton addTarget:self
 								 action:@selector(replyButtonTapped)
 					   forControlEvents:UIControlEventTouchUpInside];
@@ -156,10 +169,6 @@ static CGFloat kGroupMargin = 10;
 	return self;
 }
 
-- (void)dealloc {
-	TT_RELEASE_SAFELY(commentTextLabel);
-	[super dealloc];
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UIView
@@ -260,11 +269,19 @@ static CGFloat kGroupMargin = 10;
 			if (!self.cellComment.voted) {
 				self.upVoteButton.hidden = NO;
 				self.upVoteButton.enabled = YES;
-				self.downVoteButton.hidden = NO;
-				self.downVoteButton.enabled = YES;
+				
+				if (self.cellComment.isDownvote) {
+					self.downVoteButton.hidden = NO;
+					self.downVoteButton.enabled = YES;
+				} else {
+					self.downVoteButton.hidden = YES;
+					self.downVoteButton.enabled = NO;
+				}
 			} else {
 				self.upVoteButton.hidden = YES;
 				self.upVoteButton.enabled = NO;
+
+				
 				self.downVoteButton.hidden = YES;
 				self.downVoteButton.enabled = NO;
 			}
@@ -323,7 +340,7 @@ static CGFloat kGroupMargin = 10;
 }
 
 -(void)deleteComment:(UIButton*)sender {
-	NSLog(@"Delete comment!");
+	DLog(@"Delete comment!");
 }
 
 

@@ -13,11 +13,7 @@
 @interface HNStoryModel : TTModel <TTURLRequestDelegate> {
 	
 	NSMutableArray* stories;
-	
-@private
-	
-	BOOL _isLoading;
-	BOOL _isLoaded;
+
 }
 
 @property(nonatomic,retain) NSMutableArray* stories;

@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Three20/Three20.h"
 
-@class HNComment, HNCommentReplyItem;
+@class HNComment, HNCommentReplyItem, HNStory;
 
 @interface HNCommentModel : TTModel <TTURLRequestDelegate>  {
 
+	HNStory* headerStory;
+	
 	NSMutableArray* comments;
 	NSString* story_id;
-
-	NSString *replyFNID;
-
+	
 	HNCommentReplyItem* activeReplyItem;
 	
 	TTURLRequest *setupReplyRequest;
@@ -33,10 +33,9 @@
 
 -(void)replyWithItem:(HNCommentReplyItem*)replyItem;
 
-
+@property(nonatomic,retain) HNStory* headerStory;
 @property(nonatomic,retain) NSMutableArray* comments;
 @property(nonatomic,retain) NSString *story_id;
-@property(nonatomic,retain) NSString *replyFNID;
 @property(nonatomic,retain) TTURLRequest *setupReplyRequest;
 @property(nonatomic,retain) TTURLRequest *allCommentsRequest;
 @property(nonatomic,retain) TTURLRequest *submitReplyRequest;

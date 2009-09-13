@@ -7,7 +7,6 @@
 //
 
 #import "HNCommentModel.h"
-
 #import "HNComment.h"
 #import "HNCommentTableItem.h"
 #import "HNCommentTableItemCell.h"
@@ -17,12 +16,13 @@
 #import "HNStoryTableItemCell.h"
 #import "HNAuth.h"
 #import "NSDictionary+UrlEncoding.h"
+#import "HNStory.h"
 
 @implementation HNCommentModel
 
 
-@synthesize comments, story_id, replyFNID, setupReplyRequest, allCommentsRequest, submitReplyRequest, 
-activeReplyItem;
+@synthesize comments, story_id, setupReplyRequest, allCommentsRequest, 
+submitReplyRequest, activeReplyItem, headerStory;
 
 
 - (void)dealloc {
@@ -73,15 +73,23 @@ activeReplyItem;
 }
 
 -(void)replyWithItem:(HNCommentReplyItem*)replyItem {
-	// This downloads the correct URL for posting a comment.
 	self.activeReplyItem = replyItem;
 	
-	NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", replyItem.aboveComment.reply_url];
-	setupReplyRequest = [TTURLRequest requestWithURL:URLstring delegate:self];
-	setupReplyRequest.cachePolicy = TTURLRequestCachePolicyNone;
-	setupReplyRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
-	setupReplyRequest.httpMethod = @"GET";
-	[setupReplyRequest send]; 	
+	if (self.activeReplyItem.replyFNID) {
+		// We already have the FNID which means it's from the main comments
+		// page. i.e. A top-level reply.
+		
+		[self sendReply];
+
+	} else {
+		// This downloads the correct URL for posting a comment.
+		NSString* URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/%@", replyItem.replyURL];
+		setupReplyRequest = [TTURLRequest requestWithURL:URLstring delegate:self];
+		setupReplyRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+		setupReplyRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
+		setupReplyRequest.httpMethod = @"GET";
+		[setupReplyRequest send]; 	
+	}
 }
 
 
@@ -92,20 +100,19 @@ activeReplyItem;
 	// Via http://stackoverflow.com/questions/573010/convert-characters-to-html-entities-in-cocoa
 	
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-	[parameters setValue: self.replyFNID forKey: @"fnid"];
+	[parameters setValue: self.activeReplyItem.replyFNID forKey: @"fnid"];
 	[parameters setValue: self.activeReplyItem.text forKey: @"text"];	
 	
 	NSString* replyURL = @"http://news.ycombinator.com/r?";
 	NSString *submitURL = [replyURL stringByAppendingString: [parameters urlEncodedString]];
 	
-	NSLog(@"Submitted url %@", submitURL);
+	DLog(@"Submitted url %@", submitURL);
 	
 	submitReplyRequest = [TTURLRequest requestWithURL:submitURL delegate:self];
 	
-	submitReplyRequest.cachePolicy = TTURLRequestCachePolicyNone;
+	submitReplyRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
 	submitReplyRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
 	submitReplyRequest.httpMethod = @"GET";
-	
 	[submitReplyRequest send];  
 }
 
@@ -120,13 +127,13 @@ activeReplyItem;
 	allCommentsRequest = [TTURLRequest requestWithURL:story_url delegate:self];
 	
 	//	request.cachePolicy = cachePolicy;
-	allCommentsRequest.cachePolicy = TTURLRequestCachePolicyMemory;
+	allCommentsRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
 	
 	allCommentsRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
 	allCommentsRequest.httpMethod = @"GET";
 	
 	BOOL cacheHit = [allCommentsRequest send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), story_url);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), story_url);
 }
 
 
@@ -134,16 +141,14 @@ activeReplyItem;
 #pragma mark TTURLRequestDelegate
 
 - (void)requestDidStartLoad:(TTURLRequest*)request {
-	
 	if (request == allCommentsRequest) {
 		_isLoading = YES;
 		_isLoaded = NO;    
 		[self didStartLoad];
 	}
-
 }
 
-// Parse the data
+
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
 	
 	if (request == allCommentsRequest ) {
@@ -151,36 +156,62 @@ activeReplyItem;
 		
 		TTURLDataResponse *response = request.response;
 		NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
-		
-		
 		Element *document = [Element parseHTML: responseBody];
-		
-		
-		// Add the story header
-		
-		//[self.items addObject:[HNCommentHeaderItem itemWithStory:self.story];
-		
+		NSNumberFormatter* nFormatter = [NSNumberFormatter new];
+
+				
 		//////////////////////////////////////////////////////////
 		//			HTML Processing for title box				//
 		//////////////////////////////////////////////////////////
 		
-		//	NSArray *titles = [document selectElements:@"tr > td > table > tr"];
-		//
-		//	Element *t;
-		//	for (t in titles) {
-		//		NSLog(@"TITLES: %@", t.contentsText);
-		//		NSLog(@"//////////////////////////////////////////////////////////");	
-		//
-		//	}
+		//NSArray *titles = [document selectElements:@"tr > td > table > tr"];
+		Element* title = [document selectElement:@"td.title"];
 		
+		HNStory* story = [[HNStory alloc] init];
 		
+		story.title = [[title selectElement:@"a"] contentsText];
+		story.url = [NSURL URLWithString:[[title selectElement:@"a"] attribute:@"href"]];
+				
 		
+		// POINTS
+		// Either "points" or "point"
+		NSString* pointsTempString = [[[[title parent] parent] selectElement:@"td.subtext > span"] contentsSource];
+				
+		if ([pointsTempString hasSuffix:@"points"]) {
+			story.points = [nFormatter numberFromString:[pointsTempString substringToIndex:[pointsTempString length] - 7]];
+			
+		} else if ([pointsTempString hasSuffix:@"point"]) {
+			story.points = [nFormatter numberFromString:[pointsTempString substringToIndex:[pointsTempString length] - 6]];
+			
+		} else {
+			// No points. 
+			story.points = [NSNumber numberWithInt:0];
+			// DLog(@"Error parsing points for story.");
+		}
+				
+		DLog(@"Comments: %@", [[[[[title parent] parent] selectElements:@"td.subtext > a"] objectAtIndex:1] contentsSource]);
+
+		story.replyFNID = [[[document selectElements:@"form > input"]objectAtIndex:0] attribute:@"value"];
+		
+		// Subtext			[[[[title parent] parent] selectElement:@"td.subtext"] contentsText]
+		
+		story.voteup_url = [[[[title parent] firstChild] selectElement:@"center > a"] attribute:@"href"];
+		if (!story.voteup_url) {
+			story.voted = YES;
+		}
+		
+		story.fulltext = [[[[[[[title parent] parent] selectElement:@"td.subtext"] parent] nextSybling] nextSybling] contentsText];
+		story.user = [[[[[title parent] parent] selectElements:@"td.subtext > a"] objectAtIndex:0] contentsSource];
+		story.time_ago = @"";
+		story.comments_count = nil;
+		story.story_id = nil;
+
+		self.headerStory = story;
 		
 		
 		//////////////////////////////////////////////////////////
 		//			HTML Processing for comments				//
 		//////////////////////////////////////////////////////////
-		
 		
 		
 		NSArray *commentsElements = [document selectElements:@"tr > td.default"];
@@ -193,7 +224,6 @@ activeReplyItem;
 		
 		
 		Element *element;
-		NSNumberFormatter* nFormatter = [NSNumberFormatter new];
 		
 		while(element = [commentsEnumerator nextObject] ) {
 			
@@ -204,23 +234,19 @@ activeReplyItem;
 			
 			Element	*commentTop = [element parent];
 			
-			
-			
-			//Element* vote = [[element parent] selectElement:@"td[valign]"];
-			
-			
-			//		[[titleElement firstChild] nextSybling]
-			
+						
 			Element* up = [commentTop selectElement:@"td > center > a"];
-			
-			//		NSLog(@"Down: %@", [[[[commentTop selectElement:@"td > center > a"] nextSybling] nextSybling] attribute:@"href"]);
-			
+						
 			
 			if (up) {
 				comment.upvotelink = [up attribute:@"href"];
 				if ([[HNAuth sharedHNAuth] loggedin]) {
 					comment.downvotelink = [[[[commentTop selectElement:@"td > center > a"] nextSybling] nextSybling] attribute:@"href"];
-					
+					comment.isDownvote = YES;
+					if (comment.downvotelink == nil) {
+						comment.isDownvote = NO;
+					}
+
 				}
 				comment.voted = NO;
 			} else {
@@ -306,7 +332,7 @@ activeReplyItem;
 			} else {
 				// No points. WTF?
 				comment.points = [NSNumber numberWithInt:0];
-				NSLog(@"Error parsing points for story.");
+				DLog(@"Error parsing points for story.");
 			}
 			
 			[self.comments addObject:comment];
@@ -326,7 +352,7 @@ activeReplyItem;
 		NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 		
 		Element *document = [Element parseHTML: responseBody];
-		self.replyFNID = [[[document selectElements:@"form > input"] objectAtIndex:0] attribute:@"value"];
+		self.activeReplyItem.replyFNID = [[[document selectElements:@"form > input"] objectAtIndex:0] attribute:@"value"];
 		
 		[self sendReply];
 	}

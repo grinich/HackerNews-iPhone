@@ -19,9 +19,12 @@
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
 		4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2881D51016EA6D00BDEF99 /* LoadingView.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
+		4C3086FA105818A00094D034 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086AF1058176C0094D034 /* libThree20.a */; };
+		4C3086FB105818A50094D034 /* libElementParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086B8105817F10094D034 /* libElementParser.a */; };
 		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
 		4C41E69110105A6F000A7253 /* HNAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* HNAuth.m */; };
 		4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */; };
+		4C435002101D526F00B2DEA7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C435001101D526F00B2DEA7 /* Default.png */; };
 		4C4CA58D100E30460090D24D /* downvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA58B100E30460090D24D /* downvote.png */; };
 		4C4CA59D100E30E00090D24D /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA59C100E30E00090D24D /* upvote.png */; };
 		4C4CA5B4100E31DE0090D24D /* upvote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CA5B3100E31DE0090D24D /* upvote-big.png */; };
@@ -35,8 +38,6 @@
 		4C8E73A5100E7A7B0071A8BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */; };
 		4C9CB67810157824002ECBD3 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */; };
 		4C9CB6F710158CD6002ECBD3 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9CB6F610158CD6002ECBD3 /* trash.png */; };
-		4CA2EF441007515400E8D387 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF431007515400E8D387 /* Default.png */; };
-		4CA2EF8C1007558B00E8D387 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EF7E1007549300E8D387 /* libThree20.a */; };
 		4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CA2EF9F100755E700E8D387 /* Three20.bundle */; };
 		4CA2EFB51007560200E8D387 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA2EFB41007560200E8D387 /* QuartzCore.framework */; };
 		4CACB2A3101510660095F004 /* HNCommentTextEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CACB2A2101510660095F004 /* HNCommentTextEditor.m */; };
@@ -46,45 +47,42 @@
 		4CB509391009F7E600476948 /* HNCommentTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB509381009F7E600476948 /* HNCommentTableItem.m */; };
 		4CB50B8A100A249300476948 /* HNStoryTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50B89100A249300476948 /* HNStoryTableItem.m */; };
 		4CB50BA3100A257C00476948 /* HNStoryTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */; };
-		4CDDC4BC1004FEC600E300E4 /* CDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48B1004FEC600E300E4 /* CDataChunk.m */; };
-		4CDDC4BD1004FEC600E300E4 /* Chunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48D1004FEC600E300E4 /* Chunk.m */; };
-		4CDDC4BE1004FEC600E300E4 /* CommentChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC48F1004FEC600E300E4 /* CommentChunk.m */; };
-		4CDDC4BF1004FEC600E300E4 /* CSSPartMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4911004FEC600E300E4 /* CSSPartMatcher.m */; };
-		4CDDC4C01004FEC600E300E4 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4931004FEC600E300E4 /* CSSSelector.m */; };
-		4CDDC4C11004FEC600E300E4 /* CSSSelectorMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4951004FEC600E300E4 /* CSSSelectorMatcher.m */; };
-		4CDDC4C21004FEC600E300E4 /* CSSSelectorPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4971004FEC600E300E4 /* CSSSelectorPart.m */; };
-		4CDDC4C31004FEC600E300E4 /* DoctypeChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4991004FEC600E300E4 /* DoctypeChunk.m */; };
-		4CDDC4C41004FEC600E300E4 /* DocumentRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC49B1004FEC600E300E4 /* DocumentRoot.m */; };
-		4CDDC4C51004FEC600E300E4 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC49D1004FEC600E300E4 /* Element.m */; };
-		4CDDC4C61004FEC600E300E4 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC49F1004FEC600E300E4 /* ElementParser.m */; };
-		4CDDC4C71004FEC600E300E4 /* EntityChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A11004FEC600E300E4 /* EntityChunk.m */; };
+		4CD36F66101D2BB500E457A5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD36F65101D2BB500E457A5 /* Icon.png */; };
 		4CDDC4C81004FEC600E300E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A31004FEC600E300E4 /* AppDelegate.m */; };
 		4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */; };
 		4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A51004FEC600E300E4 /* HN-masthead.png */; };
 		4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A91004FEC600E300E4 /* HNStory.m */; };
 		4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */; };
-		4CDDC4CF1004FEC600E300E4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AE1004FEC600E300E4 /* Icon.png */; };
-		4CDDC4D21004FEC600E300E4 /* NSString_HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */; };
-		4CDDC4D31004FEC600E300E4 /* ProcessingInstructionChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */; };
-		4CDDC4D41004FEC600E300E4 /* TagChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B71004FEC600E300E4 /* TagChunk.m */; };
-		4CDDC4D51004FEC600E300E4 /* TxtChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4B91004FEC600E300E4 /* TxtChunk.m */; };
-		4CDDC4D61004FEC600E300E4 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4BB1004FEC600E300E4 /* URLParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4CA2EF7D1007549300E8D387 /* PBXContainerItemProxy */ = {
+		4C3086AE1058176C0094D034 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2 /* libThree20.a */;
 			remoteInfo = Three20;
 		};
-		4CA2EF9C100755A700E8D387 /* PBXContainerItemProxy */ = {
+		4C3086B7105817F10094D034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C3086B0105817F10094D034 /* ElementParser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libElementParser.a */;
+			remoteInfo = ElementParser;
+		};
+		4C3086B9105818900094D034 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2 /* Three20 */;
 			remoteInfo = Three20;
+		};
+		4C3086BB105818930094D034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C3086B0105817F10094D034 /* ElementParser.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* ElementParser */;
+			remoteInfo = ElementParser;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -108,12 +106,14 @@
 		4C2881D41016EA6D00BDEF99 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		4C2881D51016EA6D00BDEF99 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
+		4C3086B0105817F10094D034 /* ElementParser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ElementParser.xcodeproj; path = ../ElementParser/ElementParser.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
 		4C41E68F10105A6F000A7253 /* HNAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNAuth.h; sourceTree = "<group>"; };
 		4C41E69010105A6F000A7253 /* HNAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNAuth.m; sourceTree = "<group>"; };
 		4C41E79B10106F5F000A7253 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4C41E79C10106F5F000A7253 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4C435001101D526F00B2DEA7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4C4CA58B100E30460090D24D /* downvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downvote.png; sourceTree = "<group>"; };
 		4C4CA59C100E30E00090D24D /* upvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upvote.png; sourceTree = "<group>"; };
 		4C4CA5B3100E31DE0090D24D /* upvote-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-big.png"; sourceTree = "<group>"; };
@@ -133,8 +133,7 @@
 		4C9CB67610157824002ECBD3 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
 		4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
 		4C9CB6F610158CD6002ECBD3 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
-		4CA2EF431007515400E8D387 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4CA2EF791007549300E8D387 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4CA2EF791007549300E8D387 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = "<group>"; };
 		4CA2EF9F100755E700E8D387 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		4CA2EFB41007560200E8D387 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		4CACB2A1101510660095F004 /* HNCommentTextEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTextEditor.h; sourceTree = "<group>"; };
@@ -151,30 +150,7 @@
 		4CB50B89100A249300476948 /* HNStoryTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItem.m; sourceTree = "<group>"; };
 		4CB50BA1100A257C00476948 /* HNStoryTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableItemCell.h; sourceTree = "<group>"; };
 		4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItemCell.m; sourceTree = "<group>"; };
-		4CDDC48A1004FEC600E300E4 /* CDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDataChunk.h; path = Classes/CDataChunk.h; sourceTree = "<group>"; };
-		4CDDC48B1004FEC600E300E4 /* CDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDataChunk.m; path = Classes/CDataChunk.m; sourceTree = "<group>"; };
-		4CDDC48C1004FEC600E300E4 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chunk.h; path = Classes/Chunk.h; sourceTree = "<group>"; };
-		4CDDC48D1004FEC600E300E4 /* Chunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chunk.m; path = Classes/Chunk.m; sourceTree = "<group>"; };
-		4CDDC48E1004FEC600E300E4 /* CommentChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentChunk.h; path = Classes/CommentChunk.h; sourceTree = "<group>"; };
-		4CDDC48F1004FEC600E300E4 /* CommentChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentChunk.m; path = Classes/CommentChunk.m; sourceTree = "<group>"; };
-		4CDDC4901004FEC600E300E4 /* CSSPartMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSPartMatcher.h; path = Classes/CSSPartMatcher.h; sourceTree = "<group>"; };
-		4CDDC4911004FEC600E300E4 /* CSSPartMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSPartMatcher.m; path = Classes/CSSPartMatcher.m; sourceTree = "<group>"; };
-		4CDDC4921004FEC600E300E4 /* CSSSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelector.h; path = Classes/CSSSelector.h; sourceTree = "<group>"; };
-		4CDDC4931004FEC600E300E4 /* CSSSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelector.m; path = Classes/CSSSelector.m; sourceTree = "<group>"; };
-		4CDDC4941004FEC600E300E4 /* CSSSelectorMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorMatcher.h; path = Classes/CSSSelectorMatcher.h; sourceTree = "<group>"; };
-		4CDDC4951004FEC600E300E4 /* CSSSelectorMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorMatcher.m; path = Classes/CSSSelectorMatcher.m; sourceTree = "<group>"; };
-		4CDDC4961004FEC600E300E4 /* CSSSelectorPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorPart.h; path = Classes/CSSSelectorPart.h; sourceTree = "<group>"; };
-		4CDDC4971004FEC600E300E4 /* CSSSelectorPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorPart.m; path = Classes/CSSSelectorPart.m; sourceTree = "<group>"; };
-		4CDDC4981004FEC600E300E4 /* DoctypeChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoctypeChunk.h; path = Classes/DoctypeChunk.h; sourceTree = "<group>"; };
-		4CDDC4991004FEC600E300E4 /* DoctypeChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoctypeChunk.m; path = Classes/DoctypeChunk.m; sourceTree = "<group>"; };
-		4CDDC49A1004FEC600E300E4 /* DocumentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentRoot.h; path = Classes/DocumentRoot.h; sourceTree = "<group>"; };
-		4CDDC49B1004FEC600E300E4 /* DocumentRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentRoot.m; path = Classes/DocumentRoot.m; sourceTree = "<group>"; };
-		4CDDC49C1004FEC600E300E4 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Classes/Element.h; sourceTree = "<group>"; };
-		4CDDC49D1004FEC600E300E4 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Classes/Element.m; sourceTree = "<group>"; };
-		4CDDC49E1004FEC600E300E4 /* ElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementParser.h; path = Classes/ElementParser.h; sourceTree = "<group>"; };
-		4CDDC49F1004FEC600E300E4 /* ElementParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementParser.m; path = Classes/ElementParser.m; sourceTree = "<group>"; };
-		4CDDC4A01004FEC600E300E4 /* EntityChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityChunk.h; path = Classes/EntityChunk.h; sourceTree = "<group>"; };
-		4CDDC4A11004FEC600E300E4 /* EntityChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntityChunk.m; path = Classes/EntityChunk.m; sourceTree = "<group>"; };
+		4CD36F65101D2BB500E457A5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4CDDC4A21004FEC600E300E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CDDC4A31004FEC600E300E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HN-masthead-light.png"; path = "Classes/HN-masthead-light.png"; sourceTree = "<group>"; };
@@ -183,18 +159,7 @@
 		4CDDC4A91004FEC600E300E4 /* HNStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStory.m; path = Classes/HNStory.m; sourceTree = "<group>"; };
 		4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStoryTableViewController.h; path = Classes/HNStoryTableViewController.h; sourceTree = "<group>"; };
 		4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStoryTableViewController.m; path = Classes/HNStoryTableViewController.m; sourceTree = "<group>"; };
-		4CDDC4AE1004FEC600E300E4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Classes/Icon.png; sourceTree = "<group>"; };
-		4CDDC4B11004FEC600E300E4 /* NSString_HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_HTML.h; path = Classes/NSString_HTML.h; sourceTree = "<group>"; };
-		4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_HTML.m; path = Classes/NSString_HTML.m; sourceTree = "<group>"; };
-		4CDDC4B31004FEC600E300E4 /* ProcessingInstructionChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProcessingInstructionChunk.h; path = Classes/ProcessingInstructionChunk.h; sourceTree = "<group>"; };
-		4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProcessingInstructionChunk.m; path = Classes/ProcessingInstructionChunk.m; sourceTree = "<group>"; };
 		4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		4CDDC4B61004FEC600E300E4 /* TagChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagChunk.h; path = Classes/TagChunk.h; sourceTree = "<group>"; };
-		4CDDC4B71004FEC600E300E4 /* TagChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagChunk.m; path = Classes/TagChunk.m; sourceTree = "<group>"; };
-		4CDDC4B81004FEC600E300E4 /* TxtChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TxtChunk.h; path = Classes/TxtChunk.h; sourceTree = "<group>"; };
-		4CDDC4B91004FEC600E300E4 /* TxtChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxtChunk.m; path = Classes/TxtChunk.m; sourceTree = "<group>"; };
-		4CDDC4BA1004FEC600E300E4 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLParser.h; path = Classes/URLParser.h; sourceTree = "<group>"; };
-		4CDDC4BB1004FEC600E300E4 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLParser.m; path = Classes/URLParser.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,9 +172,10 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
-				4CA2EF8C1007558B00E8D387 /* libThree20.a in Frameworks */,
 				4CA2EFB51007560200E8D387 /* QuartzCore.framework in Frameworks */,
 				4C8E73A5100E7A7B0071A8BE /* SystemConfiguration.framework in Frameworks */,
+				4C3086FA105818A00094D034 /* libThree20.a in Frameworks */,
+				4C3086FB105818A50094D034 /* libElementParser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +245,9 @@
 				4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */,
 				4C2881D41016EA6D00BDEF99 /* LoadingView.h */,
 				4C2881D51016EA6D00BDEF99 /* LoadingView.m */,
-				4C41899610050665009BB9EA /* Element Parser */,
 				28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				4C435001101D526F00B2DEA7 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA2EF9F100755E700E8D387 /* Three20.bundle */,
+				4C3086B0105817F10094D034 /* ElementParser.xcodeproj */,
 				4CA2EF791007549300E8D387 /* Three20.xcodeproj */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -299,51 +266,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4C41899610050665009BB9EA /* Element Parser */ = {
+		4C3086AB1058176C0094D034 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4CDDC48A1004FEC600E300E4 /* CDataChunk.h */,
-				4CDDC48B1004FEC600E300E4 /* CDataChunk.m */,
-				4CDDC48C1004FEC600E300E4 /* Chunk.h */,
-				4CDDC48D1004FEC600E300E4 /* Chunk.m */,
-				4CDDC48E1004FEC600E300E4 /* CommentChunk.h */,
-				4CDDC48F1004FEC600E300E4 /* CommentChunk.m */,
-				4CDDC4901004FEC600E300E4 /* CSSPartMatcher.h */,
-				4CDDC4911004FEC600E300E4 /* CSSPartMatcher.m */,
-				4CDDC4921004FEC600E300E4 /* CSSSelector.h */,
-				4CDDC4931004FEC600E300E4 /* CSSSelector.m */,
-				4CDDC4941004FEC600E300E4 /* CSSSelectorMatcher.h */,
-				4CDDC4951004FEC600E300E4 /* CSSSelectorMatcher.m */,
-				4CDDC4961004FEC600E300E4 /* CSSSelectorPart.h */,
-				4CDDC4971004FEC600E300E4 /* CSSSelectorPart.m */,
-				4CDDC4981004FEC600E300E4 /* DoctypeChunk.h */,
-				4CDDC4991004FEC600E300E4 /* DoctypeChunk.m */,
-				4CDDC49A1004FEC600E300E4 /* DocumentRoot.h */,
-				4CDDC49B1004FEC600E300E4 /* DocumentRoot.m */,
-				4CDDC49C1004FEC600E300E4 /* Element.h */,
-				4CDDC49D1004FEC600E300E4 /* Element.m */,
-				4CDDC49E1004FEC600E300E4 /* ElementParser.h */,
-				4CDDC49F1004FEC600E300E4 /* ElementParser.m */,
-				4CDDC4A01004FEC600E300E4 /* EntityChunk.h */,
-				4CDDC4A11004FEC600E300E4 /* EntityChunk.m */,
-				4CDDC4B11004FEC600E300E4 /* NSString_HTML.h */,
-				4CDDC4B21004FEC600E300E4 /* NSString_HTML.m */,
-				4CDDC4B31004FEC600E300E4 /* ProcessingInstructionChunk.h */,
-				4CDDC4B41004FEC600E300E4 /* ProcessingInstructionChunk.m */,
-				4CDDC4B61004FEC600E300E4 /* TagChunk.h */,
-				4CDDC4B71004FEC600E300E4 /* TagChunk.m */,
-				4CDDC4B81004FEC600E300E4 /* TxtChunk.h */,
-				4CDDC4B91004FEC600E300E4 /* TxtChunk.m */,
-				4CDDC4BA1004FEC600E300E4 /* URLParser.h */,
-				4CDDC4BB1004FEC600E300E4 /* URLParser.m */,
+				4C3086AF1058176C0094D034 /* libThree20.a */,
 			);
-			name = "Element Parser";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		4CA2EF7A1007549300E8D387 /* Products */ = {
+		4C3086B1105817F10094D034 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4CA2EF7E1007549300E8D387 /* libThree20.a */,
+				4C3086B8105817F10094D034 /* libElementParser.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,13 +286,12 @@
 			isa = PBXGroup;
 			children = (
 				4C9CB6F610158CD6002ECBD3 /* trash.png */,
+				4CD36F65101D2BB500E457A5 /* Icon.png */,
 				4C57D2CA100E7292001B8ADF /* reply.png */,
 				4C4CA5B3100E31DE0090D24D /* upvote-big.png */,
 				4C4CA59C100E30E00090D24D /* upvote.png */,
 				4C4CA58B100E30460090D24D /* downvote.png */,
 				4C5EB2AF100797B0001C9BDC /* comment-button.png */,
-				4CA2EF431007515400E8D387 /* Default.png */,
-				4CDDC4AE1004FEC600E300E4 /* Icon.png */,
 				4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */,
 				4CDDC4A51004FEC600E300E4 /* HN-masthead.png */,
 			);
@@ -391,12 +324,12 @@
 				4C5EB5A31007D26A001C9BDC /* HNComment.m */,
 				4C5EB51E1007C2DB001C9BDC /* HNCommentsTableViewController.h */,
 				4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */,
-				4C0A1BA5100DBC6B009E7A11 /* HNCommentHeaderItem.h */,
-				4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */,
 				4CACB2A1101510660095F004 /* HNCommentTextEditor.h */,
 				4CACB2A2101510660095F004 /* HNCommentTextEditor.m */,
 				4CACB3CE10152AAB0095F004 /* HNCommentReplyItem.h */,
 				4CACB3CF10152AAB0095F004 /* HNCommentReplyItem.m */,
+				4C0A1BA5100DBC6B009E7A11 /* HNCommentHeaderItem.h */,
+				4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */,
 				4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */,
 				4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */,
 				4CB509371009F7E600476948 /* HNCommentTableItem.h */,
@@ -425,7 +358,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				4CA2EF9D100755A700E8D387 /* PBXTargetDependency */,
+				4C3086BA105818900094D034 /* PBXTargetDependency */,
+				4C3086BC105818930094D034 /* PBXTargetDependency */,
 			);
 			name = HackerNews;
 			productName = HackerNews;
@@ -444,7 +378,11 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4CA2EF7A1007549300E8D387 /* Products */;
+					ProductGroup = 4C3086B1105817F10094D034 /* Products */;
+					ProjectRef = 4C3086B0105817F10094D034 /* ElementParser.xcodeproj */;
+				},
+				{
+					ProductGroup = 4C3086AB1058176C0094D034 /* Products */;
 					ProjectRef = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
 				},
 			);
@@ -456,11 +394,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4CA2EF7E1007549300E8D387 /* libThree20.a */ = {
+		4C3086AF1058176C0094D034 /* libThree20.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libThree20.a;
-			remoteRef = 4CA2EF7D1007549300E8D387 /* PBXContainerItemProxy */;
+			remoteRef = 4C3086AE1058176C0094D034 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C3086B8105817F10094D034 /* libElementParser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libElementParser.a;
+			remoteRef = 4C3086B7105817F10094D034 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -472,9 +417,7 @@
 			files = (
 				4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */,
 				4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */,
-				4CDDC4CF1004FEC600E300E4 /* Icon.png in Resources */,
 				4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */,
-				4CA2EF441007515400E8D387 /* Default.png in Resources */,
 				4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */,
 				4C5EB2B0100797B0001C9BDC /* comment-button.png in Resources */,
 				4C4CA58D100E30460090D24D /* downvote.png in Resources */,
@@ -482,6 +425,8 @@
 				4C4CA5B4100E31DE0090D24D /* upvote-big.png in Resources */,
 				4C57D2CB100E7292001B8ADF /* reply.png in Resources */,
 				4C9CB6F710158CD6002ECBD3 /* trash.png in Resources */,
+				4CD36F66101D2BB500E457A5 /* Icon.png in Resources */,
+				4C435002101D526F00B2DEA7 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,26 +439,9 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				28C3AD8A0F43EF2300507BA6 /* HackerNews.xcdatamodel in Sources */,
-				4CDDC4BC1004FEC600E300E4 /* CDataChunk.m in Sources */,
-				4CDDC4BD1004FEC600E300E4 /* Chunk.m in Sources */,
-				4CDDC4BE1004FEC600E300E4 /* CommentChunk.m in Sources */,
-				4CDDC4BF1004FEC600E300E4 /* CSSPartMatcher.m in Sources */,
-				4CDDC4C01004FEC600E300E4 /* CSSSelector.m in Sources */,
-				4CDDC4C11004FEC600E300E4 /* CSSSelectorMatcher.m in Sources */,
-				4CDDC4C21004FEC600E300E4 /* CSSSelectorPart.m in Sources */,
-				4CDDC4C31004FEC600E300E4 /* DoctypeChunk.m in Sources */,
-				4CDDC4C41004FEC600E300E4 /* DocumentRoot.m in Sources */,
-				4CDDC4C51004FEC600E300E4 /* Element.m in Sources */,
-				4CDDC4C61004FEC600E300E4 /* ElementParser.m in Sources */,
-				4CDDC4C71004FEC600E300E4 /* EntityChunk.m in Sources */,
 				4CDDC4C81004FEC600E300E4 /* AppDelegate.m in Sources */,
 				4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */,
 				4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */,
-				4CDDC4D21004FEC600E300E4 /* NSString_HTML.m in Sources */,
-				4CDDC4D31004FEC600E300E4 /* ProcessingInstructionChunk.m in Sources */,
-				4CDDC4D41004FEC600E300E4 /* TagChunk.m in Sources */,
-				4CDDC4D51004FEC600E300E4 /* TxtChunk.m in Sources */,
-				4CDDC4D61004FEC600E300E4 /* URLParser.m in Sources */,
 				4C5EB5201007C2DB001C9BDC /* HNCommentsTableViewController.m in Sources */,
 				4C5EB5A41007D26A001C9BDC /* HNComment.m in Sources */,
 				4CB5022A1009598200476948 /* HNStyle.m in Sources */,
@@ -541,10 +469,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4CA2EF9D100755A700E8D387 /* PBXTargetDependency */ = {
+		4C3086BA105818900094D034 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Three20;
-			targetProxy = 4CA2EF9C100755A700E8D387 /* PBXContainerItemProxy */;
+			targetProxy = 4C3086B9105818900094D034 /* PBXContainerItemProxy */;
+		};
+		4C3086BC105818930094D034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ElementParser;
+			targetProxy = 4C3086BB105818930094D034 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -564,6 +497,7 @@
 				GCC_PREFIX_HEADER = HackerNews_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
+				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = HackerNews;
 			};
 			name = Debug;
@@ -594,13 +528,16 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"../ElementParser/**",
+					"../three20/src/**",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C242592-1CF0-48EE-8641-F3723EA4C9BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE24CD29-879C-4785-8C26-359BA5C102D2";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
@@ -609,18 +546,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Grinich";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../three20/src;
+				HEADER_SEARCH_PATHS = (
+					"../ElementParser/**",
+					"../three20/src/**",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C242592-1CF0-48EE-8641-F3723EA4C9BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "94D23813-79C9-463E-9228-3E9AFCE921C1";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Release;

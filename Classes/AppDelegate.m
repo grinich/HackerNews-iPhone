@@ -47,9 +47,7 @@
 
 	
 	TTNavigator* navigator = [TTNavigator navigator];
-//	navigator.persistenceMode = TTNavigatorPersistenceModeAll;
-	navigator.persistenceMode = TTNavigatorPersistenceModeNone;
-
+	navigator.persistenceMode = TTNavigatorPersistenceModeNone;	
 	navigator.supportsShakeToReload = YES;
 	
 	TTURLMap* map = navigator.URLMap;
@@ -78,13 +76,11 @@
 		[[HNAuth sharedHNAuth] setLoggedin:NO];
 	}
 	
-	NSLog(@"App delegate cookies %@", cookies);
-
 	
 	if (![navigator restoreViewControllers]) {
 		[navigator openURL:@"tt://home" animated:NO];
+//		[navigator openURL:@"http://news.ycombinator.com/item?id=486755" animated:NO];	// Large comment set
 	}
-	
 
 }
 
