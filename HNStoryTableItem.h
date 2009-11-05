@@ -10,9 +10,8 @@
 
 @class HNStory;
 
-@interface HNStoryTableItem : TTTableLinkedItem {
+@interface HNStoryTableItem : TTTableTextItem {
 	HNStory *story;
-	NSString* _text;
 
 }
 

@@ -521,7 +521,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE24CD29-879C-4785-8C26-359BA5C102D2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26758251-B727-4BB6-B692-D588F9107ABD";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
@@ -530,7 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Grinich";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -544,7 +544,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "94D23813-79C9-463E-9228-3E9AFCE921C1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26758251-B727-4BB6-B692-D588F9107ABD";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Release;

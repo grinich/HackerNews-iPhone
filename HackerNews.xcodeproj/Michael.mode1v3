@@ -280,13 +280,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>15</integer>
+									<integer>62</integer>
+									<integer>55</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 200}, {273, 714}}</string>
+							<string>{{0, 417}, {273, 714}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -305,7 +305,7 @@
 							<real>273</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>5 105 1247 773 0 0 1440 878 </string>
+						<string>62 105 1247 773 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -316,14 +316,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>HNStoryTableViewController.m</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>HNStoryTableViewController.m</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4CB51A2410A298C00088EC27</string>
+										<string>4C28476610A3568F00F46834</string>
 										<key>history</key>
 										<array>
 											<string>4C8F494F1005137000BB9211</string>
@@ -363,13 +361,9 @@
 											<string>4C73A5D210178ED000D3B581</string>
 											<string>4C73A61310179DB600D3B581</string>
 											<string>4CFB0EBC1017C84B00F7E587</string>
-											<string>4C60758B1018007F0039E384</string>
 											<string>4C607852101835D30039E384</string>
-											<string>4CF4BB4810192D090035F540</string>
 											<string>4C4305E5101989A7004B60DC</string>
 											<string>4C4306741019909B004B60DC</string>
-											<string>4C5E40A0101A062400AAC69F</string>
-											<string>4C5E419F101A3C0D00AAC69F</string>
 											<string>4C5E41B5101A3C9100AAC69F</string>
 											<string>4C5E41DB101A3D2E00AAC69F</string>
 											<string>4C5E422A101A4B2D00AAC69F</string>
@@ -406,7 +400,6 @@
 											<string>4C30869C105815D60094D034</string>
 											<string>4CE37310107866AB00268EE1</string>
 											<string>4C0326F110788F220072FFC1</string>
-											<string>4C337DCC109F3CD900B3CBE7</string>
 											<string>4C337DCD109F3CD900B3CBE7</string>
 											<string>4CB51A0010A297F50088EC27</string>
 											<string>4CB51A1C10A298C00088EC27</string>
@@ -414,9 +407,14 @@
 											<string>4CB51A1F10A298C00088EC27</string>
 											<string>4CB51A2010A298C00088EC27</string>
 											<string>4CB51A2110A298C00088EC27</string>
-											<string>4CB51A2210A298C00088EC27</string>
 											<string>4CB51A2310A298C00088EC27</string>
-											<string>4CB519FF10A297F50088EC27</string>
+											<string>4CB51A3910A29C060088EC27</string>
+											<string>4CB51A3A10A29C060088EC27</string>
+											<string>4CB51A3B10A29C060088EC27</string>
+											<string>4CB51A3C10A29C060088EC27</string>
+											<string>4CB51A6D10A29EB00088EC27</string>
+											<string>4C28476410A3568F00F46834</string>
+											<string>4C28476510A3568F00F46834</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -430,7 +428,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {952, 727}}</string>
 								<key>RubberWindowFrame</key>
-								<string>5 105 1247 773 0 0 1440 878 </string>
+								<string>62 105 1247 773 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -450,7 +448,7 @@
 								<key>Frame</key>
 								<string>{{0, 732}, {952, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>5 105 1247 773 0 0 1440 878 </string>
+								<string>62 105 1247 773 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -474,9 +472,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4CB51A0410A297F50088EC27</string>
+				<string>4C28476710A3568F00F46834</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4CB51A0510A297F50088EC27</string>
+				<string>4C28476810A3568F00F46834</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -614,17 +612,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>4CB51A2510A298C00088EC27</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>4CB51A0E10A297F50088EC27</string>
-		<string>4CB51A1010A297F50088EC27</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4CDDC4D91004FED400E300E4</string>
 		<string>/Users/Michael/Projects/HackerNews/src/HackerNews.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>5 105 1247 773 0 0 1440 878 </string>
+	<string>62 105 1247 773 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -662,6 +654,8 @@
 							<string>439pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -701,7 +695,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4CDDC4D91004FED400E300E4</string>
-				<string>4CB51A0610A297F50088EC27</string>
+				<string>4C28475910A3564F00F46834</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -995,7 +989,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

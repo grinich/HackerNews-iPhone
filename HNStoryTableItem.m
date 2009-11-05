@@ -13,7 +13,6 @@
 @implementation HNStoryTableItem
 
 @synthesize story;
-@synthesize text = _text;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
@@ -26,9 +25,10 @@
 
 	//item.URL = [[story url] absoluteURL];
 	
-	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
+	// Todo: some work here
 	
-	item.text = @"";	// Fails without this!?
+	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
+		
 
 	return item;
 }
