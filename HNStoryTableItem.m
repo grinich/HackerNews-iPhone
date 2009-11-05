@@ -28,7 +28,6 @@
 	// Todo: some work here
 	
 	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
-		
 
 	return item;
 }

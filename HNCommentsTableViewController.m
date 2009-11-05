@@ -363,7 +363,7 @@
 	if (!self.dataSource) {
 		HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
 		if (!_model) {
-			ds.model = [[HNCommentModel alloc] initRemoteModel];
+			ds.model = [HNCommentModel new];
 			((HNCommentModel*)ds.model).story_id = self.storyID;		
 		}
 		self.dataSource =  ds;	

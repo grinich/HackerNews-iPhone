@@ -61,12 +61,16 @@
 	*/
 	
 	
+	// Login Button
+	/*
 	loginButton = [[UIBarButtonItem alloc] initWithTitle:@"sometitle" 
 													style:UIBarButtonItemStylePlain 
 												   target:self
 												   action:@selector(buttonTapped)];
 	
 	[self.navigationItem setLeftBarButtonItem:loginButton];	
+	*/
+	
 	
 	
 	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth

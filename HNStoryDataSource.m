@@ -36,14 +36,14 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
 	[super tableViewDidLoadModel:tableView]; 
 	
-	NSLog(@"Removing all objects in the table view."); 
+	DLog(@"Removing all objects in the table view."); 
     [self.items removeAllObjects]; 
 
 	for (HNStory* story in ((HNStoryModel *)self.model).stories) {
 		[self.items addObject:[HNStoryTableItem itemWithStory:story]];
 	}
 	
-	NSLog(@"Added %u  objects", (unsigned long) 
+	DLog(@"Added %u  objects", (unsigned long) 
 		  [self.items count]); 
 }
 

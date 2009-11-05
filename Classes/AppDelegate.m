@@ -51,7 +51,10 @@
 	navigator.supportsShakeToReload = YES;
 	
 	TTURLMap* map = navigator.URLMap;
-	[map from:@"*" toViewController:[TTWebController class] selector:@selector(initWithURL:)];
+
+	// Any URL that doesn't match will fall back on this one, and open in the web browser
+	[map from:@"*" toViewController:[TTWebController class]];
+
 	
 	[map from:@"tt://home" toSharedViewController:[HNStoryTableViewController class]];
 	[map from:@"tt://home/comments/(initWithStory:)" toViewController:[HNCommentsTableViewController class]];

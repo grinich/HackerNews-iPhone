@@ -15,7 +15,6 @@
 
 }
 
-@property (nonatomic,copy)		NSString* text;
 @property (nonatomic,retain)	HNStory *story;
 
 + (HNStoryTableItem *)itemWithStory:(HNStory *)aStory;
