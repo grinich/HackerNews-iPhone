@@ -10,7 +10,7 @@
 #import "Three20/Three20.h"
 
 
-@interface HNStoryModel : TTModel <TTURLRequestDelegate> {
+@interface HNStoryModel : TTURLRequestModel {
 	
 	NSMutableArray* stories;
 

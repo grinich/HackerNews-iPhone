@@ -16,7 +16,6 @@
 
 #import "HNCommentHeaderItem.h"
 #import "HNCommentHeaderItemCell.h"
-#import "HNCommentReplyItem.h"
 
 #import "TempItems.h"
 
@@ -61,10 +60,7 @@
 		return [HNCommentTableItemCell class];
 	} else if ([object isKindOfClass:[HNCommentHeaderItem class]]) {
 		return [HNCommentHeaderItemCell class];
-	} else if ([object isKindOfClass:[HNCommentReplyItem class]]) {
-		return [TTTableControlCell class];
-	}
-	
+	} 
 	else {
 		return [super tableView:tableView cellClassForObject:object];
 	}

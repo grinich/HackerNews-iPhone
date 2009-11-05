@@ -100,7 +100,7 @@
 	if (!self.dataSource) {
 		HNStoryDataSource* ds= [[[HNStoryDataSource alloc] init] autorelease];
 		if (!_model) {
-			ds.model = [[HNStoryModel alloc] initRemoteModel];
+			ds.model = [[HNStoryModel alloc] init];
 		}
 		self.dataSource =  ds;	
 	}
@@ -129,11 +129,15 @@
 
 
 - (void)createModel {
-	HNStoryDataSource* ds= [[[HNStoryDataSource alloc] init] autorelease];
-	ds.model = [[HNStoryModel alloc] initRemoteModel];
+	HNStoryDataSource* ds= [[HNStoryDataSource new] autorelease];
+	ds.model = [HNStoryModel new];
 	self.dataSource =  ds;	
 }
 
+
+
+// Todo: reload code
+/* 
 
 - (BOOL)shouldReload {
 	if (( [((HNStoryDataSource*)self.dataSource).items count] < 1 )  && (!_flags.isModelFirstTimeInvalid)) {
@@ -143,6 +147,7 @@
 	}
 }
 
+*/ 
 
 
 

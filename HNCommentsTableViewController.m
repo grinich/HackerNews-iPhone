@@ -14,7 +14,6 @@
 #import "HNCommentModel.h"
 #import "HNStyle.h"
 #import "HNComment.h"
-#import "HNCommentReplyItem.h"
 #import "LoadingView.h"
 #import "HNCommentHeaderItemCell.h"
 #import "HNCommentHeaderItem.h"
@@ -27,7 +26,6 @@
 
 @synthesize storyID;
 @synthesize composing;
-@synthesize replyCommentItem;
 
 	
 /*
@@ -50,7 +48,6 @@
 
 - (void)dealloc {
 	TT_RELEASE_SAFELY(storyID);
-	TT_RELEASE_SAFELY(replyCommentItem);
 	[super dealloc];
 }
 
@@ -160,6 +157,8 @@
 
 
 - (void)replyToComment:(NSNotification *)notification {
+	/*
+	
 	if (!self.composing) {
 		self.composing = YES;
 		NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
@@ -248,6 +247,10 @@
 		 
 		
 	}
+	 
+	*/
+	
+	DLog(@"Reply notification.");
 }
 		
 
@@ -265,6 +268,12 @@
  
 
 -(void)submitComment:(UIButton*)sender {
+	
+	DLog(@"Submit comment");
+	
+	
+	/* 
+	 
 	[replyCommentItem.textView resignFirstResponder];
 	
 	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
@@ -305,12 +314,14 @@
 	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
 	[self.tableView reloadData];
 	self.composing = NO;
+	 
+	*/
 	
 }
 
 
 -(void)cancelComment:(UIButton*)sender {
-	
+	/*
 	[replyCommentItem.textView resignFirstResponder];
 
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
@@ -334,12 +345,13 @@
 	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
 	
 	self.composing = NO;
+	 */
 }
 
  
 - (void)createModel {
-	HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
-	ds.model = [[HNCommentModel alloc] initRemoteModel];
+	HNCommentsDataSource* ds=  [[HNCommentsDataSource new] autorelease];
+	ds.model = [HNCommentModel new];
 	((HNCommentModel*)ds.model).story_id = self.storyID;
 	
 	self.dataSource =  ds;	

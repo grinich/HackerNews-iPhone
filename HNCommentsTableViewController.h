@@ -10,19 +10,17 @@
 #import "Three20/Three20.h"
 
 
-@class HNComment, HNCommentReplyItem, LoadingView;
+@class HNComment, LoadingView;
 
 @interface HNCommentsTableViewController :  TTTableViewController <TTTextEditorDelegate> {
 	
 	NSString		*storyID;
 	BOOL	composing;
-	HNCommentReplyItem* replyCommentItem;
 	LoadingView *replyLoadingView;
 }
 
 @property (nonatomic, retain)	NSString	*storyID;
 @property (nonatomic) BOOL	composing;
-@property (nonatomic, retain) HNCommentReplyItem* replyCommentItem;
 
 - (id)initWithStory:(NSString *)storyIN;
 
