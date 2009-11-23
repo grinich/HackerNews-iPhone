@@ -121,9 +121,15 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 		commentsTempString = [[[subtextElement selectElement:@"a"] nextElement] contentsText];
 		
 		// TIME SINCE POSTING
+		// TODO : fix this. crashing on substringWithRange
+		
+		/*
 		NSInteger location = [pointsTempString length] + 4 + [story.user length] + 1;
 		NSInteger length = [[subtextElement contentsText] length] - location - [commentsTempString length] - 3;
 		story.time_ago = [[subtextElement contentsText] substringWithRange:NSMakeRange(location, length) ];	// TODO : Crashing HARD on this 
+		*/
+		
+		story.time_ago = @"";
 		
 		// POINTS
 		// Either "points" or "point"

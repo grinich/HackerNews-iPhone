@@ -314,19 +314,25 @@ submitReplyRequest, headerStory;
 			comment.indentationLevel = [NSNumber numberWithInt:([fromSrc intValue] / 40)];
 			
 			
-			
+			// Time since posting
+			// TODO : This crashes unexpectedly
+			/*
 			NSInteger location = [[[secondTier firstChild] contentsText] length] + 5 + [[[[secondTier firstChild] nextElement] contentsText] length];
 			NSInteger length = [[secondTier contentsText] length] - location - 7;
-			comment.time_ago =  [[secondTier contentsText] substringWithRange:NSMakeRange(location, length) ];		// TODO this breaks everything
 			
-			//comment.url =					//  persistent URL here
+			// TODO this breaks everything
+			comment.time_ago =  [[secondTier contentsText] substringWithRange:NSMakeRange(location, length) ];		
+			*/
+			
+			comment.time_ago = @"";
+
+			
 			
 			
 			NSString *pointsTempString = [[secondTier firstChild] contentsText];	
 			
 			
-			// POINTS						--- > Works
-			// Either "points" or "point"
+			// POINTS
 			if ([pointsTempString hasSuffix:@"points"]) {
 				comment.points = [nFormatter numberFromString:[pointsTempString substringToIndex:[pointsTempString length] - 7]];
 			} else if ([pointsTempString hasSuffix:@"point"]) {
@@ -339,7 +345,6 @@ submitReplyRequest, headerStory;
 			}
 			
 			[self.comments addObject:comment];
-			
 		}
 		
 		
@@ -347,7 +352,6 @@ submitReplyRequest, headerStory;
 		_isLoaded = YES;  
 		
 		[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
-		
 	}
 	
 	else if (request == setupReplyRequest ) {
