@@ -69,7 +69,7 @@
 												   action:@selector(buttonTapped)];
 	
 	[self.navigationItem setLeftBarButtonItem:loginButton];	
-	
+		
 	
 	
 	

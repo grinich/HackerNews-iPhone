@@ -15,12 +15,10 @@
 @interface HNCommentsTableViewController :  TTTableViewController <TTTextEditorDelegate> {
 	
 	NSString		*storyID;
-	BOOL	composing;
 	LoadingView *replyLoadingView;
 }
 
 @property (nonatomic, retain)	NSString	*storyID;
-@property (nonatomic) BOOL	composing;
 
 - (id)initWithStory:(NSString *)storyIN;
 

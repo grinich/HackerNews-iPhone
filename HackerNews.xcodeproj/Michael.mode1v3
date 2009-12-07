@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,6 +266,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>4CB50B6B100A232B00476948</string>
+								<string>4C8CCEF610CD404D007C7129</string>
 								<string>4CA53F9E100D4F5F008F70EC</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
@@ -280,6 +279,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>14</integer>
+									<integer>6</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -303,7 +304,7 @@
 							<real>273</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>11 105 1416 773 0 0 1440 878 </string>
+						<string>46 105 1135 773 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -314,12 +315,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TTScrollView.m</string>
+								<string>HNCommentsTableViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TTScrollView.m</string>
+										<string>HNCommentsTableViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4C0D047510B5F09900C65AB2</string>
+										<string>4C8CCF3310CD44FD007C7129</string>
 										<key>history</key>
 										<array>
 											<string>4C8F494F1005137000BB9211</string>
@@ -356,16 +359,11 @@
 											<string>4CD5E0191016B7F600C88ED1</string>
 											<string>4C2882221016EF2800BDEF99</string>
 											<string>4C73A4A610177B5600D3B581</string>
-											<string>4C73A5D210178ED000D3B581</string>
 											<string>4C73A61310179DB600D3B581</string>
 											<string>4CFB0EBC1017C84B00F7E587</string>
-											<string>4C607852101835D30039E384</string>
 											<string>4C4305E5101989A7004B60DC</string>
 											<string>4C4306741019909B004B60DC</string>
-											<string>4C5E41B5101A3C9100AAC69F</string>
 											<string>4C5E41DB101A3D2E00AAC69F</string>
-											<string>4C5E422A101A4B2D00AAC69F</string>
-											<string>4C5E4245101A55F600AAC69F</string>
 											<string>4CD0A186101D06D900395D0B</string>
 											<string>4CD0A235101D177900395D0B</string>
 											<string>4CD0A253101D182300395D0B</string>
@@ -374,15 +372,12 @@
 											<string>4C071BEE101D30310072E15F</string>
 											<string>4C071BEF101D30310072E15F</string>
 											<string>4C071BF0101D30310072E15F</string>
-											<string>4C071BF6101D30310072E15F</string>
 											<string>4C071BF7101D30310072E15F</string>
 											<string>4C071BF8101D30310072E15F</string>
 											<string>4C071BF9101D30310072E15F</string>
 											<string>4C071BFA101D30310072E15F</string>
-											<string>4C071C63101D3B410072E15F</string>
 											<string>4C071C66101D3B410072E15F</string>
 											<string>4C071C7A101D3BE80072E15F</string>
-											<string>4C071C8E101D3C340072E15F</string>
 											<string>4C071CDA101D48B90072E15F</string>
 											<string>4CC838FC102390AE0044EA71</string>
 											<string>4C4366BB10275DF1002F9B92</string>
@@ -391,30 +386,38 @@
 											<string>4C30868E105815700094D034</string>
 											<string>4C30869C105815D60094D034</string>
 											<string>4CE37310107866AB00268EE1</string>
-											<string>4C0326F110788F220072FFC1</string>
 											<string>4CB51A1D10A298C00088EC27</string>
 											<string>4CB51A1F10A298C00088EC27</string>
-											<string>4CB51A2010A298C00088EC27</string>
 											<string>4C28479710A35BFE00F46834</string>
 											<string>4C28479810A35BFE00F46834</string>
 											<string>4C28479910A35BFE00F46834</string>
 											<string>4C28479A10A35BFE00F46834</string>
-											<string>4CBB086D10A37F5600EB54E9</string>
 											<string>4CBB086E10A37F5600EB54E9</string>
 											<string>4CBB086F10A37F5600EB54E9</string>
 											<string>4CBB087210A37F5600EB54E9</string>
 											<string>4CBB087310A37F5600EB54E9</string>
 											<string>4CBB08DB10A3804C00EB54E9</string>
-											<string>4C5A717410A61FEF00480C77</string>
 											<string>4C90174510A62EA500D9E354</string>
 											<string>4C800E8210A76BB500273444</string>
-											<string>4C800E8310A76BB500273444</string>
 											<string>4C800ECC10A76F3C00273444</string>
 											<string>4C800ECD10A76F3C00273444</string>
-											<string>4C800ED210A76F6B00273444</string>
 											<string>4C3DDB1710B47D91002F4F0F</string>
-											<string>4C0D047210B5F09900C65AB2</string>
-											<string>4C0D047310B5F09900C65AB2</string>
+											<string>4C1690EE10C1AF76002AE16B</string>
+											<string>4C4A622210CC284800E5706B</string>
+											<string>4C8CCEF710CD406B007C7129</string>
+											<string>4C8CCEF810CD406B007C7129</string>
+											<string>4C8CCEF910CD406B007C7129</string>
+											<string>4C8CCEFB10CD406B007C7129</string>
+											<string>4C8CCEFC10CD406B007C7129</string>
+											<string>4C8CCF0810CD4188007C7129</string>
+											<string>4C8CCF0910CD4188007C7129</string>
+											<string>4C8CCF0C10CD4188007C7129</string>
+											<string>4C8CCF0E10CD4188007C7129</string>
+											<string>4C8CCF2010CD442D007C7129</string>
+											<string>4C8CCF2210CD442D007C7129</string>
+											<string>4C8CCF2D10CD44C9007C7129</string>
+											<string>4C8CCF3110CD44FD007C7129</string>
+											<string>4C8CCF3210CD44FD007C7129</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -426,9 +429,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1121, 727}}</string>
+								<string>{{0, 0}, {840, 727}}</string>
 								<key>RubberWindowFrame</key>
-								<string>11 105 1416 773 0 0 1440 878 </string>
+								<string>46 105 1135 773 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -446,9 +449,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 732}, {1121, 0}}</string>
+								<string>{{0, 732}, {840, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>11 105 1416 773 0 0 1440 878 </string>
+								<string>46 105 1135 773 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -457,7 +460,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>1121pt</string>
+					<string>840pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -472,9 +475,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4C0D047710B5F09900C65AB2</string>
+				<string>4C8CCECB10CD3FF9007C7129</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4C0D047810B5F09900C65AB2</string>
+				<string>4C8CCECC10CD3FF9007C7129</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -612,12 +615,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>4C8CCF1210CD4188007C7129</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/Michael/Projects/HackerNews/src/HackerNews.xcodeproj</string>
 		<string>4CDDC4D91004FED400E300E4</string>
+		<string>/Users/Michael/Projects/HackerNews/src/HackerNews.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>11 105 1416 773 0 0 1440 878 </string>
+	<string>46 105 1135 773 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -640,7 +646,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>UIColorAdditions.m</string>
+								<string>HNCommentsTableViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -696,7 +702,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4CDDC4D91004FED400E300E4</string>
-				<string>4C0D047910B5F09900C65AB2</string>
+				<string>4C8CCECD10CD3FF9007C7129</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -709,7 +715,7 @@
 			<key>WindowToolGUID</key>
 			<string>4CDDC4D91004FED400E300E4</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -818,13 +824,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>4C0D047A10B5F09900C65AB2</string>
+				<string>4C8CCEFE10CD406B007C7129</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>4C0D047B10B5F09900C65AB2</string>
-				<string>4C0D047C10B5F09900C65AB2</string>
-				<string>4C0D047D10B5F09900C65AB2</string>
-				<string>4C0D047E10B5F09900C65AB2</string>
-				<string>4C0D047F10B5F09900C65AB2</string>
+				<string>4C8CCEFF10CD406B007C7129</string>
+				<string>4C8CCF0010CD406B007C7129</string>
+				<string>4C8CCF0110CD406B007C7129</string>
+				<string>4C8CCF0210CD406B007C7129</string>
+				<string>4C8CCF0310CD406B007C7129</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -856,7 +862,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>NSString.h</string>
+										<string>HNCommentsTableViewController.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -914,8 +920,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>4C800E7310A6757900273444</string>
-				<string>4C800E7410A6757900273444</string>
+				<string>4C8CCF1810CD4260007C7129</string>
+				<string>4C8CCF1910CD4260007C7129</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -978,7 +984,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>4CA0BA2310A89B4F00CF3FF5</string>
+				<string>4C8CCF1010CD4188007C7129</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -109,7 +109,7 @@ upVoteButton, downVoteButton, replyButton;
 		
 
 		/*
-		
+		 // TODO : Delete functionality
 		if (YES) {
 			UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
 									  [[NSBundle mainBundle] pathForResource:@"trash" ofType:@"png"]];
@@ -153,17 +153,20 @@ upVoteButton, downVoteButton, replyButton;
 		//		}
 		
 				
-			UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
+			UIImage* replyImage = [[[UIImage alloc] initWithContentsOfFile:
+								   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]] autorelease];
 			
 			self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
 			[self.replyButton setImage:replyImage forState:UIControlStateNormal];
-		[replyImage release];
-			[self.replyButton addTarget:self
-								 action:@selector(replyButtonTapped)
-					   forControlEvents:UIControlEventTouchUpInside];
+			
+			[self.replyButton addTarget:@"tt://post" action:@selector(openURLFromButton:)
+			  forControlEvents:UIControlEventTouchUpInside];
+		
+//			[self.replyButton addTarget:self
+//								 action:@selector(replyButtonTapped) forControlEvents:UIControlEventTouchUpInside];
 			[self.contentView addSubview:self.replyButton];
 			
+		
 		
 	}
 	return self;
@@ -195,12 +198,20 @@ upVoteButton, downVoteButton, replyButton;
 	
 
 	
+	
+	// UPVOTE //
+
 	self.upVoteButton.frame = CGRectMake(indent_by + kHPadding + 7, 
 										 2,
 										 50, 
 										 50);
 	self.upVoteButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 3, 23);
 	
+	
+	
+	
+	// DOWNVOTE //
+
 	self.downVoteButton.frame = CGRectMake(self.contentView.frame.size.width - kHPadding*2 - 28, 
 										   2,
 										   50, 
@@ -210,10 +221,20 @@ upVoteButton, downVoteButton, replyButton;
 	
 	
 
+	// REPLY //
+	
+	
+	
 	self.replyButton.frame = CGRectMake( self.contentView.frame.size.width - kHPadding*2 - 24, 
 										self.commentTextLabel.frame.size.height,
 										30, 
 										50);
+	
+	
+	
+	// BYLINE //
+
+	
 	
 	self.byLineLabel.frame  = CGRectMake(kHPadding + indent_by, 
 									kVPadding,

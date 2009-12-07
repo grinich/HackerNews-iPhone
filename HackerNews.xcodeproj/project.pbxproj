@@ -276,6 +276,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4C8CCEF410CD403A007C7129 /* Header Item */ = {
+			isa = PBXGroup;
+			children = (
+				4C0A1BA5100DBC6B009E7A11 /* HNCommentHeaderItem.h */,
+				4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */,
+				4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */,
+				4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */,
+			);
+			name = "Header Item";
+			sourceTree = "<group>";
+		};
+		4C8CCEF610CD404D007C7129 /* Comment Item */ = {
+			isa = PBXGroup;
+			children = (
+				4CB509371009F7E600476948 /* HNCommentTableItem.h */,
+				4CB509381009F7E600476948 /* HNCommentTableItem.m */,
+				4CB504981009A80600476948 /* HNCommentTableItemCell.h */,
+				4CB504991009A80600476948 /* HNCommentTableItemCell.m */,
+			);
+			name = "Comment Item";
+			sourceTree = "<group>";
+		};
 		4CA53F9E100D4F5F008F70EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,20 +336,14 @@
 		4CB50B6B100A232B00476948 /* Comments View */ = {
 			isa = PBXGroup;
 			children = (
-				4C5EB5A21007D26A001C9BDC /* HNComment.h */,
-				4C5EB5A31007D26A001C9BDC /* HNComment.m */,
+				4C8CCEF410CD403A007C7129 /* Header Item */,
+				4C8CCEF610CD404D007C7129 /* Comment Item */,
 				4C5EB51E1007C2DB001C9BDC /* HNCommentsTableViewController.h */,
 				4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */,
-				4C0A1BA5100DBC6B009E7A11 /* HNCommentHeaderItem.h */,
-				4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */,
-				4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */,
-				4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */,
-				4CB509371009F7E600476948 /* HNCommentTableItem.h */,
-				4CB509381009F7E600476948 /* HNCommentTableItem.m */,
-				4CB504981009A80600476948 /* HNCommentTableItemCell.h */,
-				4CB504991009A80600476948 /* HNCommentTableItemCell.m */,
 				4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */,
 				4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */,
+				4C5EB5A21007D26A001C9BDC /* HNComment.h */,
+				4C5EB5A31007D26A001C9BDC /* HNComment.m */,
 				4C613B24101040C900914337 /* HNCommentModel.h */,
 				4C613B25101040C900914337 /* HNCommentModel.m */,
 			);
@@ -514,7 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -528,7 +544,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9AF52583-E7E5-450D-A6F4-A3CE9EEAAD4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
@@ -537,7 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Grinich (2VXQ3CTUAY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -551,7 +567,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9AF52583-E7E5-450D-A6F4-A3CE9EEAAD4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
