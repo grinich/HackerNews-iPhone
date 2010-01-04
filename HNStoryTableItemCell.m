@@ -12,8 +12,6 @@
 #import "HNStory.h"
 
 
-#import "TempItems.h"
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 static CGFloat kInnterSpacer = 2;
@@ -142,13 +140,7 @@ static CGFloat kCommentButtonWidth = 50;
 }
 
 -(void)commentsButtonTapped {
-	
-	TempItems *t = [TempItems sharedTempItems];
-
-	HNStory *storyCopy = [self.cellStory retain];
-	
-	[t setTempHNStory:storyCopy];
-	
+		
 	TTOpenURL([NSString stringWithFormat:@"tt://home/comments/%@", self.cellStory.story_id]);
 }
 

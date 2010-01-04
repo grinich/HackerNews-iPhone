@@ -24,5 +24,7 @@
 @property(nonatomic,readonly) UIColor *standardCommentBackgroundColor;
 
 
+@property(nonatomic,readonly) TTStyle *codeText;
+
 
 @end

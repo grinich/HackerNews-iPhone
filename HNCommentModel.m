@@ -264,7 +264,7 @@ submitReplyRequest, headerStory;
 			
 			
 			NSString *preCut = [[element selectElement:@"span.comment"] contentsSource];
-			comment.contentsSource =  [[[[[	[[[[[[preCut
+			comment.contentsSource =  [[[[[[[[[[[[[[preCut
 												  
 												  // Extra <p> tags without closes. Just make double newline.
 												  stringByReplacingOccurrencesOfString:@"<p>" withString:@"<br/><br/>"]
@@ -274,6 +274,13 @@ submitReplyRequest, headerStory;
 												// Regular color.
 												stringByReplacingOccurrencesOfString:@"<font color=#000000>" withString:@""]
 											   
+											   // Replace <pre><code> with span tag for fixed-width style
+											   
+											   stringByReplacingOccurrencesOfString:@"<pre><code>" withString:@"<span class=\"codeText\">"]
+											  stringByReplacingOccurrencesOfString:@"</code></pre>" withString:@"</span>"]
+											  stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"]
+											  
+											  
 											   /////////////////////////////////////////////
 											   // DOWNVOTES. 
 											   /////////////////////////////////////////////

@@ -17,8 +17,6 @@
 #import "HNCommentHeaderItem.h"
 #import "HNCommentHeaderItemCell.h"
 
-#import "TempItems.h"
-
 @implementation HNCommentsDataSource
 
 
@@ -30,9 +28,7 @@
 
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {	
-	
-//	[self.items addObject:[HNCommentHeaderItem itemWithStory:[[TempItems sharedTempItems] tempHNStory]]];
-	
+		
 	[self.items addObject:[HNCommentHeaderItem itemWithStory:((HNCommentModel*)self.model).headerStory]];
 
 	

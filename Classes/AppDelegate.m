@@ -74,7 +74,6 @@
 	if ([cookies count] > 0 ) {
 		// TODO : check date and make sure that it's not expired
 		[[HNAuth sharedHNAuth] setLoggedin:YES];
-		
 	} else {
 		[[HNAuth sharedHNAuth] setLoggedin:NO];
 	}
@@ -83,6 +82,7 @@
 	if (![navigator restoreViewControllers]) {
 		[navigator openURL:@"tt://home" animated:NO];
 //		[navigator openURL:@"http://news.ycombinator.com/item?id=486755" animated:NO];	// Large comment set
+//		[navigator openURL:@"http://news.ycombinator.com/item?id=1019939" animated:NO]; // TO show code formatting
 	}
 
 }

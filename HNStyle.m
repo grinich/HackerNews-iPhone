@@ -66,6 +66,10 @@
 	return [UIFont fontWithName:@"Helvetica" size:14.0];
 }
 
+- (TTStyle*)codeText {
+	return [TTTextStyle styleWithFont:[UIFont fontWithName:@"Courier New" size:14.0] next:nil];
+}
+
 - (TTStyle* ) HNOrangeText {
 	return [TTTextStyle styleWithColor:TTSTYLEVAR(hackerNewsColor) next:nil];
 }

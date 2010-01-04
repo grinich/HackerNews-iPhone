@@ -22,9 +22,9 @@
 + (HNCommentTableItem *)itemWithComment:(HNComment *)aComment {
 	HNCommentTableItem *item = [[HNCommentTableItem alloc] init];
 	item.comment = aComment;
-	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
-	
 		
+	item.text = [TTStyledText textFromXHTML:[NSString stringWithFormat:@"%@", aComment.contentsSource]];	
+			
 	item.indentationLevel = aComment.indentationLevel;
 	//item.URL = @"http://www.google.com";	// TODO: Specify this for adding a comment!
 	

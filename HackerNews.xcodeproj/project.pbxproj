@@ -15,7 +15,6 @@
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		4C0A1BA7100DBC6B009E7A11 /* HNCommentHeaderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */; };
 		4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */; };
-		4C0A1D0F100DCA4D009E7A11 /* TempItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1D0E100DCA4D009E7A11 /* TempItems.m */; };
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
 		4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2881D51016EA6D00BDEF99 /* LoadingView.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
@@ -97,8 +96,6 @@
 		4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentHeaderItem.m; sourceTree = "<group>"; };
 		4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentHeaderItemCell.h; sourceTree = "<group>"; };
 		4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentHeaderItemCell.m; sourceTree = "<group>"; };
-		4C0A1D0D100DCA4D009E7A11 /* TempItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempItems.h; sourceTree = "<group>"; };
-		4C0A1D0E100DCA4D009E7A11 /* TempItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempItems.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
 		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
 		4C2881D41016EA6D00BDEF99 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
@@ -205,8 +202,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4C0A1D0D100DCA4D009E7A11 /* TempItems.h */,
-				4C0A1D0E100DCA4D009E7A11 /* TempItems.m */,
 				4C2C81011006EC6500D59E60 /* bugs&notes.txt */,
 				080E96DDFE201D6D7F000001 /* Main Objects */,
 				4CB509271009F7C300476948 /* Stories View */,
@@ -462,7 +457,6 @@
 				4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */,
 				4C0A1BA7100DBC6B009E7A11 /* HNCommentHeaderItem.m in Sources */,
 				4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */,
-				4C0A1D0F100DCA4D009E7A11 /* TempItems.m in Sources */,
 				4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */,
 				4C61388010100BFF00914337 /* HNStoryModel.m in Sources */,
 				4C613B26101040C900914337 /* HNCommentModel.m in Sources */,
