@@ -63,7 +63,7 @@
 	
 	// Login Button
 	
-	loginButton = [[UIBarButtonItem alloc] initWithTitle:@"sometitle" 
+	loginButton = [[UIBarButtonItem alloc] initWithTitle:@"" 
 													style:UIBarButtonItemStylePlain 
 												   target:self
 												   action:@selector(buttonTapped)];

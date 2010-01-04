@@ -54,7 +54,8 @@
 	
 	
 	
-	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com"];
+	
+	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com/"];
 	NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:hnURL];
 	if ([cookies count] > 0 ) {
 		// TODO : check date and make sure that it's not expired

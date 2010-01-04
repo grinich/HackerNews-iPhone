@@ -353,10 +353,9 @@ upVoteButton, downVoteButton, replyButton;
 	if (sender.tag == 1) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"voteUpNotification" object:self ] ;
 
-	} else if (sender.tag == 2) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"voteDownNotification" object:self ] ;
 	} else {
-		//WFT?
+		assert(sender.tag == 2);
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"voteDownNotification" object:self ] ;
 	}
 }
 
