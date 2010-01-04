@@ -14,14 +14,8 @@
 	
     UIWindow *window;
 		
-	UIImageView *splashView;
 }
 
-
-- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
-
-
-@property (nonatomic, retain) UIImageView *splashView;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 

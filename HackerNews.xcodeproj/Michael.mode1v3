@@ -280,13 +280,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
-									<integer>2</integer>
+									<integer>39</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {273, 714}}</string>
+							<string>{{0, 415}, {273, 714}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -323,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppDelegate.m</string>
+								<string>AppDelegate.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppDelegate.m</string>
+										<string>AppDelegate.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4C679F2310F23CB40025AFA0</string>
+										<string>4C679F8710F27C3A0025AFA0</string>
 										<key>history</key>
 										<array>
 											<string>4C8F494F1005137000BB9211</string>
@@ -362,7 +361,6 @@
 											<string>4CFB0EBC1017C84B00F7E587</string>
 											<string>4C4305E5101989A7004B60DC</string>
 											<string>4C4306741019909B004B60DC</string>
-											<string>4C5E41DB101A3D2E00AAC69F</string>
 											<string>4CD0A186101D06D900395D0B</string>
 											<string>4CD0A235101D177900395D0B</string>
 											<string>4CD0A253101D182300395D0B</string>
@@ -416,7 +414,8 @@
 											<string>4C679F2010F23CB40025AFA0</string>
 											<string>4C679F2110F23CB40025AFA0</string>
 											<string>4C679F2210F23CB40025AFA0</string>
-											<string>4C679EC110F236AC0025AFA0</string>
+											<string>4C679F8610F27C3A0025AFA0</string>
+											<string>4C679F7F10F25E8E0025AFA0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -614,13 +613,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>4C679F2410F23CB40025AFA0</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>4C679EE310F2373B0025AFA0</string>
 		<string>4C679EE410F2373B0025AFA0</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4CDDC4D91004FED400E300E4</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/Michael/Projects/HackerNews/src/HackerNews.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -995,7 +993,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
