@@ -214,8 +214,8 @@ static NSString *kViewKey = @"viewKey";
 		
 		if ([cookies count] > 0 ) {
 			
-			NSLog(@"Name: %@", [[cookies objectAtIndex:0] name]);
-			NSLog(@"Name: %@", [[cookies objectAtIndex:0] value]);
+			DLog(@"Name: %@", [[cookies objectAtIndex:0] name]);
+			DLog(@"Name: %@", [[cookies objectAtIndex:0] value]);
 			
 		} else {
 					

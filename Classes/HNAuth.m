@@ -94,9 +94,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	loginRequest.httpMethod = @"GET";
 
 	BOOL cacheHit = [loginRequest send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
 	
-	NSLog(@"Started Request");
+	DLog(@"Started Request");
 	
 }
 

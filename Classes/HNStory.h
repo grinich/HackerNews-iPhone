@@ -11,7 +11,7 @@
 
 
 
-@interface HNStory : NSObject {
+@interface HNStory : NSObject <TTURLRequestDelegate>{
 	
 	NSString*	title;
 	NSNumber*	points;

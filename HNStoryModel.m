@@ -30,7 +30,7 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 	request.httpMethod = @"GET";
 	
 	BOOL cacheHit = [request send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), yc_url);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), yc_url);
 	
 }
 

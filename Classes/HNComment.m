@@ -68,7 +68,7 @@
 	request.httpMethod = @"GET";
 	
 	BOOL cacheHit = [request send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
 	
 }
 
@@ -89,7 +89,7 @@
 	request.httpMethod = @"GET";
 	
 	BOOL cacheHit = [request send];  
-	NSLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
 	
 }
 

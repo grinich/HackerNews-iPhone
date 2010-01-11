@@ -67,7 +67,7 @@
 }
 
 - (TTStyle*)codeText {
-	return [TTTextStyle styleWithFont:[UIFont fontWithName:@"Courier New" size:14.0] next:nil];
+	return [TTTextStyle styleWithFont:[UIFont fontWithName:@"Courier New" size:12.0] next:nil];
 }
 
 - (TTStyle* ) HNOrangeText {

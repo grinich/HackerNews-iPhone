@@ -13,6 +13,9 @@
 #import "HNStyle.h"
 #import "HNAuth.h"
 
+#import "HNWebController.h"
+
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -38,7 +41,7 @@
 	TTURLMap* map = navigator.URLMap;
 	
 	// Any URL that doesn't match will fall back on this one, and open in the web browser
-	[map from:@"*" toViewController:[TTWebController class]];
+	[map from:@"*" toViewController:[HNWebController class]];
 	
 	
 	[map from:@"tt://home" toSharedViewController:[HNStoryTableViewController class]];
