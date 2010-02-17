@@ -1,28 +1,26 @@
 //
 //  LoginViewController.h
-//  Quizlet
+//  
 //
 //  Created by Michael Grinich on 6/30/09.
 //  Copyright 2009 Michael Grinich. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Three20/Three20.h"
 
-@class LoadingView;
+#import "MBProgressHUD.h"
 
-@interface LoginViewController : UITableViewController <UITextFieldDelegate> {
+@interface LoginViewController : UITableViewController <UITextFieldDelegate, MBProgressHUDDelegate> {
 	UITextField		*usernameTextField;
 	UITextField		*passwordTextField;
 	
 	NSArray			*dataSourceArray;
-	LoadingView *loginLoadingView;
+	MBProgressHUD	*HUD;
 }
 
 
 @property (nonatomic, retain) 	UITextField		*usernameTextField;
 @property (nonatomic, retain) 	UITextField		*passwordTextField;
 @property (nonatomic, retain)	NSArray			*dataSourceArray;
-@property(nonatomic,retain) LoadingView *loginLoadingView;
 
 @end

@@ -12,7 +12,7 @@
 
 @class HNComment, LoadingView;
 
-@interface HNCommentsTableViewController :  TTTableViewController <TTTextEditorDelegate> {
+@interface HNCommentsTableViewController :  TTTableViewController <TTPostControllerDelegate> {
 	
 	NSString		*storyID;
 	LoadingView *replyLoadingView;

@@ -21,7 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request { 
 	
-	NSLog(@"Request Finished Load!");
+	DLog(@"Request Finished Loading.");
 
 	
 	if (request == fnidRequest) {
@@ -43,11 +43,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 		NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 			
 		if([responseBody rangeOfString:@"Bad login"].location!=NSNotFound) {
-			NSLog(@"Failed Login.");
+			DLog(@"Failed Login.");
 			self.loggedin = NO;
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"failedLoginNotification" object:self];
 		} else {
-			NSLog(@"Successful login");
+			DLog(@"Successful login");
 			self.loggedin = YES;	
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"successfulLoginNotification" object:self ] ;
 		}
@@ -124,7 +124,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com"];
 	NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:hnURL];
 	for (NSHTTPCookie* cookie in cookies) {
-		NSLog(@"Deleting cookie %@", cookie);
+		DLog(@"Deleting cookie %@", cookie);
 		[[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
 	}
 	[[HNAuth sharedHNAuth] setLoggedin:NO];

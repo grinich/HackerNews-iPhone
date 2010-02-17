@@ -10,43 +10,7 @@
 
 #import "HNAuth.h"
 #import "HNStyle.h"
-
-
-////////////////////////////////////////// Start Loading View
-
-#import "LoadingView.h"
-
-@interface UIApplication (KeyboardView)
-
-- (UIView *)keyboardView;
-
-@end
-
-@implementation UIApplication (KeyboardView)
-
-- (UIView *)keyboardView
-{
-	NSArray *windows = [self windows];
-	for (UIWindow *window in [windows reverseObjectEnumerator])
-	{
-		for (UIView *view in [window subviews])
-		{
-			if (!strcmp(object_getClassName(view), "UIKeyboard"))
-			{
-				return view;
-			}
-		}
-	}
-	
-	return nil;
-}
-
-@end
-
-////////////////////////////////////////// End Loading View
-
-
-
+#import "MBProgressHUD.h"
 
 
 #define kTextFieldWidth		260.0
@@ -57,7 +21,7 @@ static NSString *kSectionTitleKey = @"sectionTitleKey";
 static NSString *kViewKey = @"viewKey";
 
 @implementation LoginViewController
-@synthesize usernameTextField, passwordTextField, dataSourceArray, loginLoadingView;
+@synthesize usernameTextField, passwordTextField, dataSourceArray;
 
 
 
@@ -214,7 +178,7 @@ static NSString *kViewKey = @"viewKey";
 		
 		if ([cookies count] > 0 ) {
 			
-			DLog(@"Name: %@", [[cookies objectAtIndex:0] name]);
+			DLog(@"Logging Cookies\nName: %@", [[cookies objectAtIndex:0] name]);
 			DLog(@"Name: %@", [[cookies objectAtIndex:0] value]);
 			
 		} else {
@@ -224,34 +188,68 @@ static NSString *kViewKey = @"viewKey";
 			self.usernameTextField.userInteractionEnabled = NO;
 			self.passwordTextField.userInteractionEnabled = NO;
 			
-			//UIView *keyboardView = [[UIApplication sharedApplication] keyboardView];
-			//LoadingView *loginLoadingView = [LoadingView loadingViewInView:keyboardView];
-			loginLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
-
+			
+			// Show login HUD
+			
+			UIWindow *window = [UIApplication sharedApplication].keyWindow;
+			HUD = [[MBProgressHUD alloc] initWithWindow:window];
+			
+			// Add HUD to screen
+			[window addSubview:HUD];
+			
+			// Register for HUD callbacks so we can remove it from the window at the right time
+			HUD.delegate = self;
+			
+			[HUD show:YES];
 			
 			[[HNAuth sharedHNAuth]	loginWithUsername:usernameTextField.text 
-							password:passwordTextField.text];
+											password:passwordTextField.text];
+			
+			// Show the HUD while the provided method executes in a new thread
+			//[HUD showWhileExecuting:@selector(login) onTarget:self withObject:nil animated:YES];
+			
+			
 		}
 		
 		//[self.navigationController popViewControllerAnimated:YES];
 		
 		return YES;
 	} else {
-		// Handle the error
+		// TODO: Handle the error
 		return YES;
 	}
 }
 
+
+
 -(void)successfulLogin:(NSNotification *)notification {
 	[self.passwordTextField resignFirstResponder];
-	[loginLoadingView removeView];
+
+	
+	
+	//get the window again
+	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+	//hide the HUD from window
+	[MBProgressHUD hideFromWindow:window animated:YES];
+	
+	
+	
+	
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
 
 -(void)failedLogin:(NSNotification*)notification {	
 	[self.passwordTextField resignFirstResponder];
-	[loginLoadingView removeView];
+
+	
+	//get the window again
+	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+	//hide the HUD from window
+	[MBProgressHUD hideFromWindow:window animated:YES];
+	
+	
+	
 	[self.navigationController popViewControllerAnimated:YES];
 
 	UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error" 
@@ -266,8 +264,9 @@ static NSString *kViewKey = @"viewKey";
 }
 
 
+// TODO: Unnecessary? 
 
-
+/*
 
 // Fullscreen commit thingy
 - (IBAction)showCommit:(id)sender
@@ -281,8 +280,16 @@ static NSString *kViewKey = @"viewKey";
 	 afterDelay:5.0];
 }
 
+*/
 
+#pragma mark -
+#pragma mark MBProgressHUDDelegate methods
 
+- (void)hudWasHidden {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    [HUD release];
+}
 
 
 #pragma mark -

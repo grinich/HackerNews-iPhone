@@ -1,0 +1,41 @@
+Hacker News To Do:
+------------------------------------
+
+	
+* Instapaper Support
+
+* Email to a friend support
+
+* New commenting interface
+
+* check voting
+
+* Load more stories. (Note there are only 7 pages)
+
+* YC about page
+ 
+* Reload button on home screen
+
+* Click on a username to view their page with stats
+
+* Searching via SearchYC.com
+
+* Support for submission
+
+* Support for polls
+
+* Support for flagging, deleting one's own submitted.
+
+* Link to other pages. 
+
+default is /news
+
+/topcolors 
+/vote is the page that votes go to
+http://news.ycombinator.com/submit is, trivially, where you can submit pages
+http://news.ycombinator.com/submitlink is /submit
+/submitted?id=<name>
+/rss 
+/newcomments 
+/badsites  
+/editors.

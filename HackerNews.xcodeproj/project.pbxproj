@@ -17,7 +17,6 @@
 		4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */; };
 		4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C215E4510F942F1000DF584 /* NSStringAdditions.m */; };
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
-		4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2881D51016EA6D00BDEF99 /* LoadingView.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
 		4C3086FA105818A00094D034 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086AF1058176C0094D034 /* libThree20.a */; };
 		4C3086FB105818A50094D034 /* libElementParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086B8105817F10094D034 /* libElementParser.a */; };
@@ -35,7 +34,6 @@
 		4C613B26101040C900914337 /* HNCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C613B25101040C900914337 /* HNCommentModel.m */; };
 		4C679FD210F2BF9F0025AFA0 /* HNWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C679FD110F2BF9F0025AFA0 /* HNWebController.m */; };
 		4C679FFE10F2C3B50025AFA0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C679FFD10F2C3B50025AFA0 /* MessageUI.framework */; };
-		4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8E7396100E7A4F0071A8BE /* HNPing.m */; };
 		4C8E73A5100E7A7B0071A8BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */; };
 		4C90171310A62B9D00D9E354 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C90171210A62B9D00D9E354 /* Default.png */; };
 		4C9CB67810157824002ECBD3 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */; };
@@ -53,6 +51,7 @@
 		4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A51004FEC600E300E4 /* HN-masthead.png */; };
 		4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A91004FEC600E300E4 /* HNStory.m */; };
 		4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */; };
+		4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE200D2112B79AF0053C995 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,8 +102,6 @@
 		4C215E4510F942F1000DF584 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
 		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
-		4C2881D41016EA6D00BDEF99 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		4C2881D51016EA6D00BDEF99 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
 		4C3086B0105817F10094D034 /* ElementParser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ElementParser.xcodeproj; path = ../ElementParser/ElementParser.xcodeproj; sourceTree = SOURCE_ROOT; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
@@ -129,8 +126,6 @@
 		4C679FD010F2BF9F0025AFA0 /* HNWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebController.h; sourceTree = "<group>"; };
 		4C679FD110F2BF9F0025AFA0 /* HNWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebController.m; sourceTree = "<group>"; };
 		4C679FFD10F2C3B50025AFA0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		4C8E7395100E7A4F0071A8BE /* HNPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPing.h; sourceTree = "<group>"; };
-		4C8E7396100E7A4F0071A8BE /* HNPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPing.m; sourceTree = "<group>"; };
 		4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		4C90171210A62B9D00D9E354 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4C9CB67610157824002ECBD3 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
@@ -159,6 +154,8 @@
 		4CDDC4AC1004FEC600E300E4 /* HNStoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNStoryTableViewController.h; path = Classes/HNStoryTableViewController.h; sourceTree = "<group>"; };
 		4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNStoryTableViewController.m; path = Classes/HNStoryTableViewController.m; sourceTree = "<group>"; };
 		4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		4CE200D1112B79AF0053C995 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4CE200D2112B79AF0053C995 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,8 +186,6 @@
 				4CDDC4A31004FEC600E300E4 /* AppDelegate.m */,
 				4CB502281009598200476948 /* HNStyle.h */,
 				4CB502291009598200476948 /* HNStyle.m */,
-				4C8E7395100E7A4F0071A8BE /* HNPing.h */,
-				4C8E7396100E7A4F0071A8BE /* HNPing.m */,
 				4C41E68F10105A6F000A7253 /* HNAuth.h */,
 				4C41E69010105A6F000A7253 /* HNAuth.m */,
 				4C41E79B10106F5F000A7253 /* LoginViewController.h */,
@@ -238,11 +233,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CE200D1112B79AF0053C995 /* MBProgressHUD.h */,
+				4CE200D2112B79AF0053C995 /* MBProgressHUD.m */,
 				4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */,
 				4C9CB67610157824002ECBD3 /* NSDictionary+UrlEncoding.h */,
 				4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */,
-				4C2881D41016EA6D00BDEF99 /* LoadingView.h */,
-				4C2881D51016EA6D00BDEF99 /* LoadingView.m */,
 				28C3AD890F43EF2300507BA6 /* HackerNews.xcdatamodel */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				4C90171210A62B9D00D9E354 /* Default.png */,
@@ -471,15 +466,14 @@
 				4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */,
 				4C0A1BA7100DBC6B009E7A11 /* HNCommentHeaderItem.m in Sources */,
 				4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */,
-				4C8E7397100E7A4F0071A8BE /* HNPing.m in Sources */,
 				4C61388010100BFF00914337 /* HNStoryModel.m in Sources */,
 				4C613B26101040C900914337 /* HNCommentModel.m in Sources */,
 				4C41E69110105A6F000A7253 /* HNAuth.m in Sources */,
 				4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */,
 				4C9CB67810157824002ECBD3 /* NSDictionary+UrlEncoding.m in Sources */,
-				4C2881D61016EA6D00BDEF99 /* LoadingView.m in Sources */,
 				4C679FD210F2BF9F0025AFA0 /* HNWebController.m in Sources */,
 				4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */,
+				4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

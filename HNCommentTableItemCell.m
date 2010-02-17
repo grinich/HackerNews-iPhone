@@ -91,20 +91,25 @@ upVoteButton, downVoteButton, replyButton;
 
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 
+		
+		// Byline
 
 		self.byLineLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
 		self.byLineLabel.contentMode = UIViewContentModeLeft;
 		self.byLineLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);
 		self.byLineLabel.font = TTSTYLEVAR(commentBylineFont);
-
+		self.byLineLabel.opaque = YES;
 		[self.contentView addSubview:byLineLabel];
+
+		
+		
+		// Main text
 		
 		self.commentTextLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
 		self.commentTextLabel.contentMode = UIViewContentModeLeft;
 		self.commentTextLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);;
+		self.commentTextLabel.opaque = YES;
 		[self.contentView addSubview:self.commentTextLabel];
-		
-		
 		
 		
 
@@ -126,48 +131,69 @@ upVoteButton, downVoteButton, replyButton;
 		
 		
 		} else { */
-			UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
-									  [[NSBundle mainBundle] pathForResource:@"downvote" ofType:@"png"]];
-			
-			self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-			[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
+		
+		
+		
+		
+		// Downvotes
+		
+		UIImage* downVoteImage = [[UIImage alloc] initWithContentsOfFile:
+								  [[NSBundle mainBundle] pathForResource:@"downvote" ofType:@"png"]];
+		
+		self.downVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.downVoteButton setImage:downVoteImage forState:UIControlStateNormal];
 		[downVoteImage release];
-			[self.downVoteButton addTarget:self
-									action:@selector(vote:)
-						  forControlEvents:UIControlEventTouchUpInside];
-			self.downVoteButton.tag = 2;
-			[self.contentView addSubview:self.downVoteButton];
-			
-			
-			UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
-									   [[NSBundle mainBundle] pathForResource:@"upvote" ofType:@"png"]];
-			
-			self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-			[self.upVoteButton setImage:accessoryImage forState:UIControlStateNormal];
-		[accessoryImage release];
-			[self.upVoteButton addTarget:self
-								  action:@selector(vote:)
-						forControlEvents:UIControlEventTouchUpInside];
-			self.upVoteButton.tag = 1;
-			[self.contentView addSubview:self.upVoteButton];
-		//		}
 		
-				
-			UIImage* replyImage = [[[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]] autorelease];
-			
-			self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-			[self.replyButton setImage:replyImage forState:UIControlStateNormal];
-			
-			[self.replyButton addTarget:@"tt://post" action:@selector(openURLFromButton:)
-			  forControlEvents:UIControlEventTouchUpInside];
-		
-//			[self.replyButton addTarget:self
-//								 action:@selector(replyButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-			[self.contentView addSubview:self.replyButton];
-			
+		[self.downVoteButton addTarget:self
+								action:@selector(vote:)
+					  forControlEvents:UIControlEventTouchUpInside];
+		self.downVoteButton.tag = 2;
+		[self.contentView addSubview:self.downVoteButton];
 		
 		
+		
+		
+		// Upvote
+		
+		UIImage* upVoteImage = [[UIImage alloc] initWithContentsOfFile:
+								   [[NSBundle mainBundle] pathForResource:@"upvote" ofType:@"png"]];
+		
+		self.upVoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.upVoteButton setImage:upVoteImage forState:UIControlStateNormal];
+		[upVoteImage release];
+		
+		[self.upVoteButton addTarget:self
+							  action:@selector(vote:)
+					forControlEvents:UIControlEventTouchUpInside];
+		self.upVoteButton.tag = 1;
+		[self.contentView addSubview:self.upVoteButton];
+		
+		
+		
+		
+		// Reply
+		
+		UIImage* replyImage = [[UIImage alloc] initWithContentsOfFile:
+							   [[NSBundle mainBundle] pathForResource:@"reply" ofType:@"png"]];
+		
+		self.replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[self.replyButton setImage:replyImage forState:UIControlStateNormal];
+		[replyImage release];
+		
+		
+		/*
+		[self.replyButton addTarget:self
+							 action:@selector(replyButtonTapped) 
+				   forControlEvents:UIControlEventTouchUpInside];
+		*/
+		
+		[self.replyButton addTarget:@"tt://post" action:@selector(openURLFromButton:)
+				   forControlEvents:UIControlEventTouchUpInside];
+		
+		
+		
+		[self.contentView addSubview:self.replyButton];
+			
 	}
 	return self;
 }
@@ -179,12 +205,8 @@ upVoteButton, downVoteButton, replyButton;
 - (void)layoutSubviews {
 	[super layoutSubviews];
 	
-	
 	CGFloat maxWidth = self.contentView.width - kHPadding*2 ;
 	//	CGFloat maxHeight = self.contentView.height - kVPadding*2;
-	
-	
-
 	
 //	HNCommentTableItem* item = self.object;
 	

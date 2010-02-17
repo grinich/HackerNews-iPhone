@@ -14,7 +14,7 @@
 #import "HNCommentModel.h"
 #import "HNStyle.h"
 #import "HNComment.h"
-#import "LoadingView.h"
+
 #import "HNCommentHeaderItemCell.h"
 #import "HNCommentHeaderItem.h"
 #import "HNStory.h"
@@ -26,16 +26,6 @@
 
 @synthesize storyID;
 
-	
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// private
-
-- (UIViewController*)post:(NSDictionary*)query {
-	TTPostController* controller = [[[TTPostController alloc] init] autorelease];
-	controller.originView = [query objectForKey:@"__target__"];
-	return controller;
-}
 
 
 /*
@@ -92,11 +82,14 @@
 													 name:@"commentSubmittedNotification" 
 												   object:nil];
 		
-
+		
+		
+		// TODO move this to its own class
 		
 		[[TTNavigator navigator].URLMap from:@"tt://post"
 							toViewController:self selector:@selector(post:)];
 
+		
 		
 	}
 	return self;
@@ -167,11 +160,21 @@
 
 
 
-// TODO : delete?
 
 
 
 - (void)replyToComment:(NSNotification *)notification {
+	
+	TTPostController *postController = [TTPostController new];
+	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
+	
+	self.popupViewController = postController;
+    
+	postController.superController = self; // assuming self to be the current UIViewController
+    
+	[postController showInView:self.view animated:YES];
+    [postController release];
+	
 	
 	/*
 	
@@ -263,18 +266,7 @@
 }
 		
 
-// Delegate method for resizing the reply comment box.
-// We need to call reload data so when it expands, it doesn't
-// write over the next cell.
-- (BOOL)textEditor:(TTTextEditor*)textEditor shouldResizeBy:(CGFloat)height {
-	textEditor.frame = TTRectContract(textEditor.frame, 0, -height);
-	[self.tableView reloadData];
-	return NO;
-}
 
-
-
- 
 
 -(void)submitComment:(UIButton*)sender {
 	
@@ -410,8 +402,25 @@
 
 
 
+#pragma mark -
+#pragma mark TTPostControllerDelegate methods
 
 
+// Returns with posted text
+
+- (void)postController:(TTPostController*)postController
+		   didPostText:(NSString *)text
+			withResult:(id)result {
+	
+	DLog(@"Text: %@", text);
+}
+
+
+- (UIViewController*)post:(NSDictionary*)query {
+	TTPostController* controller = [[[TTPostController alloc] init] autorelease];
+	controller.originView = [query objectForKey:@"__target__"];
+	return controller;
+}
 
 @end
 

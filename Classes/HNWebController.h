@@ -10,13 +10,18 @@
 #import "Three20/Three20.h"
 #import <MessageUI/MessageUI.h>
 
+@class HNStory;
 
 @interface HNWebController : TTWebController <MFMailComposeViewControllerDelegate> {
 
+	HNStory *linkedStory;
 }
 
 
+@property(nonatomic,retain) HNStory *linkedStory;
+
 - (void)shareAction;
+- (void) sendToInstapaper;
 
 
 @end

@@ -12,13 +12,14 @@
 
 @implementation HNWebController
 
+@synthesize linkedStory;
 
 - (void)shareAction {
 	UIActionSheet* sheet = [[[UIActionSheet alloc] initWithTitle:@"" 
 														delegate:self
 											   cancelButtonTitle:TTLocalizedString(@"Cancel", @"") 
 										  destructiveButtonTitle:nil
-											   otherButtonTitles:TTLocalizedString(@"Open in Safari", @""), @"Mail Link", @"Save with Instapaper", nil] autorelease];
+											   otherButtonTitles:@"Open in Safari", @"Mail Link", @"Save with Instapaper", nil] autorelease];
 	[sheet showInView:self.view];	
 }
 
@@ -40,35 +41,18 @@
 			
 			[picker setSubject:[NSString stringWithFormat:@"[Hacker News] %@", self.title]];
 			
-			
-			// Fill out the email body text
-			NSString *pageLink = @"http://michaelgrinich.com/hackernews/"; // replace it with yours
-			NSString *iTunesLink = @"http://link-to-mygreatapp"; // replate it with yours
-//			
-			
-			
-			
-//			NSString *emailBody = [NSString stringWithFormat:@"%@<br/><br/>Sent from <a href = '%@'>Hacker News on iPhone</a>.", content, pageLink];
-			
-			
-			NSString *emailBody = [NSString stringWithFormat:@"<b>%@</b><br/>%@",self.title, [self.URL absoluteString]]; 
-//			<br><a href=3D\"https://twitter.com/ponoko/status/7378015830\">1/4/10 3:31 PM</a><br>RT <a href=3D\"https://twitter.com/clothbot\">@clothbot</a> My laser-cut, lego-compatible blocks <a href=3D\"https://twitter.com/ponoko\">@ponoko</a> test job just arrived! Successful but needs tweaks. :-) <a href=3D\"http://flic.kr/p/7t4QWV\"><a href=3D\"http://flic.kr/p/7t4QWV\">http://flic.kr/p/7t4QWV</a></a></td></tr></tbody></table><br>Sent with <a href=3D\"http://www.atebits.com/\">Tweetie</a>";
-			
-			
+					
+			NSString *emailBody = [NSString stringWithFormat:@"<b><a href=\"%@\">%@</a></b><br/><br/>Sent with <a href=\"http://michaelgrinich.com/hackernews/\">Hacker News on iPhone</a>", [self.URL absoluteString], self.title]; 			
 			
 			[picker setMessageBody:emailBody isHTML:YES]; // depends. Mostly YES, unless you want to send it as plain text (boring)
 			
-			picker.navigationBar.barStyle = UIBarStyleDefault; // choose your style, unfortunately, Translucent colors behave quirky.
+			picker.navigationBar.barStyle = UIBarStyleDefault; 
 			picker.navigationBar.tintColor = TTSTYLEVAR(hackerNewsColor);
 			
 			[self presentModalViewController:picker animated:YES];
 			[picker release];
-			
-
-			
-		}
-			
 			break;
+		}
 		case 2:
 			DLog(@"Save with instapaper!");
 			[self sendToInstapaper];

@@ -13,7 +13,7 @@
 #import "HNStoryTableItem.h"
 #import "HNStoryTableItemCell.h"
 
-
+#import "LoginViewController.h"
 
 @class HNStory, HNStoryTableItemCell;
 
@@ -120,7 +120,15 @@
 														 otherButtonTitles:@"No", nil] autorelease];
 		[logoutAlert show];
 	} else {
-		TTOpenURL(@"tt://login");
+		
+		
+//		[self.navigationController presentModalViewController:[LoginViewController new] 
+//													 animated:YES		 ];
+		[self.navigationController pushViewController:[LoginViewController new]
+											 animated:YES];
+		
+		
+		 //TTOpenURL(@"tt://login");
 	}
 }
 

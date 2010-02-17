@@ -23,6 +23,10 @@ VERY long story http://news.ycombinator.com/item?id=692338
 - Searching via searchyc.com
 - Integration with InstaPaper
 
+Readability:
+ - http://lab.arc90.com/experiments/readability/
+ - http://code.google.com/p/arc90labs-readability/
+
 Links to:
 * http://news.ycombinator.com/noobs
 * http://news.ycombinator.com/newest
