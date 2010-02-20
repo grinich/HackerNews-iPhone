@@ -29,7 +29,6 @@
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
-	
 	switch(buttonIndex)
 	{
 		case 0: // Open in Safari
@@ -40,8 +39,7 @@
 			picker.mailComposeDelegate = self; // <- very important step if you want feedbacks on what the user did with your email sheet
 			
 			[picker setSubject:[NSString stringWithFormat:@"[Hacker News] %@", self.title]];
-			
-					
+								
 			NSString *emailBody = [NSString stringWithFormat:@"<b><a href=\"%@\">%@</a></b><br/><br/>Sent with <a href=\"http://michaelgrinich.com/hackernews/\">Hacker News on iPhone</a>", [self.URL absoluteString], self.title]; 			
 			
 			[picker setMessageBody:emailBody isHTML:YES]; // depends. Mostly YES, unless you want to send it as plain text (boring)

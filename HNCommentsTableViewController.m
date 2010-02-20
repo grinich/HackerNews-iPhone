@@ -165,21 +165,7 @@
 
 - (void)replyToComment:(NSNotification *)notification {
 	
-	TTPostController *postController = [TTPostController new];
-	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
-	
-	self.popupViewController = postController;
-    
-	postController.superController = self; // assuming self to be the current UIViewController
-    
-	[postController showInView:self.view animated:YES];
-    [postController release];
-	
-	
-	/*
-	
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-			
 	
 	NSUInteger index = [listItems indexOfObject:[[notification object] object]];
 	
@@ -187,6 +173,9 @@
 	// Header reply. Requires different reply comment.
 	if ( [notification.object isKindOfClass:[HNCommentHeaderItemCell class]] ){
 		
+		// TODO implement this
+		
+		/* 
 		HNCommentHeaderItem *headerCell = ((HNCommentHeaderItemCell*)notification.object).object;
 		
 		replyCommentItem = [[HNCommentReplyItem alloc] init];
@@ -200,11 +189,17 @@
 		replyCommentItem.replyFNID = headerCell.story.replyFNID;
 					
 		[listItems insertObject:replyCommentItem atIndex:1]; 
+		 
+		 */
 	
 	} 
 	
 	// Regular Reply
 	else if ([notification.object isKindOfClass:[HNCommentTableItemCell class]]) {
+		
+		
+		// ??? : add this after the comment is posted.
+		/*
 		HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
 					
 		replyCommentItem = [[HNCommentReplyItem alloc] init];
@@ -222,6 +217,20 @@
 		} else {
 			[listItems insertObject:replyCommentItem atIndex:index +1];
 		}
+		*/ 
+		
+		
+		TTPostController *postController = [TTPostController new];
+		postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
+		
+		self.popupViewController = postController;
+		
+		postController.superController = self; // assuming self to be the current UIViewController
+		
+		[postController showInView:self.view animated:YES];
+		[postController release];
+		
+		
 	}
 	
 
