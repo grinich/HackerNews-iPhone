@@ -28,15 +28,11 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 		
 	[window makeKeyAndVisible];
-	
-	// OPEN ANIMATION --> Doesn't work  -- Modify/Subclass TTNavigator later to fix this. 
-	
 	[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
-	
 	
 	TTNavigator* navigator = [TTNavigator navigator];
 	navigator.persistenceMode = TTNavigatorPersistenceModeNone;	
-	navigator.supportsShakeToReload = YES;
+
 	
 	TTURLMap* map = navigator.URLMap;
 	
@@ -57,7 +53,6 @@
 	
 	
 	
-	
 	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com/"];
 	NSArray* cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:hnURL];
 	if ([cookies count] > 0 ) {
@@ -69,7 +64,8 @@
 	
 	
 	if (![navigator restoreViewControllers]) {
-		[navigator openURL:@"tt://home" animated:NO];
+		// [navigator openURL:@"tt://home" animated:NO];	// Deprecated
+		TTOpenURL(@"tt://home");
 		//		[navigator openURL:@"http://news.ycombinator.com/item?id=486755" animated:NO];	// Large comment set
 		//		[navigator openURL:@"http://news.ycombinator.com/item?id=1019939" animated:NO]; // TO show code formatting
 	}
@@ -79,9 +75,14 @@
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
+	return YES;
+}
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-	[[TTNavigator navigator] openURL:URL.absoluteString animated:NO];
+	[[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
 	return YES;
 }
 

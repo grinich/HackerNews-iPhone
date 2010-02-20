@@ -38,10 +38,17 @@
 }
 
 
-- (id<UITableViewDelegate>)createDelegate {
-	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (id<UITableViewDelegate>)createDelegate {
+	//return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+	// Drag to refresh instead
+	return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewController
@@ -77,14 +84,14 @@
 	| UIViewAutoresizingFlexibleHeight;
 	
 	
-	/*
-	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
-	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
+	
+//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
+	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
 	
 	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
 	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
 	[titleImage release];
-	*/
+	
 	
 	self.navigationItem.title = @"Stories";
 }
@@ -100,14 +107,7 @@
 		loginButton.title = @"Login";
 	}
 
-	
-	if (!self.dataSource) {
-		HNStoryDataSource* ds= [[[HNStoryDataSource alloc] init] autorelease];
-		if (!_model) {
-			ds.model = [[HNStoryModel alloc] init];
-		}
-		self.dataSource =  ds;	
-	}
+
 }
 
 
@@ -140,30 +140,11 @@
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-	HNStoryDataSource* ds= [[HNStoryDataSource new] autorelease];
-	ds.model = [HNStoryModel new];
-	self.dataSource =  ds;	
+	self.dataSource = [[HNStoryDataSource new] autorelease];
 }
 
-
-
-// Todo: reload code
-/* 
-
-- (BOOL)shouldReload {
-	if (( [((HNStoryDataSource*)self.dataSource).items count] < 1 )  && (!_flags.isModelFirstTimeInvalid)) {
-		return YES;
-	} else {
-		return [super shouldReload];
-	}
-}
-
-*/ 
-
-
-
-//- (BOOL)shouldLoadMore;
 
 		
 

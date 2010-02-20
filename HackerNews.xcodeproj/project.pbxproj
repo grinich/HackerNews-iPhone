@@ -83,6 +83,13 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = ElementParser;
 		};
+		4CF1E4CF112F78D200E87882 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA2EF791007549300E8D387 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UnitTests.octest */;
+			remoteInfo = UnitTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -268,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				4C3086AF1058176C0094D034 /* libThree20.a */,
+				4CF1E4D0112F78D200E87882 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -419,6 +427,13 @@
 			fileType = archive.ar;
 			path = libElementParser.a;
 			remoteRef = 4C3086B7105817F10094D034 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CF1E4D0112F78D200E87882 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = 4CF1E4CF112F78D200E87882 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

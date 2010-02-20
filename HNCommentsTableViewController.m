@@ -82,15 +82,6 @@
 													 name:@"commentSubmittedNotification" 
 												   object:nil];
 		
-		
-		
-		// TODO move this to its own class
-		
-		[[TTNavigator navigator].URLMap from:@"tt://post"
-							toViewController:self selector:@selector(post:)];
-
-		
-		
 	}
 	return self;
 }
@@ -165,6 +156,18 @@
 
 - (void)replyToComment:(NSNotification *)notification {
 	
+	TTPostController *postController = [TTPostController new];
+	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
+	
+	self.popupViewController = postController;
+	
+	postController.superController = self; // assuming self to be the current UIViewController
+	
+	[postController showInView:self.view animated:YES];
+	[postController release];
+
+	
+	
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
 	
 	NSUInteger index = [listItems indexOfObject:[[notification object] object]];
@@ -199,6 +202,7 @@
 		
 		
 		// ??? : add this after the comment is posted.
+		
 		/*
 		HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
 					
@@ -220,21 +224,12 @@
 		*/ 
 		
 		
-		TTPostController *postController = [TTPostController new];
-		postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
-		
-		self.popupViewController = postController;
-		
-		postController.superController = self; // assuming self to be the current UIViewController
-		
-		[postController showInView:self.view animated:YES];
-		[postController release];
 		
 		
 	}
 	
 
-	
+	/*
 	UITableView * tv = self.tableView;
 	
 	// TODO : Doesn't work! --yet
@@ -263,10 +258,6 @@
 			  withRowAnimation:UITableViewRowAnimationFade];
 	
 	[tv endUpdates];
-			
-	
-
-		 
 		
 	 
 	*/
