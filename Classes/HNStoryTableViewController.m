@@ -77,21 +77,19 @@
 	
 	[self.navigationItem setLeftBarButtonItem:loginButton];	
 		
-	
-	
-	
+		
 	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
 	| UIViewAutoresizingFlexibleHeight;
 	
 	
-	
-//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
-	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
+	/*
+	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead" ofType:@"png"];
+	//	NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"HN-masthead-light" ofType:@"png"];
 	
 	UIImage* titleImage = [[UIImage alloc] initWithContentsOfFile:imgPath];
 	[self.navigationItem setTitleView:[[[UIImageView alloc] initWithImage:titleImage] autorelease]];
 	[titleImage release];
-	
+	*/
 	
 	self.navigationItem.title = @"Stories";
 }

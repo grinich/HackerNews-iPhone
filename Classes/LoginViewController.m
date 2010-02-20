@@ -264,23 +264,6 @@ static NSString *kViewKey = @"viewKey";
 }
 
 
-// TODO: Unnecessary? 
-
-/*
-
-// Fullscreen commit thingy
-- (IBAction)showCommit:(id)sender
-{
-	LoadingView *loadingView =
-	[LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
-	
-	[loadingView
-	 performSelector:@selector(removeView)
-	 withObject:nil
-	 afterDelay:5.0];
-}
-
-*/
 
 #pragma mark -
 #pragma mark MBProgressHUDDelegate methods

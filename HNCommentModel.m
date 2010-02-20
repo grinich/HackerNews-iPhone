@@ -21,7 +21,7 @@
 
 
 @synthesize comments, story_id, setupReplyRequest, allCommentsRequest, 
-submitReplyRequest, headerStory;
+submitReplyRequest, headerStory, activeReplyItem;
 
 
 - (void)dealloc {
@@ -72,7 +72,7 @@ submitReplyRequest, headerStory;
 }
 
 
-/* 
+ 
  
  
 -(void)replyWithItem:(HNCommentReplyItem*)replyItem {
@@ -119,7 +119,7 @@ submitReplyRequest, headerStory;
 	[submitReplyRequest send];  
 }
 
-*/
+
 
 #pragma mark TTTableViewDataSource
 
@@ -221,10 +221,7 @@ submitReplyRequest, headerStory;
 		
 		NSEnumerator* commentsEnumerator = [commentsElements objectEnumerator];
 		
-		
-		// We skip the first object
-		// [commentsEnumerator nextObject];
-		
+
 		
 		Element *element;
 		
@@ -259,12 +256,12 @@ submitReplyRequest, headerStory;
 			
 			Element *secondTier = [element selectElement:@"div span.comhead"];
 			
-			
 			comment.text = [[element selectElement:@"span.comment"] contentsText];
 			
 			
 			NSString *preCut = [[element selectElement:@"span.comment"] contentsSource];
-			comment.contentsSource =  [[[[[[[[[[[[[[preCut
+						
+			comment.contentsSource =  [[[[[[[[[[[[[[[preCut
 												  
 												  // Extra <p> tags without closes. Just make double newline.
 												  stringByReplacingOccurrencesOfString:@"<p>" withString:@"<br/><br/>"]
@@ -275,10 +272,13 @@ submitReplyRequest, headerStory;
 												stringByReplacingOccurrencesOfString:@"<font color=#000000>" withString:@""]
 											   
 											   // Replace <pre><code> with span tag for fixed-width style
-											   
-											   stringByReplacingOccurrencesOfString:@"<pre><code>" withString:@"<span class=\"codeText\">"]
-											  stringByReplacingOccurrencesOfString:@"</code></pre>" withString:@"</span>"]
+
+												 stringByReplacingOccurrencesOfString:@"<pre><code>  " withString:@"<span class=\"codeText\">"]
+												stringByReplacingOccurrencesOfString:@"</code></pre>" withString:@"</span>"]
+											   stringByReplacingOccurrencesOfString:@"\n  " withString:@"<br/>"]
 											  stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"]
+											  
+											  
 											  
 											  
 											   /////////////////////////////////////////////
@@ -366,9 +366,9 @@ submitReplyRequest, headerStory;
 		NSString *responseBody = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
 		
 		Element *document = [Element parseHTML: responseBody];
-		//self.activeReplyItem.replyFNID = [[[document selectElements:@"form > input"] objectAtIndex:0] attribute:@"value"];
+		self.activeReplyItem.replyFNID = [[[document selectElements:@"form > input"] objectAtIndex:0] attribute:@"value"];
 		
-		//[self sendReply];
+		[self sendReply];
 	}
 	
 	else if (request == submitReplyRequest) {

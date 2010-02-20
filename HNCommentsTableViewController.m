@@ -25,26 +25,7 @@
 @implementation HNCommentsTableViewController
 
 @synthesize storyID;
-
-
-
-/*
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// UIViewController
-
-- (void)loadView {
-	[super loadView];
-	
-	self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds
-												   style:UITableViewStyleGrouped] autorelease];
-	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth
-	| UIViewAutoresizingFlexibleHeight;
-	self.variableHeightRows = YES;  
-
-	[self.view addSubview:self.tableView];
-}
-
-*/
+@synthesize replyCommentItem;
 
 - (void)dealloc {
 	TT_RELEASE_SAFELY(storyID);
@@ -112,10 +93,11 @@
 		headerCell.cellStory.voted = YES;
 		
 		// TODO :Deal with this later
-		/*
-		int i = [commentCell.cellComment.points intValue];
-		commentCell.cellComment.points = [NSNumber numberWithInt:i + 1];
-		*/
+		
+		int i = [headerCell.cellStory.points intValue];
+		headerCell.cellStory.points = [NSNumber numberWithInt:i + 1];
+		
+		
 		[self.tableView reloadData];
 		[headerCell.cellStory voteUpWithDelegate:self];
 		
@@ -150,6 +132,10 @@
 }
 
 
+-(void)finishSubmittingComment:(NSNotification *)notification {
+	
+	DLog(@"Comment submitted successfully... I think.");
+}
 
 
 
@@ -178,22 +164,12 @@
 		
 		// TODO implement this
 		
-		/* 
+		 
 		HNCommentHeaderItem *headerCell = ((HNCommentHeaderItemCell*)notification.object).object;
 		
 		replyCommentItem = [[HNCommentReplyItem alloc] init];
-		replyCommentItem.textView.font = TTSTYLEVAR(font);
-		replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
-		replyCommentItem.autoresizesToText = YES;
-		replyCommentItem.minNumberOfLines = 3;
-		replyCommentItem.showsExtraLine = YES;
-		replyCommentItem.textDelegate = self;
-		replyCommentItem.indentationLevel = 0;
+		
 		replyCommentItem.replyFNID = headerCell.story.replyFNID;
-					
-		[listItems insertObject:replyCommentItem atIndex:1]; 
-		 
-		 */
 	
 	} 
 	
@@ -275,46 +251,7 @@
 	
 	/* 
 	 
-	[replyCommentItem.textView resignFirstResponder];
 	
-	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
-	
-	// add loading view
-	replyLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
-	
-	// We're going to remove the replyCommentItem. Find the index.
-	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-	NSUInteger index = [listItems indexOfObject:replyCommentItem];
-	
-	// New comment to replace it.
-	HNComment* c = [[HNComment alloc] init];
-	c.contentsSource = replyCommentItem.text;
-	c.text = replyCommentItem.text;
-	c.voted = YES;
-	c.deletable = YES;
-	//	c.deleteURL		// TODO
-	c.replyEnabled = NO;
-	c.user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-	c.points = [NSNumber numberWithInt:1];
-	c.time_ago = @"0 minutes ago";
-	c.indentationLevel = replyCommentItem.indentationLevel;
-	
-	// Swap
-	[listItems removeObjectAtIndex:index];
-	[listItems insertObject:[HNCommentTableItem itemWithComment:c] atIndex:index];
-	[c release];
-	replyCommentItem = nil;
-}
-
-- (void)finishSubmittingComment:(NSNotification *)notification {	
-	[replyLoadingView removeView];
-	
-	self.navigationItem.title = @"Comments";
-	[self.navigationItem setRightBarButtonItem:nil];
-	[self.navigationItem setLeftBarButtonItem:nil];
-	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
-	[self.tableView reloadData];
-	self.composing = NO;
 	 
 	*/
 	
@@ -413,7 +350,35 @@
 			withResult:(id)result {
 	
 	DLog(@"Text: %@", text);
+		
+	replyCommentItem.text = text;
+	
+	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
+	
+	// add loading view
+	
+	// We're going to remove the replyCommentItem. Find the index.
+	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
+	NSUInteger index = [listItems indexOfObject:replyCommentItem];
+	
+	/*
+	// New comment to replace it.
+	HNComment* c = [[HNComment alloc] init];
+	c.contentsSource = replyCommentItem.text;
+	c.text = replyCommentItem.text;
+	c.voted = YES;
+	c.deletable = YES;
+	//	c.deleteURL		// TODO
+	c.replyEnabled = NO;
+	c.user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+	c.points = [NSNumber numberWithInt:1];
+	c.time_ago = @"0 minutes ago";
+	c.indentationLevel = replyCommentItem.indentationLevel;
+	
+	*/
 }
+
+
 
 
 - (UIViewController*)post:(NSDictionary*)query {

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Three20/Three20.h"
 
+#import "HNCommentReplyItem.h"
+
 @class HNComment, HNStory;
 
 @interface HNCommentModel : TTURLRequestModel  {
@@ -22,6 +24,7 @@
 	TTURLRequest *allCommentsRequest;
 	TTURLRequest *submitReplyRequest;
 	
+	HNCommentReplyItem *activeReplyItem;
 	
 @private
 	
@@ -36,5 +39,6 @@
 @property(nonatomic,retain) TTURLRequest *allCommentsRequest;
 @property(nonatomic,retain) TTURLRequest *submitReplyRequest;
 
+@property(nonatomic,retain) HNCommentReplyItem *activeReplyItem;
 
 @end
