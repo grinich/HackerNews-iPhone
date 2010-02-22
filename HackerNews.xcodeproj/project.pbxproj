@@ -18,9 +18,9 @@
 		4C125E99113205BA00C427B1 /* HNPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C125E98113205BA00C427B1 /* HNPostController.m */; };
 		4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C215E4510F942F1000DF584 /* NSStringAdditions.m */; };
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
-		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
 		4C3086FA105818A00094D034 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086AF1058176C0094D034 /* libThree20.a */; };
 		4C3086FB105818A50094D034 /* libElementParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3086B8105817F10094D034 /* libElementParser.a */; };
+		4C31935B11325F82000D0984 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 4C31935A11325F82000D0984 /* README */; };
 		4C35D8DA100B94CC00358054 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */; };
 		4C41E69110105A6F000A7253 /* HNAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E69010105A6F000A7253 /* HNAuth.m */; };
 		4C41E79D10106F5F000A7253 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */; };
@@ -112,8 +112,8 @@
 		4C215E4510F942F1000DF584 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
 		4C241913100A6F990010D315 /* HNStoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryDataSource.m; sourceTree = "<group>"; };
-		4C2C81011006EC6500D59E60 /* bugs&notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bugs&notes.txt"; sourceTree = "<group>"; };
 		4C3086B0105817F10094D034 /* ElementParser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ElementParser.xcodeproj; path = ../ElementParser/ElementParser.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4C31935A11325F82000D0984 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		4C35D8D8100B94CC00358054 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		4C35D8D9100B94CC00358054 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
 		4C41E68F10105A6F000A7253 /* HNAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNAuth.h; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4C2C81011006EC6500D59E60 /* bugs&notes.txt */,
+				4C31935A11325F82000D0984 /* README */,
 				080E96DDFE201D6D7F000001 /* Main Objects */,
 				4CB509271009F7C300476948 /* Stories View */,
 				4CB50B6B100A232B00476948 /* Comments View */,
@@ -450,7 +450,6 @@
 			files = (
 				4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */,
 				4CDDC4CA1004FEC600E300E4 /* HN-masthead.png in Resources */,
-				4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */,
 				4CA2EFA0100755E700E8D387 /* Three20.bundle in Resources */,
 				4C5EB2B0100797B0001C9BDC /* comment-button.png in Resources */,
 				4C4CA58D100E30460090D24D /* downvote.png in Resources */,
@@ -460,6 +459,7 @@
 				4C9CB6F710158CD6002ECBD3 /* trash.png in Resources */,
 				4CD36F66101D2BB500E457A5 /* Icon.png in Resources */,
 				4C90171310A62B9D00D9E354 /* Default.png in Resources */,
+				4C31935B11325F82000D0984 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
