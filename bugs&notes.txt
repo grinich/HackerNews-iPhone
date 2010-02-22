@@ -10,6 +10,12 @@
 
 
 
+In app settings kit
+http://www.inappsettingskit.com/
+
+
+Injecting Javascript for Readbility:
+http://iphoneincubator.com/blog/windows-views/how-to-inject-javascript-functions-into-a-uiwebview
 
 :::::::::::::   TESTING   ::::::::::::::::
 

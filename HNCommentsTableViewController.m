@@ -26,7 +26,6 @@
 @implementation HNCommentsTableViewController
 
 @synthesize storyID;
-@synthesize replyCommentItem;
 
 
 // TODO: update this to new three20 tableview controller
@@ -56,11 +55,6 @@
 													 name:@"voteDownNotification" 
 												   object:nil];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(finishSubmittingComment:) 
-													 name:@"commentSubmittedNotification" 
-												   object:nil];
-		
 	}
 	return self;
 }
@@ -74,29 +68,30 @@
 	self.navigationItem.title = @"Comments";
 }
 
+#pragma mark -
+#pragma mark Data
+
+- (id<UITableViewDelegate>)createDelegate {
+	
+	// For Drag-to-refresh 
+	//return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+	
+	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+
+}
 
 
 - (void)createModel {
-	HNCommentsDataSource* ds=  [[HNCommentsDataSource new] autorelease];
-	ds.model = [HNCommentModel new];
-	((HNCommentModel*)ds.model).story_id = self.storyID;
-	
-	self.dataSource =  ds;	
+	self.dataSource = [[[HNCommentsDataSource alloc] initWithStoryID:self.storyID] autorelease];
 }
 
+#pragma mark after view loading
+
+/*
 -(void)viewWillAppear:(BOOL)animated {	
 	[super viewWillAppear:animated];
-	
-	if (!self.dataSource) {
-		HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
-		if (!_model) {
-			ds.model = [HNCommentModel new];
-			((HNCommentModel*)ds.model).story_id = self.storyID;		
-		}
-		self.dataSource =  ds;	
-	}
 }
-
+*/
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[[TTURLRequestQueue mainQueue] cancelAllRequests];
@@ -110,8 +105,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-
 
 
 #pragma mark Memory
@@ -185,19 +178,11 @@
 #pragma mark -
 #pragma mark Commenting 
 
--(void)finishSubmittingComment:(NSNotification *)notification {
-	
-	DLog(@"Comment submitted successfully... I think.");
-}
-
-
 
 
 - (void)replyToComment:(NSNotification *)notification {
-
 	
 	HNPostController* postController = [HNPostController new];
-	
 	
 	// Header reply
 	if ( [notification.object isKindOfClass:[HNCommentHeaderItemCell class]] ){
@@ -207,17 +192,22 @@
 	
 	// Regular Reply
 	else if ([notification.object isKindOfClass:[HNCommentTableItemCell class]]) {
-		// We don't have the FNID.
+		// We don't have the FNID, but we have the comment object
+
 	}
+	
+	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
+	NSUInteger index = [listItems indexOfObject:[[notification object] object]];
+	
+	// TODO : Check what type it is, and set a flag.
+	postController.replyCellObject = [listItems objectAtIndex:index];
+	
 	
 	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
 	self.popupViewController = postController;
 	postController.superController = self; // assuming self to be the current UIViewController
-	
 	[postController showInView:self.view animated:YES];
-		
 	[postController release];
-		
 }
 		
 
@@ -228,39 +218,63 @@
 
 // Returns with posted text
 
-- (void)postController:(TTPostController*)postController
+- (void)postController:(HNPostController*)postController
 		   didPostText:(NSString *)text
 			withResult:(id)result {
 	
-	
-	DLog(@"Text: %@", text);
-		
-	replyCommentItem.text = text;
-	
-	[(HNCommentModel*)self.model replyWithItem:replyCommentItem];
-	
-	// add loading view
-	
-	// We're going to remove the replyCommentItem. Find the index.
+	HNCommentTableItem* replyToComment = postController.replyCellObject;
+
 	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-	NSUInteger index = [listItems indexOfObject:replyCommentItem];
+	NSUInteger index = [listItems indexOfObject:replyToComment];
 	
-	/*
-	// New comment to replace it.
+	
+	// New comment to put in the view.
+	
 	HNComment* c = [[HNComment alloc] init];
-	c.contentsSource = replyCommentItem.text;
-	c.text = replyCommentItem.text;
+	c.contentsSource = text;
+	c.text = text;
 	c.voted = YES;
+	
 	c.deletable = YES;
 	//	c.deleteURL		// TODO
+	
 	c.replyEnabled = NO;
 	c.user = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 	c.points = [NSNumber numberWithInt:1];
 	c.time_ago = @"0 minutes ago";
-	c.indentationLevel = replyCommentItem.indentationLevel;
 	
-	*/
+	if ([replyToComment isKindOfClass:[HNCommentHeaderItem class]]) {
+		// replyToComment is a HNCommentHeaderItem
+		c.indentationLevel = [NSNumber numberWithInt:0];
+	} else {
+		// replyToComment is a HNCommentTableItem
+		c.indentationLevel = [NSNumber numberWithInt:
+							  [replyToComment.comment.indentationLevel intValue] + 1 ];
+	}
+	
+
+	HNCommentTableItem *replyItem = [HNCommentTableItem itemWithComment:c];
+
+	if (index + 1 == [listItems count]) {
+		[listItems addObject:replyItem];
+	} else {
+		[listItems insertObject:replyItem atIndex:index +1];
+	}
+	
+	
+	UITableView * tv = self.tableView;
+
+	[tv beginUpdates];
+	[tv insertRowsAtIndexPaths:[NSArray arrayWithObject:
+								[NSIndexPath indexPathForRow:(index +1) inSection:0]]
+			  withRowAnimation:UITableViewRowAnimationFade];
+	
+	[tv endUpdates];
+	
+	
 }
+
+
 
 @end
 

@@ -181,15 +181,10 @@ upVoteButton, downVoteButton, replyButton;
 		[replyImage release];
 		
 		
-		/*
+		
 		[self.replyButton addTarget:self
 							 action:@selector(replyButtonTapped) 
 				   forControlEvents:UIControlEventTouchUpInside];
-		*/
-		
-		[self.replyButton addTarget:@"tt://post" action:@selector(openURLFromButton:)
-				   forControlEvents:UIControlEventTouchUpInside];
-		
 		
 		
 		[self.contentView addSubview:self.replyButton];
@@ -385,6 +380,8 @@ upVoteButton, downVoteButton, replyButton;
 	DLog(@"Delete comment!");
 }
 
+
+#pragma mark Reply Button
 
 -(void) replyButtonTapped {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"replyButtonNotification" object:self ] ;

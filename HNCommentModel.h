@@ -6,11 +6,12 @@
 	
 	NSMutableArray* comments;
 	NSString* story_id;
-			
+	/*		
 @private
 	
 	BOOL _isLoading;
 	BOOL _isLoaded;
+	 */
 }
 
 @property(nonatomic,retain) HNStory* headerStory;

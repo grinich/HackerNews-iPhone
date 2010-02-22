@@ -8,11 +8,14 @@
 
 #import "HNPostController.h"
 #import "ElementParser.h"
-
+#import "HNCommentTableItem.h"
+#import "HNComment.h"
 
 @implementation HNPostController
 
-@synthesize replyFNID, replyURL, submitReplyRequest, setupReplyRequest;
+@synthesize replyFNID, submitReplyRequest, setupReplyRequest;
+
+@synthesize replyCellObject;
 
 // Just to set the "Done" button to say "Post"
 - (id)init {
@@ -49,7 +52,6 @@
 		setupReplyRequest.httpMethod = @"GET";
 		[setupReplyRequest send]; 
 	}
-	
 }
 
 -(void)sendReply {
@@ -86,7 +88,6 @@
 	
 	else if (request == submitReplyRequest) {
 		// Comment sent! Yay!
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"commentSubmittedNotification" object:self ] ;
 		
 		[self dismissWithResult:nil animated:YES];
 	}
@@ -98,5 +99,16 @@
 	//[self dismissWithResult:nil animated:YES];
 }
 
+
+- (NSString*) replyURL {
+	
+	if ([self.replyCellObject isKindOfClass:[HNCommentTableItem class]] ) {
+		HNComment* comment = self.replyCellObject.comment;
+		
+		return comment.reply_url;
+	} 
+	
+	return nil;
+}
 
 @end

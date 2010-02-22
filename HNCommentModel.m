@@ -31,47 +31,6 @@
 	[super dealloc];
 }
 
-- (NSMutableArray*)delegates {
-	if (!_delegates) {
-		_delegates = TTCreateNonRetainingArray();
-	}
-	return _delegates;
-}
-
-- (BOOL)isLoadingMore {
-	return NO;
-}
-
-- (BOOL)isOutdated {
-	return NO;
-}
-
-- (BOOL)isLoaded {
-	return !!_isLoaded;
-}
-
-- (BOOL)isLoading {
-	return !!_isLoading;
-}
-
-- (BOOL)isEmpty {
-	return !self.comments.count;
-}
-
-/*
- - (void)invalidate:(BOOL)erase {
- }
- */
-
-
-- (void)cancel {
-	_isLoading = NO;
-	_isLoaded = NO;
-	[_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
-}
-
-
-
 #pragma mark TTTableViewDataSource
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
@@ -93,13 +52,13 @@
 
 
 #pragma mark TTURLRequestDelegate
-
+/*
 - (void)requestDidStartLoad:(TTURLRequest*)request {
 	_isLoading = YES;
 	_isLoaded = NO;    
 	[self didStartLoad];
 }
-
+*/
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {  
 	
@@ -303,10 +262,8 @@
 	}
 	
 	
-	_isLoading = NO;
-	_isLoaded = YES;  
-	
-	[_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+	[super requestDidFinishLoad:request];
+
 }
 	
 

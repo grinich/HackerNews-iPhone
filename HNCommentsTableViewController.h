@@ -8,18 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Three20/Three20.h"
-#import "HNCommentReplyItem.h"
 
 @class HNComment;
 
 @interface HNCommentsTableViewController :  TTTableViewController <TTPostControllerDelegate> {
 	
 	NSString		*storyID;
-	HNCommentReplyItem *replyCommentItem;
 }
 
 @property (nonatomic, retain)	NSString	*storyID;
-@property (nonatomic,retain) HNCommentReplyItem *replyCommentItem;
 
 - (id)initWithStory:(NSString *)storyIN;
 

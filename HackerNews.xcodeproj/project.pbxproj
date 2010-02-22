@@ -46,7 +46,6 @@
 		4CB509391009F7E600476948 /* HNCommentTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB509381009F7E600476948 /* HNCommentTableItem.m */; };
 		4CB50B8A100A249300476948 /* HNStoryTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50B89100A249300476948 /* HNStoryTableItem.m */; };
 		4CB50BA3100A257C00476948 /* HNStoryTableItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */; };
-		4CC37CAD112F941200FCE709 /* HNCommentReplyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC37CAC112F941200FCE709 /* HNCommentReplyItem.m */; };
 		4CD36F66101D2BB500E457A5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD36F65101D2BB500E457A5 /* Icon.png */; };
 		4CDDC4C81004FEC600E300E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A31004FEC600E300E4 /* AppDelegate.m */; };
 		4CDDC4C91004FEC600E300E4 /* HN-masthead-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */; };
@@ -155,8 +154,6 @@
 		4CB50B89100A249300476948 /* HNStoryTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItem.m; sourceTree = "<group>"; };
 		4CB50BA1100A257C00476948 /* HNStoryTableItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryTableItemCell.h; sourceTree = "<group>"; };
 		4CB50BA2100A257C00476948 /* HNStoryTableItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNStoryTableItemCell.m; sourceTree = "<group>"; };
-		4CC37CAB112F941200FCE709 /* HNCommentReplyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentReplyItem.h; sourceTree = "<group>"; };
-		4CC37CAC112F941200FCE709 /* HNCommentReplyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentReplyItem.m; sourceTree = "<group>"; };
 		4CD36F65101D2BB500E457A5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4CDDC4A21004FEC600E300E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CDDC4A31004FEC600E300E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -364,8 +361,6 @@
 				4C5EB5A31007D26A001C9BDC /* HNComment.m */,
 				4C613B24101040C900914337 /* HNCommentModel.h */,
 				4C613B25101040C900914337 /* HNCommentModel.m */,
-				4CC37CAB112F941200FCE709 /* HNCommentReplyItem.h */,
-				4CC37CAC112F941200FCE709 /* HNCommentReplyItem.m */,
 				4C125E97113205BA00C427B1 /* HNPostController.h */,
 				4C125E98113205BA00C427B1 /* HNPostController.m */,
 			);
@@ -499,7 +494,6 @@
 				4C679FD210F2BF9F0025AFA0 /* HNWebController.m in Sources */,
 				4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */,
 				4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */,
-				4CC37CAD112F941200FCE709 /* HNCommentReplyItem.m in Sources */,
 				4C125E99113205BA00C427B1 /* HNPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

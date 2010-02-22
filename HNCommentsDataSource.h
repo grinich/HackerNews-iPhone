@@ -12,9 +12,9 @@
 
 @interface HNCommentsDataSource : TTListDataSource  {
 
-
 }
 
+- (id)initWithStoryID:(NSString*)storyID;
 
 
 @end

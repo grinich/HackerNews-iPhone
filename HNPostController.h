@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "HNCommentTableItem.h"
 
 @interface HNPostController : TTPostController <TTURLRequestDelegate> {
 
@@ -16,16 +16,20 @@
 	
 	TTURLRequest *submitReplyRequest;
 	TTURLRequest *setupReplyRequest;
-
-
+	
+	HNCommentTableItem* replyCellObject;
 
 }
 
 @property(nonatomic,retain)		NSString *replyFNID;
-@property(nonatomic,retain)		NSString  * replyURL;
+@property(readonly)		NSString  * replyURL;
 
 @property(nonatomic,retain) TTURLRequest *submitReplyRequest;
 @property(nonatomic,retain) TTURLRequest *setupReplyRequest;
+
+// TODO : make this specific
+@property(nonatomic,retain) 	HNCommentTableItem* replyCellObject;
+
 
 - (void)post;
 

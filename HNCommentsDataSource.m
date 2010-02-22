@@ -21,6 +21,13 @@
 
 
 
+- (id)initWithStoryID:(NSString*)storyID {
+	if (self = [super init]) {
+		self.model = [HNCommentModel new];
+		self.model.story_id = storyID;
+	}
+	return self;
+}
 
 - (void)dealloc {
 	[super dealloc];
