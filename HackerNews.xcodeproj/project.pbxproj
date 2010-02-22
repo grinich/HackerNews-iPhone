@@ -15,6 +15,7 @@
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		4C0A1BA7100DBC6B009E7A11 /* HNCommentHeaderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */; };
 		4C0A1BAA100DBC7C009E7A11 /* HNCommentHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */; };
+		4C125E99113205BA00C427B1 /* HNPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C125E98113205BA00C427B1 /* HNPostController.m */; };
 		4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C215E4510F942F1000DF584 /* NSStringAdditions.m */; };
 		4C241914100A6F990010D315 /* HNStoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C241913100A6F990010D315 /* HNStoryDataSource.m */; };
 		4C2C81021006EC6500D59E60 /* bugs&notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C2C81011006EC6500D59E60 /* bugs&notes.txt */; };
@@ -106,6 +107,8 @@
 		4C0A1BA6100DBC6B009E7A11 /* HNCommentHeaderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentHeaderItem.m; sourceTree = "<group>"; };
 		4C0A1BA8100DBC7C009E7A11 /* HNCommentHeaderItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentHeaderItemCell.h; sourceTree = "<group>"; };
 		4C0A1BA9100DBC7C009E7A11 /* HNCommentHeaderItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentHeaderItemCell.m; sourceTree = "<group>"; };
+		4C125E97113205BA00C427B1 /* HNPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPostController.h; sourceTree = "<group>"; };
+		4C125E98113205BA00C427B1 /* HNPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPostController.m; sourceTree = "<group>"; };
 		4C215E4410F942F1000DF584 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		4C215E4510F942F1000DF584 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		4C241912100A6F990010D315 /* HNStoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNStoryDataSource.h; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				4C613B25101040C900914337 /* HNCommentModel.m */,
 				4CC37CAB112F941200FCE709 /* HNCommentReplyItem.h */,
 				4CC37CAC112F941200FCE709 /* HNCommentReplyItem.m */,
+				4C125E97113205BA00C427B1 /* HNPostController.h */,
+				4C125E98113205BA00C427B1 /* HNPostController.m */,
 			);
 			name = "Comments View";
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				4C215E4610F942F1000DF584 /* NSStringAdditions.m in Sources */,
 				4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */,
 				4CC37CAD112F941200FCE709 /* HNCommentReplyItem.m in Sources */,
+				4C125E99113205BA00C427B1 /* HNPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

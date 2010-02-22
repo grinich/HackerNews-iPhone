@@ -19,6 +19,7 @@
 #import "HNCommentHeaderItem.h"
 #import "HNStory.h"
 
+#import "HNPostController.h"
 
 @class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
@@ -27,11 +28,8 @@
 @synthesize storyID;
 @synthesize replyCommentItem;
 
-- (void)dealloc {
-	TT_RELEASE_SAFELY(storyID);
-	[super dealloc];
-}
 
+// TODO: update this to new three20 tableview controller
 
 - (id)initWithStory:(NSString *)storyIN {
 	if (self = [super init]) {
@@ -68,20 +66,72 @@
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewController
 
 - (void)loadView {
 	[super loadView];
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
 	self.navigationItem.title = @"Comments";
-	
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewController
 
+
+- (void)createModel {
+	HNCommentsDataSource* ds=  [[HNCommentsDataSource new] autorelease];
+	ds.model = [HNCommentModel new];
+	((HNCommentModel*)ds.model).story_id = self.storyID;
+	
+	self.dataSource =  ds;	
+}
+
+-(void)viewWillAppear:(BOOL)animated {	
+	[super viewWillAppear:animated];
+	
+	if (!self.dataSource) {
+		HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
+		if (!_model) {
+			ds.model = [HNCommentModel new];
+			((HNCommentModel*)ds.model).story_id = self.storyID;		
+		}
+		self.dataSource =  ds;	
+	}
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[[TTURLRequestQueue mainQueue] cancelAllRequests];
+	[super viewWillDisappear:animated];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+
+
+
+#pragma mark Memory
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)dealloc {
+	TT_RELEASE_SAFELY(storyID);
+	[super dealloc];
+}
+
+
+
+#pragma mark -
+#pragma mark Voting 
 
 
 // TODO: Move both of these methods to HNCommentModel
@@ -132,6 +182,9 @@
 }
 
 
+#pragma mark -
+#pragma mark Commenting 
+
 -(void)finishSubmittingComment:(NSNotification *)notification {
 	
 	DLog(@"Comment submitted successfully... I think.");
@@ -141,202 +194,32 @@
 
 
 - (void)replyToComment:(NSNotification *)notification {
-	
-	TTPostController *postController = [TTPostController new];
-	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
-	
-	self.popupViewController = postController;
-	
-	postController.superController = self; // assuming self to be the current UIViewController
-	
-	[postController showInView:self.view animated:YES];
-	[postController release];
 
 	
-	
-	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-	
-	NSUInteger index = [listItems indexOfObject:[[notification object] object]];
+	HNPostController* postController = [HNPostController new];
 	
 	
-	// Header reply. Requires different reply comment.
+	// Header reply
 	if ( [notification.object isKindOfClass:[HNCommentHeaderItemCell class]] ){
-		
-		// TODO implement this
-		
-		 
 		HNCommentHeaderItem *headerCell = ((HNCommentHeaderItemCell*)notification.object).object;
-		
-		replyCommentItem = [[HNCommentReplyItem alloc] init];
-		
-		replyCommentItem.replyFNID = headerCell.story.replyFNID;
-	
+		postController.replyFNID = headerCell.story.replyFNID;
 	} 
 	
 	// Regular Reply
 	else if ([notification.object isKindOfClass:[HNCommentTableItemCell class]]) {
-		
-		
-		// ??? : add this after the comment is posted.
-		
-		/*
-		HNCommentTableItem *replyCell = ((HNCommentTableItemCell*)notification.object).object;
-					
-		replyCommentItem = [[HNCommentReplyItem alloc] init];
-		replyCommentItem.textView.font = TTSTYLEVAR(font);
-		replyCommentItem.backgroundColor = TTSTYLEVAR(backgroundColor);
-		replyCommentItem.autoresizesToText = YES;
-		replyCommentItem.minNumberOfLines = 3;
-		replyCommentItem.showsExtraLine = YES;
-		replyCommentItem.textDelegate = self;
-		replyCommentItem.indentationLevel = [NSNumber numberWithInt:
-											 [replyCell.comment.indentationLevel intValue] + 1 ];
-					
-		if (index + 1 == [listItems count]) {
-			[listItems addObject:replyCommentItem];
-		} else {
-			[listItems insertObject:replyCommentItem atIndex:index +1];
-		}
-		*/ 
-		
-		
-		
-		
+		// We don't have the FNID.
 	}
 	
-
-	/*
-	UITableView * tv = self.tableView;
+	postController.delegate = self; // self must implement the TTPostControllerDelegate protocol
+	self.popupViewController = postController;
+	postController.superController = self; // assuming self to be the current UIViewController
 	
-	// TODO : Doesn't work! --yet
-	UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" 
-																	 style:UIBarButtonItemStyleBordered 
-																		target:self 
-																	action:@selector(submitComment:)];
-	
-	[self.navigationItem setRightBarButtonItem:submitButton];
-	[submitButton release];
-	// Hide the back button
-	self.navigationController.navigationBar.backItem.hidesBackButton = YES;
-	
-	UIBarButtonItem *cancelButon = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
-																	style:UIBarButtonItemStyleBordered 
-																   target:self 
-																   action:@selector(cancelComment:)];
-	[self.navigationItem setLeftBarButtonItem:cancelButon];
-	[cancelButon release];
-	self.navigationItem.title = @"Reply";
-	
-	
-	[tv beginUpdates];
-	[tv insertRowsAtIndexPaths:[NSArray arrayWithObject:
-								[NSIndexPath indexPathForRow:(index +1) inSection:0]]
-			  withRowAnimation:UITableViewRowAnimationFade];
-	
-	[tv endUpdates];
+	[postController showInView:self.view animated:YES];
 		
-	 
-	*/
-	
-	DLog(@"Reply notification.");
+	[postController release];
+		
 }
 		
-
-
-
--(void)submitComment:(UIButton*)sender {
-	
-	DLog(@"Submit comment");
-	
-	
-	/* 
-	 
-	
-	 
-	*/
-	
-}
-
-
--(void)cancelComment:(UIButton*)sender {
-	/*
-	[replyCommentItem.textView resignFirstResponder];
-
-	NSMutableArray* listItems = ((HNCommentsDataSource*)self.dataSource).items;
-	NSUInteger index = [listItems indexOfObject:replyCommentItem];
-	
-	[listItems removeObjectAtIndex:index];
-	
-	UITableView * tv = self.tableView;
-
-	[tv beginUpdates];
-	[tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:
-								[NSIndexPath indexPathForRow:index inSection:0]]
-			  withRowAnimation:UITableViewRowAnimationFade];
-	
-	[tv endUpdates];	
-	
-	self.navigationItem.title = @"Comments";
-	// Todo: hide these instead of just init/release ?
-	[self.navigationItem setRightBarButtonItem:nil];
-	[self.navigationItem setLeftBarButtonItem:nil];
-	self.navigationController.navigationBar.backItem.hidesBackButton = NO;
-	
-	self.composing = NO;
-	 */
-}
-
- 
-- (void)createModel {
-	HNCommentsDataSource* ds=  [[HNCommentsDataSource new] autorelease];
-	ds.model = [HNCommentModel new];
-	((HNCommentModel*)ds.model).story_id = self.storyID;
-	
-	self.dataSource =  ds;	
-}
-
--(void)viewWillAppear:(BOOL)animated {	
-	[super viewWillAppear:animated];
-	
-	if (!self.dataSource) {
-		HNCommentsDataSource* ds=  [[[HNCommentsDataSource alloc] init] autorelease];
-		if (!_model) {
-			ds.model = [HNCommentModel new];
-			((HNCommentModel*)ds.model).story_id = self.storyID;		
-		}
-		self.dataSource =  ds;	
-	}
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[[TTURLRequestQueue mainQueue] cancelAllRequests];
-	[super viewWillDisappear:animated];
-}
-	
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-		
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-
-//- (void)viewWillAppear:(BOOL)animated {
-//	[self refresh];
-//    [super viewWillAppear:animated];
-//}
-
-
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
 
 
 #pragma mark -
@@ -348,6 +231,7 @@
 - (void)postController:(TTPostController*)postController
 		   didPostText:(NSString *)text
 			withResult:(id)result {
+	
 	
 	DLog(@"Text: %@", text);
 		
@@ -376,15 +260,6 @@
 	c.indentationLevel = replyCommentItem.indentationLevel;
 	
 	*/
-}
-
-
-
-
-- (UIViewController*)post:(NSDictionary*)query {
-	TTPostController* controller = [[[TTPostController alloc] init] autorelease];
-	controller.originView = [query objectForKey:@"__target__"];
-	return controller;
 }
 
 @end
