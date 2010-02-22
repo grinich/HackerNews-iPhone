@@ -17,4 +17,6 @@
 
 @property(nonatomic,retain) UIBarButtonItem *loginButton;
 
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
+
 @end

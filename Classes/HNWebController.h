@@ -22,6 +22,7 @@
 
 - (void)shareAction;
 - (void) sendToInstapaper;
+- (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
 
 
 @end

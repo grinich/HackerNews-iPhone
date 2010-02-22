@@ -9,6 +9,7 @@
 #import "HNStoryTableViewController.h"
 #import "HNStoryDataSource.h"
 #import "HNAuth.h"
+#import "HNStory.h"
 #import "HNStoryModel.h"
 #import "HNStoryTableItem.h"
 #import "HNStoryTableItemCell.h"
@@ -43,15 +44,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id<UITableViewDelegate>)createDelegate {
-	//return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
 	// Drag to refresh instead
-	return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+	//return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewController
 
 
 
@@ -106,6 +103,26 @@
 	}
 
 
+}
+
+
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+	
+	if ([object respondsToSelector:@selector(URLValue)]) {
+		HNStory *story = [(HNStoryTableItem*)object story];
+		
+		NSString* URL = [story.url absoluteString];
+		if (URL) {
+			NSDictionary* query = [[NSDictionary alloc] initWithObjectsAndKeys:story, @"story", nil ];
+
+			TTURLAction *action = [[[TTURLAction actionWithURLPath:URL] applyQuery:query] applyAnimated:YES];
+			
+			[[TTNavigator navigator] openURLAction:action]; 
+
+			
+		}
+	}
+	
 }
 
 

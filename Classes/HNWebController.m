@@ -7,12 +7,40 @@
 //
 
 #import "HNWebController.h"
-
+#import "HNStyle.h"
 #import "NSStringAdditions.h"
 
 @implementation HNWebController
 
 @synthesize linkedStory;
+
+
+// This lets us deserialize the story object which may be passed in.
+// see http://groups.google.com/group/three20/browse_thread/thread/17531b9efbf243a3/4d95e930810e226e#4d95e930810e226e
+
+
+
+- (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
+	if (self = [super init]){ 
+		
+		// Check to see if we're passing off a story
+		if(query && [query objectForKey:@"story"]){ 
+			self.linkedStory = (HNStory*) [query objectForKey:@"story"]; 
+			DLog(@"Passed off story: %@", [self.linkedStory title]);
+		} 
+		
+		// We're overridding this.
+		NSURLRequest* request = [query objectForKey:@"request"];
+		if (request) {
+			[self openRequest:request];
+		} else {
+			[self openURL:URL];
+		}
+		
+	} 
+	return self; 
+} 
+
 
 - (void)shareAction {
 	UIActionSheet* sheet = [[[UIActionSheet alloc] initWithTitle:@"" 
@@ -35,6 +63,9 @@
 			[[UIApplication sharedApplication] openURL:self.URL];
 			break;
 		case 1: {
+			
+			// TODO use self.linkedStory to fill out metadata for email. 
+			
 			MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 			picker.mailComposeDelegate = self; // <- very important step if you want feedbacks on what the user did with your email sheet
 			
@@ -57,11 +88,7 @@
 		case 3:
 			// Readability
 			
-
 			[_webView stringByEvaluatingJavaScriptFromString:@"javascript:(function(){readStyle='style-athelas';readSize='size-x-large';readMargin='margin-x-narrow';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);})();"];  
-			
-			
-			
 			break;
 
 		default:
