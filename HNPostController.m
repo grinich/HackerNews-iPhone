@@ -10,6 +10,7 @@
 #import "ElementParser.h"
 #import "HNCommentTableItem.h"
 #import "HNComment.h"
+#import "NSDictionary+UrlEncoding.h"
 
 @implementation HNPostController
 
@@ -32,6 +33,7 @@
 
 
 - (void)post {	
+	// TODO: This is not exposed for some reason.
 	[self showActivity:@"Posting comment"];
 	
 	if (self.replyFNID) {

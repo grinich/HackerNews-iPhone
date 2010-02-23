@@ -23,8 +23,10 @@
 
 - (id)initWithStoryID:(NSString*)storyID {
 	if (self = [super init]) {
-		self.model = [HNCommentModel new];
-		self.model.story_id = storyID;
+		
+		HNCommentModel* commentModel = [HNCommentModel new];
+		commentModel.story_id = storyID;
+		self.model = commentModel;
 	}
 	return self;
 }
