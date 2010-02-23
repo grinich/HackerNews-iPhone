@@ -21,14 +21,12 @@
 + (HNStoryTableItem *)itemWithStory:(HNStory *)aStory {
 	
 	HNStoryTableItem* item = [[HNStoryTableItem alloc] init];
-	item.story = aStory;
 
+	[item setStory: aStory];
+
+	// Handle the URL opening in the delegate method.
 	//item.URL = [[story url] absoluteURL];
-	
-	// Todo: some work here
-	
-	item.URL = [NSString stringWithFormat: @"%@", [aStory.url absoluteURL]];
-
+		
 	return item;
 }
 

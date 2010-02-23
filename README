@@ -4,7 +4,6 @@
 the URL opens twice. It hits initWithNavigatorURL, didSelectRow, 
 and then initWithNavigatorURL again.
 
-***
 
 /////////////////
    2.0 Update

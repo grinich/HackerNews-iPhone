@@ -18,8 +18,6 @@
 // This lets us deserialize the story object which may be passed in.
 // see http://groups.google.com/group/three20/browse_thread/thread/17531b9efbf243a3/4d95e930810e226e#4d95e930810e226e
 
-
-
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
 	if (self = [super init]){ 
 		
@@ -29,14 +27,13 @@
 			DLog(@"Passed off story: %@", [self.linkedStory title]);
 		} 
 		
-		// We're overridding this.
+		// Setup the webview request
 		NSURLRequest* request = [query objectForKey:@"request"];
 		if (request) {
 			[self openRequest:request];
 		} else {
 			[self openURL:URL];
 		}
-		
 	} 
 	return self; 
 } 

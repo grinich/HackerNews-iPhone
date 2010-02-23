@@ -44,9 +44,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id<UITableViewDelegate>)createDelegate {
-	return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+	//return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
 	// Drag to refresh instead
-	//return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+	return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
 
@@ -106,6 +106,9 @@
 }
 
 
+// This lets us serialize the story object to pass it on
+// see http://groups.google.com/group/three20/browse_thread/thread/17531b9efbf243a3/4d95e930810e226e#4d95e930810e226e
+
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
 	
 	if ([object respondsToSelector:@selector(URLValue)]) {
@@ -117,12 +120,9 @@
 
 			TTURLAction *action = [[[TTURLAction actionWithURLPath:URL] applyQuery:query] applyAnimated:YES];
 			
-			[[TTNavigator navigator] openURLAction:action]; 
-
-			
+			[[TTNavigator navigator] openURLAction:action]; 			
 		}
 	}
-	
 }
 
 

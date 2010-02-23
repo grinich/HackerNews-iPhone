@@ -75,7 +75,6 @@ static CGFloat kCommentButtonWidth = 50;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
 	
-	
 	if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
 		_item = nil;
 		[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];

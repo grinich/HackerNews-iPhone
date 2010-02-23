@@ -12,7 +12,6 @@
 
 @interface HNStoryTableItem : TTTableTextItem {
 	HNStory *story;
-
 }
 
 @property (nonatomic,retain)	HNStory *story;
