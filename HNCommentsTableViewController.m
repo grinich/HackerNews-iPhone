@@ -20,6 +20,7 @@
 #import "HNStory.h"
 
 #import "HNPostController.h"
+#import "GTMNSString+HTML.h"
 
 @class HNStory, HNCommentTableItem, HNCommentTableItemCell;
 
@@ -231,7 +232,7 @@
 	// New comment to put in the view.
 	
 	HNComment* c = [[HNComment alloc] init];
-	c.contentsSource = text;
+	c.contentsSource = [text gtm_stringByEscapingForHTML];
 	c.text = text;
 	c.voted = YES;
 	

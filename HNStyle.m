@@ -11,7 +11,7 @@
 
 @implementation HNStyle
 
-// HN Orange
+// Overrides
 
 - (UIColor*)navigationBarTintColor {
 	//	return RGBCOLOR(119, 140, 168);
@@ -26,6 +26,12 @@
 - (UIColor*)searchBarTintColor {
 	return TTSTYLEVAR(hackerNewsColor);
 }
+
+- (UIColor*) tableRefreshHeaderBackgroundColor {
+	return [UIColor whiteColor];
+}
+
+// My styles
 
 - (UIColor*)hackerNewsColor {
 	return RGBCOLOR(225, 101, 0);
@@ -73,5 +79,6 @@
 - (TTStyle* ) HNOrangeText {
 	return [TTTextStyle styleWithColor:TTSTYLEVAR(hackerNewsColor) next:nil];
 }
+
 
 @end

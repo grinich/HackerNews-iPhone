@@ -1,8 +1,16 @@
 ### Current Bugs: 
 
-- When loading a story that maps from * to HNWebController, 
-the URL opens twice. It hits initWithNavigatorURL, didSelectRow, 
-and then initWithNavigatorURL again.
+- 	[TTPostController showActivity:@"Posting comment"]; 
+	This is not exposed for some reason. Subclasses need it.
+-	Doesn't show blue background on selection on Story view
+-	Story page parser fix for new accounts.
+
+
+### To Do:
+
+- Switch green hilighting to the orange asterisk in upper right corner
+- InstaPaper login screen
+- "About the developer" page with a link to email about bugs
 
 
 /////////////////
@@ -15,7 +23,8 @@ New Features:
 - Voting
 - Post comments
 - Refresh items on homepage
-- In-app web browser includes Readbility support.
+- Readbility
+- Mail link to page
 
 Bug fixes: 
 - Fixed-width text now displays correctly.
@@ -26,9 +35,8 @@ Bug fixes:
    To Do
 /////////////////
 
--In app settings. Perhaps this -> http://www.inappsettingskit.com/ 
+- In app settings. Perhaps this -> http://www.inappsettingskit.com/ 
 - Searching via searchyc.com
-- Integration with InstaPaper
 - Bookmarlet installation for submitting articles
 	http://ycombinator.com/bookmarklet.html
 
@@ -44,8 +52,7 @@ Bug fixes:
 - More pages (/noobs, /newest, /newcomments, etc)
 - Comment formatting for posting comments 
 	see: http://news.ycombinator.com/formatdoc 
-- HN Guidelines. http://ycombinator.com/newsguidelines.html
-
+- HN Guidelines at first launch. http://ycombinator.com/newsguidelines.html
 
 
 /////////////////
@@ -68,6 +75,7 @@ Bug fixes:
 	http://cocoawithlove.com/2008/11/singletons-appdelegates-and-top-level.html)
 	
 - Three20
+
 - Element Parser http://github.com/Objective3/ElementParser
 
 - Readbility http://lab.arc90.com/experiments/readability/

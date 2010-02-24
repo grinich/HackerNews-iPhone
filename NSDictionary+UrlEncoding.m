@@ -16,9 +16,20 @@ static NSString *toString(id object) {
 
 // private helper function to convert string to UTF-8 and URL encode it
 static NSString *urlEncode(id object) {
-	NSString *string = toString(object);
-	return [string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+	NSString *unencodedString = toString(object);
+	//return [string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+	
+	// This works better. From here: http://simonwoodside.com/weblog/2009/4/22/how_to_really_url_encode/
+	
+	NSString * encodedString = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+																				   NULL,
+																				   (CFStringRef)unencodedString,
+																				   NULL,
+																				   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																				   kCFStringEncodingUTF8 );
 }
+
+
 
 
 @implementation NSDictionary (UrlEncoding)

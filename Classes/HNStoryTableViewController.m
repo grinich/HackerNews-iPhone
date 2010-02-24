@@ -120,7 +120,8 @@
 
 			TTURLAction *action = [[[TTURLAction actionWithURLPath:URL] applyQuery:query] applyAnimated:YES];
 			
-			[[TTNavigator navigator] openURLAction:action]; 			
+			[[TTNavigator navigator] openURLAction:action]; 	
+			
 		}
 	}
 }
