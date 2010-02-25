@@ -131,6 +131,8 @@ static NSString *yc_url = @"http://news.ycombinator.com/";
 		
 		story.time_ago = @"";
 		
+		// TODO : numberFromString is sometimes broken
+		
 		// POINTS
 		// Either "points" or "point"
 		if ([pointsTempString hasSuffix:@"points"]) {

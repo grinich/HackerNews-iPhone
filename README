@@ -1,9 +1,13 @@
+Test account is HN_iPhone_Test
+
 ### Current Bugs: 
 
 - 	[TTPostController showActivity:@"Posting comment"]; 
 	This is not exposed for some reason. Subclasses need it.
 -	Doesn't show blue background on selection on Story view
--	Story page parser fix for new accounts.
+
+-	Story page parser broken for brand new accounts.
+-	numberFromString is sometimes broken
 
 
 ### To Do:

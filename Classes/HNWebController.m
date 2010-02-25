@@ -44,7 +44,9 @@
 														delegate:self
 											   cancelButtonTitle:TTLocalizedString(@"Cancel", @"") 
 										  destructiveButtonTitle:nil
-											   otherButtonTitles:@"Open in Safari", @"Mail Link", @"Save with Instapaper",@"Readibility", nil] autorelease];
+							 //otherButtonTitles:@"Open in Safari", @"Mail Link", @"Save with Instapaper",@"Readibility", nil] autorelease];
+											   otherButtonTitles:@"Readability", @"Open in Safari", nil] autorelease];
+
 	[sheet showInView:self.view];	
 }
 
@@ -56,9 +58,16 @@
 	
 	switch(buttonIndex)
 	{
-		case 0: // Open in Safari
+		case 0: { // Readability
+						
+			[_webView stringByEvaluatingJavaScriptFromString:@"javascript:(function(){readStyle='style-athelas';readSize='size-x-large';readMargin='margin-x-narrow';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);})();"];  
+			break;
+		}
+		case 1: // Open in Safari
 			[[UIApplication sharedApplication] openURL:self.URL];
 			break;
+			
+		/*
 		case 1: {
 			
 			// TODO use self.linkedStory to fill out metadata for email. 
@@ -83,10 +92,7 @@
 			DLog(@"Save with instapaper!");
 			[self sendToInstapaper];
 		case 3:
-			// Readability
-			
-			[_webView stringByEvaluatingJavaScriptFromString:@"javascript:(function(){readStyle='style-athelas';readSize='size-x-large';readMargin='margin-x-narrow';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);})();"];  
-			break;
+		*/	
 
 		default:
 			break;
