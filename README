@@ -28,7 +28,7 @@ New Features:
 - Post comments
 - Refresh items on homepage
 - Readbility
-- Mail link to page
+
 
 Bug fixes: 
 - Fixed-width text now displays correctly.
@@ -39,6 +39,7 @@ Bug fixes:
    To Do
 /////////////////
 
+- Mail link to page
 - In app settings. Perhaps this -> http://www.inappsettingskit.com/ 
 - Searching via searchyc.com
 - Bookmarlet installation for submitting articles

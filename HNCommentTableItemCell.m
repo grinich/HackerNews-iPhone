@@ -344,10 +344,12 @@ upVoteButton, downVoteButton, replyButton;
 		}
 
 		
+		// TODO : if we're the use, we should add the orange asterisk.
+		
 		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] 
 			 isEqualToString:self.cellComment.user]) {
-			self.byLineLabel.backgroundColor = TTSTYLEVAR(myCommentBackgroundColor);
-			self.commentTextLabel.backgroundColor = TTSTYLEVAR(myCommentBackgroundColor);
+			self.byLineLabel.backgroundColor = [UIColor whiteColor];
+			self.commentTextLabel.backgroundColor = [UIColor whiteColor];
 
 		} else {
 			self.byLineLabel.backgroundColor = TTSTYLEVAR(standardCommentBackgroundColor);

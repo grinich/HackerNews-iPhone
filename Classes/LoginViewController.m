@@ -188,7 +188,6 @@ static NSString *kViewKey = @"viewKey";
 			self.usernameTextField.userInteractionEnabled = NO;
 			self.passwordTextField.userInteractionEnabled = NO;
 			
-			
 			// Show login HUD
 			
 			UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -226,15 +225,11 @@ static NSString *kViewKey = @"viewKey";
 	[self.passwordTextField resignFirstResponder];
 
 	
-	
 	//get the window again
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
 	//hide the HUD from window
 	[MBProgressHUD hideFromWindow:window animated:YES];
-	
-	
-	
-	
+		
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -270,7 +265,7 @@ static NSString *kViewKey = @"viewKey";
 - (void)hudWasHidden {
     // Remove HUD from screen when the HUD was hidded
     [HUD removeFromSuperview];
-    [HUD release];
+    //[HUD release];
 }
 
 
