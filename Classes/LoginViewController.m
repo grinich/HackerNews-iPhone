@@ -191,7 +191,7 @@ static NSString *kViewKey = @"viewKey";
 			// Show login HUD
 			
 			UIWindow *window = [UIApplication sharedApplication].keyWindow;
-			HUD = [[MBProgressHUD alloc] initWithWindow:window];
+			HUD = [[MBProgressHUD alloc] initWithViewWindow:window];
 			
 			// Add HUD to screen
 			[window addSubview:HUD];
@@ -265,7 +265,6 @@ static NSString *kViewKey = @"viewKey";
 - (void)hudWasHidden {
     // Remove HUD from screen when the HUD was hidded
     [HUD removeFromSuperview];
-    //[HUD release];
 }
 
 

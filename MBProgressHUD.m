@@ -156,7 +156,7 @@
 #pragma mark Lifecycle methods
 
 + (BOOL)showProgressHUDInWindow:(UIWindow *)window labelText:(NSString *)text detailLabelText:(NSString *)detailText animated:(BOOL)yesOrNo {
-	MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:window] autorelease];
+	MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithViewWindow:window] autorelease];
 	if (!hud) {
 		return NO;
 	}
@@ -184,7 +184,7 @@
 	return NO;
 }
 
-- (id)initWithWindow:(UIWindow *)window {
+- (id)initWithViewWindow:(UIWindow *)window {
     return [self initWithView:window];
 }
 

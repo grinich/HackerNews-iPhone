@@ -142,7 +142,7 @@ typedef enum {
  * @param window The window instance that will provide the bounds for the HUD. Should probably be the same instance as
  * the HUD's superview (i.e., the window that the HUD will be added to).
  */
-- (id)initWithWindow:(UIWindow *)window;
+- (id)initWithViewWindow:(UIWindow *)window;
 
 /**
  * A convenience constructor that initializes the HUD with the view's bounds. Calls the designated constructor with

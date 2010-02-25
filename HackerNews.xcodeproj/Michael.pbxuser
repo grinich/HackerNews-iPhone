@@ -485,6 +485,24 @@
 			4C8B486D113616D700E062F0 /* PBXTextBookmark */ = 4C8B486D113616D700E062F0 /* PBXTextBookmark */;
 			4C8B486E113616D700E062F0 /* PBXTextBookmark */ = 4C8B486E113616D700E062F0 /* PBXTextBookmark */;
 			4C8B486F113616D700E062F0 /* PBXTextBookmark */ = 4C8B486F113616D700E062F0 /* PBXTextBookmark */;
+			4C8B4876113618A600E062F0 /* PBXTextBookmark */ = 4C8B4876113618A600E062F0 /* PBXTextBookmark */;
+			4C8B487811361A5800E062F0 /* PBXTextBookmark */ = 4C8B487811361A5800E062F0 /* PBXTextBookmark */;
+			4C8B487911361A5800E062F0 /* PBXTextBookmark */ = 4C8B487911361A5800E062F0 /* PBXTextBookmark */;
+			4C8B487A11361A5800E062F0 /* PBXTextBookmark */ = 4C8B487A11361A5800E062F0 /* PBXTextBookmark */;
+			4C8B487B11361A5800E062F0 /* PBXTextBookmark */ = 4C8B487B11361A5800E062F0 /* PBXTextBookmark */;
+			4C8B487E11361A5E00E062F0 /* PBXTextBookmark */ = 4C8B487E11361A5E00E062F0 /* PBXTextBookmark */;
+			4C8B487F11361A6300E062F0 /* PBXTextBookmark */ = 4C8B487F11361A6300E062F0 /* PBXTextBookmark */;
+			4C8B488011361A6300E062F0 /* PBXTextBookmark */ = 4C8B488011361A6300E062F0 /* PBXTextBookmark */;
+			4C8B488111361A6300E062F0 /* PBXTextBookmark */ = 4C8B488111361A6300E062F0 /* PBXTextBookmark */;
+			4C8B489D11361C3900E062F0 /* XCBuildMessageTextBookmark */ = 4C8B489D11361C3900E062F0 /* XCBuildMessageTextBookmark */;
+			4C8B489E11361C3900E062F0 /* PBXTextBookmark */ = 4C8B489E11361C3900E062F0 /* PBXTextBookmark */;
+			4C8B489F11361C3900E062F0 /* PBXTextBookmark */ = 4C8B489F11361C3900E062F0 /* PBXTextBookmark */;
+			4C8B48A211361C3F00E062F0 /* PBXTextBookmark */ = 4C8B48A211361C3F00E062F0 /* PBXTextBookmark */;
+			4C8B48A311361C3F00E062F0 /* PBXTextBookmark */ = 4C8B48A311361C3F00E062F0 /* PBXTextBookmark */;
+			4C8B48A411361C3F00E062F0 /* XCBuildMessageTextBookmark */ = 4C8B48A411361C3F00E062F0 /* XCBuildMessageTextBookmark */;
+			4C8B48A511361C3F00E062F0 /* PBXTextBookmark */ = 4C8B48A511361C3F00E062F0 /* PBXTextBookmark */;
+			4C8B48AC11361CCD00E062F0 /* PBXTextBookmark */ = 4C8B48AC11361CCD00E062F0 /* PBXTextBookmark */;
+			4C8B48AF11361D4800E062F0 /* PBXTextBookmark */ = 4C8B48AF11361D4800E062F0 /* PBXTextBookmark */;
 			4C8F494F1005137000BB9211 = 4C8F494F1005137000BB9211 /* PBXTextBookmark */;
 			4C8F49521005137000BB9211 = 4C8F49521005137000BB9211 /* PBXTextBookmark */;
 			4C8F49961005181600BB9211 = 4C8F49961005181600BB9211 /* PBXTextBookmark */;
@@ -884,6 +902,11 @@
 		name = TTUserInfo.m;
 		path = /Users/Michael/Projects/HackerNews/three20/src/TTUserInfo.m;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {754, 1275}}";
+			sepNavSelRange = "{1732, 0}";
+			sepNavVisRange = "{1032, 1508}";
+		};
 	};
 	4C1260921132413E00C427B1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1061,9 +1084,9 @@
 	};
 	4C31935A11325F82000D0984 /* README */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {803, 1395}}";
-			sepNavSelRange = "{628, 0}";
-			sepNavVisRange = "{316, 924}";
+			sepNavIntBoundsRect = "{{0, 0}, {803, 1425}}";
+			sepNavSelRange = "{555, 74}";
+			sepNavVisRange = "{316, 914}";
 		};
 	};
 	4C337DDC109F3D2400B3CBE7 /* HNStoryDataSource.m:41 */ = {
@@ -1251,9 +1274,9 @@
 	};
 	4C41E79C10106F5F000A7253 /* LoginViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {873, 4950}}";
-			sepNavSelRange = "{6703, 0}";
-			sepNavVisRange = "{5807, 955}";
+			sepNavIntBoundsRect = "{{0, 0}, {908, 4980}}";
+			sepNavSelRange = "{4892, 0}";
+			sepNavVisRange = "{4455, 783}";
 		};
 	};
 	4C4A622210CC284800E5706B /* PBXTextBookmark */ = {
@@ -1782,7 +1805,7 @@
 		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
 		name = "LoginViewController.m: 205";
 		rLen = 0;
-		rLoc = 5096;
+		rLoc = 5100;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 5168;
@@ -2043,7 +2066,7 @@
 		fRef = 4CE200D2112B79AF0053C995 /* MBProgressHUD.m */;
 		name = "MBProgressHUD.m: 216";
 		rLen = 16;
-		rLoc = 5893;
+		rLoc = 5901;
 		rType = 0;
 		vrLen = 858;
 		vrLoc = 5413;
@@ -2278,7 +2301,7 @@
 		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
 		name = "LoginViewController.m: 247";
 		rLen = 0;
-		rLoc = 6150;
+		rLoc = 6154;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 5527;
@@ -2288,10 +2311,182 @@
 		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
 		name = "LoginViewController.m: 268";
 		rLen = 0;
-		rLoc = 6703;
+		rLoc = 6701;
 		rType = 0;
 		vrLen = 955;
 		vrLoc = 5807;
+	};
+	4C8B4876113618A600E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		name = "LoginViewController.m: 268";
+		rLen = 0;
+		rLoc = 6701;
+		rType = 0;
+		vrLen = 972;
+		vrLoc = 5807;
+	};
+	4C8B487811361A5800E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4CB502281009598200476948 /* HNStyle.h */;
+		name = "HNStyle.h: 22";
+		rLen = 0;
+		rLoc = 653;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 0;
+	};
+	4C8B487911361A5800E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4CE200D1112B79AF0053C995 /* MBProgressHUD.h */;
+		name = "MBProgressHUD.h: 139";
+		rLen = 118;
+		rLoc = 4357;
+		rType = 0;
+		vrLen = 1234;
+		vrLoc = 4116;
+	};
+	4C8B487A11361A5800E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		rLen = 18;
+		rLoc = 4874;
+		rType = 0;
+	};
+	4C8B487B11361A5800E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		name = "LoginViewController.m: 194";
+		rLen = 0;
+		rLoc = 4892;
+		rType = 0;
+		vrLen = 946;
+		vrLoc = 4435;
+	};
+	4C8B487E11361A5E00E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		name = "LoginViewController.m: 194";
+		rLen = 0;
+		rLoc = 4892;
+		rType = 0;
+		vrLen = 783;
+		vrLoc = 4455;
+	};
+	4C8B487F11361A6300E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		name = "LoginViewController.m: 268";
+		rLen = 0;
+		rLoc = 6701;
+		rType = 0;
+		vrLen = 935;
+		vrLoc = 5807;
+	};
+	4C8B488011361A6300E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4CE200D1112B79AF0053C995 /* MBProgressHUD.h */;
+		rLen = 18;
+		rLoc = 4715;
+		rType = 0;
+	};
+	4C8B488111361A6300E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4CE200D1112B79AF0053C995 /* MBProgressHUD.h */;
+		name = "MBProgressHUD.h: 145";
+		rLen = 0;
+		rLoc = 4733;
+		rType = 0;
+		vrLen = 1755;
+		vrLoc = 3971;
+	};
+	4C8B489D11361C3900E062F0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'initWithTopic:strong:weak:' is deprecated (declared at /Users/Michael/Projects/HackerNews/three20/src/Three20/TTUserInfo.h:63)";
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 48;
+		rType = 1;
+	};
+	4C8B489E11361C3900E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		name = "TTUserInfo.m: 49";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 359;
+		vrLoc = 1732;
+	};
+	4C8B489F11361C3900E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79C10106F5F000A7253 /* LoginViewController.m */;
+		name = "LoginViewController.m: 194";
+		rLen = 0;
+		rLoc = 4892;
+		rType = 0;
+		vrLen = 783;
+		vrLoc = 4455;
+	};
+	4C8B48A211361C3F00E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4CE200D1112B79AF0053C995 /* MBProgressHUD.h */;
+		name = "MBProgressHUD.h: 145";
+		rLen = 0;
+		rLoc = 4733;
+		rType = 0;
+		vrLen = 1755;
+		vrLoc = 3971;
+	};
+	4C8B48A311361C3F00E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C31935A11325F82000D0984 /* README */;
+		name = "README: 26";
+		rLen = 74;
+		rLoc = 555;
+		rType = 0;
+		vrLen = 914;
+		vrLoc = 316;
+	};
+	4C8B48A411361C3F00E062F0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'initWithTopic:strong:weak:' is deprecated (declared at /Users/Michael/Projects/HackerNews/three20/src/Three20/TTUserInfo.h:63)";
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 48;
+		rType = 1;
+	};
+	4C8B48A511361C3F00E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		name = "TTUserInfo.m: 49";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 1507;
+		vrLoc = 1032;
+	};
+	4C8B48AC11361CCD00E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		name = "TTUserInfo.m: 49";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 1508;
+		vrLoc = 1032;
+	};
+	4C8B48AF11361D4800E062F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C1260911132413E00C427B1 /* TTUserInfo.m */;
+		name = "TTUserInfo.m: 49";
+		rLen = 0;
+		rLoc = 1732;
+		rType = 0;
+		vrLen = 1508;
+		vrLoc = 1032;
 	};
 	4C8F494F1005137000BB9211 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2976,11 +3171,18 @@
 		path = /Users/Michael/Projects/HackerNews/src/Classes/URLParser.m;
 		sourceTree = "<absolute>";
 	};
+	4CE200D1112B79AF0053C995 /* MBProgressHUD.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {992, 4200}}";
+			sepNavSelRange = "{4733, 0}";
+			sepNavVisRange = "{3971, 1755}";
+		};
+	};
 	4CE200D2112B79AF0053C995 /* MBProgressHUD.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {999, 8805}}";
-			sepNavSelRange = "{6271, 0}";
-			sepNavVisRange = "{5238, 1232}";
+			sepNavSelRange = "{6279, 0}";
+			sepNavVisRange = "{5246, 1232}";
 		};
 	};
 	4CE200FD112B7D4C0053C995 /* LoginViewController.m:224 */ = {
