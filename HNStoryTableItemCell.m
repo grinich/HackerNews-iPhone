@@ -241,6 +241,9 @@ static CGFloat kCommentButtonWidth = 50;
 		self.subtextLabel.text = [self.cellStory subtext];
 		self.commentsLabel.text = [[self.cellStory comments_count] stringValue];
 		self.accessoryType = UITableViewCellAccessoryNone;
+		
+		self.selectionStyle = UITableViewCellSelectionStyleBlue;
+
 
 	}  
 }
