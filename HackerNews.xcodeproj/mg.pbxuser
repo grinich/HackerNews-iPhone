@@ -1,0 +1,238 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* HackerNews */ = {
+		activeExec = 0;
+		executables = (
+			CCAEB3A81186BEFD005165A6 /* HackerNews */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = CCAEB3A81186BEFD005165A6 /* HackerNews */;
+		activeSDKPreference = iphoneos3.0;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* HackerNews */;
+		codeSenseManager = CCAEB3D91186BF0C005165A6 /* Code sense */;
+		executables = (
+			CCAEB3A81186BEFD005165A6 /* HackerNews */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					385,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 294043390;
+			PBXWorkspaceStateSaveDate = 294043390;
+		};
+		perUserProjectItems = {
+			CCAEB3EE1186C063005165A6 /* PBXTextBookmark */ = CCAEB3EE1186C063005165A6 /* PBXTextBookmark */;
+			CCAEB3EF1186C063005165A6 /* PBXTextBookmark */ = CCAEB3EF1186C063005165A6 /* PBXTextBookmark */;
+			CCAEB4131186C1DB005165A6 /* PBXTextBookmark */ = CCAEB4131186C1DB005165A6 /* PBXTextBookmark */;
+			CCAEB4141186C1DB005165A6 /* PBXTextBookmark */ = CCAEB4141186C1DB005165A6 /* PBXTextBookmark */;
+			CCAEB4151186C1DB005165A6 /* PBXTextBookmark */ = CCAEB4151186C1DB005165A6 /* PBXTextBookmark */;
+			CCAEB4161186C1DB005165A6 /* PBXTextBookmark */ = CCAEB4161186C1DB005165A6 /* PBXTextBookmark */;
+			CCAEB4171186C1DB005165A6 /* PBXTextBookmark */ = CCAEB4171186C1DB005165A6 /* PBXTextBookmark */;
+			CCAEB41C1186C1FB005165A6 /* PBXTextBookmark */ = CCAEB41C1186C1FB005165A6 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CCAEB3D81186BF0C005165A6 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4C125E98113205BA00C427B1 /* HNPostController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {775, 1665}}";
+			sepNavSelRange = "{1484, 473}";
+			sepNavVisRange = "{1461, 1210}";
+		};
+	};
+	4C41E68F10105A6F000A7253 /* HNAuth.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {563, 825}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 492}";
+		};
+	};
+	4C41E69010105A6F000A7253 /* HNAuth.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {831, 1935}}";
+			sepNavSelRange = "{2878, 0}";
+			sepNavVisRange = "{2277, 890}";
+		};
+	};
+	4C41E79B10106F5F000A7253 /* LoginViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {719, 407}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 611}";
+		};
+	};
+	4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 4275}}";
+			sepNavSelRange = "{491, 0}";
+			sepNavVisRange = "{350, 278}";
+		};
+	};
+	4C613B25101040C900914337 /* HNCommentModel.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {951, 4320}}";
+			sepNavSelRange = "{1214, 46}";
+			sepNavVisRange = "{892, 606}";
+		};
+	};
+	4C694AB01135179F00914283 /* GTMNSString+HTML.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {579, 7680}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3, 941}";
+		};
+	};
+	4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {951, 720}}";
+			sepNavSelRange = "{1016, 0}";
+			sepNavVisRange = "{273, 792}";
+		};
+	};
+	CCAEB3A81186BEFD005165A6 /* HackerNews */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = HackerNews;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	CCAEB3D81186BF0C005165A6 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CCAEB3D91186BF0C005165A6 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CCAEB3EE1186C063005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C125E98113205BA00C427B1 /* HNPostController.m */;
+		name = "HNPostController.m: 60";
+		rLen = 473;
+		rLoc = 1484;
+		rType = 0;
+		vrLen = 1210;
+		vrLoc = 1461;
+	};
+	CCAEB3EF1186C063005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E68F10105A6F000A7253 /* HNAuth.h */;
+		name = "HNAuth.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 492;
+		vrLoc = 0;
+	};
+	CCAEB4131186C1DB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C694AB01135179F00914283 /* GTMNSString+HTML.m */;
+		name = "GTMNSString+HTML.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 941;
+		vrLoc = 3;
+	};
+	CCAEB4141186C1DB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C5EB51F1007C2DB001C9BDC /* HNCommentsTableViewController.m */;
+		name = "HNCommentsTableViewController.m: 23";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 811;
+		vrLoc = 5013;
+	};
+	CCAEB4151186C1DB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C9CB67710157824002ECBD3 /* NSDictionary+UrlEncoding.m */;
+		name = "NSDictionary+UrlEncoding.m: 16";
+		rLen = 0;
+		rLoc = 366;
+		rType = 0;
+		vrLen = 908;
+		vrLoc = 0;
+	};
+	CCAEB4161186C1DB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E79B10106F5F000A7253 /* LoginViewController.h */;
+		name = "LoginViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 611;
+		vrLoc = 0;
+	};
+	CCAEB4171186C1DB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E69010105A6F000A7253 /* HNAuth.m */;
+		name = "HNAuth.m: 95";
+		rLen = 40;
+		rLoc = 2838;
+		rType = 0;
+		vrLen = 817;
+		vrLoc = 2277;
+	};
+	CCAEB41C1186C1FB005165A6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4C41E69010105A6F000A7253 /* HNAuth.m */;
+		name = "HNAuth.m: 96";
+		rLen = 0;
+		rLoc = 2878;
+		rType = 0;
+		vrLen = 890;
+		vrLoc = 2277;
+	};
+}
