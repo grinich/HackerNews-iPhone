@@ -9,7 +9,7 @@
 #import "HNAuth.h"
 #import "SynthesizeSingleton.h"
 #import "ElementParser.h"
-
+#import "NSDictionary+UrlEncoding.h"
 
 @implementation HNAuth
 SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
@@ -71,26 +71,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 
 
 -(void) finalLogin {
-					
-	NSString *URLstring = [NSString stringWithFormat:@"http://news.ycombinator.com/y?fnid=%@&u=%@&p=%@",
-						   self.loginFNID,
-						   self.username,
-						   self.password];
+		
+	// Via http://stackoverflow.com/questions/573010/convert-characters-to-html-entities-in-cocoa
+	
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+	[parameters setValue: self.loginFNID forKey: @"fnid"];
+	[parameters setValue: self.username forKey: @"u"];
+	[parameters setValue: self.password forKey: @"p"];
 
-//	NSString *URLstring = @"http://news.ycombinator.com/y";
+	NSString* baseURL = @"http://news.ycombinator.com/r?";
+	NSString *submitLoginURL = [baseURL stringByAppendingString: [parameters urlEncodedString]];
 	
-	loginRequest = [TTURLRequest requestWithURL:URLstring delegate:self];
+	DLog(@"Submitted reply url: %@", submitLoginURL);
 	
-//	loginRequest.parameters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:	
-//											   self.loginFNID, @"fnid",
-//											   self.username, @"u",
-//											   self.password, @"p",
-//											   nil];
 	
-	//	request.cachePolicy = cachePolicy;
+	
+	loginRequest = [TTURLRequest requestWithURL:submitLoginURL delegate:self];
+	
 	loginRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
 	loginRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
-//	loginRequest.httpMethod = @"POST";
 	loginRequest.httpMethod = @"GET";
 
 	BOOL cacheHit = [loginRequest send];  
