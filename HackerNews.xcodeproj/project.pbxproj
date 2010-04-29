@@ -247,7 +247,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4C694ABB113517BE00914283 /* Google Toolbox Mac */,
 				4CE200D1112B79AF0053C995 /* MBProgressHUD.h */,
 				4CE200D2112B79AF0053C995 /* MBProgressHUD.m */,
 				4CDDC4B51004FEC600E300E4 /* SynthesizeSingleton.h */,
@@ -265,6 +264,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C694ABB113517BE00914283 /* Google Toolbox Mac */,
 				4C8E73A4100E7A7B0071A8BE /* SystemConfiguration.framework */,
 				4CA2EFB41007560200E8D387 /* QuartzCore.framework */,
 				4C679FFD10F2C3B50025AFA0 /* MessageUI.framework */,
@@ -617,7 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Grinich";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -631,7 +631,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D81CAB1A-7699-405D-B00A-5B87060AB5B9";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "App Store";
