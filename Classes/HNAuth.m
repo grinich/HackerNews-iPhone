@@ -92,11 +92,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	loginRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
 	loginRequest.httpMethod = @"GET";
 
-	BOOL cacheHit = [loginRequest send];  
-	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	[loginRequest send];  
 	
 	DLog(@"Started Request");
-	
 }
 
 
