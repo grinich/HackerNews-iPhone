@@ -54,6 +54,7 @@
 		4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A91004FEC600E300E4 /* HNStory.m */; };
 		4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */; };
 		4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE200D2112B79AF0053C995 /* MBProgressHUD.m */; };
+		CCEF848F118A19B400C588ED /* HNInstapaper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEF848E118A19B400C588ED /* HNInstapaper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,8 @@
 		4CE200D1112B79AF0053C995 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4CE200D2112B79AF0053C995 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCEF848D118A19B400C588ED /* HNInstapaper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInstapaper.h; sourceTree = "<group>"; };
+		CCEF848E118A19B400C588ED /* HNInstapaper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInstapaper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,8 @@
 				4C41E79C10106F5F000A7253 /* LoginViewController.m */,
 				4C679FD010F2BF9F0025AFA0 /* HNWebController.h */,
 				4C679FD110F2BF9F0025AFA0 /* HNWebController.m */,
+				CCEF848D118A19B400C588ED /* HNInstapaper.h */,
+				CCEF848E118A19B400C588ED /* HNInstapaper.m */,
 			);
 			name = "Main Objects";
 			path = Classes;
@@ -511,6 +516,7 @@
 				4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */,
 				4C125E99113205BA00C427B1 /* HNPostController.m in Sources */,
 				4C694AB11135179F00914283 /* GTMNSString+HTML.m in Sources */,
+				CCEF848F118A19B400C588ED /* HNInstapaper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
