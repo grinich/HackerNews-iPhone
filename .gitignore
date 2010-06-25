@@ -1,2 +1,10 @@
 # ignore the build directory
 build/
+
+# ignore custom user files
+*.pbxuser
+*.perspectivev3
+*.xcworkspace
+xcuserdata
+*.mode1v3
+.DS_Store
