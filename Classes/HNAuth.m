@@ -85,7 +85,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	DLog(@"Submitted reply url: %@", submitLoginURL);
 	
 	
-	
 	loginRequest = [TTURLRequest requestWithURL:submitLoginURL delegate:self];
 	
 	loginRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
@@ -93,7 +92,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	loginRequest.httpMethod = @"GET";
 
 	BOOL cacheHit = [loginRequest send];  
-	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), URLstring);
+	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), submitLoginURL);
 	
 	DLog(@"Started Request");
 	

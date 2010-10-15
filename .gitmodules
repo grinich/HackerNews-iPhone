@@ -1,0 +1,6 @@
+[submodule "three20"]
+	path = three20
+	url = git@github.com:grinich/three20.git
+[submodule "ElementParser"]
+	path = ElementParser
+	url = git://github.com/Objective3/ElementParser.git

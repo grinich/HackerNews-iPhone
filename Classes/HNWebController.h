@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Three20/Three20.h"
+
 #import <MessageUI/MessageUI.h>
 
 @class HNStory;
