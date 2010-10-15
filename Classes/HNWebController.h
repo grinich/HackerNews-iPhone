@@ -21,7 +21,6 @@
 @property(nonatomic,retain) HNStory *linkedStory;
 
 - (void)shareAction;
-- (void) sendToInstapaper;
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
 
 

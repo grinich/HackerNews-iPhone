@@ -95,7 +95,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HNAuth);
 	DLog((cacheHit ? @"Cache hit for %@" : @"Cache miss for %@"), submitLoginURL);
 	
 	DLog(@"Started Request");
-	
 }
 
 
