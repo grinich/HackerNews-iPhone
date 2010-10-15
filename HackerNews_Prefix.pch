@@ -1,7 +1,7 @@
 //
 // Prefix header for all source files of the 'HackerNews' target in the 'HackerNews' project
 //
-#import <Availability.h>
+
 
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iPhone SDK 3.0 and later."
@@ -11,7 +11,6 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
-    #import <CoreData/CoreData.h>
 	#import <Three20/Three20+Additions.h>
 
 #endif
