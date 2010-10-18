@@ -12,6 +12,11 @@
 #import "HNInstapaper.h"
 #import "SHK.h"
 
+@interface HNWebController (private)
+- (void)readability;
+@end
+
+
 @implementation HNWebController
 
 @synthesize linkedStory;
@@ -68,6 +73,29 @@
 	[actionSheet showFromToolbar:self.navigationController.toolbar];
 	
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadView {
+	[super loadView];
+
+	
+	
+	_readabilityButton = [[UIBarButtonItem alloc] initWithImage:
+					  TTIMAGE(@"bundle://readability-button.png")
+													  style:UIBarButtonItemStylePlain 
+														 target:self 
+														 action:@selector(readability)];	
+	_readabilityButton.tag = 999;
+	_readabilityButton.enabled = YES;
+	
+	UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+						 UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+
+	_toolbar.items = [NSArray arrayWithObjects:
+					  _backButton, space, _forwardButton, space, _refreshButton, space, _readabilityButton, space, _actionButton, nil];
+
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,5 +171,9 @@
 
  */
 
+- (void)readability;
+{
+	[_webView stringByEvaluatingJavaScriptFromString:@"javascript:(function(){readStyle='style-athelas';readSize='size-x-large';readMargin='margin-x-narrow';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);})();"];  
+}
 
 @end

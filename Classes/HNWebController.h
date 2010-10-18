@@ -12,9 +12,10 @@
 
 @class HNStory;
 
-@interface HNWebController : TTWebController <MFMailComposeViewControllerDelegate> {
+@interface HNWebController : TTWebController{
 
 	HNStory *linkedStory;
+	UIBarButtonItem*  _readabilityButton;
 }
 
 

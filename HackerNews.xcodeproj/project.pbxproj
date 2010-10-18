@@ -114,6 +114,8 @@
 		C701953C126BE30E00BB1811 /* SHKViewControllerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C70194FD126BE30E00BB1811 /* SHKViewControllerWrapper.m */; };
 		C7019540126BE32200BB1811 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C701953F126BE32200BB1811 /* SystemConfiguration.framework */; };
 		C7019542126BE32900BB1811 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7019541126BE32900BB1811 /* Security.framework */; };
+		C70195B7126BF0C800BB1811 /* readability-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C70195B5126BF0C800BB1811 /* readability-button.png */; };
+		C70195B8126BF0C800BB1811 /* readability-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C70195B6126BF0C800BB1811 /* readability-button@2x.png */; };
 		C73FC1ED1267FDFA00DCBC7A /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCBA1267FC33002AFCC8 /* libThree20Core.a */; };
 		C73FC1EE1267FDFB00DCBC7A /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCC01267FC33002AFCC8 /* libThree20Network.a */; };
 		C73FC1EF1267FDFB00DCBC7A /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCC61267FC33002AFCC8 /* libThree20Style.a */; };
@@ -504,6 +506,8 @@
 		C70194FD126BE30E00BB1811 /* SHKViewControllerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKViewControllerWrapper.m; sourceTree = "<group>"; };
 		C701953F126BE32200BB1811 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C7019541126BE32900BB1811 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C70195B5126BF0C800BB1811 /* readability-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "readability-button.png"; path = "Resources/readability-button.png"; sourceTree = "<group>"; };
+		C70195B6126BF0C800BB1811 /* readability-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "readability-button@2x.png"; path = "Resources/readability-button@2x.png"; sourceTree = "<group>"; };
 		C73FC1DB1267FDF500DCBC7A /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = three20/src/Three20/Three20.xcodeproj; sourceTree = "<group>"; };
 		C73FC40F126819B200DCBC7A /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		C73FC411126819B200DCBC7A /* comment-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-button.png"; sourceTree = "<group>"; };
@@ -676,6 +680,8 @@
 		4CA53F9E100D4F5F008F70EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C70195B5126BF0C800BB1811 /* readability-button.png */,
+				C70195B6126BF0C800BB1811 /* readability-button@2x.png */,
 				C73FC40F126819B200DCBC7A /* iTunesArtwork */,
 				C73FC410126819B200DCBC7A /* Resources */,
 				4C90171210A62B9D00D9E354 /* Default.png */,
@@ -1420,6 +1426,8 @@
 				C7019515126BE30E00BB1811 /* SHKSharers.plist in Resources */,
 				C701951A126BE30E00BB1811 /* Localizable.strings in Resources */,
 				C7019521126BE30E00BB1811 /* FBConnect.bundle in Resources */,
+				C70195B7126BF0C800BB1811 /* readability-button.png in Resources */,
+				C70195B8126BF0C800BB1811 /* readability-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
