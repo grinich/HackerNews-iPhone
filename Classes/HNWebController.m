@@ -10,6 +10,7 @@
 #import "HNStyle.h"
 #import "NSStringAdditions.h"
 #import "HNInstapaper.h"
+#import "SHK.h"
 
 @implementation HNWebController
 
@@ -41,6 +42,8 @@
 
 
 - (void)shareAction {
+	// Old
+	/*
 	UIActionSheet* sheet = [[[UIActionSheet alloc] initWithTitle:@"" 
 														delegate:self
 											   cancelButtonTitle:TTLocalizedString(@"Cancel", @"") 
@@ -52,12 +55,26 @@
 																 nil] autorelease];
 
 	[sheet showInView:self.view];	
+	*/
+	
+	
+	
+	SHKItem *item = [SHKItem URL:self.URL title:self.title];
+	
+	// Get the ShareKit action sheet
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+	
+	// Display the action sheet
+	[actionSheet showFromToolbar:self.navigationController.toolbar];
+	
 }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // UIActionSheetDelegate
 
+/*
+ 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
 	switch(buttonIndex)
@@ -124,6 +141,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+ */
 
 
 @end
