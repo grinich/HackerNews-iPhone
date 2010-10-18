@@ -32,7 +32,7 @@
 // TODO: update this to new three20 tableview controller
 
 - (id)initWithStory:(NSString *)storyIN {
-	if (self = [super init]) {
+	if (self = [self init]) {
 		self.storyID = storyIN;
 		self.tableViewStyle = UITableViewStylePlain;
 		self.autoresizesForKeyboard = YES;
@@ -61,6 +61,9 @@
 }
 
 
+- (id)init {
+	return [super initWithNibName:nil bundle:nil])
+}
 
 - (void)loadView {
 	[super loadView];
