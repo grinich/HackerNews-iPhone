@@ -138,6 +138,7 @@
 		C73FC427126819B200DCBC7A /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = C73FC41B126819B200DCBC7A /* upvote.png */; };
 		C786EBE5126BF95B00DAB885 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C786EBE4126BF95B00DAB885 /* Three20.bundle */; };
 		C786ECC1126BFD1D00DAB885 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C786ECC0126BFD1D00DAB885 /* Default@2x.png */; };
+		C786EDB7126C065B00DAB885 /* comment-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C786EDB6126C065B00DAB885 /* comment-button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -524,6 +525,7 @@
 		C73FC41B126819B200DCBC7A /* upvote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upvote.png; sourceTree = "<group>"; };
 		C786EBE4126BF95B00DAB885 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = three20/src/Three20.bundle; sourceTree = "<group>"; };
 		C786ECC0126BFD1D00DAB885 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
+		C786EDB6126C065B00DAB885 /* comment-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-button@2x.png"; path = "Resources/comment-button@2x.png"; sourceTree = "<group>"; };
 		C7ECDCA51267FC33002AFCC8 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = "<group>"; };
 		C7ECDCA81267FC33002AFCC8 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = "<group>"; };
 		C7ECDCAB1267FC33002AFCC8 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				4C4CA59C100E30E00090D24D /* upvote.png */,
 				4C4CA58B100E30460090D24D /* downvote.png */,
 				4C5EB2AF100797B0001C9BDC /* comment-button.png */,
+				C786EDB6126C065B00DAB885 /* comment-button@2x.png */,
 				4CDDC4A41004FEC600E300E4 /* HN-masthead-light.png */,
 				4CDDC4A51004FEC600E300E4 /* HN-masthead.png */,
 			);
@@ -1431,6 +1434,7 @@
 				C70195B8126BF0C800BB1811 /* readability-button@2x.png in Resources */,
 				C786EBE5126BF95B00DAB885 /* Three20.bundle in Resources */,
 				C786ECC1126BFD1D00DAB885 /* Default@2x.png in Resources */,
+				C786EDB7126C065B00DAB885 /* comment-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

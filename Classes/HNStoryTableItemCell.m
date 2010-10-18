@@ -113,8 +113,7 @@ static CGFloat kCommentButtonWidth = 50;
 		
 		// COMMENTS BUTTON
 		
-		UIImage* accessoryImage = [[UIImage alloc] initWithContentsOfFile:
-								   [[NSBundle mainBundle] pathForResource:@"comment-button" ofType:@"png"]];
+		UIImage* accessoryImage = TTIMAGE(@"bundle://comment-button.png");
 		
 		self.accessoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.accessoryButton setImage:accessoryImage forState:UIControlStateNormal];
