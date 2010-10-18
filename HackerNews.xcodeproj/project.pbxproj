@@ -49,6 +49,7 @@
 		4CDDC4CC1004FEC600E300E4 /* HNStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4A91004FEC600E300E4 /* HNStory.m */; };
 		4CDDC4CE1004FEC600E300E4 /* HNStoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC4AD1004FEC600E300E4 /* HNStoryTableViewController.m */; };
 		4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE200D2112B79AF0053C995 /* MBProgressHUD.m */; };
+		C7019367126BDB8B00BB1811 /* BlankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7019366126BDB8B00BB1811 /* BlankViewController.m */; };
 		C73FC1ED1267FDFA00DCBC7A /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCBA1267FC33002AFCC8 /* libThree20Core.a */; };
 		C73FC1EE1267FDFB00DCBC7A /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCC01267FC33002AFCC8 /* libThree20Network.a */; };
 		C73FC1EF1267FDFB00DCBC7A /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ECDCC61267FC33002AFCC8 /* libThree20Style.a */; };
@@ -297,6 +298,8 @@
 		4CE200D1112B79AF0053C995 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/MBProgressHUD.h; sourceTree = "<group>"; };
 		4CE200D2112B79AF0053C995 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/MBProgressHUD.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7019365126BDB8A00BB1811 /* BlankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankViewController.h; sourceTree = "<group>"; };
+		C7019366126BDB8B00BB1811 /* BlankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankViewController.m; sourceTree = "<group>"; };
 		C73FC1DB1267FDF500DCBC7A /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = three20/src/Three20/Three20.xcodeproj; sourceTree = "<group>"; };
 		C73FC2D412680D4E00DCBC7A /* AppDelegate_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_Pad.h; sourceTree = "<group>"; };
 		C73FC2D512680D4E00DCBC7A /* AppDelegate_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_Pad.m; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 				4CDDC4A31004FEC600E300E4 /* AppDelegate.m */,
 				C73FC2D412680D4E00DCBC7A /* AppDelegate_Pad.h */,
 				C73FC2D512680D4E00DCBC7A /* AppDelegate_Pad.m */,
+				C7019365126BDB8A00BB1811 /* BlankViewController.h */,
+				C7019366126BDB8B00BB1811 /* BlankViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 				4C125E99113205BA00C427B1 /* HNPostController.m in Sources */,
 				4C694AB11135179F00914283 /* GTMNSString+HTML.m in Sources */,
 				C73FC2D612680D4E00DCBC7A /* AppDelegate_Pad.m in Sources */,
+				C7019367126BDB8B00BB1811 /* BlankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

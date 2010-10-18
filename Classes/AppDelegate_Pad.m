@@ -12,6 +12,8 @@
 #import "LoginViewController.h"
 #import "HNStyle.h"
 #import "HNAuth.h"
+#import "HNWebController.h"
+#import "BlankViewController.h"
 
 
 @implementation AppDelegate_Pad
@@ -30,39 +32,41 @@
 	[TTStyleSheet setGlobalStyleSheet:[[[HNStyle alloc] init] autorelease]];
 	
 	
-	TTNavigator* rightSideNavigator = [[TTSplitNavigator splitNavigator]
-									   navigatorAtIndex:TTNavigatorSplitViewRightSide];
+	TTURLMap *map;
+
 	
-	rightSideNavigator.persistenceMode = TTNavigatorPersistenceModeNone; //TTNavigatorPersistenceModeAll;
+	TTSplitNavigator *splitNavigator = [TTSplitNavigator splitNavigator];
+	map = splitNavigator.URLMap;
+	splitNavigator.popoverTitle = @"Catalog";
+	splitNavigator.rightNavigator.supportsShakeToReload = YES;
+	splitNavigator.leftNavigator.persistenceMode = TTNavigatorPersistenceModeNone;
+	splitNavigator.rightNavigator.persistenceMode = TTNavigatorPersistenceModeAll;
+
+
 	
+
+	[map from:@"*" toModalViewController:[HNWebController class] presentationStyle:UIModalPresentationPageSheet];
 	
-	TTURLMap* rightSideMap = rightSideNavigator.URLMap;
+	[map from:@"tt://home/comments/(initWithStory:)" toEmptyHistoryViewController:[HNCommentsTableViewController class]
+  inSplitView:TTSplitNavigationTargetLeft];
 	
-	
-	[rightSideMap from:@"*"  toEmptyHistoryViewController:[HNWebController class]];
-	
-	[rightSideMap from:@"tt://home/comments/(initWithStory:)" 
-toEmptyHistoryViewController:[HNCommentsTableViewController class]];
-	
-	[rightSideMap from:@"http://news.ycombinator.com/item?id=(initWithStory:)" 
-toEmptyHistoryViewController:[HNCommentsTableViewController class]];
-	
-	
-	
-	TTNavigator* leftSideNavigator = [[TTSplitNavigator splitNavigator]
-									  navigatorAtIndex:TTNavigatorSplitViewLeftSide];
-	leftSideNavigator.persistenceMode = TTNavigatorPersistenceModeNone;
-	
-	TTURLMap* leftSideMap = leftSideNavigator.URLMap;
-	
-	[leftSideMap from:@"tt://home" toViewController:[HNStoryTableViewController class]];
+	[map from:@"http://news.ycombinator.com/item?id=(initWithStory:)" toEmptyHistoryViewController:[HNCommentsTableViewController class]
+	 inSplitView:TTSplitNavigationTargetRight];
+
+    [map from:@"tt://home" toEmptyHistoryViewController:[HNStoryTableViewController class] inSplitView:TTSplitNavigationTargetLeft];
+
 	
 	
-	[[TTSplitNavigator splitNavigator]
-	 restoreViewControllersWithDefaultURLs:[NSArray arrayWithObjects:
-											@"tt://home",
-											@"http://three20.info",
-											nil]];
+	// Restore ViewControllers
+	if (TTIsPad()) {
+		[[TTSplitNavigator splitNavigator] restoreViewControllersWithDefaultURLs: [NSArray arrayWithObjects: @"tt://home", @"tt://blank", nil]];
+	} else {
+		TTNavigator *navigator = [TTNavigator navigator];
+		if (![navigator restoreViewControllers]) {
+			[navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://home"]];
+		}
+	}
+
 	
 	
 	NSURL *hnURL = [NSURL URLWithString:@"http://news.ycombinator.com/"];
@@ -73,9 +77,7 @@ toEmptyHistoryViewController:[HNCommentsTableViewController class]];
 	} else {
 		[[HNAuth sharedHNAuth] setLoggedin:NO];
 	}
-	
-	
-	
+		
 	
 }
 
