@@ -62,7 +62,7 @@
 
 
 - (id)init {
-	return [super initWithNibName:nil bundle:nil])
+	return [super initWithNibName:nil bundle:nil];
 }
 
 - (void)loadView {
