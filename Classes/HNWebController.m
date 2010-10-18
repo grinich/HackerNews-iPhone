@@ -9,7 +9,6 @@
 #import "HNWebController.h"
 #import "HNStyle.h"
 #import "NSStringAdditions.h"
-#import "HNInstapaper.h"
 #import "SHK.h"
 
 @interface HNWebController (private)
@@ -96,80 +95,6 @@
 
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// UIActionSheetDelegate
-
-/*
- 
-- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	switch(buttonIndex)
-	{
-		// Open in Safari	
-		case 0:  {
-			[[UIApplication sharedApplication] openURL:self.URL];
-			break;
-		}
-			
-		// Send mail
-		case 1: {
-			
-			// TODO use self.linkedStory to fill out metadata for email. 
-			
-			MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-			picker.mailComposeDelegate = self; // <- very important step if you want feedbacks on what the user did with your email sheet
-			
-			[picker setSubject:[NSString stringWithFormat:@"[Hacker News] %@", self.title]];
-			
-			NSString *emailBody = [NSString stringWithFormat:@"<b><a href=\"%@\">%@</a></b><br/><br/>Sent with <a href=\"http://michaelgrinich.com/hackernews/\">Hacker News on iPhone</a>", [self.URL absoluteString], self.title]; 			
-			
-			[picker setMessageBody:emailBody isHTML:YES]; // depends. Mostly YES, unless you want to send it as plain text (boring)
-			
-			picker.navigationBar.barStyle = UIBarStyleDefault; 
-			picker.navigationBar.tintColor = TTSTYLEVAR(hackerNewsColor);
-			
-			[self presentModalViewController:picker animated:YES];
-			[picker release];
-			break;
-		}
-		
-			
-		// Instapaper
-		case 2: {
-			DLog(@"Save with instapaper!");
-			HNInstapaper* instapaper = [HNInstapaper new];
-			[instapaper sendToInstapaper:self.URL];
-
-		}
-			
-		// Readability
-		case 3: { 
-			[_webView stringByEvaluatingJavaScriptFromString:@"javascript:(function(){readStyle='style-athelas';readSize='size-x-large';readMargin='margin-x-narrow';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);})();"];  
-			break;
-		}
-
-
-		default:
-			break;
-	}
-	
-		
-}
-
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller  
-          didFinishWithResult:(MFMailComposeResult)result 
-                        error:(NSError*)error 
-{
-	if (result == MFMailComposeResultSent) {
-		DLog(@"It's away!");
-	}
-	[self dismissModalViewControllerAnimated:YES];
-}
-
- */
 
 - (void)readability;
 {

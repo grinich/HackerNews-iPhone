@@ -136,7 +136,6 @@
 		C73FC425126819B200DCBC7A /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = C73FC419126819B200DCBC7A /* trash.png */; };
 		C73FC426126819B200DCBC7A /* upvote-big.png in Resources */ = {isa = PBXBuildFile; fileRef = C73FC41A126819B200DCBC7A /* upvote-big.png */; };
 		C73FC427126819B200DCBC7A /* upvote.png in Resources */ = {isa = PBXBuildFile; fileRef = C73FC41B126819B200DCBC7A /* upvote.png */; };
-		C73FC435126819DF00DCBC7A /* HNInstapaper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEF848E118A19B400C588ED /* HNInstapaper.m */; };
 		C786EBE5126BF95B00DAB885 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C786EBE4126BF95B00DAB885 /* Three20.bundle */; };
 		C786ECC1126BFD1D00DAB885 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C786ECC0126BFD1D00DAB885 /* Default@2x.png */; };
 /* End PBXBuildFile section */
@@ -531,8 +530,6 @@
 		C7ECDCAE1267FC33002AFCC8 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = "<group>"; };
 		C7ECDCB11267FC33002AFCC8 /* Three20UICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UICommon.xcodeproj; path = three20/src/Three20UICommon/Three20UICommon.xcodeproj; sourceTree = "<group>"; };
 		C7ECDCB41267FC33002AFCC8 /* Three20UINavigator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UINavigator.xcodeproj; path = three20/src/Three20UINavigator/Three20UINavigator.xcodeproj; sourceTree = "<group>"; };
-		CCEF848D118A19B400C588ED /* HNInstapaper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInstapaper.h; sourceTree = "<group>"; };
-		CCEF848E118A19B400C588ED /* HNInstapaper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInstapaper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,8 +572,6 @@
 				4C41E79C10106F5F000A7253 /* LoginViewController.m */,
 				4C679FD010F2BF9F0025AFA0 /* HNWebController.h */,
 				4C679FD110F2BF9F0025AFA0 /* HNWebController.m */,
-				CCEF848D118A19B400C588ED /* HNInstapaper.h */,
-				CCEF848E118A19B400C588ED /* HNInstapaper.m */,
 			);
 			name = "Main Objects";
 			path = Classes;
@@ -1471,7 +1466,6 @@
 				4CE200D3112B79AF0053C995 /* MBProgressHUD.m in Sources */,
 				4C125E99113205BA00C427B1 /* HNPostController.m in Sources */,
 				4C694AB11135179F00914283 /* GTMNSString+HTML.m in Sources */,
-				C73FC435126819DF00DCBC7A /* HNInstapaper.m in Sources */,
 				C70194FE126BE30E00BB1811 /* SHKOAuthSharer.m in Sources */,
 				C70194FF126BE30E00BB1811 /* SHKSharer.m in Sources */,
 				C7019500126BE30E00BB1811 /* UIWebView+SHK.m in Sources */,
