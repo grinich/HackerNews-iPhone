@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>hn-icon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.grinich.HackerNews</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -25,6 +25,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
-	<string>false</string>
+	<string></string>
 </dict>
 </plist>
