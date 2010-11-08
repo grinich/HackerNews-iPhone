@@ -15,7 +15,7 @@
 // These values are used by any service that shows 'shared from XYZ'
 
 #define SHKMyAppName			@"Hacker News for iPhone"
-#define SHKMyAppURL				@"http://michaelgrinich.com/HackerNews"
+#define SHKMyAppURL				@"http://michaelgrinich.com/hackernews"
 
 
 
@@ -47,8 +47,8 @@
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
 #define SHKFacebookUseSessionProxy  NO 
-#define SHKFacebookKey				@"03614cd1b0d8276387a580671473f3ba"
-#define SHKFacebookSecret			@"a0e80fde04c6aafae4771076c30c6952"
+#define SHKFacebookKey				@"d515057ca10eb7b7dcaf6ca1fafa8031"
+#define SHKFacebookSecret			@"27baea88db60600e80ad35c81370dbc0"
 #define SHKFacebookSessionProxyURL  @""
 
 // Read It Later - http://readitlaterlist.com/api/?shk
