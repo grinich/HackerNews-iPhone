@@ -1,4 +1,9 @@
-Test account is HN_iPhone_Test
+# HackerNews for iPhone
+
+This is an iPhone app I built in 2009-2010 to read HN in a nice mobile friendly way. It was the first large application I'd shipped and got several thousand downloads from the App Store with zero marketing. HackerNews didn't have an API, so the entire data layer was powered by web scraping under the hood, including login via cookies. You can see some screenshots [here](http://michaelgrinich.com/hackernews/)/
+
+It's no longer on the store and I have no plans to update/maintain it going forward, but figured I would open source it for fun. Consider any code I wrote here under a MIT License. :) 
+
 
 ### Current Bugs: 
 
